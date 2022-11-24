@@ -1,0 +1,85 @@
+<h3>描述</h3>
+<p>Select选择下拉组件，带有搜索框，设置[searchable]="true"</p>
+<h3>示例</h3>
+
+<span>1.单选:</span>
+<ti-select
+  style="width: 120px"
+  [options]="myOptions"
+  [(ngModel)]="mySelected"
+  placeholder="请选择国家"
+  id="myselect1"
+>
+</ti-select>
+<br />
+
+<span>2.模板:</span>
+<ti-select
+  style="width: 200px"
+  [options]="myOptions"
+  [(ngModel)]="mySelected"
+  placeholder="请选择国家"
+  id="myselect2"
+>
+  <ng-template let-item let-i="index">
+    <span>
+      {{i}}&nbsp;<img
+        src="{{item.url}}"
+        width="22"
+        height="15"
+        style="vertical-align: -9%"
+      />
+      &nbsp;{{item.label}}&nbsp;{{item.englishname}}
+    </span>
+  </ng-template>
+</ti-select>
+<br />
+
+<span>3.多选:</span>
+<ti-select
+  style="width: 120px"
+  [multiple]="true"
+  [options]="myOptions"
+  [(ngModel)]="mySelecteds"
+  placeholder="请选择国家"
+  id="myselect3"
+>
+</ti-select>
+<br />
+
+<span>4.搜索:</span>
+<ti-select
+  style="width: 120px"
+  [searchable]="true"
+  labelKey="englishname"
+  [options]="myOptions"
+  [(ngModel)]="mySelected"
+  placeholder="请选择国家"
+  id="myselect4"
+>
+</ti-select>
+<br />
+
+<span>5.分组: </span>
+<ti-select
+  style="width: 150px"
+  [options]="myGroupOptions"
+  [(ngModel)]="myGroupSelected"
+  placeholder="请选择"
+  id="myselect5"
+>
+</ti-select>
+<br />
+
+<p>id是否存在：</p>
+<p *ngFor="let id of ids; let i = index">{{id+':'+idExistMap.get(id)}}</p>
+<p>所有id是否存在：{{allIdExist}}</p>
+
+<!--原生Select参考-->
+<h3>原生Select参考</h3>
+<select>
+  <option>红豆生南国</option>
+  <option>春来发几枝</option>
+  <option>愿君多采撷</option>
+  <option>此物最相思</option>
+</select>

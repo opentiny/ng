@@ -1,0 +1,33 @@
+<ti-table [srcData]="srcData"
+          [(displayedData)]="displayedData"
+          storageId="table-storage"
+          [columns]="columns"
+          tiColsResizable>
+  <div class="ti3-resize-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <ng-container *ngFor="let column of columns">
+                <th *ngIf="column.sortKey else simpleTemplate" width="{{column.width}}">
+                  <ti-cell-text>{{column.title}}</ti-cell-text>
+                  <ti-head-sort [sortKey]="column.sortKey"></ti-head-sort>
+                </th>
+                <ng-template #simpleTemplate>
+                  <th width="{{column.width}}">{{column.title}}</th>
+                </ng-template>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of displayedData">
+          <td>{{row.id}}</td>
+          <td>{{row.firstName}}</td>
+          <td>{{row.lastName}}</td>
+          <td>{{row.age}}</td>
+          <td>{{row.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ti-pagination [(currentPage)]="currentPage" [pageSize]="pageSize" [(totalNumber)]="totalNumber"></ti-pagination>
+</ti-table>

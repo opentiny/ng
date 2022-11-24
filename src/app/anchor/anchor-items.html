@@ -1,0 +1,21 @@
+<h3>1.描述</h3>
+<p>本地模拟数据更新</p><br>
+<h3>2.示例</h3>
+<div class="anchor-box">
+    <ti-anchor id="anchor" [items]="items"></ti-anchor>
+</div>
+
+<div class="right-content">
+    <h1 id="{{items[0]&&items[0].id}}">概览</h1>
+    <div style="height: 500px; background: seashell">
+        <p>概览 Content</p>
+    </div>
+    <h1 id="{{items[1]&&items[1].id}}">Pod列表</h1>
+    <div style="height: 300px; background: lightgoldenrodyellow;">
+        <p>Pod列表 Content</p>
+    </div>
+    <h1 id="{{items[2]&&items[2].id}}">容器配置</h1>
+    <div style="height: 800px; background: lawngreen;">
+        <p>容器配置 Content</p>
+    </div>
+</div>

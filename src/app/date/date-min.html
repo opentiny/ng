@@ -1,0 +1,20 @@
+<h3>1.描述</h3>
+<p>min接口测试</p>
+<h3>2.示例</h3>
+<p>(2.1)最小值设置为非字符串类型、非法日期时：最小值取默认值</p>
+<ti-date [(ngModel)]="value" [min]="min"></ti-date>
+<br />
+<br />
+<br />
+<p>(2.2)设置的min大于设置的value时：即value值非法，显示最小值</p>
+<ti-date [(ngModel)]="value1" [min]="min1"></ti-date>
+<br />
+<br />
+<br />
+<p>(2.3)动态变更</p>
+<ti-date [(ngModel)]="value2" [min]="min2" [max]="max"></ti-date>
+<br />
+最小值：{{min2 | date: "yyyy-MM-dd"}}
+<br />
+<button (click)="minValueClick()">改变最小值为（1990/4/5）</button>
+<button (click)="minValueClick2()">改变最小值为undefined</button>

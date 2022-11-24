@@ -1,0 +1,12 @@
+<button (click)="onClickOpen(customTemplate)" tiButton class="mr-3">打开自定义通知</button>
+<ng-template #customTemplate let-notice>
+  <ti-card class="w-96 h-28" style="padding: 0; overflow: hidden;">
+    <ti-card-header style="line-height: var(--tp-card-header-height); padding-left: 20px;">
+      <h4>请在下方选择评分</h4>
+    </ti-card-header>
+    <div style="padding: 20px;">
+      <ti-rate id="rate-basic" [(ngModel)]="value"></ti-rate>
+    </div>
+    <button tiButton color="primary" class="ml-3 mb-3" (click)="notice.close()">提交并关闭</button>
+  </ti-card>
+</ng-template>

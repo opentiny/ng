@@ -1,0 +1,25 @@
+<input type="file" [tiFileSelect]="uploader" accept=".png,.jpg" />
+<div *ngFor="let item of uploader.queue">
+  <span>{{item.file.name}}</span>
+  <span>--</span>
+  <span>{{item.progress}}</span>
+  <span>--</span>
+  <span>item isReady:{{item.isReady}}</span>
+  <span>--</span>
+  <span>item isUploading:{{item.isUploading}}</span>
+  <span>--</span>
+  <span>item isUploaded:{{item.isUploaded}}</span>
+  <span>--</span>
+  <span>item isCancel:{{item.isCancel}}</span>
+  <span>--</span>
+  <span>item isSuccess:{{item.isSuccess}}</span>
+  <span>--</span>
+  <span>item isError:{{item.isError}}</span>
+  <span>--</span>
+  <a tiNavigation [hidden]="!item.isError" (click)="item.upload()">重新上传</a>
+  <span>--</span>
+  <a tiNavigation [hidden]="!item.isUploading" (click)="item.cancel()">取消</a>
+  <span>--</span>
+  <a tiNavigation [hidden]="item.isUploading" (click)="item.remove()">删除</a>
+  <span>--</span>
+</div>

@@ -1,0 +1,37 @@
+<h3>描述</h3>
+<p>Tag标签组件，基础用法</p>
+<h3>导入</h3>
+<p>import {{ '{' }} TiTagModule {{ '}' }} from '@opentiny/ng';</p>
+<h3>示例</h3>
+<p>1.ti-tag默认是inline-block，max-width: 100%;</p>
+<div style="width: 300px; height: 300px; border: 1px solid red">
+  <ti-tag>go</ti-tag>
+  <ti-tag>binggo</ti-tag>
+  <ti-tag>明月几时有，把酒问青天。不知天上宫阙，今夕是何年</ti-tag>
+  <!--因为overflow:hidden会改变对齐方式。所以后面的span改改对齐方式即可-->
+  <ti-tag> 但愿人长久，千里共婵娟。</ti-tag>
+  <!-- <span style="vertical-align: top">作者：苏轼</span> -->
+  <ti-tag
+    >但愿人长久，千里共婵娟。<ti-icon local class="text-yellow-500" name="warn" style="max-width: 100px"></ti-icon></ti-tag>
+</div>
+<p>2.设置可以设置max-width，min-width，width。width默认值是</p>
+<ti-tag style="max-width: 200px"
+  >明月几时有，把酒问青天。不知天上宫阙，今夕是何年</ti-tag
+>
+<ti-tag style="width: 200px"
+  >明月几时有，把酒问青天。不知天上宫阙，今夕是何年</ti-tag
+>
+<br /><br />
+<p>3.事件和方法</p>
+<ti-tag
+  (delete)="onDelete(student1)"
+  (click)="onClick($event)"
+  [disabled]="disabled"
+  >{{student1.name}}</ti-tag
+>
+<ti-tag #mytag (delete)="mytag.remove()" [disabled]="disabled"
+  >明月几时有，把酒问青天。不知天上宫阙，今夕是何年</ti-tag
+>
+<br />
+<br />
+<button (click)="changeDisabled()">改变禁用</button>

@@ -1,0 +1,11 @@
+<ti-select
+  id="select-multiple"
+  [options]="options"
+  [(ngModel)]="value"
+  [multiple]="true"
+  placeholder="请选择国家">
+</ti-select>
+
+<div class="current-value-container">
+  <pre>Current Select: {{ value | json }}</pre>
+</div>

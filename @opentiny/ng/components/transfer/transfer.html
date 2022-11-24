@@ -1,0 +1,71 @@
+<div class="ti3-transfer-container">
+    <!-- leftTransfer -->
+    <ti-transfer-list
+        [options]="leftOptions"
+        [title]="leftTitle"
+        [width]="width"
+        [height]="height"
+        [searchable]="searchable"
+        [pageable]="pageable"
+        [pageSize]="pageSize"
+        [placeholder]="placeholder"
+        [searchKeys]="searchKeys"
+        [noDataText]="noDataText"
+        [(ngModel)]="leftSelectedOptions"
+        [labelKey]="labelKey"
+        [idKey]="idKey"
+        [type]="type"
+        [columns]="columns"
+        (ngModelChange)="leftModelChange($event)"
+        (select)="onLeftSelect($event)"
+        [id]="appendId('left_list')"
+        >
+        <ng-template #row let-row let-i=index>
+            <ng-container *ngTemplateOutlet="rowTemplate ? rowTemplate : defaultRowTemplate; context: {$implicit: row, index: i}"></ng-container>
+        </ng-template>
+    </ti-transfer-list>
+    <!--transferButton-->
+    <div class="ti3-transfer-buttons-container">
+        <div class="ti3-icon ti3-icon-angle-right ti3-transfer-button ti3-transfer-right-button"
+             [ngClass]="{ 'ti3-transfer-button-disabled': toRightButtonDisabled }"
+             [id]="appendId('to_right_button')"
+             (click)="onClickToRight()">
+        </div>
+        <div class="ti3-icon ti3-icon-angle-left ti3-transfer-button"
+             [ngClass]="{ 'ti3-transfer-button-disabled': toLeftButtonDisabled }"
+             [id]="appendId('to_left_button')"
+             (click)="onClickToLeft()">
+        </div>
+    </div>
+     <!-- rightTransfer -->
+    <ti-transfer-list
+        [options]="rightOptions"
+        [title]="rightTitle"
+        [width]="width"
+        [height]="height"
+        [searchable]="searchable"
+        [pageable]="pageable"
+        [pageSize]="pageSize"
+        [placeholder]="placeholder"
+        [searchKeys]="searchKeys"
+        [noDataText]="noDataText"
+        [(ngModel)]="rightSelectedOptions"
+        [labelKey]="labelKey"
+        [idKey]="idKey"
+        [type]="type"
+        [columns]="columns"
+        (ngModelChange)="rightModelChange($event)"
+        (select)="onRightSelect($event)"
+        [id]="appendId('right_list')"
+        >
+        <ng-template #row let-row let-i=index>
+            <ng-container *ngTemplateOutlet="rowTemplate ? rowTemplate : defaultRowTemplate; context: {$implicit: row, index: i}"></ng-container>
+        </ng-template>
+    </ti-transfer-list>
+    </div>
+
+    <ng-template #defaultRowTemplate let-row>
+        <ng-container *ngFor="let key of columns;">
+            <td tiOverflow >{{row[key.field]}}</td>
+        </ng-container>
+    </ng-template>

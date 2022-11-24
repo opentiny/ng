@@ -1,0 +1,30 @@
+<!-- 响应式布局 -->
+<!-- 配置区域卡片自适应策略：-->
+<!-- 2560 ≥ 分辨率 >1920 ，卡片固定宽度为1832px。-->
+<!-- 1920 ≥ 分辨率 ≥ 1280，卡片距离左右间距20px-->
+<!-- 例：1920分辨率下卡片宽度1832px；1280分辨率下卡片宽度1192px-->
+<!-- 分辨率＜1280时，显示不下则出滚动条。-->
+
+<!-- 只是模拟console的实际场景(console-ui左侧有48px宽的一个菜单栏)，开发者可不用关注这层div -->
+<div style="margin-left:48px">
+<!-- 头部 -->
+<ti-layout-header responsive>
+    <ti-subtitle dark href="" target="_blank" [items]="items" style="vertical-align: middle;"></ti-subtitle>
+</ti-layout-header>
+<!-- 内容容器 -->
+<ti-layout-content responsive>
+     <!-- 内容主体部分 -->
+    <ti-layout-content-body class="ti3-no-buylayer ti3-no-steps">
+            <ti-layout-section>
+                <div style="background-color: #EEEEEE;height: 200px;text-align: center;line-height: 200px;">buy
+                    content1
+                </div>
+            </ti-layout-section>
+            <ti-layout-section>
+                <div style="background-color: #EEEEEE;height: 200px;text-align: center;line-height: 200px;">buy
+                    content1
+                </div>
+            </ti-layout-section>
+    </ti-layout-content-body>
+</ti-layout-content>
+</div>

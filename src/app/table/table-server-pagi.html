@@ -1,0 +1,50 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>
+    表格分页要结合tiPagination分页组件使用，后台分页时需要将srcData的state.paginated
+    设置为true(表示传入组件的数据已经进行过分页处理)。
+  </p>
+  <p class="demo-text-warn">
+    注意：使用 tiPagination 组件，请导入 TiPaginationModule；使用 tiOverflow
+    组件，请导入 TiOverflowModule。
+  </p>
+  <h3>示例</h3>
+
+  <h4>事件日志：</h4>
+  <demo-log [logs]="myLogs"></demo-log>
+  <br />
+
+  <ti-table
+    [(displayedData)]="displayed"
+    [srcData]="srcData"
+    [columns]="columns"
+    (stateUpdate)="stateUpdate($event)"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th tiOverflow *ngFor="let column of columns" [width]="column.width">
+            {{column.title}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+        <tr *ngFor="let row of displayed">
+          <td tiOverflow>{{row.firstName}}</td>
+          <td tiOverflow>{{row.lastName}}</td>
+          <td tiOverflow>{{row.age}}</td>
+          <td tiOverflow>{{row.balance}}</td>
+          <td tiOverflow>{{row.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- 在表格中使用分页组件时必须保证其父元素是ti-table -->
+    <ti-pagination
+      [(currentPage)]="currentPage"
+      [pageSize]="pageSize"
+      [(totalNumber)]="totalNumber"
+    >
+    </ti-pagination>
+  </ti-table>
+</div>

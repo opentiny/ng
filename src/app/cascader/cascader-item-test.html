@@ -1,0 +1,21 @@
+<h2>1.内部测试异常数据或特殊场景</h2>
+<p></p>
+<h2>2.示例</h2>
+
+<div tiScroll style="height: 150px;overflow: auto;border: 1px solid rosybrown;">
+    <h4>外层有tiScroll</h4>
+    <ti-cascader
+        [searchable]="true"
+        [items]="data"
+        [(ngModel)]="mySelected"
+    ></ti-cascader>
+    <br>
+    <span> 选中项： {{ mySelected | json }} </span>
+    <br><button (click)="mySelected=undefined">清除选中项</button>
+    <br><button (click)="mySelected=[]">设定选中值为空数组</button>
+    <br><br><br><br>
+    <ti-cascader [items]="data" [(ngModel)]="mySelected1" [clearable]="true"></ti-cascader>
+    <br>
+    <span> 选中项： {{mySelected1 | json}} </span>
+    <br><br><br><br><br><br><br><br>
+</div>

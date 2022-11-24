@@ -1,0 +1,47 @@
+<!--双向绑定展示区域-->
+<h1>Select组件 Group数据</h1>
+<h1>Select组件数据双向绑定展示区域</h1>
+<hr style="border-color: #ca4848" />
+<div style="height: 160px; overflow: auto; padding-left: 15px">
+  <span>1.用例1的当前选中项为：<br /><strong>{{selected | json}}</strong></span>
+  <br /><br />
+  <span>2.用例2的当前选中项为：<br /><strong>{{selected | json}}</strong></span>
+</div>
+<hr style="border-color: #ca4848" />
+<br /><br />
+
+<!--测试用例1 数据不分组-->
+<label><strong>1.设置options和labelKey</strong></label>
+<br />
+<ti-list
+  style="width: 200px"
+  id="aa"
+  [options]="options"
+  labelKey="label"
+  [(ngModel)]="selected"
+>
+</ti-list>
+<br />
+<label><strong>1.设置options和自定义内容模板：</strong></label>
+<br />
+<ti-list
+  style="width: 150px"
+  id="aa"
+  [options]="options"
+  [(ngModel)]="selected"
+>
+  <ng-template let-item let-i="index">
+    <span>{{i}}+{{item.pic}}+{{item.label}}</span>
+  </ng-template>
+</ti-list>
+<br />
+<br /><br /><br />
+
+<!--原生Select参考-->
+<br /><br /><br /><span>原生Select参考:</span>
+<select>
+  <option>红豆生南国</option>
+  <option>春来发几枝</option>
+  <option>愿君多采撷</option>
+  <option>此物最相思</option>
+</select>

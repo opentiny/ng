@@ -1,0 +1,8 @@
+<!--优化：减少label嵌套，去除内层label-->
+<label #labelRef class='ti3-checkbox' [for]='id'  [id]="appendId('checkbox')">
+    <!-- 兼容IE11添加spacebar事件 -->
+    <span #proxyRef class='ti3-checkbox-skin ti3-icon ti3-icon-checkmark' tiOutline
+        (keydown.spacebar)="onSpaceKeydown($event)"  (keyup.spacebar)="onSpaceKeyup($event)"
+        (keydown.space)="onSpaceKeydown($event)"  (keyup.space)="onSpaceKeyup($event)"></span>
+    <span class='ti3-checkbox-label' [id]="appendId('label')">{{label}}</span>
+</label>

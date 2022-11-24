@@ -1,0 +1,14 @@
+<ti-accordion [closeOthers]="false">
+  <ti-accordion-item [open]="isOpen" [clickToggle]="false">
+    <ti-accordion-head style="color: red">凉州词二首其一（clickToggle 为 false，点击面板标题时面板不会展开或收起）</ti-accordion-head>
+    <p>黄河远上白云间，一片孤城万仞山。</p>
+    <p>羌笛何须怨杨柳，春风不度玉门关。</p>
+  </ti-accordion-item>
+  <ti-accordion-item (headClick)="headClick($event)">
+    <ti-accordion-head>凉州词二首其二</ti-accordion-head>
+    <p>单于北望拂云堆，杀马登坛祭几回。</p>
+    <p>汉家天子今神武，不肯和亲归去来。</p>
+  </ti-accordion-item>
+</ti-accordion>
+<br />
+<button class="mt-3" (click)='changeState()' tiButton color="primary">展开/收起面板</button>

@@ -1,0 +1,109 @@
+<h3>描述</h3>
+<p>Select选择下拉组件选项添加tag标签</p>
+<h3>示例</h3>
+<p>设置options和自定义内容模板：</p>
+
+<h4>1.单选</h4>
+<ti-select
+  style="width: 300px"
+  [options]="myOptions"
+  [(ngModel)]="mySelected"
+  tipPosition="right"
+  placeholder="请选择"
+  id="myselect"
+>
+  <ng-template #item let-item let-i="index">
+    <span class="select-dropdown-list">
+      <span class="select-selfTip"
+        >{{i}}&nbsp;<img
+          src="{{item.url}}"
+          width="22"
+          height="15"
+          style="vertical-align: -9%"
+        />
+        <span [title]="item.label + item.englishname"
+          >&nbsp;{{item.label}}&nbsp;{{item.englishname}}</span
+        >
+      </span>
+      <span class="select-tag-container">
+        <span class="select-dropdown-list-tag select-dropdown-list-mark"
+          >{{item.mark}}</span
+        >
+        <span class="select-dropdown-list-tag">{{item.tag}}</span>
+      </span>
+    </span>
+  </ng-template>
+  <ng-template #selected let-item>
+    <span>
+      {{item.label}}<img
+        src="{{item.url}}"
+        width="22"
+        height="15"
+        style="vertical-align: -9%"
+      />
+      {{item.englishname}}
+      <span class="tag-in-dominator select-dropdown-list-tag"
+        >{{item.tag}}</span
+      >
+    </span>
+  </ng-template>
+</ti-select>
+<br />
+<p>选中项：{{mySelected | json}}</p>
+
+<h4>2.多选</h4>
+<ti-select
+  style="width: 300px"
+  [multiple]="true"
+  [options]="myOptions"
+  [(ngModel)]="mySelecteds"
+  tipPosition="right"
+  placeholder="请选择"
+  id="myselectmulti"
+>
+  <ng-template #item let-item let-i="index">
+    <span class="select-dropdown-list-mult">
+      <span class="select-selfTip">
+        {{i}}&nbsp;<img
+          src="{{item.url}}"
+          width="22"
+          height="15"
+          style="vertical-align: -9%"
+        />
+        <span [title]="item.label + item.englishname"
+          >&nbsp;{{item.label}}&nbsp;{{item.englishname}}</span
+        >
+      </span>
+      <span class="select-tag-container">
+        <span class="select-dropdown-list-tag select-dropdown-list-mark"
+          >{{item.mark}}</span
+        >
+        <span class="select-dropdown-list-tag">{{item.tag}}</span>
+      </span>
+    </span>
+  </ng-template>
+  <ng-template #selected let-item>
+    <span>
+      {{item.label}}<img
+        src="{{item.url}}"
+        width="22"
+        height="15"
+        style="vertical-align: -9%"
+      />
+      {{item.englishname}}
+      <span class="tag-in-multDominator select-dropdown-list-tag"
+        >{{item.tag}}</span
+      >
+    </span>
+  </ng-template>
+</ti-select>
+<br />
+<p>选中项：{{mySelecteds | json}}</p>
+<!--原生Select参考-->
+<h3>原生Select参考</h3>
+<select>
+  <option>红豆生南国</option>
+  <option>春来发几枝</option>
+  <option>愿君多采撷</option>
+  <option>此物最相思</option>
+</select>

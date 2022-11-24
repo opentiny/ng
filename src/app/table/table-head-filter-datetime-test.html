@@ -1,0 +1,59 @@
+<div class="containerStyle">
+    <h3>描述</h3>
+    <p>表格表头过滤要结合 tiCellText 组件和 tiHeadFilter 组件来实现。ti-cell-text包裹的是表头单元格
+        文本，ti-head-filter为表头过滤的漏斗图标，tiHeadFilter的接口说明请查询 TiHeadFilterComponent。
+     </p>
+    <p>表头过滤-时间日期通过配置 <b>isDatetime</b> 、<b>datetimeConfig</b> 等接口来配置表头过滤下拉面板。</p>
+    <p>isDatetime 接口控制表头过滤是否设置为时间日期面板。</p>
+    <p>datetimeConfig 接口设置表头过滤时间日期面板中的配置信息：</p>
+    <p>datetimeConfig.format 可选，设置日期时间显示格式。</p>
+    <p>datetimeConfig.min 可选，设置最小值。</p>
+    <p>datetimeConfig.max 可选，设置最大值。</p>
+    <p>datetimeConfig.onlyDate 可选，设置是否仅是日期的选择(没有时间的选择)，不设置时默认是日期时间的选择。</p>
+    <p>panelAlign 接口控制表头过滤下拉面板展开方向，默认左对齐</p>
+    <p>panelWidth 接口控制表头过滤下拉框的宽度，默认为'auto'，<b>搜索场景下</b>默认值修改为“180px”</p>
+    <p>备注：</p>
+    <p>searchable,labelKey 两个接口，因时间日期和下拉是两个相互独立的面板，且面板中不包含搜索框和下拉options的匹配，此处不涉及这两个接口的使用。
+        所以在这两个接口在时间日期面板中使用无效</p>
+    <p>因时间日期面板涉及的场景较多，需求不一，表格只提供接口及过滤时机，具体搜索实现方案，用户根据实际场景进行自定义,此处提供简单示例供参考</p>
+    <h3>示例</h3>
+    <br>
+    <br>
+    <ti-table [(displayedData)]="displayed"
+              [srcData]="srcData"
+              [columns]="columns">
+        <table>
+            <thead>
+                <tr>
+                    <ng-container *ngFor="let column of columns;index as i;">
+                        <th *ngIf="i < 1" tiOverflow width="{{column.width}}">{{column.title}}</th>
+                        <th *ngIf="i >= 1">
+                            <!--当表头有排序图标或漏斗排序图标，文本title需要显示不下出省略号及tip时需使用ti-cell-text组件；
+                                ti-head-filter为表头过滤漏斗图标-->
+                            <ti-cell-text>{{column.title}}</ti-cell-text>
+                            <!--ngModel接口可设置和获取headfilter下拉选中值，ti3-head-filtered样式类是
+                                组件提供的设置有过滤时漏斗的高亮样式，可自定义高亮时机-->
+                            <ti-head-filter [(ngModel)]="column.selected"
+                                            (select)="onSelect($event, column)"
+                                            [ngClass]="{'ti3-head-filtered': column.selected && (column.selected.start || column.selected.end) }"
+                                            [isDatetime]="column.isDatetime"
+                                            [panelAlign]="column.panelAlign"
+                                            [datetimeConfig]="column.datetimeConfig">
+                            </ti-head-filter>
+                        </th>
+                    </ng-container>
+                </tr>
+            </thead>
+            <tbody>
+                <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+                <tr *ngFor="let row of displayed">
+                    <td tiOverflow>{{row.firstName}}</td>
+                    <td tiOverflow>{{row.birthday}}</td>
+                    <td tiOverflow>{{row.hireDate}}</td>
+                    <td tiOverflow>{{row.start}}</td>
+                    <td tiOverflow>{{row.expired}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ti-table>
+</div>

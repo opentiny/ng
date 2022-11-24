@@ -1,0 +1,30 @@
+<form [formGroup]="form">
+  <span>用户名：</span>
+  <input formControlName="usernameInput" tiText />
+  <br /><br />
+  <h4 class="mb-3">1.基础用法</h4>
+  <span>密码：</span>
+  <input [tiValidation]="passwordConfig1" formControlName="passwordInput1" tiText />
+  <br /><br />
+  <h4 class="mb-3">2.配置校验规则及提示信息</h4>
+  <span>密码：</span>
+  <input [tiValidation]="passwordConfig2" formControlName="passwordInput2" tiText />
+  <br /><br />
+  <h4 class="mb-3">3.配置错误提示信息</h4>
+  <span>密码：</span>
+  <input [tiValidation]="passwordConfig3" formControlName="passwordInput3" tiText />
+  <br /><br />
+  <h4 class="mb-3">4.增量添加自定义规则</h4>
+  <span>密码：</span>
+  <input [tiValidation]="passwordConfig4" formControlName="passwordInput4" tiText />
+  <br /><br />
+  <h4 class="mb-3">5.完全自定义规则</h4>
+  <span>密码：</span>
+  <input [tiValidation]="passwordConfig5" formControlName="passwordInput5" tiText />
+  <br /><br />
+  <h4 class="mb-3">6.关闭错误信息提示</h4>
+  <span>密码：</span>
+  <input [tiValidation]="passwordConfig6" formControlName="passwordInput6" tiText />
+  <br /><br />
+  <button class="mt-3" (click)='checkGroup()' tiButton color="primary">校验</button>
+</form>

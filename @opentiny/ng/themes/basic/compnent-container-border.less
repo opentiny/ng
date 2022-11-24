@@ -1,0 +1,33 @@
+// @import "mixins.less"; // 一般组件，都会先引入mixins.less，所以这里就不必引入
+
+// 组件边框样式：ip,select,spinner,tagsinput,date,datetime,daterange,datetimerange等组件
+// 组件皮儿已定义background-color，所以内部元素可以不定义background-color
+// 组件皮儿已定义border，所以dominator边框如果和皮儿边框重合，那么dominator边框为透明。
+// 因为dominator和组件皮儿一样大，所以是dominator定义的cursor: not-allowed !important; 生效
+.ti3-compnent-container-border{
+    // 1.组件边框，通用尺寸样式，与disabled、hover、focused等状态无关；
+    display: inline-block;
+    border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid);
+    border-radius: var(--ti-common-border-radius-normal);
+    .box-sizing(border-box);
+
+    // 2.组件边框，非禁用颜色样式，包括hover和focused等状态
+    &:not([disabled]){
+        background-color: var(--ti-common-color-bg-white-normal);
+        border-color: var(--ti-common-color-line-normal);
+        &:hover {
+            border-color: var(--ti-common-color-line-hover);
+        }
+        &[tiFocused]{
+            border-color: var(--ti-common-color-line-active);
+        }
+        // 是否存在hover focused同时出现的样式？
+    }
+
+    // 3.组件边框，禁用颜色样式，包括hover和focused等状态
+    &[disabled] {
+        background-color: var(--ti-common-color-bg-disabled);
+        border-color: var(--ti-common-color-line-disabled);
+        cursor: not-allowed !important;
+    }
+}

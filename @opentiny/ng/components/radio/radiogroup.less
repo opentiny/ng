@@ -1,0 +1,18 @@
+ti-radio-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    line-height: 1.5em;
+    &.ti-radiogroup-vertival {
+        flex-direction: column;
+        input[type='radio'][tiRadio] + .ti3-radio, .radio-group-item {
+            line-height: var(--ti-common-size-7x);
+        }
+    }
+}
+.radio-group-item {
+    display: inline-flex;
+}
+// ti-radio-group按规范定义了选项之间的默认间距
+ti-radio-group.ti-radiogroup-horizon.ti-radiogroup-defalut-item label.ti3-radio {
+    padding-right: var(--ti-common-space-5x);
+}

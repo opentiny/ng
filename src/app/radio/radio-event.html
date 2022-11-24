@@ -1,0 +1,13 @@
+<span class="mr-7" *ngFor="let item of seasons;index as i">
+  <input
+    [id]="'radio-event-' + i"
+    name="group"
+    type="radio"
+    [value]="item.value"
+    [label]="item.label"
+    tiRadio
+    [(ngModel)]="season"
+    (ngModelChange)="ngModelChange($event)"
+  />
+</span>
+<demo-log [logs]="myLogs"></demo-log>

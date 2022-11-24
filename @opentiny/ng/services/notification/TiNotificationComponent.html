@@ -1,0 +1,20 @@
+<div
+  class="ti3-notification-notice"
+  [@notificationMotion]="state"
+  (@notificationMotion.done)="animationEvtEmt.emit($event)"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()">
+  <ti-alert
+    *ngIf="!instance.template"
+    [type]="instance.type"
+    (openChange)="alertOpenStateChangeHandle($event)">{{instance.content}}
+  </ti-alert>
+  <ng-template
+    [ngIf]="instance.template"
+    [ngTemplateOutlet]="instance.template!"
+    [ngTemplateOutletContext]="{ $implicit: { close : instance.close } }"
+  ></ng-template>
+  <ng-template [ngIf]="instance.template">
+    <span class="ti3-icon ti3-icon-close ti3-notification-notice-close" (click)="destroy()"></span>
+  </ng-template>
+</div>

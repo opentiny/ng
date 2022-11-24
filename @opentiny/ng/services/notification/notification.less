@@ -1,0 +1,34 @@
+@import "../../themes/basic/base-all.less";
+@import "./position.less";
+
+:host {
+  --ti-notification-max-width: 400px;
+}
+
+@ti-notification-prefix: ~'ti3-notification';
+
+.@{ti-notification-prefix} {
+  position: fixed;
+  z-index: @zindex-notification;
+  &-notice {
+    background-color: var(--ti-common-color-bg-white-normal);
+    margin-bottom: var(--ti-common-space-4x);
+    max-width: var(--ti-notification-max-width);
+    position: relative;
+    font-size: var(--ti-common-font-size-base);
+    font-weight: var(--ti-common-font-weight-4);
+    color: var(--ti-common-color-text-primary);
+    overflow: auto;
+    &-close {
+      display: block;
+      outline: none;
+      cursor: pointer;
+      position: absolute;
+      top: var(--ti-common-space-3x);
+      right: var(--ti-common-space-4x);
+      color: var(--ti-common-color-icon-normal);
+      font-size: var(--ti-common-size-3x);
+    }
+  }
+  .set-position();
+}

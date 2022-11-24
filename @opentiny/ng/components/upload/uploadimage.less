@@ -1,0 +1,169 @@
+@import "../../themes/basic/base-all.less";
+
+:host {
+    --ti-upload-image-btn-width: var(--ti-common-size-25x);
+    --ti-upload-image-btn-height: var(--ti-common-size-25x);
+    --ti-picture-card-operation-width: var(--ti-common-size-4x);
+    --ti-picture-card-operation-height: var(--ti-common-size-4x);
+    --ti-picture-card-operation-top: calc((var(--ti-upload-image-btn-height) - var(--ti-picture-card-operation-height)) / 2);
+    --ti-picture-card-operation-left-center: calc((var(--ti-upload-image-btn-width) - var(--ti-picture-card-operation-width)) / 2);
+    --ti-picture-card-operation-preview-left: var(--ti-common-space-7x);
+    --ti-upload-image-progress-top: 57px;
+    --ti-upload-image-progress-width: var(--ti-common-size-20x);
+    --ti-upload-image-icon-margin: 37px;
+}
+
+.ti3-picture-card-container {
+    display: inline-block;
+    position: relative;
+    width: var(--ti-upload-image-btn-width);
+    &:not(:last-child) {
+        margin-right: var(--ti-common-space-2x);
+    }
+    .ti3-picture-card-item {
+        position: relative;
+        height: var(--ti-upload-image-btn-height);
+        box-sizing: border-box;
+        border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-normal);
+        border-radius: var(--ti-common-border-radius-normal);
+        .ti3-picture-card-item-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-style: none;
+        }
+        .ti3-picture-card-item-not-img {
+            background: data-uri('../../themes/basic/img/upload-image-error.png') 50% no-repeat;
+            padding: calc(var(--ti-upload-image-btn-width) / 2);
+        }
+        .ti3-upload-image-progress{
+            position: absolute;
+            top: var(--ti-upload-image-progress-top);
+            width: var(--ti-upload-image-progress-width);
+            margin: 0 calc((var(--ti-upload-image-btn-width) - var(--ti-upload-image-progress-width)) / 2);
+            ti-progressbar {
+                position: absolute;
+            }
+            ::ng-deep .ti3-progress-bar {
+                background-color: var(--ti-common-color-success);
+            }
+            .ti3-upload-image-cancel-text {
+                width: 100%;
+                display: inline-block;
+                margin-top: calc(5px + var(--ti-common-space-2x)); // 5 + 8
+                text-align: center;
+                cursor: pointer;
+                font-size: var(--ti-common-font-size-base);
+                font-weight: var(--ti-common-font-weight-4);
+                color:var(--ti-common-color-prompt-text);
+            }
+        }
+    }
+    .ti3-picture-card-item-error {
+        border-color: var(--ti-common-color-error-border);
+    }
+    .ti3-picture-card-drop {
+        position: absolute;
+        width: var(--ti-upload-image-btn-width);
+        height: var(--ti-upload-image-btn-height);
+        top: 0;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        border-radius: var(--ti-common-border-radius-normal);
+        &:hover {
+            opacity: 1;
+        }
+        .ti3-picture-card-operation {
+            display: inline-block;
+            height: var(--ti-picture-card-operation-height);
+            width: var(--ti-picture-card-operation-width);
+            position: absolute;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .ti3-picture-card-operation-preview {
+            background-image: data-uri('../../themes/basic/img/upload-image-preview.png');
+            top: var(--ti-picture-card-operation-top);
+            left: var(--ti-picture-card-operation-preview-left);
+        }
+        .ti3-picture-card-operation-center {
+            left: var(--ti-picture-card-operation-left-center);
+        }
+        .ti3-picture-card-operation-success-center {
+            left: var(--ti-picture-card-operation-left-center) !important;
+        }
+        .ti3-picture-card-operation-delete {
+            background-image: data-uri('../../themes/basic/img/upload-image-delete.png');
+            top: var(--ti-picture-card-operation-top);
+        }
+        .ti3-picture-card-operation-delete-error {
+            left: var(--ti-picture-card-operation-left-center);
+        }
+        .ti3-picture-card-operation-delete-success {
+            left: calc(var(--ti-picture-card-operation-preview-left) * 2);
+        }
+    }
+    .ti3-picture-card-name {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        margin-top: var(--ti-common-space-2x);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: var(--ti-common-font-size-base);
+        font-weight: var(--ti-common-font-weight-4);
+    }
+    .ti3-picture-card-name-error {
+        color: var(--ti-common-color-error-text);
+    }
+
+}
+
+.ti3-upload-image-btn {
+    position: relative;
+    overflow: hidden;
+    width: var(--ti-upload-image-btn-width);
+    height: var(--ti-upload-image-btn-height);
+    border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-dashed) var(--ti-common-color-line-normal);
+    border-radius: var(--ti-common-border-radius-normal);
+    padding: 0;
+    vertical-align: top;
+    &[disabled] {
+        cursor: not-allowed;
+    }
+    :hover {
+        cursor: pointer;
+    }
+    .ti3-upload-image-icon {
+        width: 100%;
+        display: inline-block;
+        margin: var(--ti-upload-image-icon-margin) auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: var(--ti-common-font-size-2);
+    }
+
+
+    .ti3-upload-image-input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: inline-block;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        font-size: 0; // 解决IE下点击上传文件出现光标的问题
+        &[disabled] {
+            cursor: not-allowed;
+        }
+    }
+
+}
+
+::ng-deep .ti3-image-preview-modal {
+    width: 640px !important;
+}

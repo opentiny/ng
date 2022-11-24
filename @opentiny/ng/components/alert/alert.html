@@ -1,0 +1,73 @@
+<div *ngIf="open" [@alertAnimate]="open">
+   <ng-container *ngIf="alertMessageComs.length > 0 else alertTemplate">
+      <div #container class="ti3-alert-container ti-alert-message-container"
+         [ngClass]="{'ti3-alert-prompt-container': type === 'prompt',
+                  'ti3-alert-simple-container': type === 'simple',
+                  'ti3-alert-box-shadow': boxShadow,
+                  'ti3-alert-dark-theme': darkTheme,
+                  'ti3-alert-size-small': size === 'small'}">
+         <span class="ti3-alert-circle" *ngIf="(type === 'prompt') && typeIcon"><!--
+      --><span class="ti3-icon"
+               [ngClass]="{'ti3-icon-alert-prompt': type === 'prompt'}"></span><!--
+      --></span><!--
+      --><div #label class="ti3-alert-label" style="overflow-y: hidden;"
+            [ngClass]="{'ti3-alert-label-with-closeIcon': closeIcon && (!typeIcon || type === 'simple'),
+                        'ti3-alert-label-with-typeIcon': !closeIcon && typeIcon && type !== 'simple',
+                        'ti3-alert-only-label': !closeIcon && (!typeIcon || type === 'simple')}"
+                        [id]="appendId('label')">
+            <div #message class="ti3-alert-message">
+               <ng-content select="ti-alert-message"></ng-content>
+            </div>
+         </div><!--
+         --><div class="ti3-alert-message-page-container"><!--
+            --><span *ngFor="let item of alertMessageComs; index as i"
+               class="ti3-alert-message-page"
+               [ngClass]="{'ti3-alert-message-page-active': i === activeIndex}"
+               (click)="onPageClick(i)"
+               [id]="appendId('alert_messages_page_' + i)"></span><!--
+         --></div><!--
+         --><span class="ti3-alert-close-icon ti3-icon ti3-icon-close"
+                  *ngIf="closeIcon"
+                  (click)="close()"
+                  [tabindex]="0"
+                  tiOutline
+                  (keydown.enter)="close()"
+                  [id]="appendId('alert_close_icon')"></span>
+      </div>
+   </ng-container>
+</div>
+<ng-template #alertTemplate>
+   <div class="ti3-alert-container"
+      [ngClass]="{'ti3-alert-prompt-container': type === 'prompt',
+               'ti3-alert-error-container': type === 'error',
+               'ti3-alert-warn-container': type === 'warn',
+               'ti3-alert-success-container': type === 'success',
+               'ti3-alert-simple-container': type === 'simple',
+               'ti3-alert-box-shadow': boxShadow,
+               'ti3-alert-dark-theme': darkTheme,
+               'ti3-alert-size-small': size === 'small'}">
+      <span class="ti3-alert-circle" *ngIf="(type === 'prompt' || type === 'error' || type === 'success') && typeIcon"><!--
+   --><span class="ti3-icon ti3-alert-icon"
+            [ngClass]="{'ti3-icon-alert-prompt': type === 'prompt',
+                        'ti3-icon-alert-warn': type === 'error',
+                        'ti3-icon-alert-success': type === 'success'}"></span><!--
+   --></span><!--
+   --><span class="ti3-icon ti3-icon-alert-warn-bg ti3-alert-warn-bg" *ngIf="type === 'warn' && typeIcon"><!--
+         --><span class="ti3-icon ti3-icon-alert-warn ti3-alert-warn-icon ti3-alert-icon" ></span>
+      </span><!--
+   --><div class="ti3-alert-label"
+         [ngClass]="{'ti3-alert-label-with-closeIcon': closeIcon && (!typeIcon || type === 'simple'),
+                     'ti3-alert-label-with-typeIcon': !closeIcon && typeIcon && type !== 'simple',
+                     'ti3-alert-only-label': !closeIcon && (!typeIcon || type === 'simple')}"
+                     [id]="appendId('label')">
+         <ng-content></ng-content>
+      </div><!--
+   --><span class="ti3-alert-close-icon ti3-icon ti3-icon-close"
+            *ngIf="closeIcon"
+            (click)="close()"
+            [tabindex]="0"
+            tiOutline
+            (keydown.enter)="close()"
+            [id]="appendId('alert_close_icon')"></span>
+   </div>
+</ng-template>

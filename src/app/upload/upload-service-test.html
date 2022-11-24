@@ -1,0 +1,39 @@
+<h3>描述</h3>
+<p>
+  文件上传服务使用示例，适用于自定义上传样式场景：<br />
+  通过tiFileSelect指令定义上传实例对象；通过上传实例的queue属性读取上传文件信息及调用方法
+</p>
+<h3>示例</h3>
+<p>文件逐个上传，自动上传</p>
+<input type="file" [tiFileSelect]="uploader" />
+<div *ngFor="let item of uploader.queue">
+  <span>{{item.file.name}}</span>
+  <span>{{item.progress}}</span>
+  <span>item isReady:{{item.isReady}}</span>
+  <span>item isUploading:{{item.isUploading}}</span>
+  <span>item isUploaded:{{item.isUploaded}}</span>
+  <span>item isCancel:{{item.isCancel}}</span>
+  <span>item isSuccess:{{item.isSuccess}}</span>
+  <span>item isError:{{item.isError}}</span>
+  <a [hidden]="!item.isError" (click)="item.upload()">重新上传</a>
+  <a [hidden]="!item.isUploading" (click)="item.cancel()">取消</a>
+  <a [hidden]="item.isUploading" (click)="item.remove()">删除</a>
+</div>
+
+<p>文件合并上传，手动上传</p>
+<input type="file" [tiFileSelect]="uploader1" />
+<button (click)="uploader1.uploadAll()">批量上传upload</button>
+<button (click)="uploader1.removeItems(uploader1.queue)">批量删除upload</button>
+<div *ngFor="let item of uploader1.queue">
+  <span>{{item.file.name}}</span>
+  <span>{{item.progress}}</span>
+  <span>item isReady:{{item.isReady}}</span>
+  <span>item isUploading:{{item.isUploading}}</span>
+  <span>item isUploaded:{{item.isUploaded}}</span>
+  <span>item isCancel:{{item.isCancel}}</span>
+  <span>item isSuccess:{{item.isSuccess}}</span>
+  <span>item isError:{{item.isError}}</span>
+  <a [hidden]="!item.isError" (click)="item.upload()">重新上传</a>
+  <a [hidden]="!item.isUploading" (click)="item.cancel()">取消</a>
+  <a [hidden]="item.isUploading" (click)="item.remove()">删除</a>
+</div>

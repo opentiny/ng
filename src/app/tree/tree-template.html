@@ -1,0 +1,23 @@
+<ti-tree
+  id="tree-template"
+  [data]="innerData"
+  [multiple]="true"
+>
+  <ng-template let-item let-i="index">
+    <i class="tree-node-icon" *ngIf="item.expandIcon || item.collapseIcon">
+      <ti-icon local
+        [name]="item.children ? item.expanded ? item.expandIcon : item.collapseIcon : item.expandIcon"
+      >
+      </ti-icon>
+    </i>
+    <span tiOverflow tiTipPosition="right" style="width: 100px; cursor: pointer"
+      >{{item.label}}</span
+    >
+  </ng-template>
+</ti-tree>
+<style>
+  .tree-node-icon {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+</style>

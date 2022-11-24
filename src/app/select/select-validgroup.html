@@ -1,0 +1,44 @@
+<h3>描述</h3>
+<p>Select选择下拉组件，校验</p>
+<h3>示例</h3>
+<form [formGroup]="myFormGroup">
+  <input
+    type="text"
+    tiText
+    formControlName="name"
+    style="width: 230px"
+    [tiValidation]="{type: 'blur'}"
+    tiRequired
+  />
+  <input
+    type="text"
+    tiText
+    formControlName="home"
+    style="width: 230px"
+    [tiValidation]="{type: 'blur'}"
+    tiRequired
+  />
+  <span>单选: </span>
+  <ti-select
+    style="width: 120px"
+    formControlName="age"
+    [options]="myOptions"
+    placeholder="请选择"
+    [tiValidation]="{type: 'blur'}"
+    tiRequired
+    id="myselect"
+    (blur)="onBlurSelect()"
+  >
+  </ti-select>
+  <br />
+  <p>选中项：{{mySelected | json}}</p>
+</form>
+<!--<p>formgroup数据：{{myFormGroup | json}}</p>-->
+<!--原生Select参考-->
+<h3>原生Select参考</h3>
+<select>
+  <option>红豆生南国</option>
+  <option>春来发几枝</option>
+  <option>愿君多采撷</option>
+  <option>此物最相思</option>
+</select>

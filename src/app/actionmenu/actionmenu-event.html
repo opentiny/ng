@@ -1,0 +1,9 @@
+<ti-actionmenu
+  class="mb-3"
+  id="actionmenumenu-event"
+  [items]="items"
+  (select)="onSelect($event)"
+  (moreClick)="moreClick($event)"
+></ti-actionmenu>
+
+<demo-log [logs]="myLogs"></demo-log>

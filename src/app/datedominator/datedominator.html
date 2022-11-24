@@ -1,0 +1,34 @@
+<h2>1.date组件</h2>
+<ti-date-dominator
+  class="dominator-input-container date-width"
+  [clearable]="clear"
+  type="date"
+  [disabled]="disabled"
+  [(ngModel)]="model"
+  (clear)="clearClick()"
+  (click)="clickFn()"
+></ti-date-dominator>
+<h2>2.dateRange组件</h2>
+<ti-date-dominator
+  class="dominator-input-container range-width"
+  [format]="format"
+  type="range"
+  [clearable]="clear1"
+  [(ngModel)]="model1"
+  (clear)="clearClick1()"
+  (click)="clickFn1()"
+></ti-date-dominator>
+<br /><br />
+<button (click)="showLineClick()">点击隐藏横线:model有值</button>
+<button (click)="showLineClick1()">点击显示横线:model没有值</button>
+<h2>3.dominator宽度不够时出...，鼠标悬浮出tip</h2>
+<ti-date-dominator
+  class="dominator-input-container daterange-width"
+  [format]="format"
+  type="range"
+  [clearable]="clear1"
+  [(ngModel)]="model1"
+  (clear)="clearClick1()"
+  (click)="clickFn1()"
+  >开始日期-结束日期</ti-date-dominator
+>

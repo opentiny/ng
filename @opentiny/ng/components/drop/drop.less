@@ -1,0 +1,16 @@
+@import "../../themes/basic/base-all.less";
+:host.ti3-dropdown-container{
+    display: none;
+    position: absolute; //与Tiny2 fix不同
+    .box-sizing(border-box);
+    color: var(--ti-common-color-text-primary);
+    z-index: 100;
+    background-color: var(--ti-common-color-bg-white-normal);
+    box-shadow: var(--ti-common-shadow-2-down);
+    font-size: var(--ti-common-font-size-base);
+    font-weight: var(--ti-common-font-weight-4);
+}
+:host.ti3-dropdown-container-border{
+    border-radius: var(--ti-common-border-radius-normal);
+}
+

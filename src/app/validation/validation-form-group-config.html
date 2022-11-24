@@ -1,0 +1,15 @@
+<form [formGroup]="groupFormControl">
+  密码：<input [tiValidation]="pwdConfig" formControlName="pwdInput" tiText />
+  <br /><br />
+  邮箱：<input tiValidation formControlName="emailInput" tiText />
+  <br /><br />
+  昵称：<input tiValidation formControlName="nicknameInput" tiText />
+  <br /><br />
+  <form formGroupName="childGroupFormControl">
+    子表单：<input tiValidation formControlName="usernameInput" tiText />
+  </form>
+  <demo-log [logs]="myLogs"></demo-log>
+  <button class="mt-3 mr-3" (click)="checkGroup()" tiButton color="primary">默认校验</button>
+  <button class="mt-3 mr-3" (click)="checkGroupWithConfig()" tiButton color="primary">自定义：第一行不参与整体校验</button>
+  <button class="mt-3 mr-3" (click)="checkGroupWithErrorsFlatted()" tiButton color="primary">自定义：扁平化输出校验结果</button>
+</form>

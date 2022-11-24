@@ -1,0 +1,57 @@
+<p>在输入框中按键输入，获取字符编码和键值</p>
+<p>
+  <strong>注意：</strong> event.charCode 不能用于onkeypress的非打印事件，功能键
+  (如 CAPS LOCK, CTRL, ESC, F12, 等)。
+</p>
+<input
+  type="text"
+  size="50"
+  (keydown)="onKeydown($event)"
+  (keypress)="onKeypress($event)"
+  (keyup)="onKeyup($event)"
+  (mousedown)="onMousedown($event)"
+/>
+<p>
+  onkeydown(此demo只判断几个特定键值,演示KeyMap.KEY_SEMICOLON等已屏蔽浏览器差异)
+  - <span>{{keydownString}}</span>
+</p>
+<p>onkeypress - <span>{{keypressString}}</span></p>
+<p>onkeyup - <span>{{keyupString}}</span></p>
+<p>onmousedown - <span>{{mousedownString}}</span></p>
+<br />
+<p>事件顺序：onkeydown > onkeypress >onkeyup</p>
+<p>早期标准：</p>
+<p>
+  keydown和keyup捕获具体物理按键，event.keyCode输出键值，可以区分主副键盘的具体按键；
+</p>
+<p>
+  keypress捕获按键经过处理后的字符，event.charCode输出ASCII字符编码，可以区分大小写字母，主副键盘相同符号取值相同。
+</p>
+<p>event.which根据情况输出charCode（keypress时）或keyCode（keydown时）。</p>
+<p>IE8只有keyCode属性，IE9起已支持which和charCode。</p>
+<p>
+  Chrome和IE等，在keypress时，keyCode也存放了charCode值。（是为了兼容只有keyCode属性的IE8）
+</p>
+<p>
+  FireFox，keypress只输出event.charCode，keydown只输出event.keycode；另一个值为0。
+</p>
+<p>现今情况：</p>
+<p>
+  keyCode/charCode/which都已废弃，但keyCode依然是目前最好选择！（2018年4月，须兼容IE9）
+</p>
+<p>未来情况：</p>
+<p>
+  keypress和keydown时，都可用event.key（"z"）和event.code("KeyZ")，是推荐标准，都是字符串可读性值。
+</p>
+<p>IE9不支持event.code。</p>
+<p>
+  IE9的event.key是旧标准。小键盘符号支持很差：和大键盘取值不同，且keypress和keydown时取值不同。有时符号，有时符号名称。
+</p>
+
+<p>
+  综上：优先使用keydow和keyup事件和event.keyCode键值，尽量不使用keypress/which/charCode
+</p>
+<p>少量需求使用keypress，仅配合 event.charCode取出字符编码即可。</p>
+<p>
+  再配合'A'.charCodeAt(0)===event.charCode或者'A'===String.fromCharCode(event.charCode);
+</p>

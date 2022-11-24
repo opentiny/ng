@@ -1,0 +1,341 @@
+@import "../../themes/basic/base-all.less";
+ti-leftmenu {
+  --ti-leftmenu-toggle-width: var(--ti-common-size-3x);
+  --ti-leftmenu-level2-left-line: 30px; // 二级菜单的左侧边线位置
+  --ti-leftmenu-panel-left-padding: 2px; // 菜单容器的左右内边距
+  --ti-leftmenu-width: 192px;
+  --ti-leftment-leftmenu-head-text-align: left;
+  --ti-leftmenu-angle-normal-width: calc(var(--ti-leftmenu-angle-normal-height) * 1.6);//三角按钮宽度
+  --ti-leftmenu-angle-normal-height: 5px;//三角按钮高度
+  --ti-leftmenu-group-padding-top: 18px;
+  --ti-leftmenu-group-padding-bottom: 2px;
+}
+
+.ti3-leftmenu-container {
+  display: block;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  z-index: 990; // 需要被halfmodal覆盖，halfmodal为999，halfmodal的遮罩为998
+  width: var(--ti-leftmenu-width);
+  background-color: var(--ti-common-color-bg-white-normal);
+  box-shadow: var(--ti-common-shadow-1-right);
+
+  &.ti3-leftmenu-hide {
+    width: 0px !important;
+    & .ti3-leftmenu-panel-container {
+      height: 0px !important; // 处理ie下面板关闭出现竖向滚动条
+    }
+    & .ti3-leftmenu-foot {
+      padding: 0;
+      margin: 0;
+    }
+    & .ti3-leftmenu-head {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.ti3-leftmenu-panel-no-sidebar {
+  left: 0 !important;
+}
+
+.ti3-leftmenu-panel-container {
+  position: absolute;
+  top: 0px;
+  bottom:0px;
+  left: 0px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  .box-sizing(border-box);
+}
+
+.ti3-leftmenu-panel {
+  position: absolute;
+  top: 0px;
+  bottom:0px;
+  left: 0px;
+  width: 100%;
+  padding: 0 var(--ti-leftmenu-panel-left-padding);
+  overflow-y: visible;
+  overflow-x: visible;
+  font-size: var(--ti-common-font-size-base);
+  color: var(--ti-common-color-text-secondary);
+  .box-sizing(border-box);
+}
+
+.ti3-leftmenu-toggle {
+  position: absolute;
+  top: 50%;
+  width: var(--ti-leftmenu-toggle-width);
+  height: 80px;
+  background-color: var(--ti-common-color-bg-white-normal);
+  border-radius: 0 var(--ti-leftmenu-toggle-width) var(--ti-leftmenu-toggle-width) 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  &:after {
+    display: block;
+    content: '';
+    position: relative;
+    // 小三角旋转后，中心点不变，因此以未旋转的三角形上下左右居中定位，旋转后仍在中间位置
+    top: calc(50% - var(--ti-leftmenu-angle-normal-height) / 2);
+    left: calc(50% - var(--ti-leftmenu-angle-normal-width) / 2);
+    .triangle-down(var(--ti-leftmenu-angle-normal-width), var(--ti-leftmenu-angle-normal-height), var(--ti-common-color-icon-normal));
+    transform: rotateZ(90deg);
+  }
+  &.ti3-leftmenu-toggle-show{
+    left: auto;
+    right: calc(-1 * var(--ti-leftmenu-toggle-width));
+  }
+  &.ti3-leftmenu-toggle-hide{
+    left: 0px;
+    right: auto;
+    &:after {
+      transform: rotateZ(270deg);
+    }
+  }
+}
+.ti3-leftmenu-head {
+  display: block;
+  .box-sizing(border-box);
+  padding: var(--ti-common-space-5x) var(--ti-common-space-9x) var(--ti-common-space-5x) var(--ti-common-space-5x);
+  margin-bottom: 10px;
+  overflow: hidden;
+  font-size: var(--ti-common-font-size-1);
+  line-height: var(--ti-common-size-5x);
+  color: var(--ti-common-color-text-primary);
+  text-align: var(--ti-leftment-leftmenu-head-text-align);
+
+  &:after {
+    display: block;
+    position: relative;
+    bottom: -20px;
+    content: '';
+    width: 100%;
+    border-bottom: 1px solid var(--ti-common-color-line-dividing);
+  }
+}
+.ti3-leftmenu-head-clone {
+  position: absolute;
+  top: 0;
+  left: var(--ti-leftmenu-panel-left-padding);
+  background: var(--ti-common-color-bg-white-normal);
+  z-index: 3;
+}
+
+.ti3-leftmenu-level1 {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.ti3-leftmenu-level1-dividing {
+  position: relative;
+  &:after {
+    .group-dividng(auto, 0);
+  }
+}
+.group-dividng(@top: auto, @bottom: auto){
+  position: absolute;
+  left: var(--ti-common-space-9x);
+  top: @top;
+  bottom: @bottom;
+  border: 1px dashed var(--ti-common-color-line-dividing);
+  width: calc(100% - var(--ti-common-space-9x) - var(--ti-common-space-5x));
+  content: "";
+}
+
+.ti3-leftmenu-level1-item {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  line-height: var(--ti-common-line-height-number);
+  .box-sizing(border-box);
+  & .ti3-leftmenu-triangle.ti3-leftmenu-triangle-down {
+    .rotate(0);
+  }
+  & .ti3-leftmenu-triangle.ti3-leftmenu-triangle-up  {
+    .rotate(180deg);
+  }
+  &.ti3-leftmenu-level1-active-item {
+    color: var(--ti-common-color-text-highlight);
+  }
+  &:not(.ti3-leftmenu-level1-disabled):hover{
+    background-color: var(--ti-common-color-bg-white-emphasize);
+    color: var(--ti-common-color-text-highlight);
+
+    & .ti3-leftmenu-triangle.ti3-leftmenu-triangle-down {
+      border-top-color: var(--ti-common-color-icon-hover);
+    }
+    & .ti3-leftmenu-triangle.ti3-leftmenu-triangle-up {
+      border-top-color: var(--ti-common-color-icon-hover);
+    }
+  }
+}
+
+.ti3-leftmenu-level1-active-item ,
+.ti3-leftmenu-level2-active {
+  position: relative;
+  & .ti3-leftmenu-triangle.ti3-leftmenu-triangle-down {
+    border-top-color: var(--ti-common-color-icon-hover);// 设置小三角的颜色
+  }
+}
+// 激活菜单的左侧高亮边线
+.ti3-leftmenu-level1-active-item:before ,
+.ti3-leftmenu-level2-active:before {
+  content: '';
+  position: absolute;
+  top: var(--ti-common-space-10);
+  z-index: 1;
+  width: 2px;
+  bottom: var(--ti-common-space-10);
+  background: var(--ti-common-color-line-active);
+}
+.ti3-leftmenu-level1-active-item:before {
+  left: var(--ti-common-space-10);
+}
+.ti3-leftmenu-level2-active:before {
+  left: var(--ti-leftmenu-level2-left-line);
+}
+
+.ti3-leftmenu-level1-label {
+  padding: var(--ti-common-space-10) var(--ti-common-space-9x) var(--ti-common-space-10) var(--ti-common-space-5x);
+  display: block;
+  word-break: normal;
+}
+
+.ti3-leftmenu-level1-state-icon {
+  position: absolute;
+  top: ~"calc(50% - 11px)";
+  right :9px;
+  font-size: 12px;
+}
+
+.ti3-leftmenu-level2 {
+  position: relative;
+  display: block;
+  line-height: var(--ti-common-line-height-number);
+  padding: var(--ti-common-space-10) var(--ti-common-space-9x) var(--ti-common-space-10) var(--ti-common-space-10x);
+  cursor: pointer;
+  .box-sizing(border-box);
+  word-break: normal;
+
+  // 二级菜单的左侧灰色边线
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: var(--ti-leftmenu-level2-left-line);
+    border-left: 1px solid var(--ti-common-color-line-dividing);
+    border-right: 1px solid var(--ti-common-color-line-dividing);
+  }
+
+  &:not(.ti3-leftmenu-level2-disabled):hover{
+    background-color: var(--ti-common-color-bg-white-emphasize);
+    color: var(--ti-common-color-text-highlight);
+  }
+
+  &.ti3-leftmenu-level2-active {
+    color: var(--ti-common-color-text-highlight);
+  }
+}
+
+
+.ti3-leftmenu-level1-disabled, .ti3-leftmenu-level2-disabled {
+  color: var(--ti-common-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.ti3-leftmenu-level2:first-of-type:after {
+  border-top: 1px solid var(--ti-common-color-line-dividing);
+  top: var(--ti-common-space-10);
+}
+
+.ti3-leftmenu-level2:last-of-type:after {
+  border-bottom: 1px solid var(--ti-common-color-line-dividing);
+  bottom: var(--ti-common-space-10);
+}
+
+// 向下的小三角，该组件中所有方向的小三角都是由该三角旋转生成的
+.ti3-leftmenu-triangle {
+  position: absolute;
+  right: 14px;
+  top: calc(50% - var(--ti-leftmenu-angle-normal-height) / 2);
+  content: "";
+  .triangle-down(var(--ti-leftmenu-angle-normal-width), var(--ti-leftmenu-angle-normal-height), var(--ti-common-color-icon-normal));
+}
+
+.ti3-leftmenu-href {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+
+/************封装后的leftmenu样式start************/
+.ti3-leftmenu-logo {
+    height: 60px;
+
+    .ti3-leftmenu-logo-ficon {
+      font-size: 60px;
+      line-height: 60px;
+      color: var(--ti-common-color-text-primary);
+      vertical-align: middle;
+    }
+}
+
+.ti3-leftmenu-content {
+  background: #ffffff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 240px;
+  right: 0;
+  overflow: auto;
+}
+
+.ti3-leftmenu-group-wrapper {
+  position: relative;
+  color: var(--ti-common-color-text-weaken);
+  line-height: var(--ti-common-line-height-number);
+  padding: var(--ti-leftmenu-group-padding-top) var(--ti-common-space-9x) var(--ti-leftmenu-group-padding-bottom) var(--ti-common-space-5x);
+}
+
+.ti3-leftmenu-level2-group .ti3-leftmenu-group-wrapper {
+  padding-left: var(--ti-leftmenu-level2-left-line);
+  padding-top: var(--ti-common-space-10);
+}
+
+
+.ti3-leftmenu-foot {
+  position: absolute;
+  bottom: 0;
+  text-align: var(--ti-leftment-leftmenu-head-text-align);
+  padding:  var(--ti-common-space-10) 0 var(--ti-common-space-10) var(--ti-common-space-5x);
+  stroke-width: var(--ti-common-space-9x); // 在 TS 中读取。
+  .box-sizing(border-box);
+  color: var(--ti-common-color-text-link);
+  overflow: hidden;
+  background: var(--ti-common-color-bg-white-normal);
+  z-index: 3;
+  line-height: var(--ti-common-line-height-number);
+  &:hover {
+    cursor: pointer;
+    color: var(--ti-common-color-text-link-hover);
+  }
+  &:before {
+    position: relative;
+    top: calc(-1 * var(--ti-common-space-10));
+    left: 0;
+    content: "";
+    border-bottom: 1px solid var(--ti-common-color-line-dividing);
+    display: block;
+  }
+}
+/************封装后的leftmenu样式end************/

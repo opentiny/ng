@@ -1,0 +1,79 @@
+:host {
+    --ti-loading-weak-size: 5px; // 弱类型加载尺寸
+}
+
+.ti3-loading-size(@size) {
+    width: @size;
+    height: @size;
+    border-width: calc(@size * 0.3 / 2); // 内圈外径 = 0.7 * 外圈外径；故边框粗 = 0.3 * 外圈直径 /2
+}
+
+.ti3-loading-default {
+    display: inline-block;
+    box-sizing: border-box;
+    border-style: var(--ti-common-border-style-solid);
+    border-color: var(--ti-common-color-line-active);
+    border-radius: var(--ti-common-border-radius-3);
+    border-right-color: transparent;
+    animation: default-animation 0.8s linear 0s infinite;
+    &.ti3-loading-default-small {
+        .ti3-loading-size(var(--ti-common-size-3x));  // s类型尺寸
+    }
+    &.ti3-loading-default-middle {
+        .ti3-loading-size(var(--ti-common-size-6x));  // m类型尺寸
+    }
+    &.ti3-loading-default-large {
+        .ti3-loading-size(var(--ti-common-size-8x));  // l类型尺寸
+    }
+}
+
+.ti3-loading-weak {
+    display: inline-block;
+    width: var(--ti-loading-weak-size);
+    height: var(--ti-loading-weak-size);
+    border-radius: var(--ti-common-border-radius-3);
+    background-color: var(--ti-common-color-line-active);
+    opacity: 0.7;
+    animation: weak-animation 1.2s ease-in-out infinite;
+    &:not(:last-child) {
+      margin-right: var(--ti-common-space-2x);
+    }
+    &:first-child {
+        animation-delay: 0s;
+    }
+    &:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+    &:nth-child(4) {
+        animation-delay: 0.6s;
+    }
+}
+
+// 定义默认loading旋转动画
+@keyframes default-animation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// 定义弱loading动画
+@keyframes weak-animation {
+    0% {
+        opacity: 0.2;
+    }
+    25% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}

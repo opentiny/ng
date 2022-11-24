@@ -1,0 +1,9 @@
+<ti-steps
+  id="steps-clickable"
+  [steps]="steps"
+  [(activeStep)]="activeStep"
+  [clickable]="true"
+></ti-steps>
+<div class="current-value-container">
+  <pre>Current value: {{ steps[activeStep].label }}</pre>
+</div>

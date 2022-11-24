@@ -1,0 +1,17 @@
+<ti-upload
+  url="./upload"
+  type="textButton"
+  [chunkSize]= 'chunkSize'
+  (addItemFailed)="onAddItemFailed($event)"
+  (addItemSuccess)="onAddItemSuccess($event)"
+  (beforeSendItems)="onBeforeSendItems($event)"
+  (progressItems)="onProgressItems($event)"
+  (successItems)="onSuccessItems($event)"
+  (errorItems)="onErrorItems($event)"
+  (cancelItems)="onCancelItems($event)"
+  (beforeRemoveItems)="onBeforeRemoveItems($event)"
+  (removeItems)="onRemoveItems($event)"
+  (completeAllItems)="onCompleteAllItems($event)"
+  (completeItems)="onCompleteItems($event)"
+></ti-upload>
+<demo-log [logs]="myLogs"></demo-log>

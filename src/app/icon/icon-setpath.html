@@ -1,0 +1,8 @@
+<p>引入外部图标时，采用 HTTP 请求的策略，设置Icon下载地址，全局生效。</p>
+<p>需要在项目模块(建议在根模块)中引入 HttpClientModule，是因为懒加载模块中的 HttpClient，会覆盖全局的，导致 http 拦截器失效。</p>
+<div class="my-icon">
+    <div class="my-icon-list">
+        <ti-icon class="my-icon-size" name="accessibility-outline"></ti-icon>
+        <div class="my-icon-name">accessibility-outline</div>
+    </div>
+  </div>

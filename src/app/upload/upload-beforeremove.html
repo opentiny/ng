@@ -1,0 +1,8 @@
+<h3>描述</h3>
+<p>通过beforeRemoveItems定义用户点击删除按钮，文件删除前事件</p>
+<h3>示例</h3>
+<p>点击删除按钮，延时1秒后文件删除</p>
+<ti-upload
+  [url]="url"
+  (beforeRemoveItems)="onBeforeRemoveItems($event)"
+></ti-upload>

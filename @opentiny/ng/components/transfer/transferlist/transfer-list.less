@@ -1,0 +1,153 @@
+:host {
+    // 容器边框
+    --ti-transfer-list-container-border-weight: var(--ti-common-border-weight-normal);
+    --ti-transfer-list-container-border-style: var(--ti-common-border-style-solid);
+    --ti-transfer-list-container-border-radius: var(--ti-common-border-radius-normal);
+    --ti-transfer-list-container-border-color: var(--ti-common-color-line-normal);
+    --ti-transfer-list-header-height: var(--ti-common-size-10x);
+    --ti-transfer-list-header-bg-color: var(--ti-common-color-bg-white-emphasize);
+    --ti-transfer-list-header-padding-left: var(--ti-common-space-10);
+    --ti-transfer-list-selected-number-space-right: var(--ti-common-space-10);
+    --ti-transfer-list-checkbox-size: var(--ti-common-size-4x);
+    --ti-transfer-list-checkbox-margin-right: var(--ti-common-space-10);
+    --ti-transfer-list-checkbox-border-weight: var(--ti-common-border-weight-normal);
+    --ti-transfer-list-checkbox-border-style: var(--ti-common-border-style-solid);
+    --ti-transfer-list-checkbox-border-radius: var(--ti-common-border-radius-normal);
+    --ti-transfer-list-checkbox-bg-color: var(--ti-common-color-bg-white-normal);
+    --ti-transfer-list-checkbox-icon-color: var(--ti-common-color-icon-white);
+    --ti-transfer-list-checkbox-color-selected: var(--ti-common-color-bg-emphasize);
+    --ti-transfer-list-no-data-padding-top: var(--ti-common-size-25x);
+    --ti-transfer-list-no-data-image-size: var(--ti-common-size-20x);
+    --ti-transfer-list-no-data-text-color: var(--ti-common-color-text-secondary);
+}
+
+.ti3-transfer-list-container {
+    border: var(--ti-transfer-list-container-border-weight) var(--ti-transfer-list-container-border-style) var(--ti-transfer-list-container-border-color);
+    border-radius: var(--ti-transfer-list-container-border-radius);
+    box-sizing: border-box;
+}
+
+.ti3-transfer-list-header {
+    position: relative;
+    height: var(--ti-transfer-list-header-height);
+    padding: 0 var(--ti-transfer-list-header-padding-left);
+    border-bottom: var(--ti-transfer-list-container-border-weight) var(--ti-transfer-list-container-border-style) var(--ti-transfer-list-container-border-color);
+    line-height: var(--ti-transfer-list-header-height);
+    background: var(--ti-transfer-list-header-bg-color);
+    box-sizing: border-box;
+    font-size: var(--ti-common-font-size-base);
+    font-weight: var(--ti-common-font-weight-4);
+}
+
+.ti3-transfer-list-selected-number {
+    position: absolute;
+    right: var(--ti-transfer-list-selected-number-space-right);
+}
+
+.ti3-transfer-list-body {
+    height: calc(100% - var(--ti-transfer-list-header-height)); // 列表的高度是用户自定义高度减去面板头部高度
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.ti3-transfer-table-height {
+    height: calc(100% - var(--ti-transfer-list-header-height)); // 表格的高度是用户自定义高度减去面板头部高度
+}
+
+.ti3-transfer-table-body-height {
+    height: calc(100%  - 29px); // 表格出现滚动条容器的最大高度是 ti-table 的高度减去面板头部高度
+    border: none !important;
+}
+
+.ti3-transfer-table-border{
+    border-bottom: 1px solid var(--ti-common-color-line-dividing) !important;
+    border-radius: 0px;
+}
+
+.ti3-transfer-searchbox-drop {
+    height: calc(100% - var(--ti-transfer-list-header-height) - 48px); // 有搜索框无分页时，列表和表格的高度需要再减去搜索框占用的高度
+}
+
+.ti3-transfer-pagination-drop {
+    height: calc(100% - var(--ti-transfer-list-header-height) - 32px); // 有分页无搜索框时，列表和表格的高度需要再减去分页占用的高度
+}
+
+.ti3-transfer-searchbox-pagination-drop {
+    height: calc(100% - var(--ti-transfer-list-header-height) - 48px - 32px); // 表格容器的高度需要再减去搜索框和分页占用的高度
+}
+
+.ti3-transfer-searchbox-container {
+    padding: 10px;
+}
+
+.ti3-transfer-table-pagination-hidden{
+    opacity: 0;
+    pointer-events:none;
+}
+
+.ti3-transfer-table-shadow{
+    position: relative;
+    box-sizing: border-box;
+    height: 32px;
+    padding-top: 4px;
+    box-shadow: var(--ti-common-shadow-1-up);
+}
+
+.ti3-transfer-pagination{
+    text-align: right;
+    .ti3-transfer-table-shadow();
+}
+
+.ti3-table>.ti3-page-container{
+    margin-top: 0px;
+    width: 100%;
+    .ti3-transfer-table-shadow();
+}
+
+::ng-deep .ti3-pag-mini-pages{
+    float: right;
+    padding-right: 9px;
+}
+
+.ti3-transfer-list-checkbox {
+    display: inline-block;
+    width: var(--ti-transfer-list-checkbox-size);
+    height: var(--ti-transfer-list-checkbox-size);
+    margin-right: var(--ti-transfer-list-checkbox-margin-right);
+    border: var(--ti-transfer-list-checkbox-border-weight) var(--ti-transfer-list-checkbox-border-style) var(--ti-transfer-list-container-border-color);
+    border-radius: var(--ti-transfer-list-checkbox-border-radius);
+    line-height: calc(var(--ti-transfer-list-checkbox-size) - var(--ti-transfer-list-checkbox-border-weight) * 2);
+    text-align: center;
+    background-color: var(--ti-transfer-list-checkbox-bg-color);
+    color: var(--ti-transfer-list-checkbox-icon-color);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+// 正常选中
+.ti3-transfer-list-checkbox-selected {
+    border-color: var(--ti-transfer-list-checkbox-color-selected);
+    background: var(--ti-transfer-list-checkbox-color-selected);
+}
+
+// 半选
+.ti3-transfer-list-checkbox-indeterminate {
+    border-width: 5px;
+    border-color: var(--ti-transfer-list-checkbox-color-selected);
+    vertical-align: sub;
+
+    &::before {
+        content: '';
+    }
+}
+
+.ti3-transfer-list-no-data {
+    text-align: center;
+    padding-top: var(--ti-transfer-list-no-data-padding-top);
+    box-sizing: border-box;
+    color: var(--ti-transfer-list-no-data-text-color);
+    background: no-repeat data-uri('../../../themes/basic/img/table-nodata-bg.png');
+    background-position-x: 50%;
+    background-position-y: 20px;
+    background-size: var(--ti-transfer-list-no-data-image-size) var(--ti-transfer-list-no-data-image-size);
+}

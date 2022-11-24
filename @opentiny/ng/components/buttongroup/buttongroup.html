@@ -1,0 +1,49 @@
+<!--TODO:div和span是否可以合一？弱化button，激活状态也放在最外层-->
+<span style="margin-top:-50px">
+<ng-container *ngFor="let item of items; index as i;">
+<div *ngIf="item.show !== false"
+    [id]="appendId(item.id || i)" class="ti3-btn-item-container"
+    [class.ti3-btn-checkbox-enough-space]="type === 'large' && multiple"
+    [class.ti3-btn-checkbox-deficient-space]="type === 'small' && multiple"
+    [class.ti3-btn-item-small]="type === 'small' && !multiple"
+    [tiTip]="item.tipContent"
+    [tiTipContext]="item"
+    [tiTipPosition]='item.tipPosition'
+    (click)="onClick(item)"
+    [ngClass]="setActiveClass(item)">
+        <button #btn type="button" tiOutline
+                [id]="appendId('button_'+(item.id||i))"
+                [ngStyle]="{'min-width': minWidth}"
+                class="ti3-btn-item"
+                [ngClass]="{'ti3-btn-item-radio': !multiple,
+                            'ti3-btn-item-noBorder': !multiple && type === 'noBorder',
+                            'ti3-btn-item-checkbox': multiple}"
+                [disabled]="item.disabled || disabled"
+            >
+                <ng-container *ngIf="!itemTemplate else customcontent">
+                    <span class="ti3-btn-item-text" [title]="item.text">{{item.text}}</span>
+                </ng-container>
+                <ng-template #customcontent>
+                    <ng-container *ngTemplateOutlet="itemTemplate;
+                                    context: {$implicit: item, index: i}"></ng-container>
+                </ng-template>
+        </button>
+        <section *ngIf="supTemplate else defaultTemplate" class="ti3-btn-item-sup">
+            <ng-container *ngTemplateOutlet="supTemplate; context: {$implicit: item.sup,index: i}">
+            </ng-container>
+        </section>
+
+        <ng-template #defaultTemplate>
+            <ng-container *ngIf="isSuperScript(item)">
+                <span class="ti3-btn-item-sup" [ngClass]="[item.sup.class]">{{item.sup.text}}</span>
+                <!-- 这个span是为了在有角标的场景下能解析icon，所以不显示 -->
+                <span class="ti3-icon" style="display: none;"></span>
+            </ng-container>
+        </ng-template>
+
+        <span class="ti3-btn-multi-selection-icon" *ngIf="multiple && setActiveClass(item)">
+            <span class="ti3-icon ti3-icon-checkmark-small"></span>
+        </span>
+</div>
+</ng-container>
+</span>

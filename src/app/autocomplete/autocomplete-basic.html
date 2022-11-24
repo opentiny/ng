@@ -1,0 +1,26 @@
+<h4 class="mb-3">1.下拉建议项是固定的，直接设置options(可模糊匹配)</h4>
+<ti-autocomplete
+  class="w-96"
+  id="autocomplete-basic-options"
+  [(ngModel)]="optionsValue"
+  placeholder="请选择/输入地区"
+  [options]="options"
+></ti-autocomplete>
+
+<h4 class="my-3">2.下拉建议项随输入框的内容动态变化</h4>
+<ti-autocomplete
+  class="w-96"
+  id="autocomplete-basic-suggest"
+  [(ngModel)]="suggestValue"
+  placeholder="请选择/输入邮箱"
+  (suggest)="onSuggest($event)"
+></ti-autocomplete>
+
+<h4 class="my-3">3.下拉建议项根据输入框的内容从后台获取</h4>
+<ti-autocomplete
+  class="w-96"
+  id="autocomplete-basic-backend"
+  [(ngModel)]="backendValue"
+  placeholder="请选择/输入邮箱"
+  (suggest)="onBackendSuggest($event)"
+></ti-autocomplete>

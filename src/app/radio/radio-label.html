@@ -1,0 +1,52 @@
+<input
+  id="radio-label-1"
+  name="fruit"
+  type="radio"
+  value="apple"
+  tiRadio
+  [(ngModel)]="fruit"
+/>
+<label for="radio-label-1" class="myLabel">
+  <span class="apple">Apple</span>
+</label>
+<input
+  id="radio-label-2"
+  name="fruit"
+  type="radio"
+  value="banana"
+  tiRadio
+  [(ngModel)]="fruit"
+/>
+<label for="radio-label-2" class="myLabel">
+  <span class="banana">Banana</span>
+</label>
+<input
+  id="radio-label-3"
+  name="fruit"
+  type="radio"
+  value="watermelon"
+  tiRadio
+  [(ngModel)]="fruit"
+/>
+<label for="radio-label-3" class="myLabel">
+  <span class="watermelon">Watermelon</span>
+</label>
+<style>
+  .apple {
+    color: #f66f6a;
+  }
+
+  .banana {
+    color: #fac20a;
+  }
+
+  .watermelon {
+    color: #50d4ab;
+  }
+  .myLabel {
+    margin-left: 8px;
+    margin-right: 20px;
+    vertical-align: top;
+    cursor: pointer;
+  }
+</style>

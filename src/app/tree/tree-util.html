@@ -1,0 +1,24 @@
+<ti-tree
+  id="tree-util"
+  [data]="innerData"
+  [multiple]="multiple"
+  (select)="selectFn($event)"
+  (change)="changeFn($event)"
+></ti-tree>
+<h4 class="mb-3">1. 展开、折叠整个树</h4>
+<button class="tree-button" id="tree-expandNode-button" (click)="expandNode()" tiButton>展开所有节点</button>
+<button class="tree-button" id="tree-expandNode-button" (click)="deExpandNode()" tiButton>折叠所有节点</button>
+<h4 class="my-3">2. 添加节点</h4>
+<button class="tree-button" id="tree-expandNode-button" (click)="addNode1()" tiButton>根节点指定位置添加一个节点</button>
+<button class="tree-button" id="tree-expandNode-button" (click)="addNode2()" tiButton>根节点指定位置添加多个节点</button><br/>
+<button class="tree-button" id="tree-expandNode-button" (click)="addNode3()" tiButton>根节点追加一个节点</button>
+<button class="tree-button" id="tree-expandNode-button" (click)="addNode4()" tiButton>根节点追加多个节点</button><br/>
+<button class="tree-button" id="tree-expandNode-button" (click)="addNode5()" tiButton>父节点指定位置添加一个节点</button>
+<button class="tree-button" id="tree-expandNode-button" (click)="addNode6()" tiButton>父节点指定位置添加多个节点</button><br/>
+<button class="tree-button" id="tree-expandNode-button" (click)="addNode7()" tiButton>父节点追加一个节点</button>
+<button class="tree-button" id="tree-expandNode-button" (click)="addNode8()" tiButton>父节点追加多个节点</button>
+<h4 class="my-3">3. 选中、展开、删除</h4>
+<button class="tree-button" id="tree-expandNode-button" (click)="deleteNode()" tiButton>删除美的空调</button>
+<button class="tree-button" id="tree-expandNode-button" (click)="selectNode()" tiButton>选中并展开面部护理</button><br/>
+<button class="tree-button" id="tree-expandNode-button" (click)="deSelectNode()" tiButton>取消选中并展开海尔空调</button>
+<button class="tree-button" id="tree-expandNode-button" (click)="remove()" tiButton>点击移除一项</button>

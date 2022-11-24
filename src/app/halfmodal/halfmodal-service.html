@@ -1,0 +1,26 @@
+<ng-template #service1 let-context='context'>
+    <p>nomaskCloseable: false</p>
+</ng-template>
+
+<ng-template #service2 let-context='context'>
+    <ti-halfmodal-header>Template</ti-halfmodal-header>
+    <ti-halfmodal-body>
+        <p>width: '500px'</p>
+        <p>closeIcon: false</p>
+        <p>clientRectTop: '100px'</p>
+    </ti-halfmodal-body>
+    <ti-halfmodal-footer>
+        <p>这是半屏弹窗底部</p>
+    </ti-halfmodal-footer>
+</ng-template>
+
+<h4 class="mb-3">1.打开一个不带遮罩的弹窗，配置 nomaskCloseable 为 false ，点击页面其他区域不会关闭弹窗</h4>
+<button id="halfmodal-service-button1" tiButton (click)="click1()">打开半屏弹窗</button>
+
+<h4 class="my-3">2.打开一个定制化的弹窗，宽度：500px 、距浏览器上边距：100px 、关闭图标：无</h4>
+<button id="halfmodal-service-button2" tiButton (click)="click2()">打开半屏弹窗</button>
+
+<h4 class="my-3">3.打开一个带遮罩的弹窗</h4>
+<button id="halfmodal-service-button3" tiButton (click)="click3()">打开半屏弹窗</button>
+
+<demo-log [logs]="myLogs"></demo-log>

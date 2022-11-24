@@ -1,0 +1,17 @@
+<ti-steps
+  id="steps-template"
+  [steps]="steps"
+  [clickable]="true"
+  [(activeStep)]="activeStep"
+  (activeStepChange)="activeStepChange($event)"
+>
+  <!-- 图标模板 #icon -->
+  <ng-template #icon let-step let-i=index>
+    <ti-icon local [name]="step.icon"></ti-icon>
+  </ng-template>
+  <!-- 文本模板 #step -->
+  <ng-template #step let-step let-i="index">
+    <div>第{{ i }}步</div>
+    {{ step.label }}
+  </ng-template>
+</ti-steps>

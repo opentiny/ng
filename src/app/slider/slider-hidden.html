@@ -1,0 +1,28 @@
+<h3>1.描述</h3>
+<p>Slider组件，组件从隐藏到显示</p>
+<h3>2.示例</h3>
+<div [hidden]="hidden" style="width: 70%">
+  <h3>单滑块</h3>
+  <ti-slider
+    id="slider-hidden-single"
+    [(ngModel)]="value"
+    [min]="min"
+    [max]="max"
+    [scales]="scales"
+    tipMode="always"
+  >
+  </ti-slider>
+  <h3>双滑块</h3>
+  <ti-slider
+    id="slider-hidden-range"
+    [(ngModel)]="value1"
+    [min]="min1"
+    [max]="max1"
+    [scales]="scales1"
+    [ratios]="ratios1"
+    tipMode="always"
+    [tipFormatterFn]="tipFormatterFn"
+  >
+  </ti-slider>
+</div>
+<button (click)="hidden = !hidden">点击显示组件</button>

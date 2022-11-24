@@ -1,0 +1,29 @@
+<h3>1.描述</h3>
+<p>format接口测试</p>
+<h3>2.示例</h3>
+<p>(2.1)不设置时，使用默认类型。中文：'yyyy/MM/dd'；英文："MMM dd, yyyy"。</p>
+<ti-date [(ngModel)]="value"></ti-date>
+<br />
+<br />
+<br />
+<p>(2.2)只设置年</p>
+<ti-date [(ngModel)]="value1" [format]="format1"></ti-date>
+<br />
+<br />
+<br />
+<p>(2.3)只设置年月</p>
+<ti-date [format]="format2" [(ngModel)]="value2"></ti-date>
+<br />
+<br />
+<br />
+<p>(2.4)动态变更</p>
+<ti-date [format]="format3" [(ngModel)]="value3"></ti-date>
+<br />
+<br />
+<p>(2.5)季度面板展示</p>
+<ti-date [format]="format4" [(ngModel)]="value4"></ti-date>
+<br />
+<span>季度面板值：{{value4}}</span>
+<br /><br />
+<button (click)="clickFn()">点击改变format</button>
+<button (click)="changeQuarterVal()">点击改变季度面板值</button>

@@ -1,0 +1,11 @@
+<ti-tree
+  id="tree-event"
+  [data]="innerData"
+  [multiple]="true"
+  (select)="selectFn($event)"
+  (change)="changeFn($event)"
+  (expand)="expandFn($event)"
+  (collapse)="collapseFn($event)"
+></ti-tree>
+<demo-log [logs]='myLogs'></demo-log>
+

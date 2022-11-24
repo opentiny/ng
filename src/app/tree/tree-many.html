@@ -1,0 +1,66 @@
+<h3>1.描述</h3>
+<p>
+  主要是为了测试同一个页面中存在两个及以上的树组件，在各自的select接口中调用TiTreeUtil.getSelectedData返回的数据是否相互影响。
+</p>
+<h3>2.示例</h3>
+<p>第一棵树；</p>
+<table style="width: 100%">
+  <tr>
+    <th style="width: 60%"></th>
+    <th style="width: 40%"></th>
+  </tr>
+  <tr>
+    <td>
+      <div style="width: 300px">
+        <ti-tree id="tree-many-first" [data]="innerData1" (select)="onSelect1($event)"> </ti-tree>
+      </div>
+    </td>
+    <td>
+      <div style="max-height: 400px; overflow: auto">
+        <ul>
+          <li *ngFor="let item of selectedData1; index as i">
+            <h3>{{i+1}}.选中项:</h3>
+            {{item.label}}:
+            <br />
+            <h3>{{i+1}}.父节点:</h3>
+            <span *ngFor="let child of selectedData1[0].parent"
+              >{{child.label}}/</span
+            >
+            <br /><br /><br />
+          </li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<p>第二棵树；</p>
+<table style="width: 100%">
+  <tr>
+    <th style="width: 60%"></th>
+    <th style="width: 40%"></th>
+  </tr>
+  <tr>
+    <td>
+      <div style="width: 300px">
+        <ti-tree id="tree-many-second" [data]="innerData2" (select)="onSelect2($event)"> </ti-tree>
+      </div>
+    </td>
+    <td>
+      <div style="max-height: 400px; overflow: auto">
+        <ul>
+          <li *ngFor="let item of selectedData2; index as i">
+            <h3>{{i+1}}.选中项:</h3>
+            {{item.label}}:
+            <br />
+            <h3>{{i+1}}.父节点:</h3>
+            <span *ngFor="let child of selectedData2[0].parent"
+              >{{child.label}}/</span
+            >
+            <br /><br /><br />
+          </li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+</table>

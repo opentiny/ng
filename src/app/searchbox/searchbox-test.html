@@ -1,0 +1,43 @@
+<h3>描述</h3>
+<p>Searchbox组件内部测试示例</p>
+<h3>示例</h3>
+<div class="wrapper-content">
+  <h4>用在表单中(第一个form)--模板驱动表单</h4>
+  <br />
+  <form #form="ngForm">
+    <h5>
+      0.
+      1）不展示下拉建议项，仅在回车键及点击事件后触发搜索，弹出框展示搜索内容；2）focus/blur时做日志打印；
+      3） 最大字符长度为10
+    </h5>
+    <br />
+    <ti-searchbox
+      name="searchbox"
+      [maxlength]="maxlength"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      (search)="search($event)"
+      [(ngModel)]="value"
+    ></ti-searchbox>
+    <label>当前内容实时展示：</label
+    ><strong style="color: red">{{value}}</strong><br /><br />
+
+    <h5>1.根据输入实时搜索内容:</h5>
+    <br />
+    <ti-searchbox
+      name="searchbox1"
+      [(ngModel)]="value1"
+      (suggest)="onInputChange($event)"
+      [disabled]="disabled"
+      (search)="search($event)"
+    ></ti-searchbox>
+    <label>当前内容实时展示：</label
+    ><strong style="color: red">{{value1}}</strong>
+  </form>
+  <p>form's touched: {{form.touched | json}}</p>
+  <p>form's untouched: {{form.untouched | json}}</p>
+  <pre>{{form.value | json}}</pre>
+  <button (click)="changeSearch()">改变搜索值</button>
+</div>
+<h4>事件日志：</h4>
+<demo-log [logs]="myLogs"></demo-log>

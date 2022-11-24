@@ -1,0 +1,12 @@
+<ti-tree
+  id="tree-operate"
+  [data]="innerData"
+  [multiple]="true"
+  (nodeAdded)="nodeAddFn($event)"
+  (nodeEdited)="nodeEditFn($event)"
+  (nodeDeleted)="nodeDeleteFn($event)"
+  (afterNodeEdit)="afterNodeEditFn($event)"
+  (afterNodeAdd)="afterNodeAddFn($event)"
+></ti-tree>
+<demo-log [logs]="myLogs"></demo-log>
+

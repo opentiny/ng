@@ -1,0 +1,24 @@
+<ti-table [srcData]="srcData" [(displayedData)]="displayedData">
+  <table>
+    <thead>
+      <tr>
+        <th radio-column></th>
+        <th>{{columns[1].title}}</th>
+        <th>{{columns[2].title}}</th>
+        <th>{{columns[3].title}}</th>
+        <th>{{columns[4].title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of displayedData;trackBy: trackByFn" [ngClass]="{'ti3-selected-tr': selectedValue === row.id}">
+        <td radio-column [ngClass]="{'ti3-disabled-cell': row.disabled}">
+          <input type="radio" name="rowGroup" tiRadio [(ngModel)]="selectedValue" [value]="row.id" [disabled]="row.disabled"/>
+        </td>
+        <td>{{row.firstName}}</td>
+        <td>{{row.lastName}}</td>
+        <td>{{row.age}}</td>
+        <td>{{row.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ti-table>

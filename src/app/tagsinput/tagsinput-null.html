@@ -1,0 +1,32 @@
+<h3>描述</h3>
+<p>测试suggestion接口为null、undefined、空数据时，组件功能是否正常</p>
+<h3>示例</h3>
+<h4>1.undefined:</h4>
+<br />
+<p>选中项： {{selected | json}}</p>
+<ti-tags-input
+  style="width: 500px"
+  [id]="id"
+  [suggestions]="undefined"
+  [(ngModel)]="selected"
+></ti-tags-input>
+<br /><br />
+<h4>2.null:</h4>
+<br />
+<p>选中项： {{selected | json}}</p>
+<ti-tags-input
+  style="width: 500px"
+  [id]="id"
+  [suggestions]="null"
+  [(ngModel)]="selected"
+></ti-tags-input>
+<br /><br />
+<h4>3.空数据[]:</h4>
+<br />
+<p>选中项： {{selected | json}}</p>
+<ti-tags-input
+  style="width: 500px"
+  [id]="id"
+  [suggestions]="[]"
+  [(ngModel)]="selected"
+></ti-tags-input>

@@ -1,0 +1,5 @@
+<h4 class="mb-3">1. 仅异步校验（2秒后校验，输入 'hello tiny' 视为通过）</h4>
+<input tiValidation [formControl]="asyncControl" tiText style="width: 200px" />
+<br /><br />
+<h4 class="mb-3">2. 同步校验（非空且最小长度为5），同时加入异步校验（2秒后校验，输入 'hello tiny' 视为通过）</h4>
+<input tiValidation [formControl]="mixControl" tiText style="width: 200px" />

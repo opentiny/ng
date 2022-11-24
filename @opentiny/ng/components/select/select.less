@@ -1,0 +1,39 @@
+@import "../../themes/basic/base-all.less";
+@import "../../themes/basic/compnent-container-border.less";
+
+:host :extend(.ti3-compnent-container-border all) {
+    width: var(--ti-common-size-50x);
+    font-size: var(--ti-common-font-size-base);
+    font-weight: var(--ti-common-font-weight-4);
+}
+
+//无边框的样式
+:host[noborder] {
+  border-color: var(--ti-common-color-bg-white-normal);
+  &:hover,
+  &[tiFocused] {
+    border-color: var(--ti-common-color-bg-white-normal);
+  }
+  &[disabled]{
+    border-color: var(--ti-common-color-bg-disabled)
+  }
+}
+
+// 深色背景色只处理无边框的场景， disabled /focused 状态没有规范，按透明处理
+:host[dark] {
+  background-color: transparent;
+  border-color: transparent;
+  &:hover,
+  &[tiFocused] ,
+  &[disabled] {
+    border-color:  transparent;
+  }
+  ::ng-deep .ti3-select-dominator-text {
+    color: var(--ti-common-color-text-white);
+  }
+  ::ng-deep .ti3-select-dominator-dropdown-btn:after{
+    border-top-color: var(--ti-common-color-icon-white);
+  }
+}
+
+

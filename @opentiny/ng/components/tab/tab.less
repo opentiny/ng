@@ -1,0 +1,19 @@
+@import "../../themes/basic/base-all.less";
+
+// Hide tabbable panes to start, show them when `.active`
+:host.ti3-tab-pane {
+  display: none;
+  padding-top: var(--ti-common-space-3x);
+  animation-duration: .3s;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+  &.ti3-tab-active {
+    display: block;
+  }
+  &.active-remove {
+    display: none !important;
+  }
+  &.active-add {
+    animation-name: tiFadeIn;
+  }
+}

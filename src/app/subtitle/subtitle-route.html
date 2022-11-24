@@ -1,0 +1,16 @@
+<h3>1 描述</h3>
+<p> backRouterLink:设置图标点击后跳转路由，用于应用内跳转。如果配置了该参数，href和targe参数失效。</p>
+<p> queryParams: 设置跳转路由参数。</p>
+<p style="color: red;">10.1.2版本接口routerLink变更为backRouterLink</p>
+
+<h3>2 示例</h3>
+<br>
+<h4>2.1 基础使用 </h4>
+<p></p>
+<ti-subtitle [backRouterLink]="routerLink" [queryParams]="queryParams" [items]="items1">
+</ti-subtitle>
+<br>
+<br>
+<h4>2.2 设置routerLink后href是否有效</h4>
+<ti-subtitle [backRouterLink]="routerLink"  href="" target="_blank"  [items]="items1">
+</ti-subtitle>

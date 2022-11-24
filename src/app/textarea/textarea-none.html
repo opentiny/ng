@@ -1,0 +1,30 @@
+<h3>1.描述</h3>
+<p>场景测试：祖先元素初始display为none时，组件设置class样式类不生效问题</p>
+<h3>2.示例</h3>
+<h4>1.通过class设置样式</h4>
+<div [hidden]="!show">
+  <textarea
+    tiTextarea
+    class="container"
+    maxlength="10"
+    placeholder="'请输入'"
+    [(ngModel)]="value"
+  ></textarea>
+</div>
+<h4>2.通过style设置样式</h4>
+<div [hidden]="!show">
+  <textarea
+    tiTextarea
+    style="width: 300px; height: 200px"
+    maxlength="10"
+    placeholder="'请输入'"
+    [(ngModel)]="value"
+  ></textarea>
+</div>
+<button (click)="changeShow()">显示文本域</button>
+<style>
+  .container {
+    width: 300px;
+    height: 200px;
+  }
+</style>

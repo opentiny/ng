@@ -1,0 +1,31 @@
+<div #trackEle class="ti3-slider-track-container">
+  <div class="ti3-slider-track-content">
+    <div #selection class="ti3-slider-bar-selection"></div>
+    <div #pointerMin [id]="appendId('min')" [tiDraggable]="dragOptions"
+         [style.zIndex]="isMinPointerActive ? 2 : 1" [tiDragDisabled]="disabled"
+         class="ti3-slider-pointer ti3-slider-pointer-min ti3-icon ti3-icon-slider-point">
+        <div #tipMin class="ti3-slider-tip ti3-slider-tip-top ti3-slider-tip-min"></div>
+    </div>
+    <div #pointerMax [id]="appendId('max')" [tiDraggable]="dragOptions"
+         [style.zIndex]="!isMinPointerActive ? 2 : 1" [tiDragDisabled]="disabled"
+         class="ti3-slider-pointer ti3-slider-pointer-max ti3-icon ti3-icon-slider-point">
+        <div #tipMax class="ti3-slider-tip ti3-slider-tip-top ti3-slider-tip-max"></div>
+    </div>
+  </div>
+  <ul class="ti3-slider-ticks" [id]="appendId('list')">
+    <li *ngFor="let tick of ticks; index as i" class="ti3-slider-tick"
+        [ngStyle]="{'left': calcTickLeftPosition(i), 'max-width': calcTickMaxWidth(i)}">
+        <ng-container *ngIf="tick !== null">
+          <div class="ti3-slider-tick-dot" [ngClass]="{'ti3-slider-selection-tick-dot': isSelectTick(i)}"></div>
+          <section *ngIf="labelTemplate else defaultTemplate" class="ti3-slider-tick-value">
+            <ng-container *ngTemplateOutlet="labelTemplate; context: {$implicit: tick, index: i}">
+            </ng-container>
+          </section>
+
+          <ng-template #defaultTemplate>
+            <span *ngIf="tick!== ''" class="ti3-slider-tick-value" [innerHTML]="tick"></span>
+          </ng-template>
+        </ng-container>
+    </li>
+  </ul>
+</div>

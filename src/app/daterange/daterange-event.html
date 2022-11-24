@@ -1,0 +1,10 @@
+<ti-date-range
+  class="mb-3"
+  id="daterange-event"
+  [(ngModel)]="value"
+  (ngModelChange)="onNgModelChange($event)"
+  (dayClick)="onDayClick($event)"
+  (okClick)="onOkClick($event)"
+></ti-date-range>
+
+<demo-log [logs]="myLogs"></demo-log>

@@ -1,0 +1,148 @@
+<h3>描述</h3>
+<p>表格行编辑场景示例</p>
+
+<h3>示例</h3>
+
+<button type="button" tiButton (click)="addRow()">添加行</button>
+<br />
+
+<ti-table
+  style="width: 100%"
+  #mytable
+  [(displayedData)]="displayed"
+  [srcData]="srcData"
+  [columns]="columns"
+>
+  <table>
+    <thead>
+      <tr>
+        <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">
+          {{column.title}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 新增一行 -->
+      <!-- 也可以放在最后一行 -->
+      <tr *ngIf="newRow">
+        <td>
+          <input
+            style="width: 80px"
+            type="text "
+            tiText
+            [(ngModel)]="newRow.sourceName"
+          />
+        </td>
+        <td>
+          <ti-select
+            style="width: 80px"
+            [options]="levelOptions"
+            [(ngModel)]="newRow.level"
+            [valueKey]="'label'"
+            placeholder="请选择等级"
+          >
+          </ti-select>
+        </td>
+        <td>
+          <input
+            style="width: 80px"
+            type="text "
+            tiText
+            [(ngModel)]="newRow.balance"
+          />
+        </td>
+
+        <td>
+          <input
+            style="width: 80px"
+            type="text "
+            tiText
+            [(ngModel)]="newRow.unsubscribe"
+          />
+        </td>
+        <td>
+          <ti-date
+            style="width: 140px"
+            [(ngModel)]="newRow.createTime"
+          ></ti-date>
+        </td>
+        <td>
+          <input
+            style="width: 100px"
+            type="text "
+            tiText
+            [(ngModel)]="newRow.operator"
+          />
+        </td>
+        <td>
+          <ti-actionmenu [items]="addItems" (select)="onSelectAdd($event)">
+          </ti-actionmenu>
+        </td>
+      </tr>
+      <ng-container *ngFor="let row of displayed;">
+        <tr *ngIf="!(editingRow && editingRow.id === row.id)">
+          <td>{{row.sourceName}}</td>
+          <td>{{row.level}}</td>
+          <td>{{row.balance}}</td>
+          <td>{{row.unsubscribe}}</td>
+          <td>{{row.createTime| date: "yyyy-MM-dd"}}</td>
+          <td>{{row.operator}}</td>
+          <td>
+            <ti-actionmenu (select)="onSelect($event,row)" [items]="items">
+            </ti-actionmenu>
+          </td>
+        </tr>
+        <tr *ngIf="(editingRow && editingRow.id === row.id)">
+          <td>{{row.sourceName}}</td>
+          <td>
+            <ti-select
+              style="width: 80px"
+              [options]="levelOptions"
+              [(ngModel)]="editingRow.level"
+              [valueKey]="'label'"
+              placeholder="请选择等级"
+            >
+            </ti-select>
+          </td>
+          <td>
+            <input
+              style="width: 80px"
+              type="text "
+              tiText
+              [(ngModel)]="editingRow.balance"
+            />
+          </td>
+          <td>
+            <input
+              style="width: 80px"
+              type="text "
+              tiText
+              [(ngModel)]="editingRow.unsubscribe"
+            />
+          </td>
+          <td>
+            <ti-date
+              style="width: 140px"
+              [(ngModel)]="editingRow.createTime"
+            ></ti-date>
+          </td>
+          <td>
+            <input
+              style="width: 100px"
+              type="text "
+              tiText
+              [(ngModel)]="editingRow.operator"
+            />
+          </td>
+          <td>
+            <ti-actionmenu
+              [items]="editingItems"
+              (select)="onSelectEditing($event,row)"
+            >
+            </ti-actionmenu>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</ti-table>

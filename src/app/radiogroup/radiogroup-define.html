@@ -1,0 +1,10 @@
+<ti-radio-group id="radiogroup-define" class="radiogroupwidthlong" [items]="manyRadios" [(ngModel)]="selected">
+  <ng-template #item let-itm let-index="index">
+    <label [for]='itm.id' class="radiogroupwidth">
+      <ti-icon local name="star">{{index}}{{itm.label}}</ti-icon>
+    </label>
+  </ng-template>
+</ti-radio-group>
+<div class="current-value-container">
+  <pre>Current value: {{ selected }}</pre>
+</div>

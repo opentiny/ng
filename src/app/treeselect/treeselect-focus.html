@@ -1,0 +1,28 @@
+<h4>1、autofocus</h4>
+<p>设置[(ngModel)]为空数组[]</p>
+<ti-treeselect autofocus id="treeselect-autofocus" [options]="options" [(ngModel)]="mySelected" placeholder="Please select">
+</ti-treeselect><span>tabindex为0</span>
+
+<h4>2、手动设置焦点</h4>
+<p>[(ngModel)]不为空数组</p>
+<ti-treeselect id="treeselect-autofocus-data" #mytreeselect [options]="options" [(ngModel)]="mySelected" placeholder="Please select" >
+</ti-treeselect><span>tabindex为0</span> <br /><br />
+<button id="treeselect-comp-focus" tiButton (click)="mytreeselect.focus()">组件focus()</button>&nbsp;
+<button id="treeselect-comp-blur" tiButton (click)="mytreeselect.blur()">组件blur()</button> &nbsp;
+<button id="treeselect-element-focus" tiButton (click)="mytreeselect.nativeElement.focus()">标签元素focus()</button>&nbsp;
+<button id="treeselect-element-blur" tiButton (click)="mytreeselect.nativeElement.blur()">标签元素blur()</button>
+<br/><br/>
+
+<h4>3、tabindex</h4>
+<p>tabindex="1"</p>
+<ti-treeselect tabindex="1" id="treeselect-autofocus-tabindex1" [options]="options" [(ngModel)]="mySelected" placeholder="Please select" >
+</ti-treeselect><br /><br />
+<p>tabindex="4"</p>
+<ti-treeselect tabindex="4" id="treeselect-autofocus-tabindex2" [options]="options" [(ngModel)]="mySelected" placeholder="Please select" >
+</ti-treeselect><br /><br />
+<p>tabindex="2"</p>
+<ti-treeselect tabindex="2" id="treeselect-autofocus-tabindex3" [options]="options" [(ngModel)]="mySelected" placeholder="Please select" >
+</ti-treeselect><br /><br />
+<p>tabindex="3"</p>
+<ti-treeselect tabindex="3" id="treeselect-autofocus-tabindex4" [options]="options" [(ngModel)]="mySelected" placeholder="Please select">
+</ti-treeselect><br /><br />

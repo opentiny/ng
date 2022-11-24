@@ -1,0 +1,54 @@
+<h3>描述</h3>
+<p>表格记忆--过滤搜索</p>
+<h3>示例</h3>
+
+<p>
+  first name:
+  <input
+    tiText
+    style="margin-right: 20px"
+    [(ngModel)]="searchWords[0]"
+    type="text"
+  />
+  age : <input tiText [(ngModel)]="searchWords[2]" type="text" />
+</p>
+<br />
+<p><span>searchWords: </span>{{searchWords|json}}</p>
+<p><span>searchKeys: </span>{{searchKeys|json}}</p>
+<br />
+<ti-table
+  [storageId]="storageId"
+  [(displayedData)]="displayed"
+  [srcData]="srcData"
+  [columns]="columns"
+  [searchWords]="searchWords"
+  [searchKeys]="searchKeys"
+>
+  <table>
+    <thead>
+      <tr>
+        <ng-container *ngFor="let column of columns; index as i;">
+          <th *ngIf="i===1">
+            <ti-cell-text>{{column.title}}</ti-cell-text>
+            <ti-head-filter
+              [options]="column.options"
+              [(ngModel)]="column.selected"
+              (select)="onSelect($event, column)"
+              [ngClass]="{'ti3-head-filtered': column.selected && column.selected.label !== 'all'}"
+            ></ti-head-filter>
+          </th>
+          <th *ngIf="i!==1" tiOverflow>{{column.title}}</th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of displayed">
+        <td tiOverflow>{{row.firstName}}</td>
+        <td tiOverflow>{{row.lastName}}</td>
+        <td tiOverflow>{{row.age}}</td>
+        <td tiOverflow>{{row.balance}}</td>
+        <td tiOverflow>{{row.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ti-table>

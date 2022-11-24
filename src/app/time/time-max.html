@@ -1,0 +1,32 @@
+<h3>1.描述</h3>
+<p>max接口测试</p>
+<h3>2.示例</h3>
+<p>(2.1)max设置为合法时间时，以该值为最大值</p>
+<br />
+<form #form="ngForm">
+  <ti-time
+    name="time"
+    [(ngModel)]="timeValue"
+    [format]="format"
+    [id]="timeId"
+    [min]="min"
+    [max]="max"
+    [disabled]="disabled"
+  ></ti-time>
+</form>
+
+<p>(2.2)动态变更</p>
+<form [formGroup]="timeForm">
+  <ti-time
+    formControlName="timeValue"
+    [format]="format"
+    [id]="timeId"
+    [min]="min"
+    [max]="max"
+  ></ti-time>
+</form>
+<br />
+<button type="button" tiButton (click)="changeMaxValue()">
+  changeMaxValue
+</button>
+<button type="button" tiButton (click)="changeDisable()">changeDisable</button>

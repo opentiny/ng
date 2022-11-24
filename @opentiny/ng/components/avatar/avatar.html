@@ -1,0 +1,7 @@
+<ng-container *ngIf="imgSrc || text; else defaultTemplate">
+  <img class="ti3-avt-img" *ngIf="imgSrc" [src]="imgSrc" [alt]="imgAlt" style="z-index:0; border-radius:inherit" (error)="imgError($event)">
+  <span #textRef class="ti3-avt-txt" *ngIf="text" [ngStyle]="{'transform': 'scale('+txtScale+')'}"  style="z-index:1" >{{text}}</span>
+</ng-container>
+<ng-template #defaultTemplate>
+  <ti-icon local [style.font-size]="fontSize" name="cloud-action-user"></ti-icon>
+</ng-template>

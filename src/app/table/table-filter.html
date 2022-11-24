@@ -1,0 +1,112 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>表格搜索利用tiTable组件的searchKeys和searchWords接口来实现。</p>
+  <p>
+    表格组件提供了简单的搜索功能，如果搜索条件复杂可自行处理搜索逻辑，将搜索后的数据直接传给srcData.data源数据接口。
+  </p>
+  <h3>示例</h3>
+  <p>
+    1.针对源数据在searchKeys指定的字段下搜索searchWords[0]指定的字符串,
+    在指定字段中的任一字段搜索到时即满足条件(并集)。如：searchWords: ['b'],
+    searchKeys: ['firstName', 'lastName']，则在firstName字段包含‘b’，
+    或在lastName字段包含‘b’时本行数据即满足搜索条件
+  </p>
+  <button type="button" (click)="changeData()">改变数据</button>
+  <button type="button" (click)="changeSearchKeys()">改变搜索范围</button>
+  <input
+    tiText
+    [(ngModel)]="inputValue1"
+    (ngModelChange)="setOneWordSearch($event)"
+    type="text"
+  />
+  <br />
+  <p><span>searchWords: </span>{{oneWordSearch.searchWords[0]}}</p>
+  <p><span>searchKeys: </span>{{oneWordSearch.searchKeys}}</p>
+  <br />
+  <!-- TiTableComponent提供了getSearchedResult方法，可通过此方法获取到搜索的数据结果。-->
+  <p>
+    <button type="button" (click)="getSearchedResult()">获取搜索结果</button
+    ><span>搜索结果个数: </span>{{ searchedData.length }}
+  </p>
+  <br />
+  <ti-table
+    [(displayedData)]="oneWordSearch.displayed"
+    [srcData]="oneWordSearch.srcData"
+    [columns]="columns"
+    [searchWords]="oneWordSearch.searchWords"
+    [searchKeys]="oneWordSearch.searchKeys"
+    #table1
+  >
+    <table>
+      <thead>
+        <tr>
+          <th tiOverflow *ngFor="let column of columns">{{column.title}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+        <tr *ngFor="let row of oneWordSearch.displayed">
+          <td tiOverflow>{{row.firstName}}</td>
+          <td tiOverflow>{{row.lastName}}</td>
+          <td tiOverflow>{{row.age}}</td>
+          <td tiOverflow>{{row.balance}}</td>
+          <td tiOverflow>{{row.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ti-table>
+  <br />
+  <br />
+
+  <p>
+    2.针对源数据在searchKeys指定的字段下搜索searchWords对应(按顺序)元素指定的字符串,
+    在指定字段中的所有字段搜索到对应值时才满足条件(交集)。如：searchWords: ['b',
+    '18'], searchKeys: ['firstName', 'age']，则在firstName字段包含‘b’且
+    在age字段包含‘18’时本行数据才满足搜索条件
+  </p>
+  <input
+    tiText
+    style="margin-right: 20px"
+    [(ngModel)]="inputValue21"
+    (ngModelChange)="setMoreThanOneWordSearch($event, 0)"
+    type="text"
+  />
+  <input
+    tiText
+    [(ngModel)]="inputValue22"
+    type="text"
+    (ngModelChange)="setMoreThanOneWordSearch($event, 1)"
+  />
+  <br />
+  <p>
+    <span>searchWords: </span
+    >{{moreThanOneWordSearch.searchWords[0]}},{{moreThanOneWordSearch.searchWords[1]}}
+  </p>
+  <p><span>searchKeys: </span>{{moreThanOneWordSearch.searchKeys}}</p>
+  <br />
+  <ti-table
+    [(displayedData)]="moreThanOneWordSearch.displayed"
+    [srcData]="moreThanOneWordSearch.srcData"
+    [columns]="columns"
+    [searchWords]="moreThanOneWordSearch.searchWords"
+    [searchKeys]="moreThanOneWordSearch.searchKeys"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th tiOverflow *ngFor="let column of columns">{{column.title}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+        <tr *ngFor="let row of moreThanOneWordSearch.displayed">
+          <td tiOverflow>{{row.firstName}}</td>
+          <td tiOverflow>{{row.lastName}}</td>
+          <td tiOverflow>{{row.age}}</td>
+          <td tiOverflow>{{row.balance}}</td>
+          <td tiOverflow>{{row.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ti-table>
+</div>

@@ -1,0 +1,19 @@
+<ti-table [srcData]="srcData" [(displayedData)]="displayedData">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns"  width="{{column.width}}">{{column.title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of displayedData;trackBy: trackByFn">
+        <td>{{row.id}}</td>
+        <td>{{row.firstName}}</td>
+        <td>{{row.lastName}}</td>
+        <td>{{row.age}}</td>
+        <td>{{row.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ti-pagination [(currentPage)]="currentPage" [pageSize]="pageSize" [(totalNumber)]="totalNumber"></ti-pagination>
+</ti-table>

@@ -1,0 +1,35 @@
+<ti-table [srcData]="srcData" [(displayedData)]="displayedData">
+  <table>
+    <thead>
+      <tr>
+        <ng-container *ngFor="let column of columns;index as i;">
+          <th *ngIf="i < 1">{{column.title}}</th>
+          <th *ngIf="i >= 1">
+            <ti-cell-text>{{column.title}}</ti-cell-text>
+            <ti-head-filter [ngClass]="{'ti3-head-filtered': column.selected && (column.selected.start || column.selected.end)}"
+                            [(ngModel)]="column.selected"
+                            [isDatetime]="column.isDatetime"
+                            [panelAlign]="column.panelAlign"
+                            [datetimeConfig]="column.datetimeConfig"
+                            (select)="onSelect($event)">
+            </ti-head-filter>
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody *ngIf="displayedData.length > 0">
+      <tr *ngFor="let row of displayedData">
+        <td>{{row.name}}</td>
+        <td>{{row.birthday}}</td>
+        <td>{{row.hireDate}}</td>
+        <td>{{row.start}}</td>
+        <td>{{row.expired}}</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="displayedData.length === 0">
+      <tr class="ti3-table-nodata">
+        <td tiColspan>{{noDadaInfo}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ti-table>

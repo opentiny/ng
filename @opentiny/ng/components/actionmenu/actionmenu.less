@@ -1,0 +1,48 @@
+@import "../../themes/basic/base-all.less";
+
+:host {
+    --ti-actionmenu-divider-width: 1px;
+}
+
+:host {
+    display: inline-block;
+}
+
+.ti3-action-menu-item {
+    text-decoration: none;
+    color: var(--ti-common-color-text-link);
+    font-size: var(--ti-common-font-size-base);
+    font-weight: var(--ti-common-font-weight-4);
+    cursor: pointer;
+    // 为了解决服务中的表格使用actionMenu时，偶现的获取$itemDomCache宽度不准确问题 #1131 codeclub
+    display: inline-block;
+    .user-select(none);
+}
+
+.ti3-action-menu-item:hover {
+    color: var(--ti-common-color-text-link-hover);
+    text-decoration: none;
+}
+
+.ti3-action-menu-item.ti3-action-menu-item-disabled {
+    cursor: not-allowed;
+    text-decoration: none;
+    outline: none !important;
+
+    * {
+        color: var(--ti-common-color-text-disabled) !important;
+    }
+}
+
+a.ti3-action-menu-item:focus, a.ti3-action-menu-item:active{
+    color: var(--ti-common-color-text-link-hover);
+}
+
+.ti3-action-menu-divider {
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    width: var(--ti-actionmenu-divider-width);
+    height: var(--ti-common-size-3x);
+    background: var(--ti-common-color-line-dividing);
+}

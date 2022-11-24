@@ -1,0 +1,23 @@
+:host.ti3-autocomplete-container {
+   display: inline-block;
+   vertical-align: middle;
+   border-radius: var(--ti-common-border-radius-normal);
+   border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-normal);
+   background-color: var(--ti-common-color-bg-white-normal); // 校验结果的样式添加在该元素上，所以在此处添加background-color属性
+   &:hover{
+     border-color: var(--ti-common-color-line-hover);
+   }
+   &[tifocused] {
+     border-color: var(--ti-common-color-line-active);
+   }
+   &[disabled] {
+     border-color: var(--ti-common-color-line-disabled);
+     background-color: var(--ti-common-color-bg-disabled);
+   }
+   & .ti3-autocomplete-input[tiText] {
+     width: 100%;
+     border: none !important;
+     background-color: transparent;  // 添加透明背景是为了覆盖tiText设置的白色背景，使ti-autocomplete设置的background-color成为有效结果
+   }
+ }
+

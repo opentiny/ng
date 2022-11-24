@@ -1,0 +1,44 @@
+<h3>1.描述</h3>
+<p>虚拟滚动 + small</p>
+<p>数据量大时可使用 virtual 接口开启虚拟滚动，默认值为 false。</p>
+<p>使用虚拟滚动时，需要给 ti-tree 设置高度。</p>
+
+<h3>导入</h3>
+<p>import {{ '{' }} TiTreeModule {{ '}' }} from '@opentiny/ng';</p>
+
+<h3>2.示例</h3>
+
+<div style="display: flex; justify-content: space-between; width: 800px">
+  <div style="width: 300px">
+    <p>2.1 small型单选</p>
+    <ti-tree
+      style="height: 400px"
+      small
+      id="tree-virtualscroll-small"
+      [data]="data1"
+      [virtual]="true"
+      (select)="onSelect1($event)"
+    >
+    </ti-tree>
+    <br /><br />
+    选中项label：<span *ngFor="let item of selectedData1">{{item.label}}</span>
+  </div>
+
+  <div style="width: 300px">
+    <p>2.2 small型多选</p>
+    <ti-tree
+      style="height: 400px"
+      small
+      id="tree-virtualscroll-small-multiple"
+      [data]="data2"
+      [multiple]="true"
+      [virtual]="true"
+      (select)="onSelect2($event)"
+    >
+    </ti-tree>
+    <br /><br />
+    选中项label：<span *ngFor="let item of selectedData2"
+      >{{item.label}},
+    </span>
+  </div>
+</div>

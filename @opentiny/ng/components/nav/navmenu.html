@@ -1,0 +1,80 @@
+<!-- 一级菜单项 -->
+<div
+  *ngFor="let item of itemsClone"
+  class="ti3-nav-menu-item"
+  [style.position]="item.expandMode === 'menu' ? 'relative' : 'static'"
+  (mouseenter)="onMouseenter($event, item.id)"
+  (mouseleave)="onMouseleave($event, item.id)"
+>
+  <!-- 一级菜单标签 -->
+  <div
+    class="ti3-nav-menu-item-label"
+    [ngClass]="{
+      'ti3-nav-submenu-label': item.expandMode && !item.disabled,
+      'ti3-nav-active': activePath[0] && activePath[0].id === item.id,
+      'ti3-nav-selectable': item.selectable
+    }"
+    (click)="onClick($event, item.item, [item.item])"
+    [attr.disabled]="item.disabled ? true : null"
+  >
+    <ng-container *ngTemplateOutlet="itemTemplate ? itemTemplate : defaultItemTemplate; context: { $implicit: item.item }"></ng-container>
+  </div>
+
+  <!-- 二级菜单：存在二级菜单，不存在三级菜单时使用下拉菜单形式展示 -->
+  <ul
+    class="ti3-nav-submenu"
+    *ngIf="item.expandMode === 'menu' && !item.disabled"
+    [ngClass]="{'expand': item.isExpand}"
+  >
+    <!-- 二级菜单项 -->
+    <li
+      *ngFor="let child of item.children"
+      class="ti3-nav-submenu-item"
+      [ngClass]="{
+        'ti3-nav-active': activePath[1] && activePath[1].id === child.id,
+        'ti3-nav-selectable': child.selectable
+      }"
+      (click)="onClick($event, child, [item.item, child])"
+      [attr.disabled]="child.disabled ? true : null"
+    >
+      <ng-container *ngTemplateOutlet="itemTemplate ? itemTemplate : defaultItemTemplate; context: { $implicit: child }"></ng-container>
+    </li>
+  </ul>
+
+  <!-- 二级面板：存在三级菜单时，以面板形式展示 -->
+  <div
+    class="ti3-nav-panel"
+    *ngIf="item.expandMode === 'panel' && !item.disabled"
+    [ngClass]="{'expand': item.isExpand}"
+  >
+    <div *ngFor="let child of item.children" class="ti3-nav-panel-list">
+      <!-- 二级菜单标签 -->
+      <div
+        class="ti3-nav-panel-list-title"
+        [ngClass]="{'ti3-nav-selectable': child.selectable}"
+        (click)="onClick($event, child, [item.item, child])"
+        [attr.disabled]="child.disabled ? true : null"
+      >
+        <ng-container *ngTemplateOutlet="itemTemplate ? itemTemplate : defaultItemTemplate; context: { $implicit: child }"></ng-container>
+      </div>
+
+      <!-- 三级菜单项 -->
+      <div
+        *ngFor="let subChild of child.children"
+        class="ti3-nav-panel-item"
+        [ngClass]="{
+          'ti3-nav-active': activePath[2] && activePath[2].id === subChild.id,
+          'ti3-nav-selectable': subChild.selectable
+        }"
+        (click)="onClick($event, subChild, [item.item, child, subChild], child.disabled)"
+        [attr.disabled]="subChild.disabled || child.disabled ? true : null"
+      >
+        <ng-container *ngTemplateOutlet="itemTemplate ? itemTemplate : defaultItemTemplate; context: { $implicit: subChild }"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #defaultItemTemplate let-item>
+  {{ item.label }}
+</ng-template>

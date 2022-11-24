@@ -1,0 +1,16 @@
+<h3>1.min:不设置、设置为非法日期时，默认最小值限制1970.1.1</h3>
+<ti-date-edit [(ngModel)]="value"></ti-date-edit>
+<br /><br />
+<h3>
+  2.min:设置的minValue大于设置的value时，以最小值显示;min:2017/2/23;value:2016/11/5
+</h3>
+<ti-date-edit [min]="min" [(ngModel)]="value1"></ti-date-edit>
+<br /><br />
+<h3>
+  3.min:设置为正常日期值时，显示及用户操作改变时都必须大于这个最小值;min:2010/11/12;value:2016/11/5
+</h3>
+<ti-date-edit [min]="min1" [(ngModel)]="value2"></ti-date-edit>
+<br /><br />
+
+<button (click)="clickFn()">改变为：2006/11/12</button>
+<button (click)="clickFn1()">改变为：2019/11/12</button>

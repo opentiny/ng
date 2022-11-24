@@ -1,0 +1,102 @@
+@import "../../themes/basic/base-all.less";
+
+:host {
+  --ti-searchbox-container-height: var(--ti-common-size-7x);
+  --ti-searchbox-icon-size: 14px;
+  --ti-searchbox-icon-area-width: 34px;
+  --ti-searchbox-divider-width: 1px;
+  --ti-searchbox-divider-height: calc(var(--ti-searchbox-container-height)/2);
+}
+
+// 1.先定义组件通用样式，与hover、focused、disabled等状态无关；
+:host.ti3-searchbox-container {
+  position: relative;
+  border-radius: var(--ti-common-border-radius-normal);
+  width: var(--ti-common-size-50x);
+  height: var(--ti-searchbox-container-height);
+  line-height: normal;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid);
+  .box-sizing(border-box);
+  cursor: pointer;
+  &:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    line-height: 100%;
+    vertical-align: middle;
+  }
+  & .ti3-searchbox-input {
+    // 覆盖ti-text组件默认样式
+    height: 100%;
+    width: calc(100% - var(--ti-searchbox-icon-area-width) - var(--ti-searchbox-divider-width));
+    box-sizing: border-box;
+    border: none !important; // 加important是为了避免被ti-text已有的disable状态下的border样式覆盖
+    float: left;
+    padding: 0 0 0 var(--ti-common-space-10);
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent; // 添加透明背景是为了覆盖tiText设置的白色背景，使校验结果样式生效
+    &[disabled] {
+      background-color: transparent;  // 添加透明背景是为了覆盖tiText设置的禁用背景，避免配置不一致呈现色块
+     }
+  }
+  & .ti3-searchbox-divider {
+    position: absolute;
+    right: var(--ti-searchbox-icon-area-width);
+    vertical-align: middle;
+    height: var(--ti-searchbox-divider-height);
+    top: calc(50% - var(--ti-searchbox-divider-height)/2);
+    width: var(--ti-searchbox-divider-width);
+  }
+  & .ti3-searchbox-search {
+    width: var(--ti-searchbox-icon-area-width);
+    border-radius: 0 3px 3px 0;
+    height: 100%;
+    float: right;
+    text-align: center;
+    font-size: var(--ti-searchbox-icon-size);
+    &:before {
+      position: relative;
+      top: calc(50% - var(--ti-searchbox-icon-size)/2);
+    }
+  }
+}
+
+// 2.定义enabled状态下的样式，包括hover、focused等状态
+:host.ti3-searchbox-container:not([disabled]) {
+  background-color: var(--ti-common-color-bg-white-normal);
+  border-color: var(--ti-common-color-line-normal);
+  &:hover {
+    border-color: var(--ti-common-color-line-hover);
+  }
+  &[tiFocused] {
+    border-color: var(--ti-common-color-line-active);
+  }
+  & .ti3-searchbox-divider {
+    background-color: var(--ti-common-color-line-dividing);
+  }
+  & .ti3-searchbox-search {
+    color: var(--ti-common-color-icon-normal);
+    &:hover {
+      color: var(--ti-common-color-icon-hover);
+    }
+  }
+}
+
+// 3.定义disabled状态下的样式
+:host.ti3-searchbox-container[disabled] {
+  background-color: var(--ti-common-color-bg-disabled);
+  border-color: var(--ti-common-color-line-disabled);
+  cursor: not-allowed;
+  & .ti3-searchbox-divider {
+    background-color: var(--ti-common-color-line-disabled);
+  }
+  & .ti3-searchbox-search {
+    color: var(--ti-common-color-icon-disabled);
+  }
+
+}

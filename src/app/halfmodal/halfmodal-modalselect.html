@@ -1,0 +1,33 @@
+<button id="halfmodal-modalselect" (click)="click(modal)">打开半屏弹窗</button>
+<ti-select style="width: 120px;"
+        [options]='myOptions'
+        [(ngModel)]="mySelected1"
+        placeholder='请选择国家'
+        id="myselect1"></ti-select>
+<ti-halfmodal #modal id="tp" >
+    <div *ngFor="let key of [1, 2, 3, 4, 5]" class="list">
+        <span class="dot"></span><span>这是第{{key}}条内容</span>
+    </div>
+    <br>
+    <button tiButton (click)="show(myModal)">打开一个弹窗</button>
+    <ti-select style="width: 120px;"
+        [options]='myOptions'
+        [(ngModel)]="mySelected1"
+        placeholder='请选择国家'
+        id="myselect2"></ti-select>
+</ti-halfmodal>
+
+
+<ng-template #myModal let-context='context'>
+    <ti-modal-header>
+        I'm a modal!
+    </ti-modal-header>
+    <ti-modal-body>
+        <ti-select style="width: 120px;"
+        [options]='context.myOptions'
+        [(ngModel)]="context.mySelected1"
+        placeholder='请选择国家'
+        id="myselect3">
+    </ti-select>
+    </ti-modal-body>
+</ng-template>

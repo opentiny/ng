@@ -1,0 +1,342 @@
+<h3>描述</h3>
+<p>表单嵌套使用</p>
+<h3>示例</h3>
+<ti-formfield [title]="'表格布局单列'">
+  <ti-item
+    [label]="item1.label"
+    [required]="item1.required"
+    [show]="item1.show"
+  >
+    <button tiButton type="button">Default</button>
+  </ti-item>
+  <ti-item [label]="item2.label" [required]="item2.required">
+    <input type="text" tiText [(ngModel)]="item2.value" style="width: 230px" />
+  </ti-item>
+  <ti-item
+    [required]="item3.required"
+    [show]="item3.show"
+    [label]="item3.label"
+    [verticalAlign]="item3.verticalAlign"
+  >
+    <span>item3</span>
+  </ti-item>
+  <ti-item
+    [required]="item4.required"
+    [label]="'测试标签Dom'"
+    [verticalAlign]="item4.verticalAlign"
+  >
+    <span *ngFor="let item of [1, 2, 3]">{{item}}</span>
+  </ti-item>
+  <ti-item
+    [required]="item5.required"
+    [show]="item5.show"
+    [verticalAlign]="item5.verticalAlign"
+    [label]="'存储地址'"
+  >
+    <ti-formfield [title]="'嵌套表单'">
+      <ti-item
+        [label]="item1.label"
+        [required]="item1.required"
+        [show]="item1.show"
+      >
+        <button tiButton type="button">Default Button</button>
+        <span *ngIf="item1.showSpan">测试1</span>
+      </ti-item>
+      <ti-item [label]="item2.label" [required]="item2.required">
+        <input
+          type="text"
+          tiText
+          style="width: 200px"
+          [(ngModel)]="item2.value"
+        />
+      </ti-item>
+      <ti-item
+        [required]="item3.required"
+        [show]="item3.show"
+        [label]="item3.label"
+        [verticalAlign]="item3.verticalAlign"
+      >
+        <span>item3</span>
+      </ti-item>
+      <ti-item
+        [required]="item4.required"
+        [label]="item4.label"
+        [verticalAlign]="item4.verticalAlign"
+      >
+        <ti-item-label>
+          <span>测试标签dom</span>
+          <span *ngIf="item4.labelShow" style="color: blue">按钮</span>
+        </ti-item-label>
+        <span *ngFor="let item of [1, 2, 3]">{{item}}</span>
+      </ti-item>
+      <ti-item
+        [required]="item5.required"
+        [show]="item5.show"
+        [verticalAlign]="item5.verticalAlign"
+      >
+        <ti-item-label>
+          <span>存储地址:</span>
+        </ti-item-label>
+        <textarea style="width: 189px; min-height: 80px" tiTextarea></textarea>
+      </ti-item>
+      <ti-button-item>
+        <button tiButton type="button" style="margin-right: 20px">
+          {{button.okLabel}}</button
+        ><!--
+                --><button tiButton type="button">
+          {{button.cancelLabel}}
+        </button>
+      </ti-button-item>
+    </ti-formfield>
+  </ti-item>
+</ti-formfield>
+
+<ti-formfield [title]="'表格布局多列'" [colsNumber]="colsNumber">
+  <ti-item
+    [label]="item1.label"
+    [required]="item1.required"
+    [show]="item1.show"
+  >
+    <button tiButton type="button">Default</button>
+  </ti-item>
+  <ti-item [label]="item2.label" [required]="item2.required">
+    <input type="text" tiText [(ngModel)]="item2.value" style="width: 230px" />
+  </ti-item>
+  <ti-item
+    [required]="item3.required"
+    [show]="item3.show"
+    [label]="item3.label"
+    [verticalAlign]="item3.verticalAlign"
+  >
+    <span>item3</span>
+  </ti-item>
+  <ti-item
+    [required]="item4.required"
+    [label]="'测试标签Dom'"
+    [verticalAlign]="item4.verticalAlign"
+  >
+    <span *ngFor="let item of [1, 2, 3]">{{item}}</span>
+  </ti-item>
+  <ti-item
+    [required]="item5.required"
+    [show]="item5.show"
+    [verticalAlign]="item5.verticalAlign"
+    [label]="'存储地址'"
+  >
+    <ti-formfield [title]="'嵌套表单'">
+      <ti-item
+        [label]="item1.label"
+        [required]="item1.required"
+        [show]="item1.show"
+      >
+        <button tiButton type="button">Default Button</button>
+        <span *ngIf="item1.showSpan">测试1</span>
+      </ti-item>
+      <ti-item [label]="item2.label" [required]="item2.required">
+        <input
+          type="text"
+          tiText
+          style="width: 200px"
+          [(ngModel)]="item2.value"
+        />
+      </ti-item>
+      <ti-item
+        [required]="item3.required"
+        [show]="item3.show"
+        [label]="item3.label"
+        [verticalAlign]="item3.verticalAlign"
+      >
+        <span>item3</span>
+      </ti-item>
+      <ti-item
+        [required]="item4.required"
+        [label]="item4.label"
+        [verticalAlign]="item4.verticalAlign"
+      >
+        <ti-item-label>
+          <span>测试标签dom</span>
+          <span *ngIf="item4.labelShow" style="color: blue">按钮</span>
+        </ti-item-label>
+        <span *ngFor="let item of [1, 2, 3]">{{item}}</span>
+      </ti-item>
+      <ti-item
+        [required]="item5.required"
+        [show]="item5.show"
+        [verticalAlign]="item5.verticalAlign"
+      >
+        <ti-item-label>
+          <span>存储地址:</span>
+        </ti-item-label>
+        <textarea style="width: 189px; min-height: 80px" tiTextarea></textarea>
+      </ti-item>
+      <ti-button-item>
+        <button tiButton type="button" style="margin-right: 20px">
+          {{button.okLabel}}</button
+        ><!--
+                --><button tiButton type="button">
+          {{button.cancelLabel}}
+        </button>
+      </ti-button-item>
+    </ti-formfield>
+  </ti-item>
+</ti-formfield>
+
+<ti-formfield [title]="'网格布局单列'" [colsWidth]="colsWidth">
+  <ti-item
+    [label]="item1.label"
+    [required]="item1.required"
+    [show]="item1.show"
+  >
+    <button tiButton type="button">Default</button>
+  </ti-item>
+  <ti-item [label]="item2.label" [required]="item2.required">
+    <input type="text" tiText [(ngModel)]="item2.value" style="width: 230px" />
+  </ti-item>
+  <ti-item
+    [required]="item3.required"
+    [show]="item3.show"
+    [label]="item3.label"
+    [verticalAlign]="item3.verticalAlign"
+  >
+    <span>item3</span>
+  </ti-item>
+  <ti-item
+    [required]="item4.required"
+    [label]="'测试标签Dom'"
+    [verticalAlign]="item4.verticalAlign"
+  >
+    <span *ngFor="let item of [1, 2, 3]">{{item}}</span>
+  </ti-item>
+  <ti-item
+    [required]="item5.required"
+    [show]="item5.show"
+    [verticalAlign]="item5.verticalAlign"
+    [label]="'存储地址'"
+  >
+    <ti-formfield [title]="'嵌套表单'" [colsWidth]="colsWidth">
+      <ti-item
+        [label]="item1.label"
+        [required]="item1.required"
+        [show]="item1.show"
+      >
+        <button tiButton type="button">Default Button</button>
+        <span *ngIf="item1.showSpan">测试1</span>
+      </ti-item>
+      <ti-item [label]="item2.label" [required]="item2.required">
+        <input
+          type="text"
+          tiText
+          style="width: 200px"
+          [(ngModel)]="item2.value"
+        />
+      </ti-item>
+      <ti-item
+        [required]="item3.required"
+        [show]="item3.show"
+        [label]="item3.label"
+        [verticalAlign]="item3.verticalAlign"
+      >
+        <span>item3</span>
+      </ti-item>
+      <ti-item
+        [required]="item4.required"
+        [label]="item4.label"
+        [verticalAlign]="item4.verticalAlign"
+      >
+        <ti-item-label>
+          <span>测试标签dom</span>
+          <span *ngIf="item4.labelShow" style="color: blue">按钮</span>
+        </ti-item-label>
+        <span *ngFor="let item of [1, 2, 3]">{{item}}</span>
+      </ti-item>
+      <ti-item
+        [required]="item5.required"
+        [show]="item5.show"
+        [verticalAlign]="item5.verticalAlign"
+      >
+        <ti-item-label>
+          <span>存储地址:</span>
+        </ti-item-label>
+        <textarea style="width: 189px; min-height: 80px" tiTextarea></textarea>
+      </ti-item>
+    </ti-formfield>
+  </ti-item>
+</ti-formfield>
+
+<ti-formfield
+  [title]="'网格布局多列'"
+  [colsWidth]="colsWidth1"
+  [colsNumber]="colsNumber"
+>
+  <ti-item
+    [label]="item1.label"
+    [required]="item1.required"
+    [show]="item1.show"
+  >
+    <button tiButton type="button">Default</button>
+  </ti-item>
+  <ti-item [label]="item2.label" [required]="item2.required">
+    <input type="text" tiText [(ngModel)]="item2.value" style="width: 230px" />
+  </ti-item>
+  <ti-item
+    [required]="item3.required"
+    [show]="item3.show"
+    [label]="item3.label"
+    [verticalAlign]="item3.verticalAlign"
+  >
+    <span>item3</span>
+  </ti-item>
+  <ti-item
+    [required]="item4.required"
+    [label]="'测试标签Dom'"
+    [verticalAlign]="item4.verticalAlign"
+  >
+    <ti-formfield [title]="'嵌套表单'" [colsWidth]="colsWidth">
+      <ti-item
+        [label]="item1.label"
+        [required]="item1.required"
+        [show]="item1.show"
+      >
+        <button tiButton type="button">Default Button</button>
+        <span *ngIf="item1.showSpan">测试1</span>
+      </ti-item>
+      <ti-item [label]="item2.label" [required]="item2.required">
+        <input
+          type="text"
+          tiText
+          style="width: 200px"
+          [(ngModel)]="item2.value"
+        />
+      </ti-item>
+      <ti-item
+        [required]="item3.required"
+        [show]="item3.show"
+        [label]="item3.label"
+        [verticalAlign]="item3.verticalAlign"
+      >
+        <span>item3</span>
+      </ti-item>
+      <ti-item
+        [required]="item4.required"
+        [label]="item4.label"
+        [verticalAlign]="item4.verticalAlign"
+      >
+        <ti-item-label>
+          <span>测试标签dom</span>
+          <span *ngIf="item4.labelShow" style="color: blue">按钮</span>
+        </ti-item-label>
+        <span *ngFor="let item of [1, 2, 3]">{{item}}</span>
+      </ti-item>
+      <ti-item
+        [required]="item5.required"
+        [show]="item5.show"
+        [verticalAlign]="item5.verticalAlign"
+      >
+        <ti-item-label>
+          <span>存储地址:</span>
+        </ti-item-label>
+        <textarea style="width: 189px; min-height: 80px" tiTextarea></textarea>
+      </ti-item>
+    </ti-formfield>
+  </ti-item>
+</ti-formfield>

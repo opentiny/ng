@@ -1,0 +1,11 @@
+<h3>描述</h3>
+<p>
+  通过设置boxShadow可以为alert组件添加或者去除阴影效果。<br />
+  默认值为false，无阴影效果，设置boxShadow为true，则添加阴影效果。<br />
+  验证方法：可以打开控制台查看样式差异。有阴影效果时，ti-alert标签下的第一个div带有.ti3-alert-box-shadow样式；反之，则没有该样式。
+</p>
+<h3>示例</h3>
+<p>1、无阴影效果</p>
+<ti-alert>{{label}}</ti-alert> <br />
+<p>2、有阴影效果</p>
+<ti-alert [boxShadow]="true">{{label}}</ti-alert>

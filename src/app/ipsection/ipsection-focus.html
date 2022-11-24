@@ -1,0 +1,21 @@
+<h3>描述</h3>
+<p>设置autofoucus属性，默认聚焦第一个非灰化元素</p>
+<h3>示例</h3>
+<p>1.不设置autofocus</p>
+<ti-ipsection
+  id="ipsection-autofocus"
+  [(ngModel)]="ipValue"
+  [configs]="configs"
+></ti-ipsection>
+<br /><br />
+<p>当前Ip地址为：{{ipValue}}</p>
+<br />
+<p>2.设置autofocus且设置灰化项</p>
+<ti-ipsection
+  id="ipsection-autofocus-disabled"
+  [(ngModel)]="ipValue1"
+  [configs]="configs1"
+  autofocus
+></ti-ipsection>
+<br /><br />
+<p>当前Ip地址为：{{ipValue1}}</p>

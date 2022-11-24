@@ -1,0 +1,29 @@
+<h3>描述</h3>
+<p>最大值、最小值设置</p>
+<h3>示例</h3>
+<h4>1.不设置最大最小值时，默认最大值是 2^53， 最小值是 -2^53，当前值为30</h4>
+<ti-spinner style="width: 200px" [(ngModel)]="spinnerValue"></ti-spinner>
+<br /><br />
+
+<h4>2.修改最大值。最小最大值[0,20] 当前值为30</h4>
+<ti-spinner
+  style="width: 200px"
+  [max]="max1"
+  [min]="min1"
+  [(ngModel)]="spinnerValue1"
+></ti-spinner>
+<br /><br />
+<button (click)="changeMax1()">改变最大值为15</button> &nbsp;&nbsp;
+<button (click)="changeInvalid1()">改变最大值非法值</button> &nbsp;&nbsp;
+<br /><br />
+
+<h4>3.修改最小值。最小最大值[10,20] 当前值为8</h4>
+<ti-spinner
+  style="width: 200px"
+  [max]="max2"
+  [min]="min2"
+  [(ngModel)]="spinnerValue2"
+></ti-spinner>
+<br /><br />
+<button (click)="changeMin2()">改变最小值为12</button> &nbsp;&nbsp;
+<button (click)="changeInvalid2()">改变最小值为非法值</button> &nbsp;&nbsp;

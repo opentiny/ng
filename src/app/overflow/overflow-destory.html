@@ -1,0 +1,12 @@
+<h3>描述</h3>
+<p>
+  1、overflow指令在labelEdit组件中使用，该示例测试销毁场景：
+  点击隐藏按钮，宿主元素延时销毁，鼠标hover到宿主元素，tip呈现，等到宿主元素销毁时查看tip是否销毁
+</p>
+<h3>示例</h3>
+<div *ngIf="show">
+  <div tiOverflow tiTipPosition="right" [maxLine]="2" class="overflow-cls">
+    {{textContent}}
+  </div>
+</div>
+<button (click)="clickFn()">延时隐藏</button>

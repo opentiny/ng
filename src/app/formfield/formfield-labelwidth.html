@@ -1,0 +1,48 @@
+<h3>描述</h3>
+<p>设置labelWidth接口，表单条目label的宽度</p>
+<h3>示例</h3>
+<ti-formfield [title]="title" [labelWidth]="labelWidth">
+  <ti-item
+    *ngFor="let item of items"
+    [label]="item.label"
+    [required]="item.required"
+    [index]="item.index"
+  >
+    <input type="text" tiText [(ngModel)]="item.value" style="width: 230px" />
+  </ti-item>
+</ti-formfield>
+<br /><br />
+<ti-formfield [title]="title1" [labelWidth]="labelWidth">
+  <ti-item
+    *ngFor="let item of items1"
+    [label]="item.label"
+    [required]="item.required"
+    [index]="item.index"
+  >
+    <input type="text" tiText [(ngModel)]="item.value" style="width: 230px" />
+  </ti-item>
+</ti-formfield>
+<br /><br />
+<ti-formfield
+  [title]="title2"
+  [colsWidth]="colsWidth"
+  [labelWidth]="labelWidth1"
+>
+  <ti-item
+    *ngFor="let item of items1"
+    [label]="item.label"
+    [required]="item.required"
+    [index]="item.index"
+  >
+    <input type="text" tiText [(ngModel)]="item.value" style="width: 230px" />
+  </ti-item>
+  <ti-button-item>
+    <button type="button" tiButton style="margin-right: 20px">确认</button
+    ><!--
+         --><button type="button" tiButton>取消</button>
+  </ti-button-item>
+</ti-formfield>
+<br /><br />
+<button type="button" (click)="changeLabelwidth()" tiButton>
+  动态变更labelWidth
+</button>

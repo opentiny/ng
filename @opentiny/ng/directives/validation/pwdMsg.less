@@ -1,0 +1,162 @@
+@import "../../themes/basic/base-all.less";
+
+:host {
+  --ti-valid-pwd-tip-line-height: calc(var(--ti-common-font-size-base) * var(--ti-common-line-height-number));
+  --ti-valid-pwd-status-icon-size: var(--ti-common-size-4x);
+  --ti-valid-pwd-status-null-border-weight: var(--ti-common-border-weight-normal);
+  --ti-valid-pwd-status-null-border-color: rgba(255,255,255,0.1);
+  --ti-valid-pwd-status-null-size: calc(var(--ti-valid-pwd-status-icon-size) - var(--ti-valid-pwd-status-null-border-weight) * 2);
+  --ti-valid-pwd-space: var(--ti-common-space-2x);
+  --ti-valid-pwd-level-bar-height: 2px;
+  --ti-valid-pwd-level-bar-item-width: var(--ti-common-size-15x);
+  --ti-valid-pwd-circle-size: 6px;
+}
+
+.ti3-valid-pwd-tip-container{
+  line-height: var(--ti-valid-pwd-tip-line-height);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+  color: var(--ti-common-color-text-gray);
+}
+
+.ti3-valid-pwd-tip-item {
+  margin-bottom: var(--ti-common-space-3x);
+  .clearfix();
+}
+.ti3-valid-pwd-tip-status-null {
+  width: var(--ti-valid-pwd-status-null-size);
+  height: var(--ti-valid-pwd-status-null-size);
+  float: left;
+  margin-right: var(--ti-valid-pwd-space);
+  border: var(--ti-valid-pwd-status-null-border-weight) var(--ti-common-border-style-solid) var(--ti-valid-pwd-status-null-border-color);
+  border-radius: var(--ti-valid-pwd-status-null-size);
+  .box-sizing(content-box);
+  position: relative;
+  top: calc((var(--ti-valid-pwd-tip-line-height) - var(--ti-valid-pwd-status-icon-size)) / 2);
+  // 内嵌圆圈
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--ti-valid-pwd-circle-size);
+    height: var(--ti-valid-pwd-circle-size);
+    background-color: var(--ti-common-color-icon-darkbg-normal);
+    border-radius: var(--ti-common-border-radius-3);
+    .box-sizing(border-box);
+  }
+
+}
+
+.ti3-valid-pwd-tip-success {
+  .ti3-valid-pwd-tip(var(--ti-common-color-success));
+}
+.ti3-valid-pwd-tip-error {
+  .ti3-valid-pwd-tip(var(--ti-common-color-error));
+}
+
+.ti3-valid-pwd-tip-msg {
+  float: left;
+  width: calc(100% - var(--ti-valid-pwd-status-icon-size) - var(--ti-valid-pwd-space));
+}
+.ti3-valid-pwd-tip-security-text{
+  float: left;
+  margin-right:var(--ti-common-space-3x);
+}
+.ti3-valid-pwd-level-bars{
+  margin-right: var(--ti-common-space-3x);
+  float: left;
+  margin-top: calc(var(--ti-valid-pwd-tip-line-height) / 2);
+  &.ti3-valid-pwd-level-strong{
+    .active {
+      .ti3-valid-pwd-level-active(var(--ti-common-color-success));
+    }
+  }
+  &.ti3-valid-pwd-level-medium{
+    .active {
+      .ti3-valid-pwd-level-active(var(--ti-common-color-warn));
+    }
+  }
+  &.ti3-valid-pwd-level-weak{
+    .active {
+      .ti3-valid-pwd-level-active(var(--ti-common-color-error));
+    }
+  }
+}
+
+.ti3-valid-pwd-level-bar{
+  float: left;
+  width: calc(var(--ti-valid-pwd-level-bar-item-width) + var(--ti-valid-pwd-circle-size));
+  height: var(--ti-valid-pwd-level-bar-height);
+  background: var(--ti-common-color-text-weaken);
+  position: relative;
+  &:first-child {
+    width: calc(var(--ti-valid-pwd-level-bar-item-width) + var(--ti-valid-pwd-circle-size) * 2);
+    &:before {
+      .ti3-valid-pwd-level-circle();
+      left: 0;
+    }
+  }
+
+  &:after {
+    .ti3-valid-pwd-level-circle();
+    right: 0;
+  }
+}
+
+.ti3-valid-pwd-level{
+  margin-left: calc(var(--ti-valid-pwd-status-icon-size) + var(--ti-valid-pwd-space));
+  margin-top: var(--ti-common-space-4x);
+  color: var(--ti-common-color-text-gray);
+  .clearfix();
+}
+.ti3-valid-pwd-tip-security-status{
+  float: left;
+  height: var(--ti-common-size-5x);  //设置该字段高度为20px，确保其换行状态下显示状态切换时不会发生跳变
+}
+
+// 提示图标样式
+.ti3-valid-pwd-tip (@bgColor) {
+  width: var(--ti-valid-pwd-status-icon-size);
+  height: var(--ti-valid-pwd-status-icon-size);
+  font-size: var(--ti-valid-pwd-status-icon-size);
+  color: var(--ti-common-color-text-gray);
+  float: left;
+  margin-right: var(--ti-valid-pwd-space);
+  border-radius: var(--ti-common-border-radius-3);
+  margin-top: calc((var(--ti-valid-pwd-tip-line-height) - var(--ti-valid-pwd-status-icon-size)) / 2);
+  background-color: @bgColor;
+  text-align: center;
+  ti-icon[local]{
+    font-size: calc(var(--ti-valid-pwd-status-icon-size) * 0.75);
+    vertical-align: top;
+    line-height: var(--ti-valid-pwd-status-icon-size);
+  }
+}
+
+// 密码等级激活样式
+.ti3-valid-pwd-level-active (@bgColor) {
+  background: @bgColor;
+  &:first-child {
+    &:before {
+      background-color: @bgColor;
+    }
+  }
+
+  &:after {
+    background-color: @bgColor;
+  }
+}
+
+ // 密码等级圆圈
+.ti3-valid-pwd-level-circle {
+  content: '';
+  position: absolute;
+  top: calc((var(--ti-valid-pwd-level-bar-height) - var(--ti-valid-pwd-circle-size)) / 2);
+  width: var(--ti-valid-pwd-circle-size);
+  height: var(--ti-valid-pwd-circle-size);
+  background-color: var(--ti-common-color-text-weaken);
+  border-radius: var(--ti-common-border-radius-3);
+  .box-sizing(border-box);
+}

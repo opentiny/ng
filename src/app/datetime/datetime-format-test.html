@@ -1,0 +1,23 @@
+<h3>1.描述</h3>
+<p>format接口测试</p>
+<h3>2.示例</h3>
+<p>(2.1)不设置、设置为非plainObject时，使用国际化中datetime格式或者默认值</p>
+<ti-datetime [(ngModel)]="value"></ti-datetime>
+<br />
+<br />
+<br />
+<p>(2.2)设置为plainObject（yyyy.MM.dd HH:mm）时</p>
+<ti-datetime [(ngModel)]="value1" [format]="format"></ti-datetime>
+<br />
+<br />
+<br />
+<p>(2.2)设置为plainObject（yyyy.MM.dd HH）时</p>
+<ti-datetime [(ngModel)]="value2" [format]="format1"></ti-datetime>
+<br />
+<br />
+<br />
+<p>(2.3)动态变更</p>
+<ti-datetime [(ngModel)]="value3" [format]="format2"></ti-datetime>
+<br /><br />
+
+<button (click)="onFormatClick()">点击动态变更format</button>

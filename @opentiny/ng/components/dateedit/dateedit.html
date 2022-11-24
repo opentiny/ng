@@ -1,0 +1,12 @@
+<input #input
+    [placeholder]="placehoderText"
+    style="width: 100%"
+    type="text"
+    maxlength="20"
+    [(ngModel)]="inputValue"
+    (blur)="onBlur()"
+    (focus)="onFocus()"
+    [disabled]='disabled'
+    (keydown)='onKeydown($event)'
+    [id]="appendId('input')"
+    tiText>

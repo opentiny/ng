@@ -1,0 +1,87 @@
+<h3>描述</h3>
+<p>Actionmenu菜单按钮组件，选项数目依照最大个数和宽度空间。</p>
+<b>注: 10.1.5版本改动默认最大显示数量3个(包括menu)</b>
+<h3>示例</h3>
+<div style="margin-left: 100px">
+  <p>
+    1.属性默认值的测试：只设置items属性，其余属性均不设置，使用默认值【最大宽度（默认宽度250px）,间距（默认间距10px），最大显示个数】
+    ----- 正确显示结果：3项显示（包含menu），2项在外，其余在更多中显示
+  </p>
+  <ti-actionmenu
+    [items]="items"
+    [labelKey]="labelKey"
+    [panelMaxWidth]="panelMaxWidth"
+  ></ti-actionmenu>
+  <p>2.最大宽度和最大占位个数的配合</p>
+  <p>
+    2.1 最多显示4个，最大宽度265px（刚好能显示4个），间距20px -----
+    正确显示结果：3项在外显示，其余在更多中显示
+  </p>
+  <ti-actionmenu
+    [items]="items"
+    [labelKey]="labelKey"
+    [maxWidth]="maxWidth"
+    [space]="space"
+    [maxShowNum]="maxShowNum"
+    [moreText]="moreText"
+  ></ti-actionmenu>
+  <p>
+    2.2.最多显示4个，最大宽度500px（能显示全），间距20px -----
+    正确显示结果：3项在外显示，其余在更多中显示
+  </p>
+  <ti-actionmenu
+    [items]="items"
+    [labelKey]="labelKey"
+    [maxWidth]="maxWidth3"
+    [space]="space"
+    [maxShowNum]="maxShowNum"
+    [moreText]="moreText"
+  ></ti-actionmenu>
+  <p>
+    2.3.最多显示3个，最大宽度264px(265px时能够显示4个)，间距20px -----
+    正确显示结果：2项在外显示，其余在更多中显示
+  </p>
+  <ti-actionmenu
+    [items]="items"
+    [labelKey]="labelKey"
+    [maxWidth]="maxWidth4"
+    [space]="space"
+    [maxShowNum]="3"
+    [moreText]="moreText"
+  ></ti-actionmenu>
+  <p>
+    2.4.最多显示4个，最大宽度50px(更多项宽度为61px)，间距20px -----
+    正确显示结果：只显示下拉
+  </p>
+  <div style="margin-left: 100px">
+    <ti-actionmenu
+      [items]="items"
+      [labelKey]="labelKey"
+      [maxWidth]="maxWidth5"
+      [space]="space"
+      [maxShowNum]="maxShowNum"
+    ></ti-actionmenu>
+  </div>
+  <p>
+    2.5.item项只有两项，只够显示1项, 配置menuText -----
+    正确显示结果：只显示下拉，下拉文本为操作项
+  </p>
+  <ti-actionmenu
+    [items]="items25"
+    [labelKey]="labelKey"
+    [maxWidth]="maxWidth25"
+    [space]="space"
+    [menuText]="menuText"
+  ></ti-actionmenu>
+  <p>2.6.item项只有两项，够显示两项 ----- 显示两项</p>
+  <ti-actionmenu
+    [items]="items25"
+    [labelKey]="labelKey"
+    [maxWidth]="'138px'"
+  ></ti-actionmenu>
+  <p>3.item项只有一个</p>
+  <p>3.1 item项为灰化状态</p>
+  <ti-actionmenu [items]="items6" [labelKey]="labelKey"></ti-actionmenu>
+  <p>3.2 item项非灰化状态</p>
+  <ti-actionmenu [items]="items7" [labelKey]="labelKey"></ti-actionmenu>
+</div>

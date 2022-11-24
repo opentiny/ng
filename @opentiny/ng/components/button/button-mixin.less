@@ -1,0 +1,50 @@
+@import "../../themes/basic/mixins.less";
+
+:root {
+  --ti-button-timing-function-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.button-variant(@normal-color; @normal-background; @normal-border;
+                @hover-color; @hover-background; @hover-border;
+                @active-color; @active-background; @active-border;
+                @disable-color; @disable-background; @disable-border){
+  .button-state-variant(@normal-color; @normal-background; @normal-border);
+  &:not([disabled]) {
+    &:hover, &:focus {
+      .button-state-variant(@hover-color; @hover-background; @hover-border);
+    }
+    &:active {
+      .button-state-variant(@active-color; @active-background; @active-border);
+    }
+  }
+  &[disabled] {
+    .button-state-variant(@disable-color; @disable-background; @disable-border);
+  }
+}
+
+.button-state-variant(@color; @background; @border) {
+  color: @color;
+  background: @background;
+  border-color: @border;
+}
+
+.button-loading-icon(@border-color) {
+  .ti3-loading-default {
+    border-color: @border-color;
+    border-right-color: transparent;
+  }
+}
+
+.button-different-size(@height; @padding; @border-radius; @border-weight){
+    height: @height;
+    line-height: calc(@height - @border-weight * 2);
+    padding: 0 @padding !important;
+    font-size: var(--ti-common-font-size-base);
+    font-weight: var(--ti-common-font-weight-4);
+    border-radius: @border-radius;
+}
+
+.button-transition-with-diffrent-time(@time){
+  .transition(background-color; @time;var(--ti-button-timing-function-default), border-color; @time;var(--ti-button-timing-function-default),
+  box-shadow; @time;var(--ti-button-timing-function-default), color; @time;var(--ti-button-timing-function-default));
+}

@@ -1,0 +1,19 @@
+<ti-menu class="mb-3" id="menu-templete" [items]="items">
+  更多
+  <ng-template #item let-item let-i="index">
+    <ti-icon local
+      class="mr-3 text-blue-500"
+      *ngIf="item.iconName"
+      [name]="item.iconName"
+    ></ti-icon>
+    <span>{{item.label}}</span>
+  </ng-template>
+  <ng-template #tip let-item="context">
+    <ti-icon local
+      class="mr-3 text-yellow-500"
+      *ngIf="item.tipIconName"
+      [name]="item.tipIconName"
+    ></ti-icon>
+    <span>{{item.customTip}}</span>
+  </ng-template>
+</ti-menu>

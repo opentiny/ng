@@ -1,0 +1,66 @@
+//新插入的盒子的样式.ti3-multiselect-box-cell   默认样式
+:host {
+  --ti-tag-container-height: var(--ti-common-size-5x);
+  --ti-tag-clear-icon-size: var(--ti-common-size-3x);
+  --ti-tag-border-weight: var(--ti-common-border-weight-normal);
+  --ti-tag-icon-area-width: calc(var(--ti-tag-clear-icon-size) + var(--ti-common-space-10) * 2); // 图标大小12px + 左右间距各10px
+}
+:host.ti3-multiselect-box-cell {
+  display: inline-flex;
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+
+  &::after{
+    content:"";
+    overflow: hidden;
+    display: block;
+  }
+
+  width: auto;
+  max-width: calc(100% - var(--ti-tag-border-weight) * 2);
+  border-radius: var(--ti-common-border-radius-normal);
+  height: var(--ti-tag-container-height);
+  line-height: var(--ti-tag-container-height);
+  border: var(--ti-tag-border-weight) var(--ti-common-border-style-solid) var(--ti-common-color-transparent);
+  overflow: hidden;
+  color: var(--ti-common-color-text-secondary);
+  background-color: var(--ti-common-color-bg-normal);
+  box-sizing: content-box;
+
+  .ti3-box-cell-key {
+    box-sizing: border-box;
+    margin-left: var(--ti-common-space-10);
+    margin-right: var(--ti-common-space-6);
+    width: calc(100% - var(--ti-tag-icon-area-width) - var(--ti-common-space-6) - var(--ti-common-space-10));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:hover {
+      color: var(--ti-common-color-text-highlight);
+    }
+  }
+  & .ti3-icon-close-staic {
+    box-sizing: border-box;
+    color: var(--ti-common-color-icon-graybg-normal);
+    width: var(--ti-tag-icon-area-width);
+    height: 100%;
+    text-align: center;
+    font-size: var(--ti-tag-clear-icon-size);
+    &:hover {
+      color:var(--ti-common-color-icon-graybg-hover);
+    }
+  }
+
+  &.ti3-multiselect-option-disabled {
+    color: var(--ti-common-color-text-disabled);
+    background-color: var(--ti-common-color-bg-disabled);
+    border-color: var(--ti-common-color-bg-disabled);
+    cursor: not-allowed;
+    & .ti3-box-cell-key {
+      color: var(--ti-common-color-text-disabled);
+    }
+    & .ti3-icon-close-staic{
+      color: var(--ti-common-color-icon-graybg-disabled);
+    }
+  }
+}

@@ -1,0 +1,107 @@
+@import "../../themes/basic/base-all.less";
+
+:host {
+    --ti-subtitle-height: var(--ti-common-size-6x);
+    --ti-subtitle-font-weight: var(--ti-common-font-weight-7);
+    --ti-subtitle-icon-size: var(--ti-common-size-4x);
+    --ti-subtitle-icon-padding-left: var(--ti-common-space-6);
+    --ti-subtitle-icon-padding-right: var(--ti-common-space-2x);
+    // 左侧按钮区域宽度 = 按钮尺寸 + 左边距 + 右边距。注意：该变量在ts中使用到，用于设置最大宽度
+    --ti-subtitle-icon-width: calc(var(--ti-subtitle-icon-size) + var(--ti-subtitle-icon-padding-left) + var(--ti-subtitle-icon-padding-right));
+}
+
+:host {
+    display: inline-block;
+    height: var(--ti-subtitle-height);
+    line-height: var(--ti-subtitle-height);
+}
+.ti3-subtitle-container {
+    display: flex;
+    align-items: center;
+}
+//后退按钮
+.ti3-subtitle-icon-back {
+    position: relative;
+    display: inline-block;
+    font-size: var(--ti-subtitle-icon-size);
+    padding: 0 var(--ti-subtitle-icon-padding-right) 0 var(--ti-subtitle-icon-padding-left);
+    color:var(--ti-common-color-icon-normal);
+    font-weight: var(--ti-subtitle-font-weight);
+    vertical-align: top;
+    text-decoration: none;
+    cursor: pointer;
+    .box-sizing(border-box);
+    &:hover {
+        color: var(--ti-common-color-icon-hover);
+    }
+    &:after {
+        content:'';
+        position: absolute;
+        height: var(--ti-subtitle-icon-size);
+        right: 0;
+        top: calc((var(--ti-subtitle-height) - var(--ti-subtitle-icon-size)) / 2);
+        border-right: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-dividing);
+    }
+}
+
+// 单文本标题
+.ti3-subtitle-text {
+    padding-left: var(--ti-common-space-10);
+    font-size: var( --ti-common-font-size-2);
+    color: var( --ti-common-color-text-primary);
+    font-weight: var(--ti-subtitle-font-weight);
+    .box-sizing(border-box);
+    cursor: default;
+}
+
+// 覆盖select样式适配subtitle
+:host  ::ng-deep ti-select {
+  height: var(--ti-subtitle-height);
+  line-height: var(--ti-subtitle-height);
+  width: 100%;
+  .ti3-overflow-padding {
+      padding-right: 0;
+  }
+  & ::ng-deep ti-dominator.ti3-select-dominator-container {
+    vertical-align: top;
+    height: var(--ti-subtitle-height);
+    line-height: var(--ti-subtitle-height);
+    --ti-dominator-container-height: var(--ti-subtitle-height);
+  }
+}
+:host .ti3-subtitle-selected-text {
+    width: 100%;
+    font-size: var(--ti-common-font-size-2);
+    font-weight: var(--ti-subtitle-font-weight);
+}
+
+// 暗色主题
+:host[dark] {
+    .ti3-subtitle-icon-back {
+        color: var(--ti-common-color-icon-white);
+        &:after {
+            opacity: 0.2;
+        }
+        &:hover {
+            color: var(--ti-common-color-icon-hover);
+        }
+    }
+    .ti3-subtitle-text{
+        color:var(--ti-common-color-text-white);
+    }
+
+    & ::ng-deep ti-select {
+        background-color: transparent;
+        border-color: transparent;
+        &:hover,
+        &[tiFocused] {
+            border-color: transparent;
+        }
+    }
+    .ti3-subtitle-selected-text {
+        color: var(--ti-common-color-text-white);
+    }
+}
+
+
+

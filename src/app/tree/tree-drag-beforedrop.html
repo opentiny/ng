@@ -1,0 +1,13 @@
+<ti-tree
+  id="tree-draggable"
+  [data]="innerData"
+  [nodeDraggable]="true"
+  (beforeDrop)="onbeforeDrop($event)"
+>
+  <ng-template let-item let-i="index">
+    <span>{{item.label}}</span>
+    <span style="color: red" *ngIf="item.draggable === false">不可拖拽</span>
+  </ng-template>
+</ti-tree>
+<demo-log [logs]="myLogs"></demo-log>
+

@@ -1,0 +1,224 @@
+// 阴影
+// @x 横轴偏移
+// @y 纵轴偏移
+// @blur 阴影偏移
+// @color 阴影颜色
+.box-shadow (...) {
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+
+// 盒模型计算模式
+// @type border-box | content-box
+.box-sizing (@type:border-box) {
+  -webkit-box-sizing: @type;
+  -moz-box-sizing: @type;
+  -ms-box-sizing: @type;
+  box-sizing: @type;
+}
+
+// 变换
+.transition (...) {
+  -moz-transition: @arguments;
+  -webkit-transition: @arguments;
+  transition: @arguments;
+}
+
+.transition-transform(@transition) {
+  -webkit-transition: -webkit-transform @transition;
+  -moz-transition: -moz-transform @transition;
+  -o-transition: -o-transform @transition;
+  transition: transform @transition;
+}
+// 圆角
+.border-radius (...) {
+  -moz-border-radius: @arguments;
+  -webkit-border-radius: @arguments;
+  border-radius: @arguments;
+}
+
+// 文字选择
+.user-select (@type:none) {
+  // 火狐
+  -moz-user-select: @type;
+  // webkit浏览器
+  -webkit-user-select: @type;
+  // IE10
+  -ms-user-select: @type;
+  // 早期浏览器
+  -khtml-user-select: @type;
+  user-select: @type;
+}
+
+.triangle-up(@triangle-width; @triangle-height; @triangle-color){
+  width: 0;
+  height: 0;
+  border-left: calc(@triangle-width/2) solid transparent;
+  border-right: calc(@triangle-width/2) solid transparent;
+  border-bottom: @triangle-height solid @triangle-color;
+}
+
+.triangle-down(@triangle-width; @triangle-height; @triangle-color){
+  width: 0;
+  height: 0;
+  border-left: calc(@triangle-width/2) solid transparent;
+  border-right: calc(@triangle-width/2) solid transparent;
+  border-top: @triangle-height solid @triangle-color;
+}
+
+.translate(@x; @y) {
+  -webkit-transform: translate(@x, @y);
+  -ms-transform: translate(@x, @y); // IE9 only
+  -o-transform: translate(@x, @y);
+  transform: translate(@x, @y);
+}
+
+// 旋转
+.rotate(@x) {
+  -webkit-transform: rotate(@x);
+  -ms-transform: rotate(@x); // IE9 only
+  -moz-transform:rotate(@x);
+  -o-transform: rotate(@x);
+  transform: rotate(@x);
+}
+
+.clearfix() {
+  &:after {
+    display: table;
+    content: "";
+    clear: both;
+  }
+  &:before {
+    display: table;
+    content: "";
+  }
+}
+.background-linear-vertical(@start-color, @end-color...) {
+  & when (length(@arguments) > 1) {
+    background: mix(extract(@arguments,1), extract(@arguments,2), 50%);
+    background:-webkit-linear-gradient(top, @arguments);
+    background:-moz-linear-gradient(top, @arguments);
+    background: -o-linear-gradient(top, @arguments);
+    background: linear-gradient(top, @arguments);
+  }
+
+  & when(length(@arguments) = 1){
+    background: @arguments;
+  }
+}
+
+.ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flex-container(@direction: row, @justify-content: flex-start, @align-items: stretch) {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: @direction;
+  -ms-flex-direction: @direction;
+  -moz-flex-direction: @direction;
+  flex-direction: @direction;
+  -webkit-justify-content: @justify-content;
+  -moz-justify-content: @justify-content;
+  -ms-justify-content: @justify-content;
+  justify-content: @justify-content;
+  -webkit-align-items: @align-items;
+  -moz-align-items: @align-items;
+  -ms-align-items: @align-items;
+  align-items: @align-items;
+}
+
+.flex-item(@grow: 0) {
+  -webkit-flex-grow: @grow;
+  -ms-flex-grow: @grow;
+  -moz-flex-grow: @grow;
+  flex-grow: @grow;
+}
+
+/*------------------------------------------------动效------------------------------------------------*/
+//动效公共的less方法
+.animation(@animate-name, @time, @timing-function: cubic-bezier(0.40, 0.00, 0.20, 1.00), @delay:0s, @count:1,@wards:forwards) {
+  animation: @animate-name @time @timing-function @delay @count @wards;
+}
+
+//.common-animation用来定义动画的函数，如果不想使用该函数中的某个属性，直接使用默认值：false
+.common-animation(@common-name,
+              @from-border-color:false,@to-border-color:false,
+              @from-background-color:false,@to-background-color:false,
+              @from-color:false,@to-color:false) {
+  @keyframes @common-name{
+    from {
+      border: 1px solid @from-border-color;
+      background-color: @from-background-color;
+      color: @from-color;
+    }
+    to {
+      border: 1px solid @to-border-color;
+      background-color: @to-background-color;
+      color: @to-color;
+    }
+  }
+}
+
+//定义一个移动动画函数
+.translate-animation(@name,@from-y:0px,@to-y:0px,@from-x:0px,@to-x:0px) {
+  @keyframes @name{
+    from {
+      transform: translate(@from-x,@from-y);
+    }
+    to {
+      transform: translate(@to-x,@to-y);
+    }
+  }
+}
+
+//定义一个缩放函数
+.scale-animation(@scale-name,@from-scale,@to-scale) {
+  @keyframes  @scale-name{
+    from {
+      transform: scale(@from-scale);
+    }
+    to {
+      transform: scale(@to-scale);
+    }
+  }
+}
+
+//定义一个淡入淡出函数:使用的透明度参数必须是0--100，不能是0-1
+.fade-animation(@fade-name,@from-opacity,@to-opacity) {
+  @keyframes  @fade-name{
+    from {
+      opacity: @from-opacity;
+    }
+    to {
+      opacity: @to-opacity;
+    }
+  }
+}
+
+// 定义一个Y轴方向上缩放的动画函数
+.scaleY-animation(@scaleY-name,@scaleY-origin,@from-scaleY,@to-scaleY){
+    @keyframes @scaleY-name {
+      from{
+        transform-origin: @scaleY-origin;
+        transform: scaleY(@from-scaleY);
+      }
+      to{
+        transform-origin: @scaleY-origin;
+        transform: scaleY(@to-scaleY);
+      }
+    }
+}
+
+// 表单边框变化移入动画，在边框颜色变化过程中处理
+.form-border-animat-enter() {
+  .transition (border-color 0.2s);
+}
+
+// 表单边框变化移出动画，在边框颜色初始定义时处理
+.form-border-animat-init() {
+  .transition (border-color 0.15s);
+}

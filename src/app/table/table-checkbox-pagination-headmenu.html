@@ -1,0 +1,63 @@
+<ti-table [(displayedData)]="default.displayedData" [srcData]="default.srcData">
+  <table>
+    <thead>
+      <tr>
+        <th checkbox-column>
+          <input type="checkbox" tiCheckgroup [items]="default.displayedData" [(checkeds)]="default.checkedList"/>
+          <ti-head-menu (select)="onDefaultHeadmenuSelect($event)"></ti-head-menu>
+        </th>
+        <th width="80px">{{columns[1].title}}</th>
+        <th>{{columns[2].title}}</th>
+        <th>{{columns[3].title}}</th>
+        <th>{{columns[4].title}}</th>
+        <th>{{columns[5].title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of default.displayedData;trackBy: trackByFn" [ngClass]="{'ti3-selected-tr': default.checkedList.indexOf(row) !== -1}">
+        <td checkbox-column [ngClass]="{'ti3-disabled-cell': row.disabled}">
+          <input type="checkbox" tiCheckitem [item]="row" [disabled]="row.disabled"/>
+        </td>
+        <td>{{row.id}}</td>
+        <td>{{row.firstName}}</td>
+        <td>{{row.lastName}}</td>
+        <td>{{row.age}}</td>
+        <td>{{row.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ti-pagination [(currentPage)]="default.currentPage" [pageSize]="pageSize" [(totalNumber)]="default.totalNumber"></ti-pagination>
+</ti-table>
+<br/>
+<br/>
+
+<ti-table [(displayedData)]="custom.displayedData" [srcData]="custom.srcData">
+  <table>
+    <thead>
+      <tr>
+        <th checkbox-column>
+          <input type="checkbox" tiCheckgroup [items]="custom.displayedData" [(checkeds)]="custom.checkedList"/>
+          <ti-head-menu [options]="custom.options" (select)="onCustomHeadmenuSelect($event)"></ti-head-menu>
+        </th>
+        <th width="80px">{{columns[1].title}}</th>
+        <th>{{columns[2].title}}</th>
+        <th>{{columns[3].title}}</th>
+        <th>{{columns[4].title}}</th>
+        <th>{{columns[5].title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of custom.displayedData;trackBy: trackByFn" [ngClass]="{'ti3-selected-tr': custom.checkedList.indexOf(row) !== -1}">
+        <td checkbox-column [ngClass]="{'ti3-disabled-cell': row.disabled}">
+          <input type="checkbox" tiCheckitem [item]="row" [disabled]="row.disabled"/>
+        </td>
+        <td>{{row.id}}</td>
+        <td>{{row.firstName}}</td>
+        <td>{{row.lastName}}</td>
+        <td>{{row.age}}</td>
+        <td>{{row.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ti-pagination [(currentPage)]="custom.currentPage" [pageSize]="pageSize" [(totalNumber)]="custom.totalNumber"></ti-pagination>
+</ti-table>

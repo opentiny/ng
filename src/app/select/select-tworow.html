@@ -1,0 +1,17 @@
+<ti-select
+  id="select-tworow"
+  [options]="options"
+  [(ngModel)]="value"
+  placeholder="请选择">
+  <ng-template #selected let-item>
+    <span>{{item.primary}}</span>
+  </ng-template>
+  <ng-template #item let-item let-i="index">
+    <div>{{i}} {{item.primary}}</div>
+    <div tiTextweaken>{{item.secondary}}</div>
+  </ng-template>
+</ti-select>
+
+<div class="current-value-container">
+  <pre>Current Select: {{ value | json }}</pre>
+</div>

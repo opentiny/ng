@@ -1,0 +1,199 @@
+@import "../../themes/basic/base-all.less";
+
+:host {
+  --ti-steps-transition-time: 300ms;
+  --ti-steps-wire-height: 1px;
+  --ti-steps-max-width: 150px;
+  --ti-steps-box-size: var(--ti-common-size-5x);
+}
+
+:host {
+  display: block;
+}
+
+.ti3-steps {
+  padding: var(--ti-common-space-3x) 0px;
+  white-space: nowrap;
+    & .ti3-steps-explain {
+      vertical-align: middle;
+      display: inline-block;
+      .ti3-steps-text-container {
+        display: flex;
+        align-items: center;
+      }
+      .ti3-steps-icon {
+        font-size: var(--ti-common-font-size-4);
+        margin-left: var(--ti-common-space-2x);
+      }
+
+      .ti3-steps-box {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: var(--ti-steps-box-size);
+          height: var(--ti-steps-box-size);
+          .box-sizing(border-box);
+          font-size: var(--ti-common-font-size-1);
+          border: var(--ti-common-border-weight-normal) solid;
+          margin-left: var(--ti-common-space-2x);
+          position: relative;
+          .border-radius(var(--ti-common-border-radius-3));
+          &:before{
+            content: "";
+            display: inline-block;
+            width: var(--ti-steps-box-size);
+            height: var(--ti-steps-box-size);
+            .border-radius(var(--ti-common-border-radius-3));
+            background-color: var(--ti-common-color-bg-emphasize);
+            position: absolute;
+            opacity: 0;
+          }
+          & .ti3-steps-box-number {
+            position: absolute;
+          }
+        }
+
+        .ti3-steps-text {
+          display: inline-block;
+          line-height: var(--ti-steps-box-size);
+          margin: 0 var(--ti-common-space-2x) 0 var(--ti-common-space-base);
+          max-width: var(--ti-steps-max-width);
+          vertical-align: top;
+          word-break: break-word;
+          white-space: normal;
+        }
+    }
+    & li {
+        &:first-child.ti3-steps-explain .ti3-steps-box {
+            margin-left: 0px;
+        }
+
+        &:last-child.ti3-steps-explain .ti3-steps-text {
+          margin-right: 0px;
+        }
+    }
+
+    & .ti3-steps-explain-clickable {
+      cursor: pointer;
+    }
+    & .ti3-steps-line {
+      width: var(--ti-common-size-15x);
+      height: var(--ti-steps-wire-height);
+      min-width: var(--ti-common-size-5x);
+      vertical-align: middle;
+      display: inline-block;
+      line-height: 0; // 当父节点有line-height属性并大于3时，子节点继承该属性，此时两条线会错位
+      background-color: var(--ti-common-color-line-normal);
+      font-size: 0;
+      &:before{
+        content: " ";
+        display: inline-block;
+        width: 0%;
+        height: 100%;
+        background-color: var(--ti-common-color-line-active);
+     }
+  }
+}
+
+
+ // 未完成效果
+ .ti3-steps .ti3-steps-uncomplete {
+  &.ti3-steps-line::before{
+    .steps-line-animation(0%)
+  }
+  &.ti3-steps-explain {
+    .ti3-steps-box {
+      .steps-box(var(--ti-common-color-icon-normal), var(--ti-common-color-icon-normal), 0)
+    }
+    & .ti3-steps-text {
+      .steps-text-animation(var(--ti-common-color-text-secondary), 0%);
+    }
+    .ti3-steps-icon {
+      color: var(--ti-common-color-text-secondary);
+    }
+  }
+}
+
+// 完成状态
+.ti3-steps .ti3-steps-complete {
+  &.ti3-steps-line::before{
+    .steps-line-animation(100%)
+  }
+  &.ti3-steps-explain {
+    .ti3-steps-box {
+      .steps-box(var(--ti-common-color-icon-active), var(--ti-common-color-icon-active), 0)
+    }
+    & .ti3-steps-text {
+      color: var(--ti-common-color-text-highlight);
+    }
+    .ti3-steps-icon {
+      color: var(--ti-common-color-text-highlight);
+    }
+  }
+}
+
+// 选中状态
+.ti3-steps .ti3-steps-active {
+  &.ti3-steps-line::before{
+    .steps-line-animation(100%)
+  }
+  &.ti3-steps-explain {
+    .ti3-steps-box {
+      .steps-box(var(--ti-common-color-icon-active), var(--ti-common-color-text-white), 1)
+    }
+    & .ti3-steps-text {
+      .steps-text-animation(var(--ti-common-color-text-highlight), 100%);
+    }
+    .ti3-steps-icon {
+      color: var(--ti-common-color-text-highlight);
+    }
+  }
+}
+
+// 灰化状态
+.ti3-steps .ti3-steps-disabled {
+  &.ti3-steps-explain {
+    .ti3-steps-box {
+      border-color: var(--ti-common-color-text-weaken);
+      color:var(--ti-common-color-text-weaken);
+      &:before {
+        display: none !important;
+      }
+    }
+    & .ti3-steps-text {
+      color: var(--ti-common-color-text-weaken);
+      cursor: not-allowed;
+    }
+    .ti3-steps-icon {
+      color: var(--ti-common-color-text-weaken);
+    }
+  }
+}
+
+.steps-box(@border-color, @color, @number) {
+  border-color: @border-color;
+  color: @color;
+  &:before{
+    transform: scale(@number);
+    opacity:  @number;
+    transition: transform var(--ti-steps-transition-time), opacity var(--ti-steps-transition-time);
+  }
+}
+
+// 不支持IE
+.steps-text-animation(@color, @background-size-width) {
+  color: @color;
+  background-size: @background-size-width 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(var(--ti-common-color-text-highlight) 0%, var(--ti-common-color-text-highlight) 100%);
+  background-image: -ms-linear-gradient(top, transparent, transparent);
+  transition: background-size var(--ti-steps-transition-time), color var(--ti-steps-transition-time);
+}
+
+.steps-line-animation(@width) {
+  width: @width;
+  transition: width var(--ti-steps-transition-time);
+}
+
+

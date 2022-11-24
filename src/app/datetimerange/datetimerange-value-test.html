@@ -1,0 +1,26 @@
+<h3>1.描述</h3>
+<p>value接口测试，可设置样式，此处设置宽度为410px;</p>
+<h3>导入</h3>
+<p>import {{ '{' }} TiDatetimeRangeModule {{ '}' }} from '@opentiny/ng';</p>
+<h3>2.示例</h3>
+<p>(2.1)设置为null、字符串类型、非法日期时:输入框显示空白</p>
+<ti-datetime-range
+  style="width: 410px"
+  [(ngModel)]="value"
+  [id]="id"
+></ti-datetime-range>
+<br />
+<br />
+<br />
+<p>(2.2)动态变更</p>
+<ti-datetime-range
+  style="width: 410px"
+  [(ngModel)]="value1"
+></ti-datetime-range>
+<br />
+<br />
+<br />
+
+<button (click)="valueClickFn()">点击改变value值</button>
+<button (click)="valueClickFn1()">点击改变value值中的begin起始值</button>
+<button (click)="valueClickFn2()">点击改变value值中的end结束值</button>

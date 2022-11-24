@@ -1,0 +1,51 @@
+<h3>描述</h3>
+<p>
+  Select组件提供beforeSearch事件接口，监听搜索框的内容变更，可以获取到搜索框的内容
+</p>
+<p>
+  beforeSearch事件接口
+</p>
+<h3>示例</h3>
+<p>
+  示例中，列表初始化时加载三条数据，搜索时加载全部的匹配的数据，比如在示例1搜索“国”，或者在示例2搜索“国”
+</p>
+<h4>1.单选 + 后台搜索:</h4>
+<br />
+<button type="button" (click)="changeOptions()">
+  改变下拉数据options(后台搜索时options支持动态变更)</button
+><br /><br />
+<span>国家: </span>
+<ti-select
+  style="width: 120px"
+  [searchable]="true"
+  [options]="myOptions"
+  [(ngModel)]="mySelecteds"
+  (beforeSearch)="onBeforeSearch($event)"
+  placeholder="请选择国家"
+  id="myselect"
+>
+</ti-select>
+<br />
+<p>选中项：{{mySelecteds | json}}</p>
+<br />
+
+<h4>2.多选 + 全选 + 后台搜索，下拉选项中有禁用的:</h4>
+<br />
+<button type="button" (click)="changeOptions1()">
+  改变下拉数据options(10.1.16 后台搜索时options支持动态变更)</button
+><br /><br />
+<span>国家: </span>
+<ti-select
+  [multiple]="true"
+  [selectAll]="true"
+  [searchable]="true"
+  [options]="myOptions1"
+  [(ngModel)]="mySelecteds1"
+  (beforeSearch)="onBeforeSearch1($event)"
+  placeholder="请选择国家"
+  id="myselect1"
+>
+</ti-select>
+<br />
+<p>选中项：{{mySelecteds1 | json}}</p>
+<br />

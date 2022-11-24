@@ -1,0 +1,8 @@
+<ti-upload
+  url="./upload"
+  type="block"
+  [filters]="filters"
+  (addItemFailed)="onAddItemFailed($event)"
+  (addItemSuccess)="onAddItemSuccess($event)"
+></ti-upload>
+<demo-log [logs]="myLogs"></demo-log>

@@ -1,0 +1,122 @@
+export default {
+  column: "2",
+
+  demos: [
+    {
+      demoId: "appendToBody",
+      name: {
+        "zh-CN": "附着在body上",
+        "en-US": "appendToBody"
+      },
+      desc: {
+        "zh-CN": "<p>通过属性<code>appendToBody</code>配置下拉面板是否附着在<code>body</code>上。在有局部滚动条的场景下，如果配置成false，下拉面板和选择框不会分离",
+        "en-US": "<p>button color</p>"
+      },
+      tag: "website-tiny-select-appendtobody",
+      codeFiles: [
+        "select-appendtobody.html",
+        "SelectAppendtobodyComponent.ts"
+      ]
+    },
+    {
+      demoId: "beforeOpen",
+      name: {
+        "zh-CN": "懒加载",
+        "en-US": "beforeOpen"
+      },
+      desc: {
+        "zh-CN": "下拉面板展开前触发的回调，一般用于懒加载场景。",
+        "en-US": "<p>button color</p>"
+      },
+      tag: "website-tiny-select-lazy",
+      codeFiles:[
+        "select-lazy.html",
+        "SelectLazyComponent.ts"
+      ]
+
+    },
+    {
+      demoId: "template",
+      name: {
+        "zh-CN": "自定义模板",
+        "en-US": "item"
+      },
+      desc: {
+        "zh-CN": "通过<code>placeholder</code>配置选择框提示文本的模板。通过<code>selected</code>配置选择框中选中项的模板。通过<code>item</code>配置下拉列表中选项的模板。通过<code>footer</code>配置下拉列表底部的模板。",
+        "en-US": "<p>item</p>"
+      },
+      tag: "website-tiny-select-template",
+      codeFiles:[
+        "select-template.html",
+        "SelectTemplateComponent.ts"
+      ]}
+  ],
+  api: {
+    properties: [
+      {
+        demoId: "appendToBody",
+        name: "appendToBody",
+        type: "boolean",
+        desc: {
+          "zh-CN": "下拉面板是否附着在body上",
+          "en-US": "appendToBody"
+        },
+        defaultValue: "true"
+      }
+    ],
+    events: [
+      {
+        demoId: "beforeOpen",
+        name: "beforeOpen",
+        type: "EventEmitter<TiSelectComponent>",
+        desc: {
+            "zh-CN": "用户想要打开面板的通知事件，一般用于数据懒加载",
+            "en-US": "beforeOpen"
+        },
+        defaultValue: ""
+      }
+    ],
+    solts: [
+      {
+        demoId: "template",
+        name: "footer",
+        type: "TemplateRef",
+        desc: {
+          "zh-CN": "下拉列表中底部的插槽",
+          "en-US": "footer"
+        },
+        defaultValue: ""
+      },
+      {
+          demoId: "template",
+          name: "item",
+          type: "TemplateRef",
+          desc: {
+            "zh-CN": "下拉列表中选项的插槽",
+            "en-US": "item",
+          },
+          defaultValue: ""
+      },
+      {
+        demoId: "template",
+        name: "placeholder",
+        type: "TemplateRef",
+        desc: {
+          "zh-CN": "选择框提示文本的插槽",
+          "en-US": "placeholder",
+        },
+        defaultValue: ""
+      },
+      {
+        demoId: "template",
+        name: "selected",
+        type: "TemplateRef",
+        desc: {
+          "zh-CN": "选择框选中项的插槽",
+          "en-US": "selected",
+        },
+        defaultValue: ""
+      }
+    ]
+  }
+}

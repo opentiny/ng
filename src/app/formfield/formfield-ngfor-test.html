@@ -1,0 +1,11 @@
+<button type="button" ti-button (click)="addItems()">addItems</button>
+<ti-formfield [type]="type">
+  <ti-item
+    *ngFor="let item of items"
+    [label]="item.label"
+    [required]="item.required"
+    [index]="item.index"
+  >
+    <div>{{item.value}}</div>
+  </ti-item>
+</ti-formfield>

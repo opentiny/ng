@@ -1,0 +1,1 @@
+npx live-server ./dist --port=8020 --open=tiny3doc/tiny3demo

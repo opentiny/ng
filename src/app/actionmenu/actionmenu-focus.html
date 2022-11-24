@@ -1,0 +1,27 @@
+<h3>描述</h3>
+<p>Actionmenu菜单按钮组件，支持聚焦autofoucs/focus()/tabindex</p>
+<h3>示例</h3>
+<p>1.autofocus：</p>
+<div style="margin: 0 auto">
+  <ti-actionmenu autofocus [items]="items" (select)="onSelect($event)">
+  </ti-actionmenu>
+</div>
+<p>2.focus()：</p>
+<div style="margin: 0 auto">
+  <ti-actionmenu #myactionmenu [items]="items" (select)="onSelect($event)">
+    <ng-template let-item let-i="index">
+      <span>{{item.label}}</span>
+    </ng-template>
+  </ti-actionmenu>
+  <br />
+  <button (click)="myactionmenu.focus()">组件focus()</button>
+  &nbsp;
+  <button (click)="myactionmenu.blur()">组件blur()</button>
+  &nbsp;
+  <button (click)="myactionmenu.nativeElement.focus()">标签元素focus()</button>
+</div>
+<p>3.tabindex：</p>
+<div style="margin: 0 auto">
+  <ti-actionmenu tabindex="3" [items]="items" (select)="onSelect($event)">
+  </ti-actionmenu>
+</div>

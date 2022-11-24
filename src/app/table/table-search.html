@@ -1,0 +1,60 @@
+<span class="inline-block mb-3 mr-2 align-middle">firstName,lastName,or age:</span>
+<input class="mb-3" type="text" tiText [(ngModel)]="oneWordSearchValue" (ngModelChange)="setOneWordSearch($event)"/>
+<ti-table [srcData]="oneWordSearch.srcData" 
+          [(displayedData)]="oneWordSearch.displayedData"
+          [searchWords]="oneWordSearch.searchWords"
+          [searchKeys]="oneWordSearch.searchKeys"
+          [searchStrictKeys]="oneWordSearch.searchStrictKeys">
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let column of columns">{{column.title}}</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="oneWordSearch.displayedData.length > 0">
+        <tr *ngFor="let row of oneWordSearch.displayedData">
+          <td>{{row.firstName}}</td>
+          <td>{{row.lastName}}</td>
+          <td>{{row.age}}</td>
+          <td>{{row.email}}</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="oneWordSearch.displayedData.length === 0">
+        <tr class="ti3-table-nodata">
+            <td tiColspan>{{noDadaInfo}}</td>
+        </tr>
+      </tbody>
+    </table>
+</ti-table>
+<br/><br/><br/>
+
+<span class="inline-block mb-3 mr-2 align-middle">firstName:</span>
+<input class="mb-3 mr-4" type="text" tiText [(ngModel)]="moreThanOneWordSearchValue1" (ngModelChange)="setMoreThanOneWordSearch($event, 0)"/>
+<span class="inline-block mb-3 mr-2 align-middle">age:</span>
+<input class="mb-3" type="text" tiText [(ngModel)]="moreThanOneWordSearchValue2" (ngModelChange)="setMoreThanOneWordSearch($event, 1)"/>
+
+<ti-table [srcData]="moreThanOneWordSearch.srcData"
+          [(displayedData)]="moreThanOneWordSearch.displayedData"
+          [searchWords]="moreThanOneWordSearch.searchWords"
+          [searchKeys]="moreThanOneWordSearch.searchKeys">
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let column of columns">{{column.title}}</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="moreThanOneWordSearch.displayedData.length > 0">
+        <tr *ngFor="let row of moreThanOneWordSearch.displayedData">
+          <td>{{row.firstName}}</td>
+          <td>{{row.lastName}}</td>
+          <td>{{row.age}}</td>
+          <td>{{row.email}}</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="moreThanOneWordSearch.displayedData.length === 0">
+        <tr class="ti3-table-nodata">
+            <td tiColspan>{{noDadaInfo}}</td>
+        </tr>
+      </tbody>
+    </table>
+</ti-table>

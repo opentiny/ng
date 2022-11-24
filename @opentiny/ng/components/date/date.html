@@ -1,0 +1,56 @@
+<ti-date-dominator #dominator
+                   [id]="appendId('dominator')"
+                   [clearable]="clearIcon"
+                   [(ngModel)]="inputValue"
+                   [disabled]="disabled"
+                   (clear)="onIconClearClick($event)"
+                   (click)="onShowClick()">{{ placeholder }}</ti-date-dominator>
+<ti-drop #drop
+        [id]="appendId('drop')"
+        class="ti3-date-picker"
+        [ngClass]="{'ti3-date-customize': hasCustomizeTime}"
+        [dominatorElem]="dominatorCom.nativeElement"
+        fixMaxHeight="true"
+        [panelWidth]="datePanelWidth"
+        [dominatorSpace]='dominatorSpace'
+        [panelAlign]="panelAlign"
+        [browserSpace]="browserSpace"
+        [determinPositionFn]="determinPositionFn"
+        theme='noborder'>
+        <section class='ti3-date-clear'>
+            <section *ngIf='hasCustomizeTime' class='ti3-date-customize-container'>
+                <ng-container *ngTemplateOutlet="customizeTemplate; context:  {$implicit: customizeOptions}"></ng-container>
+            </section>
+            <section [ngClass]="{'ti3-date-panel-container': hasCustomizeTime}">
+                <ti-date-edit
+                [id]="appendId('date-edit')"
+                class='ti3-date-edit'
+                [(ngModel)] = "datePanel.value.begin"
+                [min] = "datePanel.min"
+                [max] = "datePanel.max"
+                [format]="datePanel.format"
+                [disabledDays]='disabledDays'
+                (keydown)="onKeydownFn($event, datePanel.value.begin, 'begin')"
+                (ngModelChange)="setInputValue(datePanel.value.begin)">
+            </ti-date-edit>
+            <ti-date-panel
+                [id]="appendId('panel')"
+                [(value)]="datePanel.value"
+                [focusedPosition]='focusedPosition'
+                [isRange]='false'
+                [(picker)]="datePanel.picker"
+                [min]="datePanel.min"
+                [max]="datePanel.max"
+                [disabledDays]='disabledDays'
+                [nowDateTime]="datePanel.nowDateTime"
+                [format]="datePanel.format"
+                (select)="datePanel.select()"></ti-date-panel>
+            </section>
+        </section>
+</ti-drop>
+
+<ng-template #customizeTemplate let-options>
+    <ul [id]="appendId('list')">
+        <li *ngFor='let option of options; index as i;' class='ti3-customize-time-label' (click)='customizeTimeClickFn(option.value.begin)' [id]="appendId('label_' + i)">{{option.label}}</li>
+    </ul>
+</ng-template>

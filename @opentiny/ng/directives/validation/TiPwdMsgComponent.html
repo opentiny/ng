@@ -1,0 +1,21 @@
+<div class="ti3-valid-pwd-tip-container">
+    <div *ngFor = "let item of msgModel.msgItems;" class="ti3-valid-pwd-tip-item">
+        <span class="ti3-valid-pwd-tip-status-null" *ngIf = "item.validStatus === -1"></span>
+        <span class="ti3-valid-pwd-tip ti3-valid-pwd-tip-success" *ngIf = "item.validStatus === true">
+            <ti-icon local name="alert-success"></ti-icon>
+        </span>
+        <span class="ti3-valid-pwd-tip ti3-valid-pwd-tip-error" *ngIf = "item.validStatus === false">
+            <ti-icon local name="x-thin"></ti-icon>
+        </span>
+        <span class="ti3-valid-pwd-tip-msg">{{item.msg}}</span>
+    </div>
+    <div class="ti3-valid-pwd-level">
+        <span class="ti3-valid-pwd-tip-security-text">{{msgModel.securityText}}</span>
+        <div class="ti3-valid-pwd-level-bars" [ngClass]="{'ti3-valid-pwd-level-weak': msgModel.level === 0, 'ti3-valid-pwd-level-medium': msgModel.level === 1, 'ti3-valid-pwd-level-strong': msgModel.level === 2}">
+            <span class="ti3-valid-pwd-level-bar" [ngClass]="{'active': msgModel.level >= 0}"></span>
+            <span class="ti3-valid-pwd-level-bar" [ngClass]="{'active': msgModel.level >= 1}"></span>
+            <span class="ti3-valid-pwd-level-bar" [ngClass]="{'active': msgModel.level >= 2}"></span>
+        </div>
+            <span class="ti3-valid-pwd-tip-security-status">{{msgModel.securityStatus}}</span>
+    </div>
+</div>

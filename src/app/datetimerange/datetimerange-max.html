@@ -1,0 +1,45 @@
+<h3>描述</h3>
+<p>max接口测试</p>
+<h3>示例</h3>
+<h4>1.最大值设置为字符串类型、非法日期时：最大值为默认值</h4>
+<br />
+<ti-datetime-range [(ngModel)]="value" [max]="max"></ti-datetime-range>
+<br />
+<br />
+<h4>
+  2.设置为正常日期值时，初始、下拉面板显示及用户操作改变时都必须小于这个最大值
+</h4>
+<br />
+<ti-datetime-range [(ngModel)]="value1" [max]="max1"></ti-datetime-range>
+<br />
+<br />
+最大值： {{ max1 | date: "yyyy-MM-dd hh:mm:ss"}}
+<br />
+<br />
+<h4>3.动态改变最大值</h4>
+<br />
+<ti-datetime-range [(ngModel)]="value2" [max]="max2"></ti-datetime-range>
+<br />
+<br />
+<h4>4.最大值设置为new Date()</h4>
+<br />
+<ti-datetime-range [(ngModel)]="value3" [max]="max3"></ti-datetime-range>
+<br />
+<br />
+最大值： {{ max2 | date: "yyyy-MM-dd hh:mm:ss"}}
+<br />
+<br />
+<button (click)="maxValueClick()">改变最大值（2030/3/15）</button>
+<button (click)="maxValueClick2()">改变最大值为undefined</button>
+<br />
+<br />
+<h4>5.dayClick事件中设置最大值（选择开始时间，更改最大值 10.1.13版本支持）</h4>
+<br />
+最大值： {{ max4 | date: "yyyy-MM-dd hh:mm:ss" }}
+<br />
+<br />
+<ti-datetime-range
+  [(ngModel)]="value4"
+  [max]="max4"
+  (dayClick)="onDayClick($event)"
+></ti-datetime-range>

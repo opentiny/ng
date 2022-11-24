@@ -1,0 +1,32 @@
+version: 1.0
+name: ui-ng
+#  开发语言
+language:
+  - nodejs
+
+#  构建工具
+dependencies:
+  base:
+    nodejs: 16.15.0
+
+
+#  编译机类型
+machine:
+  standard:
+    euler:
+      - default
+
+#  定义构建的命令行，通过定义的构建命令行可以构建出artifacts中定义的构建产物。
+scripts:
+  - npm i && sh -x tiny3-build-prod.sh && tar -zcvf ui-ng.$CID_BUILD_NUMBER.tar.gz ./dist/*  #  请修改成业务使用的构建脚本文件相对路径
+
+
+#  定义构建产物，在编译完成后根据此配置项上传构建产物。
+artifacts:
+  cdk:
+    - ./ui-ng.*.tar.gz
+  npm_deploy:
+    - config_path: ./dist/@cloud/tiny3/package.json  #必填，package.json所在路径/package.josn
+
+variables:
+   CID_NPM_SETTING: cbu-npm-settings

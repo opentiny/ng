@@ -1,0 +1,20 @@
+<h3>描述</h3>
+<p>场景测试，测试组件功能是否正常</p>
+<h3>示例</h3>
+<h4>不设置初始值</h4>
+<p>1.1 模板式表单（值为 undefined）</p>
+<ti-ipsection
+  id="ipsection-test-model"
+  [(ngModel)]="ipValue"
+  [configs]="configs"
+></ti-ipsection>
+<br /><br />
+<p>当前Ip地址为：{{ipValue}}</p>
+<p>1.2.响应式表单，使用formControl绑定值（值为 null)</p>
+<ti-ipsection
+  id="ipsection-test-formControl"
+  [formControl]="control"
+  [configs]="configs"
+></ti-ipsection>
+<br /><br />
+<p>当前Ip地址为：{{control.value}}</p>

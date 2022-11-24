@@ -1,0 +1,28 @@
+<ng-container *ngFor="let config of configs; index as i; let last=last">
+    <ng-container *ngIf="!config.options; else selectTemplate" >
+        <form [formGroup]='formGroup' style="display:inline-block">
+            <input autocomplete="off"
+                [id]="appendId('input_' + config.section)"
+                [tiMask]="maskInput"
+                class="ti3-ipsection ti3-ipsection-input"
+                [ngClass]="{'ti3-ipsection-text-blod': config.bold}"
+                formControlName="{{'input_' + i}}"
+                tiText [tiValidation]="config.validation"/>
+        </form>
+    </ng-container>
+    <ng-template #selectTemplate>
+        <ti-select class="ti3-ipsection ti3-ipsection-select"
+                   [id]="appendId('select_' + config.section)"
+                   [options]='config.options'
+                   [(ngModel)]="config.selected"
+                   (ngModelChange)="onChange(i, $event)"
+                   [disabled]="config.disabled || disabled">
+                   <ng-template let-option>{{option}}</ng-template>
+        </ti-select>
+    </ng-template>
+    <section *ngIf="!last"
+              class="ti3-ipsection-division"
+              [ngClass]="{'ti3-ipsection-dot': i < 3,
+                          'ti3-ipsection-maskdivision': i===3,
+                          'ti3-ipsection-division-disabled': disabled}"></section>
+</ng-container>

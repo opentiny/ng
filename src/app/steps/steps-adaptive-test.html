@@ -1,0 +1,41 @@
+<h3>描述</h3>
+<p>
+  adaptive接口场景测试。设置为adaptive为true时，整体宽度会自适应撑满父容器，父容器宽度改变的时候steps也会调整(这个是10.1.2版本才会支持),
+  label改变时steps也会调整。
+</p>
+<h3>示例</h3>
+
+<h4>1.容器固定值宽度，改变容器宽度或改变label，steps都会自适应</h4>
+<br />
+<div style="width: 900px; border: 1px solid green" #container1>
+  <ti-steps
+    [adaptive]="true"
+    [steps]="steps1"
+    [(activeStep)]="activeStep1"
+  ></ti-steps>
+</div>
+<br />
+<p>当前选中项:{{activeStep1.label}}</p>
+<br />
+<button type="button" (click)="changeLabel1()">改变label</button>
+<button type="button" (click)="changeSteps1()">改变步骤</button>
+<button type="button" (click)="changeContainerWidht1(container1)">
+  改变容器宽度
+</button>
+
+<h4>2.容器宽度自适应时，容器宽度变化或改变label，steps都会自适应</h4>
+<br />
+<div style="margin-left: 192px; border: 1px solid green" #container2>
+  <ti-steps
+    [adaptive]="true"
+    [steps]="steps2"
+    [(activeStep)]="activeStep2"
+  ></ti-steps>
+</div>
+<br />
+<p>当前选中项:{{activeStep2.label}}</p>
+<br />
+<button type="button" (click)="changeLabel2()">改变label</button>
+<button type="button" (click)="changeContainerWidht2(container2)">
+  改变容器左间距，容器宽度发生变化(模拟和leftmenu配合使用时)
+</button>

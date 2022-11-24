@@ -1,0 +1,38 @@
+<input #input tiText
+        class="ti3-searchbox-input"
+        [disabled]="disabled"
+        spellcheck=false
+        (keyup.enter)="onInputEnter()"
+        [(ngModel)] = "inputValue"
+        [placeholder]="placeholder"
+        (clear)="onClear($event)"
+        (ngModelChange)="onInputChange($event)"
+        [maxlength]="maxlength"
+        [id]="appendId('input')"
+        (select)="inputSelect($event)"
+        (mousedown)="onInputMousedown()">
+<div class="ti3-searchbox-divider"
+     (mousedown)="onSearch()"
+     [hidden]="model === '' || model === undefined || model === null"></div>
+<div class="ti3-searchbox-search ti3-icon ti3-icon-search" tiOutline [tabindex]="disabled ? -1 : 0" style="outline-offset: -2px;"
+     (mousedown)="onSearch()" (keyup.enter)="onSearch()"
+     [id]="appendId('search')"></div>
+<ti-droplist #droplist
+              [dominatorElem]="nativeElement"
+              [options]="suggestions"
+              [(ngModel)]="selected"
+              [labelKey]="labelKey"
+              [panelMaxHeight]="panelMaxHeight"
+              [panelWidth]="panelWidth"
+              [referElem]="appendToBody ? undefined : nativeElement"
+              (ngModelChange)="onDroplistChange($event)"
+              (select)="onSelect($event)"
+              [id]="appendId('droplist')">
+        <ng-template let-item let-i=index>
+                <ng-container *ngIf="itemTemplate else listLabelTemplate">
+                        <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: item,index: i}">
+                        </ng-container>
+                </ng-container>
+                <ng-template #listLabelTemplate><span [title]="item[labelKey]">{{item[labelKey]}}</span></ng-template>
+        </ng-template>
+</ti-droplist>

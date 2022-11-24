@@ -1,0 +1,135 @@
+@import "button-mixin.less";
+
+@button-name: tiButton;
+
+[@{button-name}] {
+    --ti-button-onlyIcon-size: var(--ti-common-size-7x);
+    --ti-button-onlyIcon-padding: 5px;
+    --ti-button-danger-border-color-hover: var(--ti-common-bg-primary-hover); // 边框悬浮色与背景悬浮色相同变量，增加配置项
+    // 因base文件不涉及此种场景且仅有运维及监控场景使用，所以此处直接使用base定义
+    --ti-button-primary-bg-color: var(--ti-base-color-brand-6);
+    --ti-button-primary-border-color: var(--ti-base-color-brand-6);
+    --ti-button-primary-bg-color-hover: var(--ti-base-color-brand-5);
+    --ti-button-primary-border-color-hover: var(--ti-base-color-brand-5);
+    --ti-button-primary-bg-color-active: var(--ti-base-color-brand-7);
+    --ti-button-primary-border-color-active: var(--ti-button-primary-bg-color-active);
+}
+
+.ti3-btn, [@{button-name}]{
+    display: inline-block;
+    padding: 0 var(--ti-common-space-5x);
+    height: var(--ti-common-size-7x);
+    line-height: calc(var(--ti-common-size-7x) - var(--ti-common-border-weight-normal));
+    border-radius: var(--ti-common-border-radius-normal);
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    .user-select;
+    border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) transparent;
+    .box-sizing(border-box);
+    &[disabled] {
+        cursor: not-allowed;
+    }
+    .button-transition-with-diffrent-time(.15s);
+}
+
+[@{button-name}], .ti3-btn {
+    &.ti3-btn-noborder {
+        border: none;
+        color: var(--ti-common-color-text-link);
+        padding: 0;
+        line-height: var(--ti-common-line-height-number);
+        font-size: var(--ti-common-font-size-base);
+        height: calc(var(--ti-common-font-size-base) * var(--ti-common-line-height-number));
+        &:not([disabled]) {
+            &:hover, &:focus, &:active {
+                color: var(--ti-common-color-text-link-hover);
+            }
+        }
+        &:disabled {
+            color: var(--ti-common-color-text-disabled);
+        }
+    }
+}
+
+.ti3-btn-icon{
+    padding: 0 var(--ti-common-space-5x);
+}
+
+.ti3-btn-large {
+    .button-different-size(var(--ti-common-size-8x); var(--ti-common-space-6x); var(--ti-common-border-radius-normal); var(--ti-common-border-weight-normal));
+}
+
+.ti3-btn-middle {
+    .button-different-size(var(--ti-common-size-7x); var(--ti-common-space-5x); var(--ti-common-border-radius-normal); var(--ti-common-border-weight-normal));
+}
+
+.ti3-btn-small {
+    .button-different-size(var(--ti-common-size-6x); var(--ti-common-space-4x); var(--ti-common-border-radius-normal); var(--ti-common-border-weight-normal));
+}
+
+.ti3-btn-xs {
+    .button-different-size(var(--ti-common-size-5x); var(--ti-common-space-3x); var(--ti-common-border-radius-normal); var(--ti-common-border-weight-normal));
+}
+
+.ti3-btn-onlyIcon {
+    height: var(--ti-button-onlyIcon-size);
+    width: var(--ti-button-onlyIcon-size);
+    padding: var(--ti-button-onlyIcon-padding) !important;
+    font-size: var(--ti-common-size-4x);
+    line-height: 1;
+}
+
+.ti3-btn-default, [@{button-name}]{
+    .button-variant(var(--ti-common-color-text-primary); var(--ti-common-bg-minor); var(--ti-common-color-line-normal);
+                var(--ti-common-color-text-highlight); var(--ti-common-bg-minor-hover); var(--ti-common-color-line-active);
+                var(--ti-common-color-text-highlight); var(--ti-common-bg-minor-active); var(--ti-common-color-line-active);
+                var(--ti-common-color-text-disabled); var(--ti-common-color-bg-disabled); var(--ti-common-color-line-disabled))
+  }
+  // 主题色按钮（中性无倾向的强调按钮）状态配置
+  .ti3-btn-primary {
+    .button-variant(var(--ti-common-color-text-white); var(--ti-button-primary-bg-color); var(--ti-button-primary-border-color);
+                  var(--ti-common-color-text-white); var(--ti-button-primary-bg-color-hover); var(--ti-button-primary-border-color-hover);
+                  var(--ti-common-color-text-white); var(--ti-button-primary-bg-color-active); var(--ti-button-primary-border-color-active);
+                  var(--ti-common-color-text-disabled); var(--ti-common-color-bg-disabled); var(--ti-common-color-line-disabled))
+  }
+
+  .ti3-btn-danger{
+    .button-variant(var(--ti-common-color-text-white); var(--ti-common-bg-primary); var(--ti-common-color-transparent);
+                  var(--ti-common-color-text-white); var(--ti-common-bg-primary-hover); var(--ti-button-danger-border-color-hover);
+                  var(--ti-common-color-text-white); var(--ti-common-bg-primary-active); var(--ti-common-bg-primary-active);
+                  var(--ti-common-color-text-disabled); var(--ti-common-color-bg-disabled); var(--ti-common-color-line-disabled))
+  }
+
+.ti3-btn-loading{
+    pointer-events: none; // 元素永远不会成为鼠标事件的target
+    ti-loading  {
+        margin-right: var(--ti-common-space-2x);
+        vertical-align: middle;
+    }
+}
+
+.ti3-btn-loading.ti3-btn-default, .ti3-btn-loading[@{button-name}]:not([disabled]) {
+    .button-state-variant(var(--ti-common-color-text-highlight); var(--ti-common-bg-minor-hover); var(--ti-common-color-line-active));
+    .button-loading-icon(var(--ti-common-color-icon-active));
+}
+
+.ti3-btn-loading.ti3-btn-primary:not([disabled]) {
+    .button-state-variant(var(--ti-common-color-text-white); var(--ti-button-primary-bg-color-hover); var(--ti-button-primary-border-color-hover));
+    .button-loading-icon(var(--ti-common-color-icon-white));
+}
+
+.ti3-btn-loading.ti3-btn-danger:not([disabled]) {
+    .button-state-variant(var(--ti-common-color-text-white); var(--ti-common-bg-primary-hover); var(--ti-button-danger-border-color-hover));
+    .button-loading-icon(var(--ti-common-color-icon-white));
+}
+
+/********************************************动效*****************************************************************/
+.ti3-btn-default, [@{button-name}], .ti3-btn-danger{
+    //hover,active,focus(200ms)
+    &:not([disabled]):hover,  &:not([disabled]):active, &:not([disabled]):focus {
+        .button-transition-with-diffrent-time(.2s);
+    }
+}
+/********************************************动效*****************************************************************/

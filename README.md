@@ -1,39 +1,104 @@
-# ng
+<p align="center">
+  <a href="">
+    <img width="230" src="logo.png" alt="logo 图片">
+  </a>
+</p>
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+<h1 align="center">
+TinyNG
+</h1>
 
-#### 软件架构
-软件架构说明
+<div align="center">
+
+An enterprise-class Angular UI component library.
+
+</div>
+
+English | [简体中文](README-zh_CN.md)
+
+## Features
+
+- 70+ high-quality Angular components out of the box.
+- Support OnPush mode.
+- Use TypeScript.
+- Powerful theme customization with CSS variables.
+- Internationalization support for 7 languages.
+
+## Environment Support
+
+* Angular `^14.0.0`
+* Modern browsers
+
+| Edge | Firefox | Chrome | Safari |
+| --------- | --------- | --------- | --------- |
+| last 3 versions | last 3 versions | last 3 versions | last 2 versions |
+
+## Installation
 
 
-#### 安装教程
+```bash
+$ npm install @opentiny/ng
+```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## Usage
 
-#### 使用说明
+Import the component modules you want to use into your module files.
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+```ts
+import { TiButtonModule } from '@opentiny/ng';
 
-#### 参与贡献
+@NgModule({
+  imports: [ TiButtonModule ]
+})
+export class AppModule {
+}
+```
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+And import style file link in `angular.json`.
+
+```diff
+{
+  "styles": [
++    "node_modules/@opentiny/ng/themes/styles.css",
++    "node_modules/@opentiny/ng/themes/theme-default.css",
+  ]
+}
+```
+
+See [Getting Started](官网快速上手地址) for more details. 
+
+## Development
+
+```bash
+$ git clone 代码仓 clone 地址
+$ cd ng
+$ npm install
+$ npm start
+```
+
+Browser would open automatically.
+
+## Changelog
+
+Detailed changes for each release are documented in the [change logs](官网更新日志地址). 
+
+## FAQ
+
+We have collected some [frequently asked questions](官网常见问题地址). Before reporting an issue, please search if the FAQ has the answer to your problem.
+
+## Contributing
+
+We welcome all contributions. Please feel free to contribute code or discuss your idea.
+
+Please read our [CONTRIBUTING.md](官网贡献指南地址) before submitting any ideas.
+
+## LICENSE
+
+[MIT](LICENSE)
 
 
-#### 特技
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+
+
+
+

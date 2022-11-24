@@ -1,0 +1,44 @@
+<h3>1.描述</h3>
+<p>format接口测试</p>
+<h3>2.示例</h3>
+<p>(2.1)不设置时，使用默认类型。中文：'yyyy/MM/dd'；英文："MMM dd, yyyy"。</p>
+<ti-date-range [(ngModel)]="value"></ti-date-range>
+<br />
+<br />
+<br />
+<p>(2.2)设置为"yyyy/MM/dd"</p>
+<ti-date-range [format]="format1" [(ngModel)]="value1"></ti-date-range>
+<br />
+<br />
+<br />
+<p>(2.3)只显示年月</p>
+<ti-date-range [format]="format2" [(ngModel)]="value2"></ti-date-range>
+<br />
+<br />
+<p>(2.4)只显示年</p>
+<ti-date-range [format]="format4" [(ngModel)]="value2"></ti-date-range>
+<br />
+<br />
+<br />
+<p>(2.5)设置为"mediumDate"</p>
+<ti-date-range
+  [format]="format3"
+  [(ngModel)]="value3"
+  (okClick)="okClick($event)"
+></ti-date-range>
+<br />
+<br />
+<br />
+<p>(2.5)设置为"YYYY/QQ",显示季度区间</p>
+<ti-date-range
+  [format]="format5"
+  [(ngModel)]="value4"
+  [min]="min"
+></ti-date-range>
+<br />
+<span>季度面板开始值：{{value4?.begin}}</span>
+<br />
+<span>季度面板结束值：{{value4?.end}}</span>
+<br /><br />
+<button (click)="clickFn()">点击改变format</button>
+<button (click)="changeQuarterVal()">点击改变季度面板value</button>

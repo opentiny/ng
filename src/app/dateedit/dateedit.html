@@ -1,0 +1,14 @@
+<h2>1.dateEdit组件测试ngModelChange接口测试</h2>
+<ti-date-edit
+  [format]="format"
+  [ngModel]="value"
+  (ngModelChange)="ngModelChange($event)"
+></ti-date-edit>
+
+<br /><br />
+<h2>2.dateEdit组件测试blur接口测试</h2>
+<ti-date-edit
+  [format]="format1"
+  [(ngModel)]="value1"
+  (blur)="blurFn($event)"
+></ti-date-edit>

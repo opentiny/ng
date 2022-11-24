@@ -1,0 +1,60 @@
+<!-- 单选可清除场景，点击叉号dominator将model置为null，而treeselect组件model为数组，故清空时处理为[] -->
+<ti-dominator
+        [multiple]='multiple'
+        [placeholder]='placeholder'
+        [disabled]="disabled"
+        [labelKey]="labelKey"
+        [maxLine]="maxLine"
+        [selectedTipPosition]='selectedTipPosition'
+        [id]="appendId('dominator')"
+        [clearable]="!multiple && clearable"
+        [ngModel]="!multiple && model ? model[0] : model"
+        (ngModelChange)="model = (multiple ? $event : $event ? [$event] : $event === null ? [] : $event)"
+        (click)="onClickDominator()"
+        (delete)="onDeleteDominatorTag($event)"
+        (clear)="onClearDominator()">
+</ti-dominator>
+
+<ti-drop
+        [dominatorElem]='dominatorCom.nativeElement'
+        [dominatorSpace]="dominatorSpace"
+        [panelWidth]="panelWidth"
+        [id]="appendId('drop')">
+        <!-- 搜索 -->
+        <ti-searchbox-notsearch #searchboxCom *ngIf='searchable' noBorder
+                class="ti3-treeselect-searchbox"
+                [placeholder]='searchPlaceholder'
+                [(ngModel)]='searchText'
+                [id]="appendId('searchbox')"
+                (ngModelChange)="searchTextChange($event)">
+        </ti-searchbox-notsearch>
+        <section #datatemplate class='ti3-treeselect-datacontainer'
+                (mousedown)="onMouseDownDropOuter($event)"
+                (mousewheel)="onMouseWheel($event)"
+                (DOMMouseScroll)="onMouseWheel($event)">
+                <ng-container *ngIf='(options && options.length > 0) else nodatatemplate'>
+                        <!-- 全选 -->
+                        <li *ngIf='multiple && selectAll'
+                                class="ti3-treeselect-selectall-option"
+                                (click)="onClickSelectAll($event)"
+                                [id]="appendId('selectAll')">
+                                <input type="checkbox" tiCheckbox [indeterminate]="indeterminate" [(ngModel)]="isAllSelected" (ngModelChange)="onSelectAllChange($event)" label="全选">
+                        </li>
+                        <ti-tree
+                                [id]="appendId('tree')"
+                                [data]='options'
+                                [parentCheckable]='true'
+                                [multiple]='multiple'
+                                (select)='onTreeSelect($event)'
+                                [changedByCheckbox]="false"
+                                (beforeExpand)="onBeforeExpand($event)"
+                                (beforeMore)="onBeforeMore($event)">
+                        </ti-tree>
+                </ng-container>
+        </section>
+</ti-drop>
+
+<!-- no data模板 -->
+<ng-template #nodatatemplate>
+        <div class="ti3-treeselect-dropdown-no-data" [innerHtml]="noDataText"></div>
+</ng-template>

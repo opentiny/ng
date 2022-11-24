@@ -1,0 +1,39 @@
+<div class='ti3-tabs-container1' #tabsContainer>
+    <div class='ti3-tabs-header' #tabsHeader>
+        <ul class="ti3-tabs" #tabsList [id]="appendId('list')">
+            <li class="ti3-tab-li" style='display: inline-block;'
+                *ngFor="let tab of tabs; let i = index; trackBy: trackByFn"
+                [ngClass]="{'ti3-tab-active': tab.active, disabled: tab.disabled}">
+                <a href="javascript:void(0);"
+                    oncontextmenu="return false"
+                    (click)="click(tab)"
+                    [tiInclude]="tab.headNode"
+                    [id]="appendId(tab.id===undefined||tab.id===''?i:tab.id+'_a')"
+                    [tabindex]="tab.disabled ? -1 : 0"></a>
+            </li>
+        </ul>
+        <span class='ti3-tab-more' (click)='showMorePanel($event)' #more [id]="appendId('moreicon')">
+            <ti-icon local name="accordion-unfold" #moreIcon></ti-icon>
+        </span>
+        <div class='ti3-tab-slider-container'>
+            <div #slider class="ti3-tab-slider"></div>
+        </div>
+    </div>
+</div>
+<div class="ti3-tab-content" #tabContentContainer>
+    <ng-content></ng-content>
+</div>
+<ti-droplist #droplist
+              [dominatorElem]="moreIconRef.nativeElement"
+              [(ngModel)]="selectedTab"
+              [options]='options'
+              [labelKey]="labelKey"
+              [panelMaxHeight]="panelMaxHeight"
+              [panelWidth]="panelWidth"
+              [panelAlign]="panelAlign"
+              [tipPosition]='tipPosition'
+              (ngModelChange)="onDroplistChange($event)"
+              [id]="appendId('droplist')">
+</ti-droplist>
+
+

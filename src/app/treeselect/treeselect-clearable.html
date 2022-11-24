@@ -1,0 +1,11 @@
+<ti-treeselect
+  id="treeselect-clearable"
+  [options]="options"
+  [(ngModel)]="value"
+  placeholder="Please select"
+  [clearable]="true"
+  (clear)="onClear()"
+  >
+</ti-treeselect>
+
+<demo-log [logs]="myLogs"></demo-log>

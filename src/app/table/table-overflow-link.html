@@ -1,0 +1,59 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>
+    表格中有链接，使用tiOverflow的场景<br />
+    问题：表格中使用A标签，使用tiOverflow后，tip显示的内容，会有A标签的样式<br />
+    原因：tiOverflow获取的是元素的innerHTML,将tiOverflow写在td上面，会获取到td中的所有内容，从而显示在tip里面。<br />
+    原本tip中获取的是元素的textContent,因为textContent只能获取文本，如果想要显示图片，则无法获取到。<br />
+    针对以上原因，目前提供的方案有两种：<br />
+    解决方案一：将tiOverflow写在A标签上，设置A标签的宽度<br />
+    解决方案二：通过使用tiTipContent接口，将tip中的内容重新设置即可
+  </p>
+
+  <p class="demo-text-warn">
+    注意：使用 tiOverflow 组件，请导入 TiOverflowModule。
+  </p>
+  <h3>导入</h3>
+  <p>import {{ '{' }} TiTableModule {{ '}' }} from '@opentiny/ng';</p>
+  <h3>示例</h3>
+
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData">
+    <table>
+      <thead>
+        <tr>
+          <th
+            tiOverflow
+            *ngFor="let column of columns"
+            width="{{column.width}}"
+          >
+            {{column.title}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+        <!--为了更好的渲染性能，建议在ngFor数据时总是trackBy数据条目中的某个唯一属性值(如id)-->
+        <tr *ngFor="let row of displayed;trackBy: trackByFn">
+          <!-- tiOverflow指令的作用是使文本溢出时出'...'，且hover时出tip-->
+          <!--tiOverflow写在td上面，会获取td中的innerHTML，从而使tip中带有A标签。针对此现象，
+                        有如下两种解决方案-->
+          <td tiOverflow>
+            <a href="javascript:void(0)">{{row.firstName}}</a>
+          </td>
+          <!-- 解决方案一：将tiOverflow写在A标签上，设置A标签的宽度 -->
+          <td>
+            <a style="width: 100%" tiOverflow href="javascript:void(0)"
+              >{{row.lastName}}</a
+            >
+          </td>
+          <!-- 解决方案二：通过使用tiTipContent接口，将tip中的内容重新设置即可-->
+          <td tiOverflow [tiTipContent]="row.email">
+            <a href="javascript:void(0)">{{row.email}}</a>
+          </td>
+          <td tiOverflow>{{row.age}}</td>
+          <td tiOverflow>{{row.balance}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ti-table>
+</div>

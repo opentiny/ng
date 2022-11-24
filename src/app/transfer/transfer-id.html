@@ -1,0 +1,17 @@
+<h3>1.描述</h3>
+<p>transfer组件是否给所有可点击元素添加上了id</p>
+<p><b>绑定id后，每一个可点击元素（或可以hover的交互元素），都自动有了id，哪些节点有了id，在本页面就可以查看，不必打开调试控制台。</b></p>
+<h3>导入</h3>
+<p>import {{ '{' }} TiTransferModule {{ '}' }} from '@opentiny/ng';</p>
+<h3>2.示例</h3>
+<div style="margin: 0 auto; width: 1192px;">
+    <ti-transfer id="transfer-id" [(ngModel)]="mySelecteds" [options]="myOptions"></ti-transfer>
+    <br>
+    <p>已经选中的项：{{ mySelecteds | json }}</p>
+
+    <p>id是否存在：</p>
+    <p *ngFor="let id of ids; let i = index">
+        {{id+':'+idExistMap.get(id)}}
+    </p>
+    <p>所有id是否存在：{{allIdExist}}</p>
+</div>

@@ -1,0 +1,170 @@
+@import "../../themes/basic/base-all.less";
+
+:host {
+  --ti-dominator-container-height: var(--ti-common-size-7x);
+  --ti-dominator-container-border-size: calc(var(--ti-common-border-weight-normal) * 2); // 边框
+  --ti-dominator-select-box-width: calc(var(--ti-dominator-container-height) - var(--ti-dominator-container-border-size)); // 右侧区域的宽度与高度一致，容器高度 - 边框
+  --ti-dominator-multiselect-selected-oneline-padding: 5px; // 单行时已选项个数上下padding
+  --ti-dominator-multiselect-container-padding: var(--ti-common-space-1); // 多选内间距
+  --ti-dominator-multiselect-tag-margin: var(--ti-common-space-1);
+  --ti-dominator-fold-icon-width: var(--ti-common-size-2x);
+  --ti-dominator-fold-icon-height: calc(var(--ti-dominator-fold-icon-width) / 1.6); // 按照比例计算 8 / 5 = 1.6
+  --ti-dominator-padding-vertical: var(--ti-common-space-0); // 配置化时高度需要去除上下间距
+}
+
+:host.ti3-select-dominator-container{
+  position: relative;
+  border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-transparent);
+  margin: calc(-1 * var(--ti-common-border-weight-normal));
+  text-align: left;
+  height: var(--ti-dominator-container-height);
+  line-height: calc(var(--ti-dominator-container-height) - var(--ti-dominator-container-border-size) - var(--ti-dominator-padding-vertical));
+  width: ~"calc(100% + var(--ti-dominator-container-border-size))";
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  // 隔离作用，防止继承下来的white-space属性值影响 codeclub #1437
+  white-space: normal;
+  .box-sizing(border-box);
+  cursor: pointer;
+
+  &:focus{
+    outline: none;
+  }
+}
+
+:host ti-tag {
+  margin: var(--ti-dominator-multiselect-tag-margin);
+  max-width: calc(100% - var(--ti-common-border-weight-normal) * 2 - var(--ti-dominator-multiselect-tag-margin) * 2);
+}
+
+:host[disabled] {
+  &.ti3-select-dominator-container {
+    cursor: not-allowed !important;
+  }
+  .ti3-select-dominator-dropdown-btn:after {
+    border-top-color: var(--ti-common-color-icon-disabled) !important;
+  }
+  .ti3-select-dominator-text {
+    color: var(--ti-common-color-text-disabled);
+  }
+  .ti3-multiselect-box-cell {
+    border: 1px solid var(--ti-common-color-line-disabled);
+  }
+}
+
+.ti3-overflow-padding {
+  padding: var(--ti-dominator-padding-vertical) 0 var(--ti-dominator-padding-vertical) var(--ti-common-space-10);
+  height: calc(100% - var(--ti-dominator-padding-vertical) * 2); // 需要设置该样式，因为当select选中项为空时，heihgt需要撑大
+  .ellipsis();
+}
+/**
+ * 输入框默认状态：透明不可见，
+ 聚焦后：dominator文本变为placeholder色，看起来像是输入框的placeholder
+ 输入后：变为白色背景，dominator文本不可见，
+ */
+.ti3-dominator-input {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: calc(100% - var(--ti-dominator-select-box-width) - var(--ti-common-space-10));
+  outline: none;
+  border: none;
+  vertical-align: top;
+  cursor: inherit;
+  box-sizing: border-box;
+  padding: var(--ti-common-space-10);
+  top: 0;
+  background-color: transparent;
+}
+.ti3-dominator-input-isediting {
+  background-color: var(--ti-common-color-bg-white-normal);
+}
+
+.ti3-select-dominator-text {
+  height: 100%;
+  color: var(--ti-common-color-text-primary);
+  .box-sizing(border-box);
+  border: none;
+  display: inline-block;
+  border-radius: var(--ti-common-border-radius-normal);//为防止放大情况下，输入框内角不圆滑情况，因此此处加该样式
+  text-decoration: none;
+  width: calc(100% - var(--ti-dominator-select-box-width));
+  vertical-align: top;
+}
+// 考虑提出到最公共样式
+.ti3-placeholder {
+  color: var(--ti-common-color-text-disabled);
+}
+
+.ti3-select-dominator-dropdown-btn {
+  width: var(--ti-dominator-select-box-width);
+  border-radius: var(--ti-common-border-radius-0) var(--ti-common-border-radius-normal) var(--ti-common-border-radius-normal) var(--ti-common-border-radius-0);
+  height: calc(var(--ti-dominator-container-height) - var(--ti-dominator-container-border-size));
+  float: right;
+  .box-sizing(border-box);
+
+  &:after{
+    .triangle-down(var(--ti-dominator-fold-icon-width), var(--ti-dominator-fold-icon-height), var(--ti-common-color-icon-normal));
+    content: "";
+    position: absolute;
+    top: calc((var(--ti-dominator-container-height) - var(--ti-dominator-container-border-size) - var(--ti-dominator-fold-icon-height)) / 2); // 下拉三角距上边框10px，不能动态计算，多选dominator的高是动态变化的
+    right: calc(var(--ti-dominator-select-box-width)  / 2 - var(--ti-dominator-fold-icon-width) / 2);
+  }
+}
+// 箭头图标是after伪元素，旋转的应该是伪元素
+:host[dropshow] .ti3-select-dominator-dropdown-btn::after {
+  .rotate(180deg);
+}
+.ti3-select-dominator-clear-btn {
+  &:extend(.ti3-select-dominator-dropdown-btn);
+  font-size: var(--ti-common-size-3x);
+  color: var(--ti-common-color-icon-normal);
+  text-align: center;
+  line-height: calc(var(--ti-dominator-container-height) - var(--ti-dominator-container-border-size));
+  &:hover {
+    color: var(--ti-common-color-icon-hover);
+  }
+}
+/*********************以下是多选***********************************/
+:host.ti3-multiselect-container {
+  height: auto;
+  min-height: var(--ti-dominator-container-height);
+  line-height: 1;
+  overflow: hidden;
+
+  & > .ti3-select-dominator-text {
+    max-height: calc(2 * var(--ti-dominator-container-height) - var(--ti-dominator-container-border-size) - var(--ti-dominator-multiselect-container-padding) * 2);
+    line-height: calc(var(--ti-dominator-container-height) - var(--ti-dominator-container-border-size) - var(--ti-dominator-multiselect-container-padding) * 2); // 行高 = dominator总高 - 上下2px的border - 上下2px的padding
+    padding: var(--ti-dominator-multiselect-container-padding);
+    overflow-y: auto;
+    vertical-align: middle;
+    &::-webkit-scrollbar-track {
+      margin: 0; // 在dominator中定制没有上下边距
+    }
+    &::after{
+      content:"";
+      overflow: hidden;
+      display: block;
+    }
+    &.ti3-tags-input-container {
+      width: 100%;
+    }
+  }
+  & > .ti3-multiselect-container-oneline {
+    overflow: hidden;
+  }
+
+  .ti3-multiselect-selected {
+    display: inline-block;
+    padding: var(--ti-common-space-base) 0 var(--ti-common-space-base) var(--ti-common-space-3x);
+  }
+  .ti3-multiselect-selected-oneline {
+    padding-top: var(--ti-dominator-multiselect-selected-oneline-padding);
+    padding-bottom: var(--ti-dominator-multiselect-selected-oneline-padding); // 一行时需要和tag的高度一直，不然上下会留灰色条
+    position: absolute;
+    top: calc((var(--ti-dominator-select-box-width) - var(--ti-common-font-size-base)) / 2 - var(--ti-dominator-multiselect-selected-oneline-padding)); // (dominator高度-文本的高度)/2 - 文本上padding
+    right: calc(var(--ti-dominator-fold-icon-width) + var(--ti-common-space-2x) + var(--ti-common-space-base)); // 小三角的宽度8px + 右侧间距8px + 4px距离小三角间距
+    background: linear-gradient(90deg, hsla(0, 0%, 100%, 0), var(--ti-common-color-bg-white-normal) var(--ti-common-space-3x));
+  }
+}

@@ -1,0 +1,51 @@
+@import "../../themes/basic/base-all.less";
+
+:host {
+  --ti-list-multi-checkbox-container-size: var(--ti-common-size-4x);
+  --ti-list-multi-checkbox-container-line-height: calc(var(--ti-list-multi-checkbox-container-size) -  var(--ti-common-border-weight-normal) * 2);
+  --ti-list-multi-checkbox-bg-color: var(--ti-common-color-bg-white-normal);
+  --ti-list-multi-checkbox-checked-bg-color: var(--ti-common-color-bg-emphasize);
+  --ti-list-multi-checkbox-icon-color: var(--ti-common-color-icon-white);
+}
+  // 以下是多选使用的样式:复选框基础样式
+.ti3-multi-select-checkbox {
+  width: var(--ti-list-multi-checkbox-container-size);
+  height: var(--ti-list-multi-checkbox-container-size);
+  background-color: var(--ti-list-multi-checkbox-bg-color);
+  display: inline-block;
+  border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-normal);
+  border-radius: var(--ti-common-border-radius-normal);
+  .box-sizing;
+  color: var(--ti-list-multi-checkbox-icon-color);
+  line-height: var(--ti-list-multi-checkbox-container-line-height);
+  text-align: center;
+  margin-right: var(--ti-common-space-10);
+  cursor: pointer;
+}
+
+// 正常选中
+.ti3-dropdown-option .ti3-multi-select-checkbox-selected {
+  border-color: var(--ti-common-color-line-active);
+  background: var(--ti-list-multi-checkbox-checked-bg-color);
+}
+
+// 半选
+.ti3-dropdown-option .ti3-multi-select-checkbox-indeterminate {
+  border-color: var(--ti-common-color-line-active);
+  border-width: 5px;
+  vertical-align: sub;
+  &::before {
+    content: ''
+  }
+}
+
+// 灰化 / 灰化选中
+.ti3-dropdown-option-disabled .ti3-multi-select-checkbox {
+  border-color: var(--ti-common-color-line-disabled);
+  background: var(--ti-common-color-bg-disabled);
+  color: var(--ti-common-color-bg-disabled);
+  cursor: not-allowed;
+  &.ti3-multi-select-checkbox-selected {
+    color: var(--ti-common-color-icon-disabled);
+  }
+}

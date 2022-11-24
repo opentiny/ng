@@ -1,0 +1,27 @@
+<ti-drop class="ti3-cols-toggle-drop"
+         [dominatorElem]="dominatorElem"
+         [panelWidth]="panelWidth"
+         [dominatorSpace]="dominatorSpace"
+         panelAlign="right"
+         (mousedown)="onMousedownSearchBoxOuter($event)">
+    <div *ngIf="searchable"
+         class="ti3-cols-toggle-searchbox-wrap"
+         (mousedown)="onMousedownSearchBoxOuter($event)">
+        <ti-searchbox-notsearch class="ti3-cols-toggle-searchbox"
+                                [(ngModel)]="searchWord"
+                                (ngModelChange)="searchWordChange($event)"
+                                [id]="appendId('searchbox')"></ti-searchbox-notsearch>
+    </div>
+    <ti-list [multiple]='multiple'
+             [options]='(searchable ? searchResult : columns) | tiColumns'
+             [labelKey]='listLabelKey'
+             [selectAll]='selectAll'
+             [(ngModel)]="selectedColumns"
+             (select)="onSelect($event)"
+             [isDisabledFn]="isDisabledFn"
+             [noDataText]="noDataText"
+             [id]="appendId('list')"
+             tipPosition="left"
+             style="display: block;">
+    </ti-list>
+</ti-drop>

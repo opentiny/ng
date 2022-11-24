@@ -1,0 +1,353 @@
+@import "../../themes/basic/base-all.less";
+
+:host {
+  --ti-upload-container-height: var(--ti-common-size-7x);
+  --ti-upload-icon-size: var(--ti-common-size-4x);
+  --ti-upload-file-item-height: 22px;
+  --ti-upload-item-container-padding-vertical: calc(var(--ti-upload-item-space) / 2);
+  --ti-upload-item-space: calc(var(--ti-common-space-1) * 2);
+  --ti-upload-item-height: (var(--ti-upload-container-height) - 2 * (var(--ti-upload-item-space)) - 2px);
+  --ti-upload-item-operate-container-width: (var(--ti-upload-icon-size) * 2 + var(--ti-common-space-2x) * 2);
+  --ti-upload-item-file-name-font-size: var(--ti-common-font-size-base);
+  --ti-upload-msg-font-size: var(--ti-common-font-size-base);
+  --ti-upload-textbutton-font-size: var(--ti-common-font-size-base);
+}
+
+.ti3-file-btn {
+  position: relative;
+  overflow: hidden;
+}
+.ti3-file-input {
+  opacity: 0;
+  z-index: 1;
+  position: absolute;
+  font-size: 1000px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  bottom: 0;
+  right: 0;
+  &[disabled]{
+    cursor: not-allowed;
+  }
+}
+.ti3-file-text {
+  line-height: calc(var(--ti-upload-container-height) - 2px);
+}
+
+// Aui2文件上传样式
+.ti3-aui-file-disable{
+  .ti3-aui-file-field-container{
+    border-color: var(--ti-common-color-line-disabled);
+    background-color: var(--ti-common-color-bg-disabled);
+    cursor: not-allowed;
+    box-sizing: border-box;
+  }
+  .ti3-aui-file-select-input{
+    cursor: not-allowed;
+  }
+}
+.ti3-aui-file-container {
+  font-size: var(--ti-common-font-size-base);
+  line-height: var(--ti-common-line-height-number);
+  color: var(--ti-common-color-text-primary);
+}
+.ti3-aui-file-upload-container {
+  .clearfix();
+}
+.ti3-aui-file-field-container{
+  border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-normal);
+  border-radius: var(--ti-common-border-radius-normal);
+  background: var(--ti-common-color-bg-white-normal);
+  position: relative;
+  float: left;
+  width: 300px;// 默认宽度
+}
+.ti3-aui-file-items-container{
+  overflow-y: auto;
+  overflow-x:hidden;
+  width: calc(100% - 2px);// 多出的2px用于防止缩放情况下右侧块掉下来
+  min-height: calc(var(--ti-upload-container-height) - 2px);
+  max-height: calc((var(--ti-upload-container-height) - 2px)*2 - var(--ti-upload-item-space));
+  padding: var(--ti-upload-item-container-padding-vertical) 0;
+  .box-sizing(border-box);
+}
+
+.ti3-aui-file-item{
+  float: left;
+  .box-sizing(border-box);
+  background-color: var(--ti-common-color-bg-normal);
+  max-width: 100%;
+  height: calc(var(--ti-upload-item-height));
+  line-height: calc(var(--ti-upload-item-height));
+  padding: 0 var(--ti-common-space-10);
+  margin: calc(var(--ti-upload-item-space)/2) 0 calc(var(--ti-upload-item-space)/2) var(--ti-upload-item-space);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  &.ti3-aui-single-file-item{
+    width: 100%;
+  }
+}
+.ti3-aui-file-name-size-container{
+  width: calc(100% - var(--ti-upload-item-operate-container-width));
+  display: flex;
+  flex-shrink: 0; // 设置该属性为0，空间不足时，元素宽度不被压缩
+}
+.ti3-aui-file-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100%;
+  color: var(--ti-common-color-text-secondary);
+}
+.ti3-aui-file-size {
+  color: var(--ti-common-color-text-weaken);
+  padding-left: var(--ti-common-space-base);
+  .box-sizing(border-box);
+  display: flex;
+  flex-shrink: 0;
+}
+.ti3-aui-file-item-size{
+  max-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ti3-aui-file-operates{
+  width: calc(var(--ti-upload-item-operate-container-width));
+}
+.ti3-aui-file-x,
+.ti3-aui-file-error-reupload,
+.ti3-aui-file-error-icon,
+.ti3-aui-file-success {
+  color: var(--ti-common-color-icon-normal);
+  font-size: var(--ti-upload-icon-size);
+  float: right;
+}
+.ti3-aui-file-success {
+  color: var(--ti-common-color-success);
+}
+.ti3-aui-file-error-state .ti3-aui-file-x{
+  margin-right: var(--ti-common-space-2x);
+}
+.ti3-aui-file-error-icon{
+  color: var(--ti-common-color-error);
+  margin-right: var(--ti-common-space-2x);
+}
+.ti3-aui-file-progress-pie{
+  width: var(--ti-upload-icon-size);
+  height: var(--ti-upload-icon-size);
+  float:right;
+  position: relative;
+  top: calc((var(--ti-upload-item-height) - var(--ti-upload-icon-size))/2);
+}
+.ti3-aui-file-select-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.ti3-aui-file-tip-name{
+  display: inline-block;
+  margin-top: var(--ti-common-space-base);
+  font-size: var(--ti-common-font-size-base);
+}
+.ti3-aui-file-placeholder{
+  color: var(--ti-common-color-text-disabled);
+  line-height: calc(var(--ti-upload-container-height) - 2px - var(--ti-upload-item-container-padding-vertical) * 2);
+  padding-left: var(--ti-common-space-10);
+}
+.ti3-aui-upload-btn{
+  float: left;
+  margin-left: var(--ti-common-space-2x);
+  height: var(--ti-upload-container-height);
+}
+.ti3-aui-file-state-general{
+  margin-top: var(--ti-common-space-2x);
+}
+.ti3-aui-file-state-general-info {
+  display: flex;
+  align-items: center;
+}
+.ti3-aui-file-state-general-info-uploading,
+.ti3-aui-file-state-general-info-addSuccess {
+  color: var(--ti-common-color-text-weaken);
+}
+.ti3-aui-file-state-general-info-error {
+  color: var(--ti-common-color-error-text);
+}
+.ti3-aui-file-state-general-info-success {
+  color: var(--ti-common-color-text-primary);
+}
+.ti3-aui-file-state-general-operate{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: var(--ti-common-space-base);
+  color: var(--ti-common-color-text-link);
+  cursor: pointer;
+  &:hover{
+    color: var(--ti-common-color-text-link-hover);
+  }
+}
+.ti3-aui-file-state-general-success,
+.ti3-aui-file-state-general-error {
+  color: var(--ti-common-color-success);
+  margin-right: var(--ti-common-space-2x);
+  font-size: var(--ti-upload-icon-size);
+  line-height: 18px;
+}
+.ti3-aui-file-state-general-error{
+  color:var(--ti-common-color-error);
+}
+
+.ti3-file-upload-btnCon{
+  float: left;
+  position: relative;
+}
+
+.ti3-file-upload-btn-cover{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: var(--ti-common-space-2x);
+  bottom: 0;
+  cursor: not-allowed;
+}
+
+// button/textButton类型
+.ti3-file-upload-container {
+  .ti3-file-text-btn {
+    display: inline-block;
+    overflow: hidden;
+    font-size: var(--ti-upload-textbutton-font-size);
+    font-weight: var(--ti-common-font-weight-4);
+    line-height: var(--ti-common-line-height-number);
+    color: var(--ti-common-color-text-link);
+    position: relative;
+    &:hover {
+      color: var(--ti-common-color-text-link-hover);
+    }
+    &.ti3-file-text-btn-disabled {
+      color: var(--ti-common-color-text-disabled);
+    }
+  }
+  .ti3-file-note {
+    margin-top: var(--ti-common-space-2x);
+    line-height: var(--ti-common-line-height-number);
+    color: var(--ti-common-color-text-weaken);
+  }
+  .ti3-file-items-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--ti-common-space-2x);
+    max-height: calc((var(--ti-upload-file-item-height) + var(--ti-common-space-10)) * 7 + (var(--ti-upload-file-item-height) + var(--ti-common-space-base))); // 列表默认最多显示8个文件，(22+10)*7 + (22+4)*1
+    overflow-y: auto;
+    .ti3-file-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: var(--ti-common-space-10);
+      margin-bottom: var(--ti-common-space-10);
+      height: var(--ti-upload-file-item-height);
+      cursor: pointer;
+      border-radius: var(--ti-common-border-radius-normal);
+      position: relative;
+      &:last-child {
+        margin-bottom: var(--ti-common-space-base);
+      }
+      &:hover {
+        background: var(--ti-common-color-bg-normal);
+        .ti3-file-operates {
+          div.ti3-file-operates-show,
+          div.ti3-file-operates-uploading,
+          div.ti3-file-operates-success {
+            display: flex;
+          }
+        }
+      }
+      .ti3-file-name-container {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        height: var(--ti-upload-file-item-height);
+        overflow: hidden;
+        color: var(--ti-common-color-text-secondary);
+        &.ti3-file-state-general-info-error {
+          color: var(--ti-common-color-error-text);
+        }
+        .ti3-file-name {
+          margin-left: var(--ti-common-space-base);
+          font-size: var(--ti-upload-item-file-name-font-size);
+          font-weight: var(--ti-common-font-weight-4);
+          .ellipsis()
+        }
+      }
+      .ti3-file-operates {
+        div {
+          display: flex;
+          align-items: center;
+          padding-left: var(--ti-common-space-4x);
+          .ti3-file-error-reupload {
+            margin-right: var(--ti-common-space-2x);
+          }
+          .ti3-icon:hover {
+            color: var(--ti-common-color-icon-hover);
+          }
+          &.ti3-file-operates-show,
+          &.ti3-file-operates-uploading,
+          &.ti3-file-operates-success {
+            display: none;
+          }
+        }
+      }
+      .ti3-file-progress-bar {
+        height: var(--ti-common-border-weight-1);
+        position: absolute;
+        left: 0;
+        top: var(--ti-common-space-6x);
+      }
+      .ti3-icon {
+        font-size: var(--ti-common-font-size-2);
+      }
+    }
+  }
+  .ti3-file-error-message {
+    .ti3-aui-file-state-general {
+      font-size: var(--ti-upload-msg-font-size);
+      font-weight: var(--ti-common-font-weight-4);
+      line-height: var(--ti-common-line-height-number);
+      ti-error-msg {
+        margin-top: 0;
+      }
+    }
+  }
+}
+:host ::ng-deep .ti3-file-progress-bar-color {
+  background-color: var(--ti-common-color-success)!important;
+}
+
+.ti3-file-x-disabled {
+  color: var(--ti-common-color-icon-disabled);
+  cursor: not-allowed;
+  &:hover {
+    color: var(--ti-common-color-icon-disabled) !important;
+  }
+}
+
+.ti3-aui-file-state-general-operate-disable {
+  color: var(--ti-common-color-text-disabled);
+  cursor: not-allowed;
+  &:hover {
+    color: var(--ti-common-color-text-disabled);
+  }
+}
+
+/*************************************************动效**********************************************************************/
+
+// IE和FF下，文件上传按钮加动画效果情况下，按钮点击两次才打开文件选择框问题
+.ti3-file-upload-container {
+  .ti3-btn-default:not(:focus):not([disabled]):hover,
+  [ti-button]:not(:focus):not([disabled]):hover {
+    animation: none;
+  }
+}

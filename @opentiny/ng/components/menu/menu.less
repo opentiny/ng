@@ -1,0 +1,111 @@
+@import "../../themes/basic/base-all.less";
+@import "../../themes/basic/compnent-container-border.less";
+@import "../../components/button/button.less";
+
+:host {
+  --ti-menu-triangle-width: var(--ti-common-size-2x);
+  --ti-menu-container-height: var(--ti-common-size-7x);
+}
+
+:host {
+  display: inline-block;
+}
+
+.ti3-menu-toggle-menu {
+  text-decoration: none;
+  display: inline-block;
+  color: var(--ti-common-color-text-link);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+  cursor: pointer;
+  .user-select();
+  &:focus {
+    color: var(--ti-common-color-text-link);
+  }
+
+  &:hover {
+    color: var(--ti-common-color-text-link-hover);
+
+    &:after {
+      border-top-color: var(--ti-common-color-text-link-hover);
+    }
+  }
+
+  &:active {
+    color: var(--ti-common-color-text-link-hover);
+    &:after {
+      border-top-color:var(--ti-common-color-text-link-hover);
+    }
+  }
+
+  &:after {
+    .triangle-down(var(--ti-menu-triangle-width), calc(var(--ti-menu-triangle-width) / 1.6), var(--ti-common-color-text-link));
+    content: "";
+    margin-left: var(--ti-common-space-base);
+    display: inline-block;
+    position: relative;
+    top: -1px;
+  }
+
+  &.ti3-menu-toggle-menu-up:after {
+    .rotate(180deg);
+  }
+}
+
+.ti3-menu-panel-container {
+  border-radius: var(--ti-common-border-radius-normal);
+  background-color: var(--ti-common-color-bg-white-normal);
+  box-shadow: var(--ti-common-shadow-2-down); //增加阴影尺寸 兼容IE下横向偏移量为 0 时，阴影半径无渲染的情况
+  position: absolute;
+  list-style: none;
+  z-index: 1060;
+  display: none;
+  .box-sizing(border-box);
+}
+
+:host[hasborder], :host[buttonselect] {
+  &:extend(.ti3-compnent-container-border all);
+  & .ti3-menu-toggle-menu {
+    padding-left: var(--ti-common-space-5x);
+    padding-right: var(--ti-common-space-4x);
+    height: var(--ti-menu-container-height);
+    line-height: var(--ti-menu-container-height);
+    color: var(--ti-common-color-text-primary);
+    margin: -1px;
+    &:hover, &:focus {
+        color: var(--ti-common-color-text-primary);
+    }
+    &:after, &:hover:after {
+        border-top-color: var(--ti-common-color-icon-normal);
+    }
+  }
+  &:hover:not([disabled]) {
+    border-color: var(--ti-common-color-line-active);
+  }
+}
+
+// danger按钮样式
+:host[buttonselect].ti-menu-danger-button {
+  & .ti3-menu-toggle-menu {
+    &:extend(.ti3-btn-danger all);
+    border-radius: var(--ti-common-border-radius-normal);
+    &:after, &:hover:after {
+      border-top-color: var(--ti-common-color-icon-white);
+    }
+  }
+}
+
+:host[disabled] .ti3-menu-toggle-menu {
+  cursor: not-allowed;
+  color: var(--ti-common-color-text-disabled)!important;
+  &:after {
+      border-top-color: var(--ti-common-color-icon-disabled)!important;
+  }
+}
+
+.ti3-menu-border-drop {
+  & ti-menulist {
+    max-height: inherit; //继承最大高度
+    overflow-y: auto; //超过最大高度时产生竖向滚动条
+  }
+}

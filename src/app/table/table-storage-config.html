@@ -1,0 +1,54 @@
+<h3>描述</h3>
+<p>
+  storageConfig 接口设置表格记忆项排序、分页、列宽 的开关
+  <br />
+  测试：排序、列宽和分页都是设置了false,如果没有记忆功能，测试用过。 <br />
+  只记忆当前页或只记忆每页个数
+</p>
+<h3>示例</h3>
+<br /><br />
+<ti-table
+  [(displayedData)]="displayed"
+  [srcData]="srcData"
+  storageId="table-storage-config"
+  [storageConfig]="storageConfig"
+  [columns]="columns"
+  tiColsResizable
+>
+  <div class="ti3-resize-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <ng-container *ngFor="let column of columns">
+            <ng-container *ngIf="column.show || column.show === undefined">
+              <ng-container *ngIf="column.sortKey">
+                <th width="{{column.width}}">
+                  <ti-cell-text>{{column.title}}</ti-cell-text>
+                  <ti-head-sort [sortKey]="column.sortKey"></ti-head-sort>
+                </th>
+              </ng-container>
+              <ng-container *ngIf="!column.sortKey">
+                <th tiOverflow width="{{column.width}}">{{column.title}}</th>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of displayed">
+          <ng-container *ngFor="let column of columns">
+            <ng-container *ngIf="column.show || column.show === undefined">
+              <td tiOverflow>{{row[column.field]}}</td>
+            </ng-container>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ti-pagination
+    [(currentPage)]="currentPage"
+    [pageSize]="pageSize"
+    [(totalNumber)]="totalNumber"
+  >
+  </ti-pagination>
+</ti-table>

@@ -1,0 +1,23 @@
+<h1>Spinner组件 校验展示</h1>
+<hr style="border-color: #ca4848" />
+<div class="wrapper-content">
+  <ti-spinner
+    [(ngModel)]="spinnerValue"
+    [tiValidation]="validationObj"
+    (blur)="onBlur()"
+    (focus)="onFocus()"
+    [placeholder]="placeholder"
+    tiRequired
+    [tiRangeValue]="[-90,90]"
+  >
+  </ti-spinner>
+</div>
+<br />
+<form [formGroup]="form">
+  <ti-spinner
+    [tiValidation]="validationObj1"
+    formControlName="mySpinner"
+    [placeholder]="placeholder1"
+  >
+  </ti-spinner>
+</form>

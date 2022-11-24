@@ -1,0 +1,26 @@
+ti-head-menu {
+    --ti-head-menu-angle-size: var(--ti-common-size-3x);
+}
+
+.ti3-head-menu-angle {
+    font-size: var(--ti-head-menu-angle-size);
+    width: var(--ti-head-menu-angle-size);
+    line-height: var(--ti-head-menu-angle-size);
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -4px;
+    cursor: pointer;
+    &:hover {
+        color: var(--ti-common-color-icon-hover);
+    }
+}
+.ti3-head-menu-angle-down {
+    transform: rotate(90deg);
+}
+.ti3-head-menu-angle-up {
+    transform: rotate(-90deg);
+}
+.ti3-table > table > thead > tr > th:first-child[checkbox-column].ti3-head-menu-cell {
+    width: 52px !important;
+    cursor: auto;
+}

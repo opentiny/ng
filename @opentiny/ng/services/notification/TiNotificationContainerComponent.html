@@ -1,0 +1,48 @@
+<div class="ti3-notification ti3-notification-top-right">
+  <ti-notification
+    *ngFor="let notice of topRightNotices"
+    [instance]="notice"
+    [position]="'top-right'"
+    (destroyed)="close($event.id)"
+  ></ti-notification>
+</div>
+<div class="ti3-notification ti3-notification-top">
+  <ti-notification
+    *ngFor="let notice of topNotices"
+    [instance]="notice"
+    [position]="'top'"
+    (destroyed)="close($event.id)"
+  ></ti-notification>
+</div>
+<div class="ti3-notification ti3-notification-top-left">
+  <ti-notification
+    *ngFor="let notice of topLeftNotices"
+    [instance]="notice"
+    [position]="'top-left'"
+    (destroyed)="close($event.id)"
+  ></ti-notification>
+</div>
+<div class="ti3-notification ti3-notification-bottom-left">
+  <ti-notification
+    *ngFor="let notice of bottomLeftNotices"
+    [instance]="notice"
+    [position]="'bottom-left'"
+    (destroyed)="close($event.id)"
+  ></ti-notification>
+</div>
+<div class="ti3-notification ti3-notification-bottom">
+  <ti-notification
+    *ngFor="let notice of bottomNotices"
+    [instance]="notice"
+    [position]="'bottom'"
+    (destroyed)="close($event.id)"
+  ></ti-notification>
+</div>
+<div class="ti3-notification ti3-notification-bottom-right">
+  <ti-notification
+    *ngFor="let notice of bottomRightNotices"
+    [instance]="notice"
+    [position]="'bottom-right'"
+    (destroyed)="close($event.id)"
+  ></ti-notification>
+</div>

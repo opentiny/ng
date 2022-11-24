@@ -1,0 +1,442 @@
+<div style="margin-left: 12px">
+  <h3>表单选择</h3>
+  <h4>按钮</h4>
+  <button
+    *ngFor="let button of buttons"
+    style="margin-right: 20px"
+    type="button"
+    [color]="button.color"
+    tiButton
+    [id]="button.id"
+  >
+    {{button.text}}
+  </button>
+  <h4>按钮组</h4>
+  <ti-button-group
+    [items]="buttonGroup"
+    [(ngModel)]="selected"
+  ></ti-button-group>
+  <br /><br />
+  <ti-button-group
+    multiple="true"
+    [items]="buttonGroup1"
+    [(ngModel)]="selected1"
+  ></ti-button-group>
+  <h4>单选按钮</h4>
+  <div
+    *ngFor="let item of radioList"
+    style="display: inline-block; margin-right: 20px"
+  >
+    <input
+      type="radio"
+      tiRadio
+      [disabled]="item.disable"
+      [(ngModel)]="selected"
+      [value]="item.id"
+      [label]="item.key"
+    />
+  </div>
+  <h4>复选框</h4>
+  <div *ngFor="let item of checkList" style="margin-right: 20px">
+    <input
+      type="checkbox"
+      tiCheckbox
+      [name]="item.title"
+      [(ngModel)]="item.checked"
+      [label]="item.title"
+    />
+  </div>
+  <h4>复选框组</h4>
+  <input
+    type="checkbox"
+    id="allCheck3"
+    tiCheckgroup
+    [items]="checkgroup"
+    [(checkeds)]="checkedArray3"
+    label="全选"
+  />
+  <div style="margin-top: 12px"></div>
+  <span *ngFor="let item of checkgroup">
+    <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" />
+    <span style="padding-left: 20px"></span>
+  </span>
+  <h4>下拉选择</h4>
+  <ti-select
+    style="width: 120px"
+    [options]="selectArray"
+    [(ngModel)]="select"
+    placeholder="请选择国家"
+    id="myselect"
+  >
+  </ti-select>
+  <h4>滑块</h4>
+  单滑块
+  <ti-slider
+    tipMode="always"
+    [scales]="[100,300,650,1250,2000]"
+    min="100"
+    max="2000"
+    [ratios]="[0.4,0.2,0.2,0.2]"
+    [(ngModel)]="value"
+  ></ti-slider>
+  <br /><br />
+  双滑块
+  <ti-slider
+    tipMode="always"
+    [scales]="[100,300,650,1250,2000]"
+    min="100"
+    max="2000"
+    [ratios]="[0.4,0.2,0.2,0.2]"
+    [(ngModel)]="value1"
+  ></ti-slider>
+  <h4>数字微调</h4>
+  <ti-spinner
+    placeholder="-400~10000"
+    max="10000"
+    min="-400"
+    [(ngModel)]="spinnerValue"
+  ></ti-spinner>
+  <h4>开关</h4>
+  <ti-switch [(ngModel)]="switchState"></ti-switch>
+  <h4>树选择、树</h4>
+  <ti-treeselect
+    [multiple]="false"
+    [options]="treeSelect"
+    placeholder="请选择"
+    [multiple]="true"
+    [(ngModel)]="treeSelected"
+  >
+  </ti-treeselect>
+  <h3>表单文本</h3>
+  <h4>文本框</h4>
+  <input
+    type="text"
+    style="width: 200px"
+    [(ngModel)]="textValue"
+    tiText
+    clearable
+  />
+  <h4>多行文本框</h4>
+  <textarea
+    style="width: 200px; height: 100px"
+    tiTextarea
+    maxlength="1000"
+    [(ngModel)]="textareaValue"
+  ></textarea>
+  <h4>自动补全</h4>
+  <ti-autocomplete
+    style="width: 200px"
+    [(ngModel)]="autocompleteValue"
+    [options]="autocomplete"
+  ></ti-autocomplete>
+  <h4>搜索框</h4>
+  <ti-searchbox
+    style="width: 200px"
+    placeholder="搜索框"
+    [(ngModel)]="searchboxValue"
+  ></ti-searchbox>
+  <h4>格式化输入</h4>
+  <input
+    tiText
+    name="myinput"
+    type="text"
+    tiMask="00 0--00&00"
+    [(ngModel)]="maskValue"
+  />
+  <h4>IP输入</h4>
+  <ti-ip [(ngModel)]="ipv4Value" [version]="4" tiIpv4></ti-ip>
+  <br /><br />
+  <ti-ip [(ngModel)]="ipv6Value" [version]="6" tiIpv6></ti-ip>
+  <h4>IP分段</h4>
+  <ti-ipsection [(ngModel)]="ipsectionValue" [configs]="configs"></ti-ipsection>
+  <h4>标签输入</h4>
+  <ti-tags-input
+    style="width: 500px"
+    [suggestions]="tagsSuggestions"
+    placeholder="标签输入"
+    [(ngModel)]="tagsSelected"
+  ></ti-tags-input>
+  <h4>数字输入框</h4>
+  <input
+    width="280px"
+    tiText
+    type="text"
+    tiNumber
+    [(ngModel)]="inputNumberValue"
+  />
+  <h3>表单日期</h3>
+  <h4>日期</h4>
+  <ti-date [(ngModel)]="dateValue"></ti-date>
+  <h4>日期范围</h4>
+  <ti-date-range [(ngModel)]="dateRangeValue"></ti-date-range>
+  <h4>日期时间</h4>
+  <ti-datetime [(ngModel)]="datetimeValue"></ti-datetime>
+  <h4>时间日期范围</h4>
+  <ti-datetime-range [(ngModel)]="datetimeRangeValue"></ti-datetime-range>
+  <h4>时间</h4>
+  <ti-time [(ngModel)]="timeValue"></ti-time>
+  <h3>表单辅助</h3>
+  <h4>表单校验</h4>
+  及时校验
+  <input tiValidation tiEqual="aa" [(ngModel)]="validationValue" tiText />
+  <br /><br />
+  失焦校验
+  <input
+    [tiValidation]="validation"
+    tiEqual="aa"
+    name="a1"
+    [(ngModel)]="validationValue1"
+    tiText
+  />
+  <h4>表单</h4>
+  <ti-formfield>
+    <ti-item
+      [label]="item1.label"
+      [required]="item1.required"
+      [show]="item1.show"
+    >
+      <button tiButton type="button">Default</button>
+    </ti-item>
+    <ti-item [label]="item2.label" [required]="item2.required">
+      <input
+        type="text"
+        tiText
+        [(ngModel)]="item2.value"
+        style="width: 230px"
+      />
+    </ti-item>
+    <ti-item
+      [required]="item3.required"
+      [show]="item3.show"
+      [label]="item3.label"
+      [verticalAlign]="item3.verticalAlign"
+    >
+      <span>item3</span>
+    </ti-item>
+  </ti-formfield>
+  <h4>文件上传</h4>
+  <ti-upload url="/upload" inputFieldWidth="500px"></ti-upload>
+  图片上传
+  <ti-upload url="/upload" type="block"></ti-upload>
+  <h3>菜单导航</h3>
+  <h4>下拉菜单</h4>
+  <ti-menu [items]="menuOptions">导出</ti-menu>
+  <h4>菜单按钮</h4>
+  <ti-actionmenu [items]="actionmenu"></ti-actionmenu>
+  <h4>左侧菜单:默认收起，点击左侧小三角</h4>
+  <ti-leftmenu
+    [(active)]="active"
+    [routable]="routable"
+    collapsed="true"
+    style="width: 250px"
+  >
+    <ti-leftmenu-head>
+      <div style="height: 60px">头部区域（可定制）</div>
+    </ti-leftmenu-head>
+
+    <ti-leftmenu-level1 [item]="m1" *ngFor="let m1 of leftmenuItems">
+      <ti-leftmenu-item>
+        <span>{{m1.label}}</span>
+      </ti-leftmenu-item>
+
+      <ti-leftmenu-level2 [item]="m2" *ngFor="let m2 of m1.children">
+        <span>{{m2.label}}</span>
+      </ti-leftmenu-level2>
+    </ti-leftmenu-level1>
+  </ti-leftmenu>
+
+  <div style="margin-top: 20px">
+    <div *ngIf="active === leftmenuItems[0].children[0]">state11</div>
+    <div *ngIf="active === leftmenuItems[0].children[1]">state12</div>
+    <div *ngIf="active === leftmenuItems[1]">state2</div>
+    <div *ngIf="active === leftmenuItems[2].children[0]">state31</div>
+    <div *ngIf="active === leftmenuItems[2].children[1]">state32</div>
+  </div>
+  <h4>手风琴</h4>
+  <ti-accordion>
+    <!--条目一-->
+    <ti-accordion-item open="true">
+      <!--条目一的头部展示内容-->
+      <ti-accordion-head>Static Header, initially expanded</ti-accordion-head>
+      <!--条目一的内容区域-->
+      <span>This content is straight in the template.</span>
+    </ti-accordion-item>
+
+    <!--条目二-->
+    <ti-accordion-item>
+      <!--条目二的头部展示内容-->
+      <ti-accordion-head>Dynamic Body Content</ti-accordion-head>
+      <!--条目二的内容区域-->
+      <span>The body of the accordion group grows to fit the contents</span>
+    </ti-accordion-item>
+  </ti-accordion>
+  <h4>页签</h4>
+  <ti-tabs>
+    <ti-tab header="Profile" [active]="true">
+      <div>第1个tab对应的内容区</div>
+    </ti-tab>
+    <ti-tab>
+      <!--自定义当前页签的标题头-->
+      <ti-tab-header>
+        <span>大法师</span>
+        <span>(26)</span>
+      </ti-tab-header>
+      <div>第2个tab对应的内容区</div>
+    </ti-tab>
+    <ti-tab header="School" [disabled]="true">
+      <div>第3个tab对应的内容区</div>
+    </ti-tab>
+    <ti-tab header="About">
+      <div>第4个tab对应的内容区</div>
+    </ti-tab>
+  </ti-tabs>
+  <br /><br />
+  二级页签
+  <ti-tabs level2>
+    <ti-tab header="Profile" [active]="true">
+      <div>第1个tab对应的内容区</div>
+    </ti-tab>
+    <ti-tab>
+      <!--自定义当前页签的标题头-->
+      <ti-tab-header>
+        <span>大法师</span>
+        <span>(26)</span>
+      </ti-tab-header>
+      <div>第2个tab对应的内容区</div>
+    </ti-tab>
+    <ti-tab header="School" [disabled]="true">
+      <div>第3个tab对应的内容区</div>
+    </ti-tab>
+    <ti-tab header="About">
+      <div>第4个tab对应的内容区</div>
+    </ti-tab>
+  </ti-tabs>
+  深色背景页签
+  <ti-tabs dark>
+    <ti-tab header="Profile" [active]="true">
+      <div>第1个tab对应的内容区</div>
+    </ti-tab>
+    <ti-tab>
+      <!--自定义当前页签的标题头-->
+      <ti-tab-header>
+        <span>大法师</span>
+        <span>(26)</span>
+      </ti-tab-header>
+      <div>第2个tab对应的内容区</div>
+    </ti-tab>
+    <ti-tab header="School" [disabled]="true">
+      <div>第3个tab对应的内容区</div>
+    </ti-tab>
+    <ti-tab header="About">
+      <div>第4个tab对应的内容区</div>
+    </ti-tab>
+  </ti-tabs>
+
+  <h4>步骤组件</h4>
+  <ti-steps [steps]="steps" [(activeStep)]="activeStep"></ti-steps>
+
+  <h3>弹出提示</h3>
+  <h4>提示面板</h4>
+  <ti-alert>提示面板</ti-alert><br />
+  <ti-alert type="prompt">提示面板： prompt类型</ti-alert> <br />
+  <ti-alert type="warn">提示面板：warn类型</ti-alert><br />
+  <ti-alert type="error">提示面板：error类型</ti-alert><br />
+  <ti-alert type="simple">提示面板：simple类型</ti-alert>
+  <h4>消息弹框</h4>
+  <button (click)="showMsg()" tiButton>show message</button>
+  <h4>弹出框</h4>
+  <ng-template #myModal let-context="context">
+    <ti-modal-header> modal title </ti-modal-header>
+    <ti-modal-body> body content </ti-modal-body>
+    <ti-modal-footer>
+      <button type="button" autofocus (click)="context.close()" tiButton>
+        OK
+      </button>
+      <button type="button" (click)="context.dismiss()" tiButton>Cancel</button>
+    </ti-modal-footer>
+  </ng-template>
+  <button (click)="show(myModal)" tiButton>show Modal</button>
+  <h4>气泡确认框</h4>
+  <a
+    tiNavigation
+    href="javascript:void(0)"
+    type="button"
+    style="color: red"
+    [tiPopconfirm]="popConfig"
+    >删除</a
+  >
+  <h4>提示</h4>
+  <div
+    tiTip="tip提示。。。"
+    tiTipPosition="right"
+    style="width: 200px; padding: 10px; border: 1px solid #000"
+  >
+    mouseover to show tip
+  </div>
+  <h3>其它组件</h3>
+  <h4>表格、分页</h4>
+  <ti-table
+    [(displayedData)]="displayed"
+    [srcData]="srcData"
+    [columns]="columns"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            tiOverflow
+            *ngFor="let column of columns"
+            width="{{column.width}}"
+          >
+            {{column.title}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of displayed">
+          <td tiOverflow>{{row.firstName}}</td>
+          <td tiOverflow>{{row.lastName}}</td>
+          <td tiOverflow>{{row.age}}</td>
+          <td tiOverflow>{{row.balance}}</td>
+          <td tiOverflow>{{row.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <ti-pagination
+      [(currentPage)]="currentPage"
+      [pageSize]="pageSize"
+      [(totalNumber)]="totalNumber"
+    ></ti-pagination>
+  </ti-table>
+  <h4>进度条</h4>
+  <div class="wrapper-content">
+    <div class="wrapper-content-bar">
+      <ti-progressbar value="20" max="100"></ti-progressbar>
+    </div>
+    20%
+  </div>
+  <h4>新手引导</h4>
+  <button tiButton (click)="start()">开始引导</button>
+  <div class="container">
+    <span #introStep1 style="top: 10px; left: 30px">1号新功能</span>
+    <span #introStep2 style="top: 100px; left: 80px">2号新功能</span>
+    <span #introStep3 style="right: 10px; top: 30px">3号新功能</span>
+  </div>
+  <h4>加载</h4>
+  默认加载：<ti-loading></ti-loading> <br />
+  弱加载：<ti-loading type="weak"></ti-loading>
+</div>
+<style>
+  h4 {
+    margin: 20px 0;
+  }
+  .container {
+    height: 100px;
+    margin: 50px;
+    position: relative;
+  }
+  .container span {
+    position: absolute;
+    padding: 4px 8px;
+  }
+</style>

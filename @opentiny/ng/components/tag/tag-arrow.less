@@ -1,0 +1,44 @@
+@import "../../themes/basic/base-all.less";
+:host.ti3-tag-container {
+      display: inline-block;
+      max-width: 221px;
+      height: 28px;
+      line-height: 28px;
+      margin-left: 24px;
+      padding-right: 28px;
+      font-size: 14px;
+      background-color: var(--ti-common-color-bg-normal);
+      color: var(--ti-common-color-text-primary);
+      cursor: pointer;
+      box-sizing: border-box;
+      position: relative;
+
+      &:hover {
+        .ti3-tag-clear {
+          color: var(--ti-common-color-icon-hover);
+        }
+      }
+
+      .ti3-tag-selected-triangle {
+        position: absolute;
+        top: 0;
+        left: -14px;
+        width: 0;
+        height: 0;
+        border-top: 14px solid transparent;
+        border-right: 14px solid var(--ti-common-color-bg-normal);
+        border-bottom: 14px solid transparent;
+      }
+
+      .ti3-tag-clear {
+        position: absolute;
+        right: 7px;
+        top: 0;
+        background-color: transparent;
+        color: #999;
+        font-size: 14px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+}

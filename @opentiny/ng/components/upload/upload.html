@@ -1,0 +1,215 @@
+<div class="ti3-file-upload-container" *ngIf="type === 'button' || type === 'textButton'">
+    <!-- IE下使用button做容器，无法做点选操作，因此使用div代替 -->
+    <div class="ti3-file-btn" [id]="appendId('button')" tiButton [tiDisabled]='disabled' *ngIf="type === 'button'">
+        <input class="ti3-file-input" [id]="appendId('select')" type="file" [tiFileSelect]="uploadInst" [title]="title" [accept]="accept"
+            [disabled]="disabled" [multiple]="!uploadInst.isSingleFile">
+        <span class="ti3-file-text">{{buttonText || uploadLan.addFile}}</span>
+    </div>
+    <div class="ti3-file-text-btn" [ngClass]="{'ti3-file-text-btn-disabled': disabled}" *ngIf="type === 'textButton'">
+        <input class="ti3-file-input" [id]="appendId('select')" type="file" [tiFileSelect]="uploadInst" [title]="title" [accept]="accept"
+            [disabled]="disabled" [multiple]="!uploadInst.isSingleFile">
+        {{buttonText || uploadLan.addFile}}
+    </div>
+    <div class="ti3-file-note" *ngIf="note" [id]="appendId('note')">{{note}}</div>
+    <ul class="ti3-file-items-container"
+        [ngStyle]="{'max-height': listMaxHeight}"
+        [id]="appendId('list')">
+        <!-- 初始化显示的文件列表 -->
+        <li class="ti3-file-item" *ngFor="let item of initFiles; index as i;"
+            [id]="appendId('init_file_' + i)">
+            <div class="ti3-file-name-container">
+                <span class="ti3-file-icon ti3-icon ti3-icon-document"></span>
+                <span class="ti3-file-name" [title]="item.name">{{item.name}}</span>
+            </div>
+            <div class="ti3-file-operates">
+                <div class="ti3-file-operates-show">
+                    <span class="ti3-file-x ti3-icon ti3-icon-delete-1"
+                        [ngClass]="{'ti3-file-x-disabled': !item.allowDelete}"
+                        (click)="removeInitFiles(item)"
+                        [title]="uploadLan.delete"
+                        [id]="appendId('init_file_remove_'+ i)">
+                    </span>
+                </div>
+            </div>
+        </li>
+        <ng-container *ngIf="showUploadList">
+            <!-- 添加的上传文件列表 -->
+                <li class="ti3-file-item" *ngFor="let item of uploadInst.queue; index as i;"
+                [id]="appendId('queue_' + i)">
+                <div class="ti3-file-name-container" [ngClass]="{'ti3-file-state-general-info-error': item.isError}"
+                    [tiTip]="item.isError ? tipContent : ''" [tiTipContext]='{"item": item}'
+                    [tiTipPosition]="'top-left'">
+                    <span class="ti3-file-icon ti3-icon ti3-icon-document"></span>
+                    <span class="ti3-file-name" [title]="item.file.name">{{item.file.name}}</span>
+                </div>
+                <div class="ti3-file-operates">
+                    <div *ngIf="!item.isUploading && !item.isUploaded" class="ti3-file-operates-uploading">
+                        <span class="ti3-file-x ti3-icon ti3-icon-delete-1"
+                            [ngClass]="{'ti3-file-x-disabled': !item.allowDelete}"
+                            (click)="item.remove(isRemove)"
+                            [title]="uploadLan.delete"
+                            [id]="appendId('added_remove_' + i)">
+                        </span>
+                    </div>
+                    <div *ngIf="item.isUploading" class="ti3-file-operates-uploading">
+                        <span class="ti3-file-x ti3-icon ti3-icon-delete-1"
+                            [ngClass]="{'ti3-file-x-disabled': !item.allowDelete}"
+                            (click)="item.remove(isRemove)"
+                            [title]="uploadLan.delete"
+                            [id]="appendId('uploading_remove_' + i)">
+                        </span>
+                    </div>
+                    <div *ngIf="item.isSuccess" class="ti3-file-operates-success">
+                        <span class="ti3-file-x ti3-icon ti3-icon-delete-1"
+                            [ngClass]="{'ti3-file-x-disabled': !item.allowDelete}"
+                            (click)="item.remove(isRemove)"
+                            [title]="uploadLan.delete"
+                            [id]="appendId('success_remove_' + i)">
+                        </span>
+                    </div>
+                    <div *ngIf="item.isError" class="ti3-file-operates-error">
+                        <span class="ti3-file-error-reupload ti3-icon ti3-icon-refresh-1"
+                            [ngClass]="{'ti3-file-x-disabled': !item.allowReload}"
+                            (click)="item.upload()"
+                            [title]="uploadLan.reload"
+                            [id]="appendId('refresh_' + i)">
+                        </span>
+                        <span class="ti3-file-x ti3-icon ti3-icon-delete-1"
+                            [ngClass]="{'ti3-file-x-disabled': !item.allowDelete}"
+                            (click)="item.remove(isRemove)"
+                            [title]="uploadLan.delete"
+                            [id]="appendId('error_remove_' + i)">
+                        </span>
+                    </div>
+                </div>
+                <ti-progressbar class="ti3-file-progress-bar"
+                    *ngIf="item.isUploading"
+                    [progressClass]="'ti3-file-progress-bar-color'"
+                    [value]="item.progress">
+                </ti-progressbar>
+            </li>
+        </ng-container>
+    </ul>
+    <div class="ti3-file-error-message" *ngIf="showErrorMessage">
+        <div class="ti3-aui-file-state-general ti3-aui-file-state-general-info" *ngIf="errorMessage">
+            <ti-error-msg [errorMessage]="errorMessage"></ti-error-msg>
+            <div class="ti3-aui-file-state-general-operate"
+            [ngClass]="{'ti3-aui-file-state-general-operate-disable': reloadAllDisable}"
+                    (click)="uploadInst.reloadAllError()"
+                    [id]="appendId('reload')">{{uploadLan.reload}}</div>
+        </div>
+        <div class="ti3-aui-file-state-general" *ngIf="!errorMessage && uploadInst.queue.length">
+            <div *ngIf="getUploadState() === 'error'" class="ti3-aui-file-state-general-info">
+                <ti-error-msg [errorMessage]="stateInfo"></ti-error-msg>
+                <div class="ti3-aui-file-state-general-operate"
+                    [ngClass]="{'ti3-aui-file-state-general-operate-disable': reloadAllDisable}"
+                    (click)="uploadInst.reloadAllError()"
+                    [id]="appendId('reload')">{{uploadLan.reload}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ti3-aui-file-container" *ngIf="type !== 'button' && type !== 'textButton'" [ngClass]="{'ti3-aui-file-disable': disabled}">
+    <div class="ti3-aui-file-upload-container">
+        <div class="ti3-aui-file-field-container" [style.width]="inputFieldWidth">
+            <ul class="ti3-aui-file-items-container" [id]="appendId('list')">
+                <!-- 文件名称超长溢出或者该文件上传失败时，显示tip -->
+                <li class="ti3-aui-file-item" *ngFor="let item of uploadInst.queue; index as i;" [tiTip]="item.isOverflow || item.isError ? tipContent : ''" [tiTipContext]='{"item": item}'
+                [tiTipPosition]="'top-left'" (mouseenter)='onItemMouseenter(item, $event)' (mouseleave)='onItemMouseleave(item)' [id]="appendId('queue_' + i)"
+                [ngClass]="{'ti3-aui-single-file-item': uploadInst.isSingleFile}">
+                    <div class="ti3-aui-file-name-size-container">
+                        <div class="ti3-aui-file-name" [ngClass]="{'ti3-aui-file-state-general-info-error': item.isError}">{{item.file.name}}</div>
+                        <div class="ti3-aui-file-size">
+                            <span class="ti3-aui-file-size-brackets">(</span>
+                            <span class="ti3-aui-file-item-size">{{item.file.sizeWithUnit}}</span>
+                            <span class="ti3-aui-file-size-brackets">)</span>
+                        </div>
+                    </div>
+                    <div class="ti3-aui-file-operates">
+                            <div *ngIf="!item.isUploading && !item.isUploaded">
+                                <span class="ti3-aui-file-x ti3-icon ti3-icon-cancel" (click)="item.remove(isRemove)" [id]="appendId('remove_'+ i)"></span>
+                            </div>
+                            <div *ngIf="item.isUploading">
+                                <ti-progresspie [value]="item.progress" [hidden]="item.isHover" class="ti3-aui-file-progress-pie">
+                                </ti-progresspie>
+                                <span class="ti3-aui-file-x ti3-icon ti3-icon-cancel" (click)="item.cancel()" *ngIf="item.isHover" [id]="appendId('cancel_' + i)"></span>
+                            </div>
+                            <div *ngIf="item.isSuccess">
+                                <span class="ti3-aui-file-success ti3-icon ti3-icon-alert-success" [hidden]="item.isHover"></span>
+                                <span class="ti3-aui-file-x ti3-icon ti3-icon-cancel" (click)="item.remove(isRemove)" *ngIf="item.isHover" [id]="appendId('success_remove_' + i)"></span>
+                            </div>
+                           <div *ngIf="item.isError" class="ti3-aui-file-error-state">
+                                <span class="ti3-aui-file-error-reupload ti3-icon ti3-icon-refresh-1" (click)="item.upload()" *ngIf="!item.batchSend" [id]="appendId('refresh_' + i)"></span>
+                                <span class="ti3-aui-file-x ti3-icon ti3-icon-cancel" (click)="item.remove(isRemove)" [id]="appendId('error_remove_' + i)"></span>
+                           </div>
+                        </div>
+                </li>
+                <li *ngIf="!uploadInst.queue.length" class="ti3-aui-file-placeholder" [id]="appendId('placeholder')">{{placeholder}}</li>
+            </ul>
+
+        </div>
+
+        <!-- 自动上传文件/手动添加文件按钮 -->
+        <div class="ti3-file-upload-btnCon">
+                <input #fileInput type="file" [tiFileSelect]="uploadInst" class="ti3-aui-file-select-input"
+                       [multiple]="!uploadInst.isSingleFile"
+                       [title]="title"
+                       [accept]="accept"
+                       [id]="appendId('file')">
+                <button tiButton type="button" class="ti3-aui-upload-btn"
+                        [disabled]="disabled"
+                        (click)="onSelectClick()"
+                        [id]="appendId('select')">{{autoUpload ? (buttonText || uploadLan.upload) : uploadLan.addFile}}</button>
+        </div>
+
+         <!-- 手动上传文件按钮 -->
+        <span class="ti3-file-upload-btnCon" *ngIf="showSubmitButton">
+            <span class="ti3-file-upload-btn-cover" *ngIf="disabled || !uploadInst.queue.length || uploadInst.isUploadedAll()"></span>
+            <button tiButton type="button"
+                    (click)="uploadInst.uploadAll()"
+                    class="ti3-aui-upload-btn"
+                    *ngIf="showSubmitButton"
+                    [disabled]="disabled || !uploadInst.queue.length || uploadInst.isUploadedAll()"
+                    [id]="appendId('uploadAll')">{{buttonText || uploadLan.upload}}</button>
+        </span>
+    </div>
+    <div class="ti3-aui-file-state-general" *ngIf="uploadInst.queue.length && !uploadInst.isSingleFile" [style.width]="inputFieldWidth">
+        <div *ngIf="getUploadState() === 'addSuccess'" class="ti3-aui-file-state-general-info">
+            <span class="ti3-aui-file-state-general-info-addSuccess" >{{stateInfo}}</span>
+        </div>
+        <div *ngIf="getUploadState() === 'uploading'" class="ti3-aui-file-state-general-info">
+            <span class="ti3-aui-file-state-general-info-uploading">{{stateInfo}}</span>
+            <div class="ti3-aui-file-state-general-operate" (click)="uploadInst.cancelAll()"[id]="appendId('cancel')">{{uploadLan.cancel}}</div>
+        </div>
+        <div *ngIf="getUploadState() === 'success'" class="ti3-aui-file-state-general-info">
+            <span class="ti3-aui-file-state-general-icon ti3-aui-file-state-general-success ti3-icon ti3-icon-check-circle"></span>
+            <span class="ti3-aui-file-state-general-info-success">{{stateInfo}}</span>
+        </div>
+        <div *ngIf="getUploadState() === 'error'" class="ti3-aui-file-state-general-info">
+            <span class="ti3-aui-file-state-general-icon ti3-aui-file-state-general-error ti3-icon ti3-icon-exclamation-circle"></span>
+            <span class="ti3-aui-file-state-general-info-error">{{stateInfo}}</span><!--
+            --><div class="ti3-aui-file-state-general-operate" (click)="uploadInst.reloadAllError()" [id]="appendId('reload')">{{uploadLan.reload}}</div>
+        </div>
+    </div>
+    <div class="ti3-aui-file-state-general" *ngIf = "uploadInst.queue.length && uploadInst.isSingleFile"  [style.width]="inputFieldWidth">
+        <div *ngIf="uploadInst.queue[0].isUploading" class="ti3-aui-file-state-general-info">
+            <span class="ti3-aui-file-state-general-info-uploading">{{uploadLan.uploadingSingleInfo}}</span>
+        </div>
+        <div *ngIf="uploadInst.queue[0].isSuccess" class="ti3-aui-file-state-general-info">
+            <span class="ti3-aui-file-state-general-icon ti3-aui-file-state-general-success ti3-icon ti3-icon-check-circle"></span>
+            <span class="ti3-aui-file-state-general-info-success">{{uploadLan.successInfo}}</span>
+        </div>
+        <div *ngIf="uploadInst.queue[0].isError" class="ti3-aui-file-state-general-info">
+            <span class="ti3-aui-file-state-general-icon ti3-aui-file-state-general-error ti3-icon ti3-icon-exclamation-circle"></span>
+            <span class="ti3-aui-file-state-general-info-error">{{uploadLan.errorSingleInfo}}</span>
+            <div class="ti3-aui-file-state-general-operate" (click)="uploadInst.reloadAllError()" [id]="appendId('reload')">{{uploadLan.reload}}</div>
+        </div>
+    </div>
+</div>
+
+<!-- 单个item tip内容显示模板-->
+<ng-template #tipContent let-item="context.item">
+    <ti-error-msg *ngIf='item.isError' [errorMessage]="item.errorInfo || uploadLan.error" [appendToTip]="true"></ti-error-msg>
+    <span class="ti3-aui-file-tip-name" *ngIf="item.isOverflow">{{item.file.name}}</span>
+</ng-template>

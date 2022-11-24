@@ -1,0 +1,52 @@
+@import "../../themes/basic/base-all.less";
+
+:host {
+    --ti-ipsection-dot-size: 2px;
+    --ti-ipsection-input-width: 50px;
+    --ti-ipsection-select-width: 70px;
+}
+
+:host.ti3-ipsection-container{
+    display: inline-block;
+    // ipsection整体校验时无需红色背景
+    @{tiny-invalid-class} {
+        background-color: transparent;
+    }
+}
+
+.ti3-ipsection-input {
+    width: var(--ti-ipsection-input-width);
+    text-align: center;
+}
+
+.ti3-ipsection-select {
+    width: var(--ti-ipsection-select-width);
+}
+
+.ti3-ipsection-text-blod {
+    font-weight: var(--ti-common-font-weight-7);
+}
+
+.ti3-ipsection-division {
+    display: inline-block;
+    vertical-align: middle;
+    background: var(--ti-common-color-icon-normal);
+}
+
+.ti3-ipsection-dot {
+    width: var(--ti-ipsection-dot-size);
+    height: var(--ti-ipsection-dot-size);
+    border-radius: 50%;
+    .box-sizing();
+    margin: 0 var(--ti-common-space-2x);
+}
+
+.ti3-ipsection-maskdivision {
+    width: 18px;
+    height: 1px;
+    transform: rotate(110deg);
+}
+
+.ti3-ipsection-division-disabled {
+    background: var(--ti-common-color-icon-disabled);
+}

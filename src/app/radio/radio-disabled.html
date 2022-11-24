@@ -1,0 +1,54 @@
+<h4 class="mb-3">1.禁用某个单选框</h4>
+<input
+  id="radio-disabled1"
+  name="group1"
+  type="radio"
+  value="shanghai"
+  label="上海"
+  tiRadio
+  [(ngModel)]="selected"
+  [disabled]="disabled"
+/><span class="mr-7"></span>
+<input
+  id="radio-disabled2"
+  name="group1"
+  type="radio"
+  value="beijing"
+  label="北京"
+  tiRadio
+  [(ngModel)]="selected"
+  [disabled]="disabled"
+/><span class="mr-7"></span>
+<input
+  id="radio-disabled3"
+  name="group1"
+  type="radio"
+  value="guangzhou"
+  label="广州"
+  tiRadio
+  [(ngModel)]="selected"
+/><span class="mr-7"></span>
+<input
+  id="radio-disabled4"
+  name="group1"
+  type="radio"
+  value="xian"
+  label="西安"
+  tiRadio
+  [(ngModel)]="selected"
+/><span class="mr-7"></span>
+<h4 class="my-3">2.在form表单中禁用某个单选框</h4>
+<form>
+  <span class="mr-7" *ngFor="let item of countries, index as i;">
+    <input
+      [id]="'radio-disabled-form-' + i"
+      name="group2"
+      type="radio"
+      [value]="item.id"
+      [label]="item.key"
+      tiRadio
+      [(ngModel)]="selectedCountry"
+      [attr.disabled]="item.disable ? '' : null"
+    />
+  </span>
+</form>

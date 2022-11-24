@@ -1,0 +1,24 @@
+<h3>描述</h3>
+<p>Rate评分组件，数据加载。输入异常值时，默认会将value设置为0。</p>
+<br>
+<p>点击异常值，value会被设置为0，同时会触发ngModelChange事件。设置正常0~5之间的正常值时，不会触发ngModelChange事件。</p>
+<br>
+
+<h3>示例</h3>
+<ti-rate [(ngModel)]="value" (ngModelChange)="onChange($event)"></ti-rate>
+<br>
+
+<h4>异常值</h4>
+<button (click)="changeUndefined()">changeUndefined</button><br>
+<button (click)="changeNull()">changeNull</button><br>
+<button (click)="changeText()">changeText</button><br>
+<button (click)="changeZero()">changeZero</button><br>
+<button (click)="changeNegativeNumber()">value=-10</button><br>
+<button (click)="changeMoreThanFive()">value=10</button><br>
+
+<h4>正常值</h4>
+<button (click)="changeFour()">value=4</button><br>
+<button (click)="changeTwo()">value=2</button>
+
+<h3>事件日志：</h3>
+<demo-log [logs]="myLogs"></demo-log>

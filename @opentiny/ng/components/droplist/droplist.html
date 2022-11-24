@@ -1,0 +1,30 @@
+<ti-drop [dominatorElem]="dominatorElem"
+    [referElem]="referElem"
+    [dominatorSpace]="dominatorSpace"
+    [panelAlign]='panelAlign'
+    [panelWidth]='panelWidth' [class.ti3-select-small]="size === 'small'">
+    <!-- 如果不加 ngIf 控制其在打开面板的时候再显示，那么在 select 初始化时下拉 list 就会解析，性能不好-->
+    <ti-list *ngIf="listInited"
+        [multiple]="multiple"
+        [options]="options"
+        [(ngModel)]="model"
+        style="display:block;"
+        (select)="onSelect($event)"
+        [id]="appendId('list')"
+        [tipPosition]="tipPosition"
+        [tipMaxWidth]="tipMaxWidth"
+        [noDataText]="noDataText"
+        [virtual]="virtual"
+        [itemSize]="itemSize"
+        [labelKey]="labelKey"
+        [idKey]="idKey"
+		(scrollToBottom)="onScrollToBottom($event)">
+        <ng-template let-item let-i=index>
+                <ng-container *ngIf="itemTemplate else listLabelTemplate">
+                        <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: item,index: i}">
+                        </ng-container>
+                </ng-container>
+                <ng-template #listLabelTemplate><span [title]="item[labelKey]">{{item[labelKey]}}</span></ng-template>
+        </ng-template>
+    </ti-list>
+</ti-drop>

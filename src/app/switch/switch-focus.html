@@ -1,0 +1,38 @@
+<h3>描述</h3>
+<p>Switch开关组件，焦点用法</p>
+<h3>示例</h3>
+
+<h4>1.autofocus：</h4>
+<ti-switch autofocus id="myswitch" [(ngModel)]="switchState1"></ti-switch
+><br /><br />
+
+<h4>2.focus()：</h4>
+<ti-switch #mycomp id="myswitch2" [(ngModel)]="switchState2"></ti-switch><br />
+<br />
+<button (click)="mycomp.focus()">组件focus()</button>
+&nbsp;
+<button (click)="mycomp.blur()">组件blur()</button>
+&nbsp;
+<button (click)="mycomp.nativeElement.focus()">标签元素focus()</button>
+&nbsp;
+<button (click)="mycomp.nativeElement.blur()">标签元素blur()</button>
+<br /><br />
+
+<h4>3.tabindex：</h4>
+<span>tabindex="1"</span>
+<ti-switch tabindex="1" id="myswitch31" [(ngModel)]="switchState3"></ti-switch
+><br /><br />
+<span>tabindex="3"</span>
+<ti-switch tabindex="3" id="myswitch32" [(ngModel)]="switchState4"></ti-switch
+><br /><br />
+<span>tabindex="4"</span>
+<ti-switch tabindex="4" id="myswitch33" [(ngModel)]="switchState5"></ti-switch
+><br /><br />
+<span>tabindex="2"</span>
+<ti-switch
+  tabindex="2"
+  [disabled]="myDisabled"
+  id="myswitch34"
+  [(ngModel)]="switchState6"
+></ti-switch>
+<button (click)="myDisabled=!myDisabled">改变禁用</button>

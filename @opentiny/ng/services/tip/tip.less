@@ -1,0 +1,336 @@
+@import "../../themes/basic/base-all.less";
+
+:host {
+  --ti-tip-before-square-size: 10px;
+  --ti-tip-square-distance: 5px; // tip小三角的尖 到 宿主元素的距离
+  --ti-tip-before-square-height: 9px; // （10*cos45=7）+1px边框 + 1px调整保证移动之后无缝隙
+  --ti-tip-sqr-height: calc(var(--ti-tip-square-distance) + var(--ti-tip-before-square-height)); // sqr元素的宽、高
+  // 4.0规范 tip都是深色，根据intro组件需求，添加white主题
+  --ti-tip-white-theme-bg: var(--ti-common-color-bg-white-normal);
+  --ti-tip-z-index: 5000;
+  --ti-tip-offset: 9px; // 非居中对齐时，小箭头的偏移量
+  --ti-tip-box-shadow-color: rgba(0,0,0,0.20);
+}
+
+:host.ti3-tooltip {
+  display: block;
+  position: absolute;
+  background-color: var(--ti-common-color-bg-dark-deep);
+  color: var(--ti-common-color-text-gray);
+  padding: calc(var(--ti-common-space-3x) - 1px)
+    calc(var(--ti-common-space-4x) - 1px); //tip的内容区域的padding：1px,此处减去1px与规范保持一致
+  border: 1px solid var(--ti-common-color-bg-dark-deep);
+  box-shadow: var(--ti-common-shadow-3-down);
+  border-radius: var(--ti-common-border-radius-1);
+  .box-sizing(border-box);
+  z-index: var(--ti-tip-z-index);
+  white-space: normal;// 自动换行属性，normal为默认值，此处处理为了防止外部样式影响
+  word-wrap: break-word;// 换行方式：单词整体换行
+  line-height: var(--ti-common-line-height-number);
+  &.ti3-tip-white-theme {
+    background-color: var(--ti-tip-white-theme-bg);
+    color: var(--ti-common-color-text-secondary);
+    border-color: var(--ti-common-color-bg-white-normal);
+    &::after,
+    &::before {
+      background: var(--ti-tip-white-theme-bg);
+    }
+    &.ti3-tooltip-top, &.ti3-tooltip-top-left, &.ti3-tooltip-top-right,
+    &.ti3-tooltip-bottom, &.ti3-tooltip-bottom-right, &.ti3-tooltip-bottom-left,
+    &.ti3-tooltip-left, &.ti3-tooltip-left-top, &.ti3-tooltip-left-bottom,
+    &.ti3-tooltip-right, &.ti3-tooltip-right-top, &.ti3-tooltip-right-bottom {
+      &::before {
+        border-left-color: var(--ti-common-color-bg-white-normal);
+        border-top-color: var(--ti-common-color-bg-white-normal);
+      }
+    }
+    & .ti3-tooltip-content {
+      .box-sizing(border-box);
+      overflow-y: auto;
+      padding: 1px;
+    }
+  }
+}
+
+/**
+*  此处设置padding：1px解决的问题是：
+* 【问题现象】：ie浏览器下，汉字且字数较少时，未达到最大高度出现滚动条，主要是字体为汉字时会出现这个现象
+* 【出现该问题的原因】：属浏览器对字体解析的问题,具体原因不明
+* 【解决办法】：将内容区域的padding增加1px,修正因ie浏览器字体解析产生的偏差
+*/
+
+.ti3-tooltip-content {
+  .box-sizing(border-box);
+  overflow-y: auto;
+  padding: 1px;
+  font-weight: var(--ti-common-font-weight-4);
+  font-size: var(--ti-common-font-size-base);
+  ::ng-deep a {
+      color: var(--ti-common-color-text-link-darkbg);
+      text-decoration: none;
+      &:hover {
+          color: var(--ti-common-color-text-link-darkbg-hover);
+          text-decoration: underline;
+      }
+    }
+}
+
+//**-sqr元素为触发tooltip的内容区域与tooltip之间的连接的矩形过度区域
+// 提取-sqr的公共样式变量
+.ti3-tooltip-position-sqr(@width, @height) {
+  position: absolute;
+  background-color: transparent;
+  box-sizing: border-box;
+  width: @width;
+  height: @height;
+}
+
+// 提取before的公共样式
+.ti3-tooltip-position-before {
+  display: block;
+  position: absolute;
+  border-left: 1px solid var(--ti-common-color-bg-dark-deep);
+  border-top: v1px solid var(--ti-common-color-bg-dark-deep);
+  content:'';
+  width: var(--ti-tip-before-square-size);
+  height: var(--ti-tip-before-square-size);
+  overflow:hidden;
+  .rotate(45deg);
+  background: var(--ti-common-color-bg-dark-deep);
+}
+// 提取after的公共样式
+.ti3-tooltip-position-after(@width, @height) {
+  display: block;
+  position: absolute;
+  content: '';
+  overflow: hidden;
+  background: var(--ti-common-color-bg-dark-deep);
+  width: @width;
+  height: @height;
+}
+.ti3-tooltip-bottom-sqr,
+.ti3-tooltip-bottom-left-sqr,
+.ti3-tooltip-bottom-right-sqr {
+  .ti3-tooltip-position-sqr(100%, var(--ti-tip-sqr-height));
+  left:0;
+  bottom: 100%;
+}
+
+//before元素为旋转形成三角形的正方形，after元素为遮挡before元素另一半的三角的长方形
+
+:host.ti3-tooltip-bottom::after {
+  .ti3-tooltip-position-after(20px, 10px);
+  left: 50%;
+  margin-left: -10px;
+  top: 0;
+}
+:host.ti3-tooltip-bottom::before {
+  .ti3-tooltip-position-before();
+  left: 50%;
+  margin-left: calc(-1 * var(--ti-tip-before-square-size)/2);
+  top: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow: -1px -1px 5px var(--ti-tip-box-shadow-color);
+}
+// position: bottom-left
+:host.ti3-tooltip-bottom-left::after{
+  .ti3-tooltip-position-after(20px, 10px);
+  left: calc(var(--ti-tip-offset) - 3px);
+  top: 0;
+}
+
+:host.ti3-tooltip-bottom-left::before{
+  .ti3-tooltip-position-before();
+  left: var(--ti-tip-offset);
+  top: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow: -1px -1px 5px var(--ti-tip-box-shadow-color);
+}
+
+// position: bottom-right
+:host.ti3-tooltip-bottom-right::after{
+  .ti3-tooltip-position-after(20px, 10px);
+  right: calc(var(--ti-tip-offset) - 3px);
+  top: 0;
+}
+
+:host.ti3-tooltip-bottom-right::before{
+  .ti3-tooltip-position-before();
+  right: var(--ti-tip-offset);
+  top: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow:-1px -1px 5px var(--ti-tip-box-shadow-color);
+}
+
+// position: top
+.ti3-tooltip-top-sqr,
+.ti3-tooltip-top-left-sqr,
+.ti3-tooltip-top-right-sqr{
+  .ti3-tooltip-position-sqr(100%, var(--ti-tip-sqr-height));
+  left:0;
+  top: 100%;
+}
+
+:host.ti3-tooltip-top::after{
+  .ti3-tooltip-position-after(20px, 10px);
+  left: 50%;
+  margin-left: -10px;
+  bottom: 0;
+}
+
+:host.ti3-tooltip-top::before{
+  .ti3-tooltip-position-before();
+  transform: rotate(-135deg);
+  left: 50%;
+  margin-left: calc(-1 * var(--ti-tip-before-square-size)/2);
+  bottom: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow: -1px -1px 5px  var(--ti-tip-box-shadow-color);
+}
+
+// position: top-left
+:host.ti3-tooltip-top-left::after{
+  .ti3-tooltip-position-after(20px, 10px);
+  left: calc(var(--ti-tip-offset) - 3px);
+  bottom: 0;
+}
+
+:host.ti3-tooltip-top-left::before{
+  .ti3-tooltip-position-before();
+  transform: rotate(-135deg);
+  left: var(--ti-tip-offset);
+  bottom: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow: -1px -1px 5px  var(--ti-tip-box-shadow-color);
+}
+
+// position: top-right
+:host.ti3-tooltip-top-right::after{
+  .ti3-tooltip-position-after(20px, 10px);
+  right: calc(var(--ti-tip-offset) - 3px);
+  bottom: 0;
+}
+
+:host.ti3-tooltip-top-right::before{
+  .ti3-tooltip-position-before();
+  transform: rotate(-135deg);
+  right: var(--ti-tip-offset);
+  bottom: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow: -1px -1px 5px var(--ti-tip-box-shadow-color);
+}
+
+// position: left
+.ti3-tooltip-left-sqr ,
+.ti3-tooltip-left-top-sqr,
+.ti3-tooltip-left-bottom-sqr {
+  .ti3-tooltip-position-sqr(var(--ti-tip-sqr-height), 100%);
+  top:0;
+  left: 100%;
+}
+
+:host.ti3-tooltip-left::after{
+  .ti3-tooltip-position-after(10px, 20px);
+  top: 50%;
+  margin-top: -10px;
+  right: 0;
+}
+
+:host.ti3-tooltip-left::before{
+  .ti3-tooltip-position-before();
+  transform: rotate(135deg);
+  top: 50%;
+  margin-top: calc(-1 * var(--ti-tip-before-square-size)/2);
+  right: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow: 1px -1px 5px var(--ti-tip-box-shadow-color);
+}
+
+// position: left-top
+:host.ti3-tooltip-left-top::after{
+  .ti3-tooltip-position-after(10px, 20px);
+  top: calc(var(--ti-tip-offset) - 3px);
+  right: 0;
+}
+
+:host.ti3-tooltip-left-top::before{
+  .ti3-tooltip-position-before();
+  transform: rotate(135deg);
+  content: '';
+  top: var(--ti-tip-offset);
+  right: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow: 1px -1px 5px var(--ti-tip-box-shadow-color);
+}
+
+// position: left-bottom
+:host.ti3-tooltip-left-bottom::after{
+  .ti3-tooltip-position-after(10px, 20px);
+  bottom: calc(var(--ti-tip-offset) - 3px);
+  right: 0;
+}
+
+:host.ti3-tooltip-left-bottom::before{
+  .ti3-tooltip-position-before();
+  transform: rotate(135deg);
+  bottom: var(--ti-tip-offset);
+  right: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow: 1px -1px 5px var(--ti-tip-box-shadow-color);
+}
+
+// position: right
+.ti3-tooltip-right-sqr,
+.ti3-tooltip-right-top-sqr,
+.ti3-tooltip-right-bottom-sqr {
+  .ti3-tooltip-position-sqr(var(--ti-tip-sqr-height), 100%);
+  top:0;
+  right: 100%;
+}
+
+:host.ti3-tooltip-right::after{
+  .ti3-tooltip-position-after(10px, 20px);
+  top: 50%;
+  margin-top: -10px;
+  left: 0;
+}
+
+:host.ti3-tooltip-right::before{
+  .ti3-tooltip-position-before();
+  transform: rotate(-45deg);
+  top: 50%;
+  margin-top: calc(-1 * var(--ti-tip-before-square-size)/2);
+  left: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow: -1px 1px 5px var(--ti-tip-box-shadow-color);
+}
+
+// position: right-top
+:host.ti3-tooltip-right-top::after{
+  .ti3-tooltip-position-after(10px, 20px);
+  top: calc(var(--ti-tip-offset) - 3px);
+  left: 0;
+}
+
+:host.ti3-tooltip-right-top::before{
+  .ti3-tooltip-position-before();
+  transform: rotate(-45deg);
+  top: var(--ti-tip-offset);
+  left: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow: -1px 1px 5px var(--ti-tip-box-shadow-color);
+}
+
+// position: right-bottom
+:host.ti3-tooltip-right-bottom::after{
+  .ti3-tooltip-position-after(10px, 20px);
+  bottom: calc(var(--ti-tip-offset) - 3px);
+  left: 0;
+}
+
+:host.ti3-tooltip-right-bottom::before{
+  .ti3-tooltip-position-before();
+  transform: rotate(-45deg);
+  bottom: var(--ti-tip-offset);
+  left: calc(-1 * var(--ti-tip-before-square-size)/2);
+  box-shadow: -1px 1px 5px var(--ti-tip-box-shadow-color);
+}
+
+/* ---------------设置tip克隆DOM的样式----START----------------------------------------------*/
+.ti3-tooltip-clone {
+  overflow: visible !important;
+  position: absolute !important;
+  visibility: hidden !important;
+  .box-sizing(border-box);
+  width: auto !important;
+}
+/* ---------------设置tip克隆DOM的样式----END----------------------------------------------*/

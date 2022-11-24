@@ -1,0 +1,30 @@
+<p>2.两组group联动：刘德华既是歌手，也是演员，所以是联动的</p>
+<br />
+<p>2.1参加晚会的歌手：</p>
+<input
+  id="all-siners"
+  type="checkbox"
+  tiCheckgroup
+  label="全选"
+  [items]="singers"
+  [(checkeds)]="singersCheckeds"
+/>
+<div class="my-2">
+  <span class="mr-7" *ngFor="let item of singers">
+    <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" />
+  </span>
+</div>
+<p>2.2参加晚会的演员：</p>
+<input
+  id="all-actors"
+  type="checkbox"
+  tiCheckgroup
+  label="全选"
+  [items]="actors"
+  [(checkeds)]="actorsCheckeds"
+/>
+<div class="my-2">
+  <span class="mr-7" *ngFor="let item of actors">
+    <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" />
+  </span>
+</div>

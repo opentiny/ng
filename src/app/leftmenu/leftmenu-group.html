@@ -1,0 +1,29 @@
+<ti-leftmenu [(reloadState)]="reloadState" [(active)]="active" (collapsedChange)="toggleClick($event)" style="width: 200px;">
+  <ng-container *ngFor="let group of items">
+    <ti-leftmenu-group *ngIf="group.isGroup">
+      <ti-leftmenu-group-item>
+        <span>{{ group.label }}</span>
+      </ti-leftmenu-group-item>
+      <ti-leftmenu-level1 [item]="m1" *ngFor="let m1 of group.children">
+        <ti-leftmenu-item>
+          <div>{{ m1.label }}</div>
+        </ti-leftmenu-item>
+        <ti-leftmenu-level2 [item]="m2" *ngFor="let m2 of m1.children">
+          <a>{{ m2.label }}</a>
+        </ti-leftmenu-level2>
+      </ti-leftmenu-level1>
+    </ti-leftmenu-group>
+    <ti-leftmenu-level1 *ngIf="!group.isGroup" [item]="group">
+      <ti-leftmenu-item>
+        <div>{{ group.label }}</div>
+      </ti-leftmenu-item>
+      <ti-leftmenu-level2 [item]="m2" *ngFor="let m2 of group.children">
+        <a>{{ m2.label }}</a>
+      </ti-leftmenu-level2>
+    </ti-leftmenu-level1>
+  </ng-container>
+</ti-leftmenu>
+
+<div *ngIf="reloadState" [ngStyle]="{marginLeft : marginLeft}" style="padding: 20px;">
+  <router-outlet></router-outlet>
+</div>

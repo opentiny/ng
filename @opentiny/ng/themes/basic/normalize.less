@@ -1,0 +1,233 @@
+@import "common.less"; // 此文件用到了@tiny-invalid-class
+/* 基础样式 */
+ body {
+  margin: 0;
+  padding: 0;
+  font-size: var(--ti-common-font-size-base);
+  font-family: var(--ti-common-font-family);
+  color: var(--ti-common-color-text-primary);
+  background-color: var(--ti-common-color-bg-white-normal);
+}
+
+button,
+blockquote, /* 结构类 */
+div,
+section,
+h1,h2,h3,h4,h5,h6, /* 标题类 */
+ul,ol,dl,dt,dd,li, /* 列表类 */
+pre, /* 文本格式元素 */
+code,
+form,fieldset,legend,input,textarea, /* 表单类 */
+th,td, /* 表格类 */
+p,
+select {
+  margin: 0;
+  padding: 0;
+}
+
+/* 表单部分 */
+input{
+  vertical-align:middle;
+}
+
+fieldset,
+img {
+  border: 0;
+}
+// 校正不同浏览器下字体，字号及边距差异化
+button,
+input,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0; // 为了兼容Firefox 4+、Safari 5、Chrome
+}
+// IE下line-height属性默认是inherit，因此需要显示设置
+button {
+  line-height:normal;
+}
+
+textarea {
+  overflow: auto; // 移除默认的纵向滚动条（IE 8/9）
+  vertical-align: top; // 统一各浏览器的对齐格式。
+  resize: vertical;
+}
+
+// 移除内部的padding、border值。为了兼容 Firefox 4+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+// 特殊标签差异化处理
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+var {
+  font-style: normal;
+  font-weight: 400;
+}
+
+// 去除列表标记
+ol,
+ul {
+  list-style: none;
+}
+// 标记引用
+q:before {
+  content: '';
+}
+q:after {
+  content: '';
+}
+
+// 缩写类标签
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+// 为了兼容Firefox 4+, Safari 5, and Chrome
+b,
+strong {
+  font-weight: 700;
+}
+
+// 防止在所有浏览器中的“ sub”和“ sup”影响行高。
+sub {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+  bottom: -0.25em;
+}
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+  top: -0.5em;
+}
+// 在IE10下，移除链接中的灰色背景色。
+a {
+  background-color: transparent;
+}
+
+// 设置默认样式，避免受到bootstrap等第三方样式库的影响
+label {
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+/* 消除表格单元格直接空隙 */
+
+table {
+  border-spacing: 0 0;
+  border-collapse: collapse;
+  margin-bottom: 0;
+}
+
+/* H5新标签 */
+figcaption, // 定义figure元素的标题
+figure,hgroup, // 用于对元素进行组合
+article,footer,header,nav,section,aside, // 结构布局类标签
+menu, // 定义菜单列表
+main, // 规定文档的主要内容
+details,summary { // 定义标题详情
+  display: block;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: none;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; // 兼容 IE 8/9
+  vertical-align: baseline; // 兼容Chrome, Firefox, and Opera
+}
+
+// IE10+下隐藏<input>的clear和password按钮
+input::-ms-clear {
+  width : 0;
+  height: 0;
+}
+input[type=password]::-ms-reveal {
+  width : 0;
+  height: 0;
+}
+
+// placeholder 相关样式 适用于 Chrome/Opera/Safari
+::-webkit-input-placeholder {
+  color: var(--ti-common-color-text-disabled);
+  text-overflow: initial !important;
+}
+
+// placeholder 相关样式 适用于Firefox 19+
+::-moz-placeholder {
+  color: var(--ti-common-color-text-disabled);
+  opacity: 1;
+  text-overflow: initial;
+}
+// placeholder 相关样式 适用于Firefox 18-
+:-moz-placeholder {
+  color: var(--ti-common-color-text-disabled);
+  opacity: 1;
+}
+
+// 处理IE下placeholder文本颜色显示问题
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: var(--ti-common-color-text-disabled) !important;
+}
+
+// 一些Angular和组件相关的样式
+// 表单元素校验样式，归属于表单的样式定义，校验中没有合适的文件定义和加载，因此需要在公共处定义样式
+input, textarea, [tiForm] {
+  @{tiny-invalid-class} {
+      border-color: var(--ti-common-color-error-border) !important;
+      background-color: var(--ti-common-color-error-bg);
+  }
+}
+
+a[tiNavigation] {
+  color: var(--ti-common-color-text-link);
+  text-decoration: none;
+  &:hover {
+      color: var(--ti-common-color-text-link-hover);
+      text-decoration: underline;
+  }
+}
+
+a[tiNavigationDarkbg] {
+  color: var(--ti-common-color-text-link-darkbg);
+  text-decoration: none;
+  &:hover {
+      color: var(--ti-common-color-text-link-darkbg-hover);
+      text-decoration: underline;
+  }
+}
+
+a[tiRichText] {
+  color: var(--ti-common-color-text-primary);
+  text-decoration: none;
+  &:hover {
+      color: var(--ti-common-color-text-link-hover);
+      text-decoration: underline;
+  }
+}
+
+a[tiRichTextDarkbg] {
+  color: var(--ti-common-color-text-darkbg);
+  text-decoration: none;
+  &:hover {
+      color: var(--ti-common-color-text-link-darkbg-hover);
+      text-decoration: underline;
+  }
+}

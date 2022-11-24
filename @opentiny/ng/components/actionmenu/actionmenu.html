@@ -1,0 +1,49 @@
+<ng-container *ngFor="let item of items; let i = index; let first = first; let last = last; trackBy: trackByFn">
+    <a href="javascript:void(0)"
+        oncontextmenu="return false"
+        class="ti3-action-menu-item"
+        [ngClass]="{'ti3-action-menu-item-disabled': item.disabled}"
+        [ngStyle]="{ 'margin-left': first ? 'none' : halfSpace, 'margin-right': last ? 'none' : halfSpace}"
+        (click)="onSelect(item)"
+        [tiPopconfirm]="item.popConfig&&!item.disabled ? item.popConfig : {}"
+        [id]="appendId(item.id || 'item'+i)">
+        <section [tiTip]='tipTemplate ? tipTemplate : item.tip'
+                [tiTipContext]='item'
+                [tiTipPosition]='item.tipPosition'
+                [tiTipMaxWidth]='tipMaxWidth'>
+                <ng-container *ngIf="itemTemplate else labelTemplate">
+                        <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: item,index: i}">
+                        </ng-container>
+                </ng-container>
+                <ng-template #labelTemplate>{{item[labelKey]}}</ng-template>
+        </section>
+    </a>
+    <span class="ti3-action-menu-divider" *ngIf="showDivider && !last"></span>
+</ng-container>
+<ti-menu
+panelAlign="right"
+[panelMaxWidth]="panelMaxWidth"
+[panelMaxHeight]="panelMaxHeight"
+[labelKey]="labelKey"
+[items]="panelItems"
+[tipMaxWidth]="tipMaxWidth"
+(select)="onSelect($event)"
+(click)="onClick()"
+[ngStyle]="{'margin-left': halfSpace}"
+style="display: none"
+[id]="appendId('menu')">
+<section class="tiMoreText" style="display:inline-block">{{moreText}}</section>
+<section class="tiMenuText" style="display:none">{{menuText}}</section>
+<ng-template #item let-item let-i=index>
+        <ng-container *ngIf="itemTemplate else labelTemplate">
+                <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: item,index: i}">
+                </ng-container>
+        </ng-container>
+        <ng-template #labelTemplate>{{item[labelKey]}}</ng-template>
+</ng-template>
+<ng-template #tip let-item="context" *ngIf="tipTemplate">
+        <ng-container *ngTemplateOutlet="tipTemplate; context: {context: item}">
+        </ng-container>
+</ng-template>
+</ti-menu>
+

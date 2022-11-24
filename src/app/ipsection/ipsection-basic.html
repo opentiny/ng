@@ -1,0 +1,19 @@
+<p class="mb-3">不含子网掩码</p>
+<ti-ipsection
+  id="ipsection-basic"
+  [(ngModel)]="ipValue"
+  [configs]="configs"
+></ti-ipsection>
+<div class="current-value-container mb-3">
+  <pre>Current Value: {{ ipValue }}</pre>
+</div>
+<br/>
+<p class="mb-3">含有子网掩码</p>
+<ti-ipsection
+  id="ipsection-basic-subnetmask"
+  [(ngModel)]="ipSubnetmaskValue"
+  [configs]="subnetmaskconfigs"
+></ti-ipsection>
+<div class="current-value-container">
+  <pre>Current Value: {{ ipSubnetmaskValue }}</pre>
+</div>

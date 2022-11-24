@@ -1,0 +1,22 @@
+<h3>1.描述</h3>
+<p>校验</p>
+<h3>2.示例</h3>
+<p>(2.1)blur校验</p>
+<textarea
+  [tiValidation]="validation"
+  tiRequired
+  tiMaxLength="8"
+  tiTextarea
+  [placeholder]="placeholder"
+  [(ngModel)]="value"
+></textarea>
+
+<p>(2.2)及时校验</p>
+<textarea
+  tiValidation
+  tiTextarea
+  tiRequired
+  maxlength="100"
+  [placeholder]="placeholder"
+  [(ngModel)]="value1"
+></textarea>
