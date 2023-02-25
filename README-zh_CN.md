@@ -64,7 +64,7 @@ export class AppModule {
 }
 ```
 
-可参考官网 [快速上手](官网快速上手地址) 了解更多。
+可参考官网 [快速上手](https://www.opentiny.design/tiny-ng/docs/getstart) 了解更多。
 
 ## 开发
 
@@ -79,17 +79,17 @@ $ npm start
 
 ## 更新日志
 
-详细的变更内容请在 [change logs](官网更新日志地址) 查看。
+详细的变更内容请在 [change logs](CHANGELOG.md) 查看。
 
 ## 常见问题
 
-我们已经收集了一常见问题[常见问题](官网常见问题地址)。在提 issue 前，请先在常见问题中查找你的问题是否已有答案。
+我们已经收集了一常见问题[常见问题](https://www.opentiny.design/tiny-ng/docs/faq)。在提 issue 前，请先在常见问题中查找你的问题是否已有答案。
 
 ## 如何贡献
 
 我们欢迎所有的贡献。请随时贡献代码或提出您的想法。
 
-在提交你的任何想法之前，请先阅读我们的[贡献指南](官网贡献指南地址) 。
+在提交你的任何想法之前，请先阅读我们的[贡献指南](CONTRIBUTING.md) 。
 
 ## 授权协议
 
