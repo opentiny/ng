@@ -65,7 +65,7 @@ And import style file link in `angular.json`.
 }
 ```
 
-See [Getting Started](官网快速上手地址) for more details. 
+See [Getting Started](https://www.opentiny.design/tiny-ng/docs/getstart) for more details. 
 
 ## Development
 
@@ -80,17 +80,17 @@ Browser would open automatically.
 
 ## Changelog
 
-Detailed changes for each release are documented in the [change logs](官网更新日志地址). 
+Detailed changes for each release are documented in the [change logs](CHANGELOG.md). 
 
 ## FAQ
 
-We have collected some [frequently asked questions](官网常见问题地址). Before reporting an issue, please search if the FAQ has the answer to your problem.
+We have collected some [frequently asked questions](https://www.opentiny.design/tiny-ng/docs/faq). Before reporting an issue, please search if the FAQ has the answer to your problem.
 
 ## Contributing
 
 We welcome all contributions. Please feel free to contribute code or discuss your idea.
 
-Please read our [CONTRIBUTING.md](官网贡献指南地址) before submitting any ideas.
+Please read our [CONTRIBUTING.md](CONTRIBUTING.md) before submitting any ideas.
 
 ## LICENSE
 
