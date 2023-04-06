@@ -1,0 +1,11 @@
+<h3>描述</h3>
+<p>Actionmenu菜单按钮组件，监听表格数据变化，点击选择也会改变表格数据。（选项置灰）</p>
+<h3>示例</h3>
+<div *ngFor="let row of rows; let i = index" style="padding: 15px; border: 1px solid #000000; width: 500px">
+  <span style="padding-right: 80px; color: red">{{i+"行当前状态:"+row.state}}</span>
+  <ti-actionmenu [data]="row" [dataToItemsFn]="dataToItemsFn" (select)="$event.click($event,row)" style="float: right"> </ti-actionmenu>
+</div>
+<br />
+<button (click)="addRow()">增加一行</button>
+<br />
+<button (click)="switchFirstRow()">改变第一行状态</button>

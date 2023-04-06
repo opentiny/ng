@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "TiLibGeneratorSchematics",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "lib库名",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "你的 library 库名称是什么?(比如, alert 或 base-shared)"
+    },
+    "version": {
+      "type": "string",
+      "description": "lib库版本号",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "default": "1.0.0",
+      "x-prompt": "你的 library 库版本号是什么?(例如 1.0.3，默认是 1.0.0)"
+    },
+    "i18n": {
+      "type": "string",
+      "description": "lib库国际化词条",
+      "$default": {
+        "$source": "argv",
+        "index": 2
+      },
+      "default": "Y",
+      "x-prompt": "你的 library 库是否需要国际化词条(Y/n)"
+    }
+  },
+  "required": ["name"]
+}

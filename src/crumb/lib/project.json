@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/crumb/lib",
+  "sourceRoot": "src/crumb/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/crumb"],
+      "options": {
+        "project": "src/crumb/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/crumb"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js crumb"
+          },
+          {
+            "command": "ng default-build crumb"
+          },
+          {
+            "command": "node build/clear-default-theme.js crumb"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/crumb && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build crumb && ng pack crumb && node build/publish.js crumb --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

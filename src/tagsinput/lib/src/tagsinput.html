@@ -1,0 +1,63 @@
+<ti-dominator
+  type="tagsinput"
+  multiple="true"
+  class="ti3-dominator-tagsinput"
+  [id]="appendId('dominator')"
+  [(ngModel)]="modelWhole"
+  [disabled]="disabled"
+  (delete)="onDelete($event)"
+  (keydown.enter)="onClickDominator()"
+  (click)="onClickDominator()"
+>
+  <ng-template let-item>
+    <ng-container *ngTemplateOutlet="commonTemplate; context: {$implicit: item}"> </ng-container>
+  </ng-template>
+  <section
+    inputfield
+    class="ti3-dominator-input-container"
+    [ngStyle]="{width: (model && model.length === 0) ? '100%' : (inputValue.length > 0) ? 'auto' : '21px'}"
+  >
+    <input
+      #input
+      tiText
+      noborder
+      type="text"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      [maxlength]="maxlength"
+      [disabled]="disabled"
+      [placeholder]="model && model.length === 0 ? placeholder : ''"
+      [(ngModel)]="inputValue"
+      (ngModelChange)="onInputChange($event)"
+      (focus)="onInputFocus($event)"
+      (blur)="onInputBlur()"
+      (keyup)="onInputKeyup($event)"
+      (keydown)="onInputKeydown($event)"
+      (paste)="onInputPaste($event)"
+    />
+    <!-- 此处span的作用是为了使其父元素随着输入文本的宽度变化被撑开，由于设置了input的宽度是100%，那么input的宽度就会随着父元素宽度改变而改变 -->
+    <span>{{inputValue}}</span>
+  </section>
+</ti-dominator>
+<ti-dropsearch
+  type="suggestion"
+  [id]="appendId('droplist')"
+  [labelKey]="labelKey"
+  [panelWidth]="panelWidth"
+  [options]="suggestions"
+  [dominatorElem]="dominatorCom.nativeElement"
+  [isShowAfterSelect]="true"
+  (select)="onSelect($event)"
+>
+  <ng-template let-item let-i="index">
+    <ng-container *ngTemplateOutlet="commonTemplate; context: {$implicit: item, index: i}"></ng-container>
+  </ng-template>
+</ti-dropsearch>
+
+<ng-template #commonTemplate let-item let-i="index">
+  <ng-container *ngIf="itemTemplate else labelTemplate">
+    <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: item, index: i}"> </ng-container>
+  </ng-container>
+  <ng-template #labelTemplate><span [title]="item[labelKey]">{{item[labelKey]}}</span></ng-template>
+</ng-template>

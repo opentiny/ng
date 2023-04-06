@@ -1,0 +1,73 @@
+<div class="ti3-subtitle-container">
+  <!-- 后退按钮 -->
+  <a
+    class="ti3-subtitle-icon-back"
+    rel="noopener noreferrer"
+    *ngIf="!backRouterLink"
+    [href]="href"
+    [target]="target"
+    (click)="onClick($event)"
+    [id]="appendId('prev')"
+  >
+    <ti-icon name="angle-left"></ti-icon>
+    <!-- 支持路由 --> </a
+  ><a
+    class="ti3-subtitle-icon-back"
+    *ngIf="backRouterLink"
+    [routerLink]="backRouterLink"
+    [queryParams]="queryParams"
+    (click)="onClick($event)"
+    [id]="appendId('prev')"
+  >
+    <ti-icon name="angle-left"></ti-icon> </a
+  ><!--
+  --><span style="display: inline-block" [ngStyle]="{'max-width': itemsMaxWidth}">
+    <section
+      #textRef
+      class="ti3-subtitle-text"
+      *ngIf="items?.length === 1 && !originalItems"
+      tiOverflow
+      [tiTipHostEleX]="textRef.nativeElement"
+      [tiTipPosition]="tipPosition"
+      [id]="appendId('label')"
+    >
+      {{items[0]?.label}}
+    </section>
+    <!--
+  --><ti-select
+      *ngIf="isMoreThanOneItem() && scrollToBottom.observers.length === 0"
+      dominatorSpace="5px"
+      noborder
+      [searchable]="searchable"
+      [options]="items"
+      [(ngModel)]="selectedItem"
+      [panelWidth]="panelWidth"
+      (ngModelChange)="onSelectedOptionChange($event)"
+      [id]="appendId('select')"
+      [idKey]="idKey"
+    >
+      <ng-template #selected let-item>
+        <span class="ti3-subtitle-selected-text" tiOverflow [tiTipPosition]="tipPosition">{{item?.label}}</span>
+      </ng-template> </ti-select
+    ><!--
+   --><ti-select
+      #subtitleSelect
+      *ngIf="isMoreThanOneItem() && scrollToBottom.observers.length > 0"
+      dominatorSpace="5px"
+      noborder
+      [searchable]="searchable"
+      [options]="items"
+      [(ngModel)]="selectedItem"
+      [panelWidth]="panelWidth"
+      (ngModelChange)="onSelectedOptionChange($event)"
+      [id]="appendId('select')"
+      [idKey]="idKey"
+      (beforeSearch)="onBeforeSearch($event)"
+      (scrollToBottom)="onScrollToBottom($event, subtitleSelect)"
+    >
+      <ng-template #selected let-item>
+        <span class="ti3-subtitle-selected-text" tiOverflow [tiTipPosition]="tipPosition">{{item?.label}}</span>
+      </ng-template>
+    </ti-select>
+  </span>
+</div>

@@ -1,0 +1,9 @@
+<ti-datetime
+  class="mb-3"
+  id="datetime-customize"
+  [(ngModel)]="value"
+  [customizeOptions]="customizeOptions"
+  (customizeOptionClick)="onCustomizeOptionClick($event)"
+></ti-datetime>
+
+<demo-log [logs]="myLogs"></demo-log>

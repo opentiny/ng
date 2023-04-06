@@ -1,0 +1,18 @@
+<h3>1.描述</h3>
+<p>max接口测试</p>
+<h3>2.示例</h3>
+<p>(2.1)最大值设置为字符串类型、非法日期时：最大值为默认值</p>
+<ti-datetime [(ngModel)]="value" [max]="max"></ti-datetime>
+<br />
+<br />
+<br />
+<p>(2.2)设置的max小于设置的value时，显示空</p>
+<ti-datetime [(ngModel)]="value1" [max]="max1"></ti-datetime>
+<br />
+<br />
+<br />
+<p>(2.3)动态变更</p>
+<ti-datetime [(ngModel)]="value2" [max]="max2"></ti-datetime>
+<br /><br />
+<button (click)="onMaxClick()">点击改变最大值为（2019/7/30）</button>
+<button (click)="onMaxClick2()">改变最大值为undefined</button>

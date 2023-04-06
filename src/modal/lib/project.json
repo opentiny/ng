@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/modal/lib",
+  "sourceRoot": "src/modal/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/modal"],
+      "options": {
+        "project": "src/modal/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/modal"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js modal"
+          },
+          {
+            "command": "ng default-build modal"
+          },
+          {
+            "command": "node build/clear-default-theme.js modal"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/modal && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build modal && ng pack modal && node build/publish.js modal --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

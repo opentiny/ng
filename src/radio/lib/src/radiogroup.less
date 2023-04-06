@@ -1,0 +1,23 @@
+ti-radio-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  line-height: 1.5em;
+  &.ti-radiogroup-vertical {
+    flex-direction: column;
+    input[type='radio'][tiRadio] + .ti3-radio,
+    .radio-group-item {
+      line-height: var(--ti-common-size-7x);
+      & .ti3-radio-skin {
+        // 为保证按钮与文本对齐，margin-top 的值为（文本的行高 (28px) -  按钮宽高 (16px)）/ 2
+        margin-top: calc((var(--ti-common-size-7x) - var(--ti-radio-container-size)) / 2);
+      }
+    }
+  }
+}
+.radio-group-item {
+  display: inline-flex;
+}
+// ti-radio-group按规范定义了选项之间的默认间距
+ti-radio-group.ti-radiogroup-horizon.ti-radiogroup-defalut-item label.ti3-radio {
+  margin-right: var(--ti-common-space-5x);
+}

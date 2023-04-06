@@ -1,0 +1,54 @@
+<h3>描述</h3>
+<p>测试固定列和leftmenu</p>
+<h3>示例</h3>
+<!--左侧菜单区，不生效，只是配合表格做样式测试-->
+<ti-leftmenu [(collapsed)]="collapsed" (collapsedChange)="toggleClick($event)" [(reloadState)]="reloadState">
+  <ti-leftmenu-head>
+    <div>{{headLabel}}</div>
+  </ti-leftmenu-head>
+
+  <ti-leftmenu-level1 [item]="m1" *ngFor="let m1 of items">
+    <ti-leftmenu-item>
+      <div>{{m1.label}}</div>
+    </ti-leftmenu-item>
+    <ti-leftmenu-level2 [item]="m2" *ngFor="let m2 of m1.children">
+      <a>{{m2.label}}</a>
+    </ti-leftmenu-level2>
+  </ti-leftmenu-level1>
+</ti-leftmenu>
+
+<!--右侧内容区-->
+<div *ngIf="reloadState" [ngStyle]="{marginLeft : marginLeft}" style="padding: 20px">
+  <h3>描述</h3>
+  <p>表格的列固定 + leftmenu, 主要测试leftmenu向左展开/收起时, 表格列固定是否正常</p>
+  <h3>示例</h3>
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">
+    <div class="ti3-table-container">
+      <table>
+        <thead>
+          <tr>
+            <ng-container *ngFor="let column of columns;">
+              <th [tiColumnFixed]="column.fixed" tiOverflow width="{{column.width}}">{{column.title}}</th>
+            </ng-container>
+          </tr>
+        </thead>
+        <tbody>
+          <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+          <!--为了更好的渲染性能，建议在ngFor数据时总是trackBy数据条目中的某个唯一属性值(如id)-->
+          <tr *ngFor="let row of displayed;trackBy: trackByFn">
+            <!-- tiOverflow指令的作用是使文本溢出时出'...'，且hover时出tip-->
+            <td tiColumnFixed="left" tiOverflow>{{row.firstName}}</td>
+            <td tiColumnFixed="left" tiOverflow>{{row.lastName}}</td>
+            <td tiColumnFixed="left" tiOverflow>{{row.age}}</td>
+            <td tiOverflow>{{row.balance}}</td>
+            <td tiOverflow>{{row.email}}</td>
+            <td tiOverflow>{{row.address}}</td>
+            <td tiOverflow>{{row.phone}}</td>
+            <td tiOverflow>{{row.parents}}</td>
+            <td tiColumnFixed="right" tiOverflow>{{row.school}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ti-table>
+</div>

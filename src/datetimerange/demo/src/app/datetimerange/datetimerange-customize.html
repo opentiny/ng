@@ -1,0 +1,9 @@
+<ti-datetime-range
+  class="mb-3"
+  id="datetimerange-customize"
+  [(ngModel)]="value"
+  [customizeOptions]="customizeOptions"
+  (customizeOptionClick)="onCustomizeOptionClick($event)"
+></ti-datetime-range>
+
+<demo-log [logs]="myLogs"></demo-log>

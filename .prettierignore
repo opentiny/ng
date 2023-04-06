@@ -1,0 +1,12 @@
+# package.json is formatted by package managers, so we ignore it here
+package.json
+website-tinydoc
+build
+eslint-rules
+.*
+*.log
+tiny-design
+dist
+# 格式化文件会给如下文件的not选择器前加上空格 导致选择器失效，先在这里忽略掉
+src/themes/basic/common.less
+src/phonenumber/lib/src/phonenumber.less

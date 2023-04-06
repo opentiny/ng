@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/accordion/lib",
+  "sourceRoot": "src/accordion/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/accordion"],
+      "options": {
+        "project": "src/accordion/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/accordion"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js accordion"
+          },
+          {
+            "command": "ng default-build accordion"
+          },
+          {
+            "command": "node build/clear-default-theme.js accordion"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/accordion && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build accordion && ng pack accordion && node build/publish.js accordion --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

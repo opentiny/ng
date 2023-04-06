@@ -1,0 +1,84 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>
+    表格表头过滤要结合 tiCellText 组件和 tiHeadFilter 组件来实现。ti-cell-text包裹的是表头单元格
+    文本，ti-head-filter为表头过滤的漏斗图标，tiHeadFilter的接口说明请查询 TiHeadFilterComponent。
+  </p>
+  <p>panelAlign 接口控制表头过滤下拉面板展开方向，默认左对齐</p>
+  <p>searchable 接口控制表头过滤下拉是否开启搜索功能，默认不开启</p>
+  <p>labelKey 接口控制表头过滤下拉中显示的字段，默认为'label'</p>
+  <p>panelWidth 接口控制表头过滤下拉框的宽度，默认为'auto'，<b>搜索场景下</b>默认值修改为“180px”</p>
+  <p class="demo-text-warn">注意：使用 tiOverflow 组件，请导入 TiOverflowModule。</p>
+  <h3>示例</h3>
+  <br /><br />
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" [searchWords]="searchWords" [searchKeys]="searchKeys">
+    <table>
+      <thead>
+        <tr>
+          <ng-container *ngFor="let column of columns;index as i;">
+            <th *ngIf="i < 2" width="{{column.width}}">
+              <!--当表头有排序图标或漏斗排序图标，文本title需要显示不下出省略号及tip时需使用ti-cell-text组件；
+                                  ti-head-filter为表头过滤漏斗图标-->
+              <ti-cell-text>{{column.title}}</ti-cell-text>
+              <!--ngModel接口可设置和获取headfilter下拉选中值，ti3-head-filtered样式类是
+                                  组件提供的设置有过滤时漏斗的高亮样式，可自定义高亮时机-->
+              <ti-head-filter
+                [options]="column.options"
+                [(ngModel)]="column.selected"
+                [searchable]="column.searchable"
+                (select)="onSelect($event, column)"
+                [ngClass]="{'ti3-head-filtered': column.selected && column.selected.label !== 'all'}"
+              ></ti-head-filter>
+            </th>
+            <th *ngIf="i >= 2 && i < columns.length -2" width="{{column.width}}" tiOverflow>{{column.title}}</th>
+            <th *ngIf="i === columns.length - 2" width="{{column.width}}">
+              <!--当表头有排序图标或漏斗排序图标，文本title需要显示不下出省略号及tip时需使用ti-cell-text组件；
+                                  ti-head-filter为表头过滤漏斗图标-->
+              <ti-cell-text>{{column.title}}</ti-cell-text>
+              <!--ngModel接口可设置和获取headfilter下拉选中值，ti3-head-filtered样式类是
+                                  组件提供的设置有过滤时漏斗的高亮样式，可自定义高亮时机-->
+              <ti-head-filter
+                [options]="column.options"
+                [(ngModel)]="column.selected"
+                [panelWidth]="column.panelWidth"
+                [panelAlign]="column.panelAlign"
+                [labelKey]="column.labelKey"
+                [searchable]="column.searchable"
+                (select)="onSelect($event, column)"
+                [ngClass]="{'ti3-head-filtered': column.selected && column.selected.label !== 'all'}"
+              ></ti-head-filter>
+            </th>
+            <th *ngIf="i === columns.length - 1" width="{{column.width}}">
+              <!--当表头有排序图标或漏斗排序图标，文本title需要显示不下出省略号及tip时需使用ti-cell-text组件；
+                                  ti-head-filter为表头过滤漏斗图标-->
+              <ti-cell-text>{{column.title}}</ti-cell-text>
+              <!--ngModel接口可设置和获取headfilter下拉选中值，ti3-head-filtered样式类是
+                                  组件提供的设置有过滤时漏斗的高亮样式，可自定义高亮时机-->
+              <ti-head-filter
+                [options]="column.options"
+                [(ngModel)]="column.selected"
+                [panelWidth]="column.panelWidth"
+                [panelAlign]="column.panelAlign"
+                [labelKey]="column.labelKey"
+                [searchable]="column.searchable"
+                (select)="onSelect($event, column)"
+                [ngClass]="{'ti3-head-filtered': column.selected && column.selected.type !== 'all'}"
+              ></ti-head-filter>
+            </th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+        <tr *ngFor="let row of displayed">
+          <td tiOverflow>{{row.firstName}}</td>
+          <td tiOverflow>{{row.lastName}}</td>
+          <td tiOverflow>{{row.age}}</td>
+          <td tiOverflow>{{row.balance}}</td>
+          <td tiOverflow>{{row.email}}</td>
+          <td tiOverflow>{{row.gender}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ti-table>
+</div>

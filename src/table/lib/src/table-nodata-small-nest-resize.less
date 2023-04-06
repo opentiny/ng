@@ -1,0 +1,198 @@
+@import '../../../themes/basic/base-all.less';
+
+/* ---------------table无数据基础样式----START-----------------------------------------*/
+.table-nodata (@bg) {
+  background-color: var(--ti-common-color-bg-white-normal);
+  & > td {
+    position: relative;
+    overflow: visible !important;
+    background: @bg;
+    font-size: var(--ti-common-font-size-1);
+    color: var(--ti-common-color-text-secondary);
+    text-align: center;
+    line-height: 20px;
+    vertical-align: top;
+    border-bottom: none;
+  }
+}
+.ti3-table > table,
+.ti3-table > .ti3-resize-wrapper > table,
+.ti3-table > .ti3-table-fixed-head > table,
+.ti3-table > .ti3-table-container > table {
+  & > tbody > tr {
+    &.ti3-table-nodata {
+      .table-nodata(var(--ti-table-nodata-td-bg-img-url) 50% var(--ti-table-nodata-lead-icon-padding) no-repeat);
+      & > td {
+        height: var(--ti-table-nodata-height);
+        padding: calc(var(--ti-table-nodata-lead-icon-height) + var(--ti-table-nodata-lead-icon-padding)) 0 0 0;
+      }
+    }
+
+    &.ti3-table-loadfail,
+    &.ti3-table-nodata-guide {
+      .table-nodata(none);
+      & > td {
+        padding: var(--ti-common-space-5x) 0;
+        .table-nodata-a;
+      }
+    }
+    &.ti3-table-nodata-simple {
+      .table-nodata(none);
+      & > td {
+        padding: var(--ti-common-space-5x) 0;
+      }
+    }
+  }
+}
+/* ---------------table无数据基础样式----END-----------------------------------------*/
+
+/* ---------------table窄行基础样式----START-----------------------------------------*/
+.ti3-table-small > table,
+.ti3-table-small > .ti3-resize-wrapper > table,
+.ti3-table-small > .ti3-table-fixed-head > table,
+.ti3-table-small > .ti3-table-container > table {
+  & > thead > tr > th {
+    height: var(--ti-table-small-th-height);
+    line-height: var(--ti-table-small-th-height);
+  }
+
+  & > tbody > tr > td {
+    padding: var(--ti-common-space-2x) var(--ti-table-small-td-horizontal-padding);
+    line-height: var(--ti-common-line-height-number);
+  }
+
+  & > tbody > tr.ti3-details-tr > td {
+    padding: var(--ti-common-space-5x);
+  }
+
+  .small-table-nodata (@bg) {
+    & > td {
+      vertical-align: top;
+      background: @bg;
+    }
+  }
+
+  & > tbody > tr {
+    &.ti3-table-nodata {
+      .small-table-nodata(var(--ti-table-nodata-td-bg-img-url) 50% var(--ti-table-nodata-lead-icon-padding) no-repeat);
+      & > td {
+        height: var(--ti-table-small-nodata-height);
+        padding: calc(var(--ti-table-nodata-lead-icon-height) + var(--ti-table-nodata-lead-icon-padding)) 0 0 0;
+      }
+    }
+
+    &.ti3-table-loadfail,
+    &.ti3-table-nodata-guide {
+      .small-table-nodata(none);
+      & > td {
+        .table-nodata-a;
+      }
+    }
+  }
+}
+/* ---------------table窄行基础样式----END-----------------------------------------*/
+
+/* --------------- table嵌套样式 ----start------------------*/
+.table-nodata-a {
+  a {
+    color: var(--ti-common-color-text-link);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: var(--ti-common-color-text-link-hover);
+      cursor: pointer;
+    }
+  }
+}
+.ti3-table-nest > table,
+.ti3-table-nest > .ti3-resize-wrapper > table,
+.ti3-table-nest > .ti3-table-fixed-head > table,
+.ti3-table-nest > .ti3-table-container > table {
+  & > thead > tr > th {
+    height: var(--ti-table-nest-th-height);
+    line-height: var(--ti-table-nest-th-height);
+  }
+
+  .nest-table-nodata (@bg) {
+    & > td {
+      vertical-align: top;
+      background: @bg;
+    }
+  }
+
+  & > tbody > tr {
+    &.ti3-table-nodata {
+      .nest-table-nodata(var(--ti-table-nodata-td-bg-img-url) 50% var(--ti-table-nodata-lead-icon-padding) no-repeat);
+      & > td {
+        height: var(--ti-table-small-nodata-height);
+        padding: calc(var(--ti-table-nodata-lead-icon-height) + var(--ti-table-nodata-lead-icon-padding)) 0 0 0;
+      }
+    }
+
+    &.ti3-table-loadfail &.ti3-table-nodata-guide {
+      .nest-table-nodata(none);
+      & > td {
+        .table-nodata-a;
+      }
+    }
+  }
+
+  & > tbody > tr > td {
+    padding: var(--ti-common-space-2x) var(--ti-table-small-td-horizontal-padding);
+    line-height: var(--ti-common-line-height-number);
+    border-bottom: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-dividing);
+  }
+
+  & > tbody > tr.ti3-details-tr > td {
+    padding: var(--ti-common-space-5x);
+  }
+}
+
+/* --------------- table嵌套样式 ----end--------------------*/
+
+/* ---------------table列拖动样式（colsResizable）----START----------------------------------------------*/
+// 列拖动父容器区域
+.ti3-resize-wrapper {
+  overflow-x: auto;
+  min-height: ~'0%'; // 解决：IE浏览器下，将表格列拖动出现横向滚动条时，分页会与表体出现空白，且hover到表格时，空白范围在不断改变； #7091
+}
+// 页面文字不可选,避免出现蓝色选择区域（对于列拖动）
+.ti3-unselectable {
+  .user-select(none);
+}
+.ti3-table > table,
+.ti3-table > .ti3-resize-wrapper > table,
+.ti3-table > .ti3-table-fixed-head > table,
+.ti3-table > .ti3-table-container > table {
+  & > thead > tr > th.col-resize-active {
+    // 因为IE下给伪元素设置cursor是不生效的，所以cursor没有加在th.col-resize-active:after上
+    cursor: col-resize !important; // 加important是为了避免被排序的手型鼠标样式覆盖掉
+  }
+  & > thead > tr > th.col-resize-active:after {
+    // 列拖动激活状态时th样式
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    border-right: var(--ti-common-border-weight-normal) var(--ti-common-border-style-dashed) var(--ti-common-color-line-dividing);
+    background: transparent;
+  }
+  & > tbody > tr > td.col-resize-active {
+    position: relative;
+  }
+  & > tbody > tr:not(.ti3-table-nodata) > td.col-resize-active:after {
+    // 列拖动激活状态时td样式
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    border-right: var(--ti-common-border-weight-normal) var(--ti-common-border-style-dashed) var(--ti-common-color-line-dividing);
+  }
+}
+/* ---------------table列拖动样式（colsResizable）----END----------------------------------------------*/

@@ -1,0 +1,37 @@
+<h4 class="mb-3">1.分页场景+配置每页显示条数为20</h4>
+<ti-transfer
+  id="transfer-table"
+  [(ngModel)]="mySelecteds"
+  [options]="myOptions"
+  type="table"
+  [columns]="columns"
+  [pageable]="true"
+  [pageSize]="20"
+></ti-transfer>
+<h4 class="my-3">2.搜索场景+自定义模板</h4>
+<ti-transfer
+  id="transferg-table-searchable"
+  [(ngModel)]="mySelecteds1"
+  [options]="myOptions1"
+  type="table"
+  [columns]="columns"
+  [searchable]="searchable"
+  [searchKeys]="searchKeys"
+>
+  <ng-template #row let-row let-i="index">
+    <td tiOverflow>{{row.firstName}}<ti-icon name="file"></ti-icon></td>
+    <td tiOverflow>{{row.lastName}}</td>
+    <td tiOverflow style="color: red">{{row.age}}</td>
+  </ng-template>
+</ti-transfer>
+<h4 class="my-3">3.分页+搜索场景</h4>
+<ti-transfer
+  id="transferg-table-pageable-searchable"
+  [(ngModel)]="mySelecteds2"
+  [options]="myOptions2"
+  type="table"
+  [columns]="columns"
+  [pageable]="true"
+  [searchable]="searchable"
+  [searchKeys]="searchKeys"
+></ti-transfer>

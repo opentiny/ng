@@ -1,0 +1,81 @@
+@import '../../../themes/basic/base-all.less';
+
+::ng-deep :root {
+  --ti3-collapsebutton-height: 36px;
+}
+
+:host {
+  display: inline-block;
+  height: var(--ti3-collapsebutton-height);
+  .transition(background-color; 0.15s);
+}
+
+:host ::ng-deep [tiButton] {
+  padding: 0 var(--ti-common-space-10) !important;
+  // 未展开时，其它局点与普通按钮背景色有区别
+  &:not([disabled]):hover,
+  &:not([disabled]):focus,
+  &:not([disabled]):active {
+    background-color: var(--ti-common-bg-minor);
+    color: var(--ti-common-color-text-highlight);
+    .ti3-icon-accordion-fold {
+      color: var(--ti-common-color-icon-hover);
+    }
+  }
+}
+
+// 展开时
+:host.ti3-collapsebutton-uncollapsed {
+  background-color: var(--ti-common-color-bg-white-emphasize);
+  .transition(background-color; 0.15s);
+
+  ::ng-deep [tiButton] {
+    background-color: var(--ti-common-color-bg-white-emphasize);
+    border-color: var(--ti-common-color-bg-white-emphasize);
+    .transition(background-color; 0.15s);
+  }
+
+  ::ng-deep [tiButton]:not([disabled]):focus {
+    border-color: var(--ti-common-color-bg-white-emphasize);
+    background-color: var(--ti-common-color-bg-white-emphasize);
+    // 和普通按钮有区别，没有聚焦状态，文字回复默认颜色
+    color: var(--ti-common-color-text-primary);
+    ::ng-deep .ti3-icon-accordion-fold {
+      color: var(--ti-common-color-icon-normal);
+    }
+  }
+
+  ::ng-deep [tiButton]:not([disabled]):hover {
+    border-color: var(--ti-common-color-bg-white-emphasize);
+    background-color: var(--ti-common-color-bg-white-emphasize);
+    color: var(--ti-common-color-text-highlight);
+    ::ng-deep .ti3-icon-accordion-fold {
+      color: var(--ti-common-color-icon-hover);
+    }
+  }
+}
+
+/*旋转动效的盒子必须是block或者inline-block*/
+.ti3-icon-accordion-fold {
+  display: inline-block;
+  margin-left: var(--ti-common-space-10);
+  color: var(--ti-common-color-icon-normal);
+  .transition(color; 0.15s);
+}
+
+/********************************动效************************************/
+//旋转-180-0deg动画，打开动画
+.rotate-aniamtion(ti-collapsebutton-rotate-uncollapsed-keyframes, -180deg, 0deg);
+
+//打开时候的动效
+:host.ti3-collapsebutton-uncollapsed .ti3-icon-accordion-fold {
+  .animation(ti-collapsebutton-rotate-uncollapsed-keyframes, 0.15s);
+}
+
+//旋转0-180deg，关闭动画
+.rotate-aniamtion(ti-collapsebutton-rotate-collapsed-keyframes, 0deg, 180deg);
+
+//收起时候的动效
+.ti3-icon-accordion-fold {
+  .animation(ti-collapsebutton-rotate-collapsed-keyframes, 0.15s);
+}

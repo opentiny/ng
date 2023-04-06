@@ -1,0 +1,5 @@
+<ti-tags-input class="w-96" id="tagsinput-template" [suggestions]="suggestions" [(ngModel)]="selected">
+  <ng-template #item let-item let-i="index">
+    <span>{{i}} {{item.label}}</span>
+  </ng-template>
+</ti-tags-input>

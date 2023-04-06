@@ -1,0 +1,22 @@
+<!-- 内部测试用例暂无guidesteps先注释等合入后 -->
+<ti-guides id="guides-guidesteps" [activeIndex]="activeIndex">
+  <ti-guide *ngFor="let card of cards let i=index">
+    <ti-guide-header>{{card.label}}</ti-guide-header>
+    <ti-guide-content>
+      <!-- <ti-guidesteps>
+                <ti-guidestep [isComplete]="card.isComplete" *ngFor="let item of card.items">
+                    <ti-guidestep-header>{{item.stepTitle}}</ti-guidestep-header>
+                    <ti-guidestep-content>
+                        {{item.content}}
+                    </ti-guidestep-content>
+                </ti-guidestep>
+            </ti-guidesteps> -->
+    </ti-guide-content>
+    <ti-guide-body>
+      <p>操作指南</p>
+      <button type="button" *ngIf="i === 0" (click)="clickShow2Fn()">点击激活第二项</button>
+      <button type="button" *ngIf="i === 1" (click)="clickShow3Fn()">点击激活第三项</button>
+      <button type="button" *ngIf="i === 2" (click)="clickShow1Fn()">点击激活第一项</button>
+    </ti-guide-body>
+  </ti-guide>
+</ti-guides>

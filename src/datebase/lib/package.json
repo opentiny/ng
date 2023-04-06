@@ -1,0 +1,17 @@
+{
+  "name": "@opentiny/ng-datebase",
+  "version": "1.0.0-beta.0",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": ">=13.0.0",
+    "@opentiny/ng-utils": "~1.0.0-beta.0",
+    "@opentiny/ng-locale": "~1.0.0-beta.0",
+    "@opentiny/ng-base": "~1.0.0-beta.0",
+    "@opentiny/ng-datedominator": "~1.0.0-beta.0",
+    "@opentiny/ng-drop": "~1.0.0-beta.0",
+    "@opentiny/ng-dateedit": "~1.0.0-beta.0",
+    "@opentiny/ng-button": "~1.0.0-beta.0",
+    "@angular/core": ">=13.0.0",
+    "@opentiny/ng-text": "~1.0.0-beta.0"
+  }
+}

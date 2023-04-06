@@ -1,0 +1,22 @@
+<ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" tiColsResizable>
+  <div class="ti3-resize-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of displayed; let index = index; trackBy: trackByFn">
+          <td>
+            <ti-cell-text>{{row.uuid}}</ti-cell-text>
+            <ti-cell-icons>
+              <ti-copy [id]="'copy-table-' + index" [content]="row.uuid" title="copy"></ti-copy>
+            </ti-cell-icons>
+          </td>
+          <td tiOverflow>{{row.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ti-table>

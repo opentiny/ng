@@ -1,0 +1,36 @@
+:host {
+  --ti-loadingfail-icon-size: var(--ti-common-size-4x);
+  --ti-loadingfail-line-height: calc(var(--ti-common-font-size-base) * var(--ti-common-line-height-number));
+  --ti-loadingfail-margin-vertical: calc((var(--ti-loadingfail-line-height) - var(--ti-loadingfail-icon-size)) / 2);
+}
+
+:host {
+  display: inline-flex;
+  align-items: flex-start;
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+  line-height: var(--ti-common-line-height-number);
+}
+
+.ti3-loadingfail-icon {
+  display: inline-block;
+  color: var(--ti-common-color-text-white);
+  width: var(--ti-loadingfail-icon-size);
+  height: var(--ti-loadingfail-icon-size);
+  line-height: var(--ti-loadingfail-icon-size);
+  font-size: calc(var(--ti-loadingfail-icon-size) * 0.75);
+  border-radius: var(--ti-common-border-radius-3);
+  text-align: center;
+  background-color: var(--ti-common-color-error);
+  margin: var(--ti-loadingfail-margin-vertical) var(--ti-common-space-2x) var(--ti-loadingfail-margin-vertical) var(--ti-common-space-0);
+  flex-shrink: 0;
+}
+
+.ti3-loadingfail-link {
+  color: var(--ti-common-color-text-link);
+  text-decoration: none;
+  &:hover {
+    color: var(--ti-common-color-text-link-hover);
+    text-decoration: underline;
+  }
+}

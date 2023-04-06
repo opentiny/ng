@@ -1,0 +1,22 @@
+@import '../../../themes/basic/base-all.less';
+
+:host {
+  color: var(--ti-common-color-icon-normal);
+  margin-left: var(--ti-common-space-2x);
+  cursor: pointer;
+  &:hover {
+    color: var(--ti-common-color-icon-hover);
+  }
+  &[dark] {
+    color: var(--ti-common-color-icon-darkbg-normal);
+    &:hover {
+      color: var(--ti-common-color-icon-darkbg-hover);
+    }
+  }
+}
+ti-table td :host {
+  visibility: hidden;
+}
+ti-table td:hover :host {
+  visibility: visible;
+}

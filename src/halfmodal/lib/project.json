@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/halfmodal/lib",
+  "sourceRoot": "src/halfmodal/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/halfmodal"],
+      "options": {
+        "project": "src/halfmodal/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/halfmodal"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js halfmodal"
+          },
+          {
+            "command": "ng default-build halfmodal"
+          },
+          {
+            "command": "node build/clear-default-theme.js halfmodal"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/halfmodal && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build halfmodal && ng pack halfmodal && node build/publish.js halfmodal --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

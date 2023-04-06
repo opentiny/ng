@@ -1,0 +1,9 @@
+<button type="button" tiButton (click)="onClickToggle($event)" [id]="appendId('toggle')">
+  <ng-container *ngTemplateOutlet="textTemplateRef? textTemplateRef : defaultTextTempRef"> </ng-container
+  ><!--
+ --><span *ngIf="searchCount"> ({{searchCount}})</span
+  ><!--
+ --><ti-icon local class="ti3-icon-accordion-fold" name="cloud-action-double-fold"></ti-icon>
+</button>
+
+<ng-template #defaultTextTempRef>{{'tiCollapsebutton.text' | tiTranslate }}</ng-template>

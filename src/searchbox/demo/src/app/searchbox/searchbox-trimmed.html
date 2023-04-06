@@ -1,0 +1,13 @@
+<ti-searchbox
+  placeholder="请输入内容"
+  id="searchbox-trimmed"
+  [(ngModel)]="value"
+  [trimmed]="true"
+  (ngModelChange)="onModelChange($event)"
+  (search)="onSearch($event)"
+></ti-searchbox>
+
+<div class="current-value-container">
+  <pre>Current Value: {{ searchContent }}</pre>
+  <pre>Value length: {{ searchContent.length }}</pre>
+</div>

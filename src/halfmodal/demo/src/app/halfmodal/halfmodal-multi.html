@@ -1,0 +1,58 @@
+<style>
+  .halfmodal-head {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .question-list {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .link {
+    color: #526ecc;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
+<h2>1.描述</h2>
+<p>多层弹窗示例</p>
+<p>PS: 多层弹窗的场景由帮助面板组件代替，该示例不对外呈现</p>
+<h2>2.示例</h2>
+<ti-halfmodal #halfmodal id="halfmodal-multi1">
+  <ng-container *ngTemplateOutlet="myModal1; context:{$implicit:data}"></ng-container>
+</ti-halfmodal>
+
+<ti-halfmodal #halfmodal2 id="halfmodal-multi2">
+  <ng-container *ngTemplateOutlet="myModal2; context:{$implicit:answer}"></ng-container>
+</ti-halfmodal>
+
+<p>1.打开弹窗（默认width：600px）</p>
+<button (click)="halfmodal.show($event.target)">open halfmodal</button>
+<br />
+
+<ng-template #myModal1 let-context>
+  <div>
+    <div class="halfmodal-head"><ti-icon [name]="context.actionGuide" style="margin-right: 10px"></ti-icon><span>使用指南</span></div>
+    <ti-searchbox style="width: 100%; margin-bottom: 20px"></ti-searchbox>
+    <ti-accordion>
+      <ti-accordion-item>
+        <ti-accordion-head>首次使用</ti-accordion-head>
+        <div *ngFor="let key of [1, 2, 3]" class="question-list">
+          <span class="dot"></span><span style="margin-right: 8px">这是第{{key}}个问题</span>
+          <span class="link" (click)="halfmodal2.show($event.target)" (click)="context.answer(key)">查看答案</span>
+        </div>
+      </ti-accordion-item>
+      <ti-accordion-item>
+        <ti-accordion-head>Static Header, initially expanded</ti-accordion-head>
+        <p>This content is straight in the template.</p>
+      </ti-accordion-item>
+    </ti-accordion>
+    <ti-select [(ngModel)]="context.mySelected1" [options]="context.myOptions"></ti-select>
+  </div>
+</ng-template>
+
+<ng-template #myModal2 let-context>
+  <span class="dot"></span><span>{{context.q}}</span><br />
+  <span class="dot"></span><span>{{context.a}}</span>
+</ng-template>

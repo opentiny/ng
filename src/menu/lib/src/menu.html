@@ -1,0 +1,56 @@
+<a
+  #mytoggle
+  class="ti3-menu-toggle-menu"
+  [ngClass]="{'ti3-menu-toggle-menu-up' : dropComs?.first.isShow}"
+  (mousedown)="onMousedown($event)"
+  (keydown)="onKeydown($event)"
+  oncontextmenu="return false"
+  href="javascript:void(0)"
+  [id]="appendId('toggle')"
+>
+  <ng-content></ng-content>
+</a>
+<ng-container *ngTemplateOutlet="pannelTemplate; context: {$implicit: itemsArr[0], panelIndex: 0}"> </ng-container>
+<ng-container *ngTemplateOutlet="pannelTemplate; context: {$implicit: itemsArr[1],panelIndex: 1}"> </ng-container>
+<ng-container *ngTemplateOutlet="pannelTemplate; context: {$implicit: itemsArr[2], panelIndex: 2}"> </ng-container>
+<ng-template #pannelTemplate let-options let-panelIndex="panelIndex">
+  <ti-drop
+    #drop
+    [ngClass]="{'ti3-menu-border-drop': buttonSelect}"
+    class="ti3-menu-panel-container"
+    [dominatorElem]="mytoggleRef.nativeElement"
+    [panelAlign]="panelAlign"
+    panelWidth="auto"
+    height="auto"
+    [id]="appendId('drop'+panelIndex)"
+    (mouseout)="onMouseoutDrop($event, panelIndex)"
+  >
+    <ti-menulist
+      #menulist
+      [options]="options"
+      [labelKey]="labelKey"
+      [panelAlign]="panelAlign"
+      style="display: block"
+      (select)="onSelect(panelIndex)"
+      size="small"
+      [ngStyle]="{'max-width': panelMaxWidth}"
+      (hover)="onHover($event, panelIndex)"
+      [id]="appendId('menulist'+panelIndex)"
+    >
+      <ng-template let-item let-i="index">
+        <section
+          [tiTip]="tipTemplate ? tipTemplate : item.tip"
+          [tiTipContext]="item"
+          [tiTipPosition]="item.tipPosition"
+          [tiTipMaxWidth]="tipMaxWidth"
+        >
+          <ng-container *ngIf="itemTemplate else listLabelTemplate">
+            <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: item,index: i}"> </ng-container>
+          </ng-container>
+          <ng-template #listLabelTemplate>{{item[labelKey]}}</ng-template>
+        </section>
+      </ng-template>
+    </ti-menulist>
+  </ti-drop>
+  <ng-template> </ng-template
+></ng-template>

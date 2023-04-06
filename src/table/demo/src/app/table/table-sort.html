@@ -1,0 +1,34 @@
+<ti-table [srcData]="srcData" [(displayedData)]="displayedData">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <ti-cell-text>{{columns[0].title}}</ti-cell-text>
+          <ti-head-sort [sortKey]="columns[0].sortKey" [asc]="columns[0].asc"></ti-head-sort>
+        </th>
+        <th>
+          <ti-cell-text>{{columns[1].title}}</ti-cell-text>
+          <ti-head-sort [sortKey]="columns[1].sortKey" [compareFn]="columns[1].compareFn"></ti-head-sort>
+        </th>
+        <th>
+          <ti-cell-text>{{columns[2].title}}</ti-cell-text>
+          <ti-head-sort [sortKey]="columns[2].sortKey"></ti-head-sort>
+        </th>
+        <th width="180px">
+          <ti-cell-text>{{columns[3].title}}</ti-cell-text>
+          <ti-head-sort [sortKey]="columns[3].sortKey" [compareFn]="columns[3].compareFn"></ti-head-sort>
+        </th>
+        <th>{{columns[4].title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of displayedData">
+        <td>{{row.firstName}}</td>
+        <td>{{row.lastName}}</td>
+        <td>{{row.age}}</td>
+        <td tiOverflow tiTipPosition="right">{{row.poetry}}</td>
+        <td>{{row.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ti-table>

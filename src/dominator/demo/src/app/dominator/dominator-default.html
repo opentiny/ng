@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body style="margin: 0 100px">
+    <!--双向绑定展示区域-->
+    <h1>Select组件数据双向绑定展示区域</h1>
+    <hr style="border-color: #ca4848" />
+    <div style="height: 160px; overflow: auto; padding-left: 15px">
+      <span>1.用例1的当前选中项为：<br /><strong>{{selected | json}}</strong></span>
+      <br />
+      <hr style="border-color: #ca4848" />
+      <br /><br />
+    </div>
+    <!--测试用例1 数据不分组-->
+    <label><strong>1.设置selected和labelKey</strong></label>
+    <ti-dominator
+      style="width: 200px"
+      id="aa"
+      labelKey="name"
+      placeholder="请选择"
+      buttonStyle="dropdown"
+      [(ngModel)]="selected"
+      [disabled]="disabled"
+    >
+    </ti-dominator>
+    <h4>2.自定义选中项模板</h4>
+    <ti-dominator style="width: 200px" id="bb" placeholder="请选择" buttonStyle="dropdown" [(ngModel)]="selected" [disabled]="disabled">
+      <ng-template let-item>
+        <span [title]="item.id+item.name+item.pic">{{item.id}}+{{item.name}}+{{item.pic}}</span>
+      </ng-template>
+    </ti-dominator>
+    <br />
+    <h4>3.inputtable=true</h4>
+    <h4>事件日志：</h4>
+    <demo-log [logs]="myLogs"></demo-log>
+    <ti-dominator
+      style="width: 200px"
+      id="cc"
+      labelKey="name"
+      [inputtable]="true"
+      (search)="onSearch($event)"
+      placeholder="请选择"
+      buttonStyle="dropdown"
+      [(ngModel)]="selected"
+      [disabled]="disabled"
+    >
+    </ti-dominator>
+    <br />
+    <button type="button" (click)="change1()">change1()</button>
+    <button type="button" (click)="change2()">change2()</button>
+    <button type="button" (click)="change3()">change3()</button>
+    <button type="button" (click)="change4()">change4()</button>
+    <button type="button" (click)="changeDisabled()">改变禁用</button>
+  </body>
+</html>

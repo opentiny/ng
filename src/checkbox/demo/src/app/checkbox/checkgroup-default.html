@@ -1,0 +1,64 @@
+<h3>描述</h3>
+<p>Checkgroup复选框组组件，动态改变数据</p>
+<h3>导入</h3>
+<p>import {{ '{' }} TiCheckboxModule {{ '}' }} from '@opentiny/ng';</p>
+<h3>示例</h3>
+<p>1.设置为全选：设置checkeds为全部数据</p>
+<input type="checkbox" id="allCheck1" tiCheckgroup [items]="dataArray1" [(checkeds)]="checkedArray1" label="全选" />
+<div style="margin-top: 12px"></div>
+<span *ngFor="let item of dataArray1">
+  <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" />
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<span>checkedArray1.size={{checkedArray1.length}}</span>
+<br />
+<div>
+  checked =
+  <span *ngFor="let item of checkedArray1"> {{item | json}} </span>
+</div>
+<br />
+<p>2.都设置为未选中：设置checkeds为空</p>
+<input type="checkbox" id="allCheck2" tiCheckgroup [items]="dataArray2" [(checkeds)]="checkedArray2" label="全选" />
+<div style="margin-top: 12px"></div>
+<span *ngFor="let item of dataArray2">
+  <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" />
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<div>
+  checked =
+  <span *ngFor="let item of checkedArray2"> {{item | json}} </span>
+</div>
+<br />
+
+<p>3.部分设置为选中：checkeds设置1,3项</p>
+<input type="checkbox" id="allCheck3" tiCheckgroup [items]="dataArray3" [(checkeds)]="checkedArray3" label="全选" />
+<div style="margin-top: 12px"></div>
+<span *ngFor="let item of dataArray3">
+  <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" />
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<div>
+  checked =
+  <span *ngFor="let item of checkedArray3"> {{item | json}} </span>
+</div>
+<br />
+
+<p>4.不设置选中项，checkeds 和 items 均为[]</p>
+<input type="checkbox" id="allCheck4" tiCheckgroup [items]="dataArray4" [(checkeds)]="checkedArray4" label="全选" />
+<br />
+<span *ngFor="let item of dataArray4">
+  <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" />
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<div>
+  checked =
+  <span *ngFor="let item of checkedArray4"> {{item | json}} </span>
+</div>

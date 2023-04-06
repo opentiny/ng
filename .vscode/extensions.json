@@ -1,0 +1,40 @@
+{
+    "recommendations": [
+      /*使用最新版VSCODE，打开项目后右下角有提示安装所有插件，左侧插件栏目有列出工作空间插件*/
+      /*必选插件：*/
+      /*Angular模板变量检查*/
+      "angular.ng-template",
+      /*eslint检查*/
+      "dbaeumer.vscode-eslint",
+      /*prettier检查*/
+      "esbenp.prettier-vscode",
+      /*style静态检查，初期暂不要求*/
+      "stuartzhang.stylelint-stzhang",
+      /*彩色括号配对*/
+      "coenraads.bracket-pair-colorizer-2",
+      /*注释*/
+      "oouo-diogo-perdigao.docthis",
+      /*变量顺序排序*/
+      "tyriar.sort-lines",
+      /*Angular,typescript, html等语法填充*/
+      "mikael.angular-beastcode",
+      /*修改标签名时闭合标签自动跟着改变*/
+      "formulahendry.auto-rename-tag",
+      /*圈复杂度*/
+      "kisstkondoros.vscode-codemetrics",
+      /*可选插件：*/
+      /*代码中出现git修改记录*/
+      "eamodio.gitlens",
+      /*markdown编辑*/
+      "shd101wyy.markdown-preview-enhanced",
+      /*代码行数统计*/
+      "uctakeoff.vscode-counter",
+      /*导入包体积*/
+      "wix.vscode-import-cost",
+      /*中文包*/
+      "ms-ceintl.vscode-language-pack-zh-hans",
+      "nrwl.angular-console"
+    ],
+    "unwantedRecommendations": [
+    ]
+  }

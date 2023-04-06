@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.base.json",
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.prod.json"
+    }
+  ],
+  "compilerOptions": {
+    "outDir": "../dist/out-tsc",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": []
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true
+  }
+}

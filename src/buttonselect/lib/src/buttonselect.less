@@ -1,0 +1,77 @@
+::ng-deep :root {
+  --ti-buttonselect-maxwidth: 300px;
+  --ti-buttonselect-padding: 20px;
+  --ti-buttonselect-triangle-width: 16px;
+  --ti-button-group-height: 28px;
+}
+
+:host {
+  display: inline-block;
+}
+.ti-btnselect-triangle {
+  display: inline-block;
+  width: 16px;
+  &:after {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--ti-common-color-icon-normal);
+    content: '';
+    position: absolute;
+    top: 10.5px;
+  }
+}
+.ti-btnselect-triangle-up:after {
+  transform: rotate(180deg);
+}
+
+.ti-buttonselect-button {
+  border-radius: var(--ti-common-border-radius-normal);
+  border: 1px solid transparent;
+  padding: 0 var(--ti-buttonselect-padding);
+  position: relative;
+  display: inline-block;
+  height: var(--ti-button-group-height);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #252b3a;
+  background-color: #e9edfa;
+  line-height: calc(var(--ti-button-group-height) - 2px);
+  max-width: var(--ti-buttonselect-maxwidth);
+  &.ti-buttonselect-dominator-border {
+    border: 1px solid var(--ti-common-color-bg-emphasize);
+  }
+  &:not(.ti-buttonselect-dominator-border):hover,
+  &:not(.ti-buttonselect-dominator-border):focus {
+    background-color: var(--ti-common-color-bg-light-emphasize);
+  }
+}
+.ti-buttonselect-text {
+  display: inline-block;
+  max-width: calc(var(--ti-buttonselect-maxwidth) - var(--ti-buttonselect-padding) * 2 - var(--ti-buttonselect-triangle-width));
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+.ti-buttonselect-badge {
+  display: inline-block;
+  color: #fff;
+  width: 0;
+  height: 0;
+  border-right: 16px solid #5e7ce0;
+  border-bottom: 16px solid transparent;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  font-size: 12px;
+  & .ti3-icon-checkmark-small {
+    position: relative;
+    right: -5px;
+    top: -8px;
+  }
+}
+.ti-buttonselect-list {
+  margin: 0 10px;
+}

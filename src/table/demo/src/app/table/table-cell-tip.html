@@ -1,0 +1,20 @@
+<ti-table [srcData]="srcData" [(displayedData)]="displayedData">
+  <table>
+    <thead>
+      <tr>
+        <th width="100px">{{columns[0].title}}</th>
+        <th>{{columns[1].title}}</th>
+        <th tiOverflow width="140px">{{columns[2].title}}</th>
+        <th width="145px">{{columns[3].title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of displayedData">
+        <td><a tiOverflow style="width: 100%" href="javascript:void(0)">{{row.name}}</a></td>
+        <td>{{row.age}}</td>
+        <td tiOverflow>{{row.email}}</td>
+        <td tiOverflow tiTipPosition="left" [tiTipContent]="row.tipContent" tiTipMaxWidth="100px">{{row.address}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ti-table>

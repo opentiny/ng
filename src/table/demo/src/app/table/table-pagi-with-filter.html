@@ -1,0 +1,36 @@
+<h3>描述</h3>
+<p>表格前台分页 + 前台过滤特性</p>
+<p class="demo-text-warn">注意：使用 pagination 组件，请导入 TiPaginationModule。</p>
+<h3>示例</h3>
+<input tiText style="width: 190px; height: 30px" [(ngModel)]="inputValue" (ngModelChange)="setSearchWords($event)" type="text" />
+<!-- TiTableComponent提供了getSearchedResult方法，可通过此方法获取到搜索的数据结果。-->
+<p><button type="button" (click)="getSearchedResult()">获取搜索结果</button><span>搜索结果个数: </span>{{ searchedData.length }}</p>
+
+<ti-table
+  class="containerStyle"
+  [(displayedData)]="displayed"
+  [srcData]="srcData"
+  [columns]="columns"
+  [searchWords]="searchWords"
+  [searchKeys]="searchKeys"
+  #table
+>
+  <table>
+    <thead>
+      <tr>
+        <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+      <tr *ngFor="let row of displayed">
+        <td tiOverflow>{{row.firstName}}</td>
+        <td tiOverflow>{{row.lastName}}</td>
+        <td tiOverflow>{{row.age}}</td>
+        <td tiOverflow>{{row.balance}}</td>
+        <td tiOverflow>{{row.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ti-pagination [(currentPage)]="currentPage" [pageSize]="pageSize" [(totalNumber)]="totalNumber"> </ti-pagination>
+</ti-table>

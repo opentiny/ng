@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/drag/lib",
+  "sourceRoot": "src/drag/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/drag"],
+      "options": {
+        "project": "src/drag/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/drag"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js drag"
+          },
+          {
+            "command": "ng default-build drag"
+          },
+          {
+            "command": "node build/clear-default-theme.js drag"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/drag && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build drag && ng pack drag && node build/publish.js drag --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<h3>描述</h3>
+<p>
+  modal组件，对外提供TiModalService服务，开发者将TiModalService注入到组件中，可得到服务实例tiModal。<br />
+  可以调用tiModal.open(TemplateRef, TiModalConfig)方法来打开弹框。<br />
+  该用例介绍tiModal.open方法的第二个参数的使用方式，参数说明见ModalConfigTestComponent.ts文件。
+</p>
+<h3>示例</h3>
+<ng-template #myModal let-context="context">
+  <ti-modal-header> {{ context.headerTitle }} </ti-modal-header>
+  <ti-modal-body>
+    <span>body</span>
+    <input tiText name="aa" [(ngModel)]="myValue" [tiValidation]="myValidationConfig" />
+    <button style="margin-left: 10px" type="button" (click)="context.changMyNumber()" tiButton>改变弹窗外面的变量</button>
+  </ti-modal-body>
+
+  <ti-modal-footer>
+    <!-- 可根据是否设置color="danger" 区分主要和次要按钮  -->
+    <button type="button" color="danger" autofocus (click)="context.close()" tiButton>OK</button>
+    <button type="button" (click)="context.dismiss()" tiButton>Cancel</button>
+    <button style="margin-left: 10px" type="button" (click)="context.closeModal()" tiButton>自定义关闭弹窗</button>
+  </ti-modal-footer>
+</ng-template>
+<button (click)="show(myModal)" tiButton>show Modal</button>
+<div>通过弹窗内部的按钮，改变弹窗外面的变量myNumber的当前值：{{myNumber}}</div>

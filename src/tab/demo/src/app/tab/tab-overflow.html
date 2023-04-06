@@ -1,0 +1,7 @@
+<div class="w-4/5 border border-solid border-gray-300 p-4 rounded">
+  <ti-tabs panelWidth="150px" panelAlign="right" panelMaxHeight="300px">
+    <ti-tab *ngFor="let tab of tabs; let i = index" [header]="tab.title" [(active)]="tab.active" [id]="'tab-overflow-' + i">
+      <div>Content of Tab Pane {{ i + 1 }}</div>
+    </ti-tab>
+  </ti-tabs>
+</div>

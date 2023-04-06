@@ -1,0 +1,17 @@
+{
+        "tsconfig": "./src/tsconfig.lib.json",
+        "output": "./dist/tinydoc",
+        "name": "TinyNG Website API Doc",
+        "language": "zh-CN",
+        "hideGenerator": true,
+        "disableSourceCode": true,
+        "disableDomTree": true,
+        "disableTemplateTab": true,
+        "disableStyleTab": true,
+        "disableGraph": true,
+        "disablePrivate": true,
+        "disableProtected": true,
+        "disableInternal": true,
+        "disableLifeCycleHooks": true,
+        "disableRoutesGraph": true
+}

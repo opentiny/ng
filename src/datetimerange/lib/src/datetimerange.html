@@ -1,0 +1,167 @@
+<ti-date-dominator
+  #dominator
+  [id]="appendId('dominator')"
+  type="range"
+  [format]="dominatorFormat"
+  [disabled]="disabled"
+  [clearable]="clearIcon"
+  [(ngModel)]="inputValue"
+  (clear)="onIconClearClick($event)"
+  (click)="onShowClick()"
+  >{{placeholder}}</ti-date-dominator
+><!-- 分割线是特殊字符制表符，不是普通中线 -->
+<ti-drop
+  #drop
+  [id]="appendId('drop')"
+  class="ti3-datetime-range-picker"
+  [ngClass]="{'ti3-date-time-range-customize': hasCustomizeTime}"
+  [dominatorElem]="dominatorCom.nativeElement"
+  fixMaxHeight="true"
+  [panelWidth]="datePanelWidth"
+  [panelAlign]="panelAlign"
+  [browserSpace]="browserSpace"
+  [dominatorSpace]="dominatorSpace"
+  [determinPositionFn]="determinPositionFn"
+  theme="noborder"
+>
+  <section class="ti3-date-clear">
+    <section *ngIf="hasCustomizeTime" class="ti3-date-time-range-customize-container">
+      <ng-container *ngTemplateOutlet="customizeTemplate; context:  {$implicit: customizeOptions}"></ng-container>
+    </section>
+
+    <section [ngClass]="{'ti3-datetime-range-panel-container': hasCustomizeTime}">
+      <ti-date-edit
+        class="ti3-date-time-range-dateedit"
+        [ngClass]="{'ti3-date-time-range-begin-edit': focusedPosition === 'begin'}"
+        [(ngModel)]="datePanel.value.begin"
+        [min]="datePanel.min"
+        [max]="datePanel.max"
+        [time]="beginTime.value"
+        (click)="dateEditClick('begin')"
+        (focus)="dateEditFocus('begin')"
+        (blur)="dateEditBlur(datePanel.value.begin, 'begin', beginTime.value)"
+        (keydown)="onKeydownFn($event, datePanel.value.begin, 'begin', beginTime.value)"
+        (inputChange)="onInputChange($event, 'begin')"
+        [format]="datePanel.format"
+        [id]="appendId('begin_edit')"
+      ></ti-date-edit>
+      <input
+        class="ti3-date-time-range-timeedit"
+        [ngClass]="{'ti3-date-time-range-begintime-edit': focusedPosition === 'beginTime'}"
+        type="text"
+        maxlength="8"
+        [(ngModel)]="beginTime.value"
+        (focus)="timeFocus('begin')"
+        [disabled]="beginTimeDisabled"
+        [placeholder]="timeplaceholder"
+        (blur)="timeBlur('begin',beginTime.value)"
+        (keydown)="timeKeydown('begin', beginTime.value, $event)"
+        [id]="appendId('begin_input')"
+        tiText
+      />
+      <span class="ti3-date-range-splitline"> ─ </span>
+      <ti-date-edit
+        class="ti3-date-time-range-dateedit"
+        [ngClass]="{'ti3-date-time-range-end-edit': focusedPosition === 'end'}"
+        [(ngModel)]="datePanel.value.end"
+        [min]="datePanel.min"
+        [max]="datePanel.max"
+        [time]="endTime.value"
+        (click)="dateEditClick('end')"
+        (focus)="dateEditFocus('end')"
+        (blur)="dateEditBlur(datePanel.value.end, 'end', endTime.value)"
+        (keydown)="onKeydownFn($event, datePanel.value.end, 'end', endTime.value)"
+        (inputChange)="onInputChange($event, 'end')"
+        [format]="datePanel.format"
+        [id]="appendId('end_edit')"
+      ></ti-date-edit>
+      <!-- 确认按钮禁用场景下，结束框输入之后无法直接tab切换焦点至确认按钮，故添加此过度input -->
+      <input #input type="text" class="ti3-tab-input" />
+      <input
+        type="text"
+        class="ti3-date-time-range-timeedit"
+        [ngClass]="{'ti3-date-time-range-endtime-edit': focusedPosition === 'endTime'}"
+        [(ngModel)]="endTime.value"
+        [disabled]="endTimeDisabled"
+        [placeholder]="timeplaceholder"
+        maxlength="8"
+        tiText
+        (focus)="timeFocus('end')"
+        (keydown)="timeKeydown('end',endTime.value, $event)"
+        (blur)="timeBlur('end',endTime.value)"
+        [id]="appendId('end_input')"
+      />
+      <ti-date-panel
+        [id]="appendId('begin-panel')"
+        [(value)]="datePanel.value"
+        [focusedPosition]="focusedPosition"
+        [selectTime]="selectTime"
+        [beginTime]="beginTime"
+        [endTime]="endTime"
+        [endTimeDisabled]="endTimeDisabled"
+        [beginTimeDisabled]="beginTimeDisabled"
+        [isRange]="true"
+        [isInputValue]="isInputValue"
+        [(picker)]="datePanel.picker"
+        (select)="datePanel.select()"
+        (selectTimeFn)="datePanel.selectTimeFn($event)"
+        [min]="datePanel.min"
+        [max]="datePanel.max"
+        [format]="format.date"
+        [timeFormat]="format.time"
+        [nowDateTime]="nowDateTime"
+      ></ti-date-panel>
+    </section>
+  </section>
+  <section class="ti3-datetime-range-picker-footer" [ngClass]="{'ti3-datetime-range-select-time': selectTime}">
+    <section *ngIf="timeZoneable" class="ti3-datetime-range-picker-footer-left">
+      <ti-select
+        #timeZone
+        noborder
+        [options]="timeZoneOptions"
+        [(ngModel)]="selectedOption"
+        [valueKey]="'label'"
+        [panelWidth]="'auto'"
+        [appendToBody]="false"
+        [id]="appendId('timeZone_select')"
+      >
+      </ti-select>
+    </section>
+    <section class="ti3-datetime-range-picker-footer-right">
+      <button
+        class="ti3-date-picker-footer-btn"
+        [ngClass]="{'ti3-date-picker-footer-noborder': selectTime}"
+        [id]="appendId('okBtn')"
+        label="ok"
+        type="button"
+        size="small"
+        (click)="onOkClick()"
+        tiButton
+      ></button>
+      <section
+        (click)="selectTimeFn()"
+        [id]="appendId('select_time')"
+        *ngIf="!selectTime"
+        class="ti3-datetime-select-btn"
+        [ngClass]="{'ti3-datetime-select-btn-disabled': timeEditDisabled}"
+      >
+        {{'tiDatedominator.selectTime' | tiTranslate}}
+      </section>
+      <section (click)="selectDateFn()" [id]="appendId('select_date')" *ngIf="selectTime" class="ti3-datetime-select-btn">
+        {{'tiDatedominator.selectDate' | tiTranslate}}
+      </section>
+    </section>
+  </section>
+</ti-drop>
+<ng-template #customizeTemplate let-options>
+  <ul [id]="appendId('list')">
+    <li
+      *ngFor="let option of options; index as i;"
+      class="ti3-customize-time-label"
+      (click)="customizeTimeClickFn(option.value)"
+      [id]="appendId('label_' + i)"
+    >
+      {{option.label}}
+    </li>
+  </ul>
+</ng-template>

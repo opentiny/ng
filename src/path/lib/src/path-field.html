@@ -1,0 +1,29 @@
+<div class="ti3-pathField-container" [id]="appendId('container')">
+  <div #backBtn (click)="onBackBtnClick($event)" [id]="appendId('backBtn')">
+    <ti-icon class="ti3-pathField-backIcon" name="angle-left" *ngIf="isOverflow || isPanel === false"></ti-icon>
+  </div>
+  <div #items class="ti3-pathField-items" (click)="onItemsClick()" [id]="appendId('showItems')">
+    <div
+      class="ti3-pathField-item"
+      *ngFor="let item of showItems; index as i;"
+      (click)="onItemClick(item, $event)"
+      [id]="appendId('showItem_' + i)"
+    >
+      <div class="ti3-pathField-item-label" tiOverflow>{{item.label}}</div>
+      <div class="ti3-pathField-item-divid">/</div>
+    </div>
+  </div>
+  <ti-droplist
+    #droplist
+    [dominatorElem]="backBtnRef.nativeElement"
+    [options]="menuItems"
+    [(ngModel)]="menuSelected"
+    (ngModelChange)="onDroplistChange($event)"
+    [panelWidth]="panelWidth"
+    [id]="appendId('droplist')"
+  >
+  </ti-droplist>
+  <div class="ti3-pathField-Editor" *ngIf="editable && isEditState">
+    <input #input tiText [(ngModel)]="pathValue" (keydown)="onEditorKeydown($event)" (blur)="onEditorBlur()" [id]="appendId('input')" />
+  </div>
+</div>

@@ -1,0 +1,44 @@
+{
+    "files.autoSave": "onWindowChange",
+    "files.trimTrailingWhitespace": true,
+    "[markdown]": {
+      "files.trimTrailingWhitespace": false
+    },
+    /*typescript和tslint2019年初已经决定放弃tslint，已转向eslint来做ts静态检查。*/
+    "eslint.alwaysShowStatus": true,
+    "eslint.autoFixOnSave": false,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "typescript",
+            "autoFix": true
+        },
+        {
+            "language": "typescriptreact",
+            "autoFix": true
+        }
+    ],
+    "docthis.includeMemberOfOnClassMembers": false,
+    "docthis.includeMemberOfOnInterfaceMembers": false,
+    "docthis.includeTypes": false,
+    "stylelint.enable": false,
+    "stylelint.autoFix": false,
+    /*这是vscode的css检查项。如果启用stylelint，那么应该停用vscode的CSS检查*/
+    "css.validate": true,
+    "less.validate": true,
+    "scss.validate": false,
+    "CodeCheck.RealTimeCodeMarsCheck.Enable": false,
+    "CodeCheck.AllRelatedRemoteBranch": "",
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+      },
+     "editor.formatOnSave": false
+    }
+}

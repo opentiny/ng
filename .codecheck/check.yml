@@ -1,0 +1,9 @@
+version: 2.0
+
+steps:
+  pre_codecheck:
+    - checkout
+
+tool_params:
+  secsolar:  #安全扫描工具，必选工具（codedex工具的替代者）
+    source_dir: ./      #指定扫描源码目录，多目录时用 分号 分隔。./表示代码库根目录，填写相对根目录的相对路径

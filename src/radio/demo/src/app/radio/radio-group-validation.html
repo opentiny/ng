@@ -1,0 +1,25 @@
+<h4 class="mb-3">1.模板式表单</h4>
+<form #myForm="ngForm">
+  <ti-radio-group
+    id="radio-group-validation"
+    [items]="radioList"
+    name="formradio"
+    [(ngModel)]="selected"
+    [tiValidation]="validationConfig"
+    tiRequired
+  >
+  </ti-radio-group>
+  <br />
+  <button class="mb-3 mr-3" (click)="checkgroup(myForm)" tiButton>请直接点击此处查看校验结果</button>
+</form>
+<h4 class="mb-3">2.响应式表单</h4>
+<form [formGroup]="myFormGroup">
+  <ti-radio-group
+    id="radio-group-reactive-validation"
+    [items]="radioList1"
+    formControlName="formradiogroup"
+    [tiValidation]="validationConfig1"
+  ></ti-radio-group>
+  <br />
+  <button class="mb-3 mr-3" (click)="checkgroup1()" tiButton>请直接点击此处查看校验结果</button>
+</form>

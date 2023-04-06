@@ -1,0 +1,24 @@
+<h4 class="mb-3">1.resize: vertical，只能垂直方向展开</h4>
+<ti-labeleditor
+  id="labeleditor-resize-vertical"
+  class="demo-labeleditor-container"
+  [(ngModel)]="label"
+  [multiline]="true"
+  [resize]="'vertical'"
+>
+</ti-labeleditor>
+<h4 class="my-3">2.resize: horizontal，只能水平方向展开</h4>
+<ti-labeleditor
+  id="labeleditor-resize-horizontal"
+  class="demo-labeleditor-container"
+  [(ngModel)]="label"
+  [multiline]="true"
+  [resize]="'horizontal'"
+>
+</ti-labeleditor>
+<h4 class="my-3">3.resize: both，水平/垂直方向都可展开</h4>
+<ti-labeleditor id="labeleditor-resize-both" class="demo-labeleditor-container" [(ngModel)]="label" [multiline]="true" [resize]="'both'">
+</ti-labeleditor>
+<h4 class="my-3">4.resize: none，水平/垂直方向都不可展开</h4>
+<ti-labeleditor id="labeleditor-resize-none" class="demo-labeleditor-container" [(ngModel)]="label" [multiline]="true" [resize]="'none'">
+</ti-labeleditor>

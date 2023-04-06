@@ -1,0 +1,44 @@
+<h3>描述</h3>
+<p>Checkgroup复选框组组件，动态改变数据</p>
+<h3>示例</h3>
+<p>1.有全选框tiCheckgroup</p>
+<input
+  type="checkbox"
+  id="allCheck1"
+  tiCheckgroup
+  [items]="dataArray"
+  [(checkeds)]="checkedArray"
+  (checkedsChange)="onMyChange($event)"
+  label="全选"
+/>
+<div style="margin-top: 12px"></div>
+<span *ngFor="let item of dataArray">
+  <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" />
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<div>
+  checked =
+  <span *ngFor="let item of checkedArray"> {{item | json}} </span>
+</div>
+<br />
+<span>checkedArray.size={{checkedArray.length}}</span>
+<br />
+<button type="button" (click)="newItems()">newItems</button>
+<button type="button" (click)="changeItems()">changeItems</button>
+<button type="button" (click)="newCheckeds()">newCheckeds</button>
+<button type="button" (click)="changeCheckeds()">changeCheckeds</button>
+<button type="button" (click)="newItemsAndCheckeds()">newItemsAndCheckeds</button>
+<button type="button" (click)="changeItemsAndCheckeds()">changeItemsAndCheckeds</button>
+<br />
+<p>2.没有全选框，只有item，使用beCheckeds</p>
+<span *ngFor="let item of dataArray">
+  <input type="checkbox" tiCheckitem [item]="item" [beCheckeds]="checkedArray" [label]="item.text" />
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<div>
+  checked =
+  <span *ngFor="let item of checkedArray"> {{item | json}} </span>
+</div>

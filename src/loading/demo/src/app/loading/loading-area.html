@@ -1,0 +1,9 @@
+<button (click)="onClickShowBlockLoading()" tiButton>展示局部块加载</button>
+<button (click)="onClickShowFullscreenLoading()" tiButton>展示全屏加载</button>
+<button (click)="onClickShowFullscreenLoadingWithMask()" tiButton>展示带遮罩的全屏加载</button>
+
+<div style="position: relative; border: 1px solid #999; height: 300px; margin-top: 10px">
+  <ti-loading [hidden]="!showBlockLoading" area="block" size="middle"></ti-loading>
+</div>
+<ti-loading [hidden]="!showFullscreenLoading" area="fullscreen" size="large"></ti-loading>
+<ti-loading [hidden]="!showFullscreenLoadingWithMask" area="fullscreen" [showMask]="true" size="large"></ti-loading>

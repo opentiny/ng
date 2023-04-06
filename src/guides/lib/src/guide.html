@@ -1,0 +1,18 @@
+<!-- 卡片标志线 -->
+<span class="ti3-guide-line"></span>
+
+<!-- 卡片标志 -->
+<div class="ti3-guide-circle">
+  <ng-container *ngIf="isDone(cardIndex) || type === 'error' else numberTemplate">
+    <ti-icon [name]="type === 'error' ? 'cancel' : 'alert-success'" class="ti3-guide-number ti3-guide-card-done"></ti-icon>
+  </ng-container>
+  <ng-template #numberTemplate><span class="ti3-guide-number">{{cardIndex + 1}}</span></ng-template>
+</div>
+
+<!-- 卡片内容 -->
+<div class="ti3-guide-card">
+  <ng-content></ng-content>
+</div>
+
+<!-- 有无body间距样式 -->
+<div class="ti3-guide-space" *ngIf="hasSpace(cardIndex)" [ngClass]="{'ti3-guide-space-active': isActive(cardIndex) }"></div>

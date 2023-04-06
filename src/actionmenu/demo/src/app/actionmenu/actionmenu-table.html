@@ -1,0 +1,23 @@
+<ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">
+  <table>
+    <thead>
+      <tr>
+        <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.label}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+      <!--为了更好的渲染性能，建议在ngFor数据时总是trackBy数据条目中的某个唯一属性值(如id)-->
+      <tr *ngFor="let row of displayed;trackBy: trackByFn">
+        <td tiOverflow>{{row.firstName}}</td>
+        <td tiOverflow>{{row.lastName}}</td>
+        <td tiOverflow>{{row.age}}</td>
+        <td tiOverflow>{{row.state}}</td>
+        <td style="white-space: normal">
+          <ti-actionmenu [data]="row" [dataToItemsFn]="dataToItemsFn" [maxShowNum]="4" (select)="onSelect($event)"> </ti-actionmenu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ti-table>
+<demo-log [logs]="myLogs"></demo-log>

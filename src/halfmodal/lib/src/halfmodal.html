@@ -1,0 +1,15 @@
+<div style="height: 100%">
+  <ti-icon
+    tiOutline
+    name="close"
+    *ngIf="closeIcon"
+    class="ti3-halfmodal-close"
+    (click)="wantHide()"
+    [id]="appendId('halfmodal_close')"
+    [attr.tabindex]="0"
+    (keydown.enter)="hide()"
+  ></ti-icon>
+  <div class="ti3-halfmodal-content">
+    <ng-content></ng-content>
+  </div>
+</div>

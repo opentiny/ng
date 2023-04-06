@@ -1,0 +1,8 @@
+<ti-date
+  id="date-customize"
+  [(ngModel)]="value"
+  [customizeOptions]="customizeOptions"
+  (customizeOptionClick)="onCustomizeOptionClick($event)"
+></ti-date>
+
+<demo-log [logs]="myLogs"></demo-log>

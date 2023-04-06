@@ -1,0 +1,27 @@
+@import '../../../themes/basic/base-all.less';
+
+:host {
+  position: absolute;
+  // display: none;
+  background-color: var(--ti-common-color-bg-dark-deep);
+  border-radius: var(--ti-common-border-radius-1);
+  line-height: var(--ti-common-line-height-number);
+  color: var(--ti-common-color-text-gray);
+  top: -999px; // 添加定位后，不出滚动条，不影响页面结构
+  left: -999px;
+  padding: 12px 16px; // IE下不能及时解析CSSvar，会导致第一次复制定位错误
+  padding: calc(var(--ti-common-space-3x) - 1px) calc(var(--ti-common-space-4x) - 1px);
+  white-space: nowrap;
+  z-index: 5001;
+  &.fadein {
+    animation: fadein 200ms;
+  }
+  &.fadeout {
+    animation: fadeout 300ms forwards;
+  }
+}
+
+// 定义淡入函数
+.fade-animation(fadein,0,1);
+// 定义淡出函数
+.fade-animation(fadeout,1,0);

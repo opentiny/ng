@@ -1,0 +1,59 @@
+<h3>描述</h3>
+<p>Actionmenu菜单按钮组件，提示功能测试</p>
+<h3>示例</h3>
+
+<h4>1.一般 <b>Sring</b> 类型 <b>tip</b></h4>
+<div style="margin-left: 400px; margin-top: 100px">
+  <ti-actionmenu [items]="items" (select)="onSelect($event)"> </ti-actionmenu>
+</div>
+
+<h4>2.自定义tip模板（模板在组件外）</h4>
+<p>适用tip根据条件，可能显示，也可能不显示的场景</p>
+<br />
+<br />
+<p><button (click)="onClickToggleShowTip()">切换到模板/不显示tip</button></p>
+<div style="margin-left: 400px; margin-top: 50px">
+  <ti-actionmenu [items]="items2" (select)="onSelect($event)"></ti-actionmenu>
+  <!-- 自定义tip模板 -->
+  <ng-template #tipTemplate let-item="context">
+    <span><b style="color: orange">自定义tip模板</b> - item的label： {{item.label}}</span>
+  </ng-template>
+</div>
+<h4>3.自定义 <b>tip</b> 模板（<b style="color: red">添加 #tip 标签</b>）</h4>
+<div style="margin-left: 400px; margin-top: 100px">
+  <ti-actionmenu [items]="items" (select)="onSelect($event)">
+    <!-- 自定义tip模板 -->
+    <ng-template #tip let-item="context">
+      <span><b style="color: orange">自定义tip模板</b> - item的label： {{item.label}}</span>
+    </ng-template>
+  </ti-actionmenu>
+</div>
+
+<h4>4.自定义 <b>item</b> 模板（<b style="color: red">添加 #item 标签</b>） + 自定义 <b>tip</b> 模板</h4>
+<div style="margin-left: 400px; margin-top: 100px">
+  <ti-actionmenu [items]="items" (select)="onSelect($event)">
+    <!-- 自定义item模板（添加 #item 标签） -->
+    <ng-template #item let-item let-i="index">
+      <span><b style="color: dodgerblue">自定义item模板</b> - {{item.label}}</span>
+    </ng-template>
+    <!-- 自定义tip模板 -->
+    <ng-template #tip let-item="context">
+      <span><b style="color: orange">自定义tip模板</b> - item的label： {{item.label}}</span>
+    </ng-template>
+  </ti-actionmenu>
+</div>
+
+<h4>5.<b style="color: gray">兼容旧版模板测试（10.0.3 之前版本）</b></h4>
+<p>自定义 <b>item</b> 模板（<b style="color: red">未添加 #item 标签</b>） + 自定义 <b>tip</b> 模板</p>
+<div style="margin-left: 400px; margin-top: 100px">
+  <ti-actionmenu [items]="items" (select)="onSelect($event)">
+    <!-- 自定义item模板（未添加 #item 标签） -->
+    <ng-template let-item let-i="index">
+      <span><b style="color: dodgerblue">自定义item模板</b> - {{item.label}}</span>
+    </ng-template>
+    <!-- 自定义tip模板 -->
+    <ng-template #tip let-item="context">
+      <span><b style="color: orange">自定义tip模板</b> - item的label： {{item.label}}</span>
+    </ng-template>
+  </ti-actionmenu>
+</div>

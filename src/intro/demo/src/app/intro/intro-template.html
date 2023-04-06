@@ -1,0 +1,29 @@
+<h3>描述</h3>
+<h4>自定义content内容的功能</h4>
+<h3>示例</h3>
+<button (click)="start()" tiButton>开始引导</button>
+<span>下次是否显示引导信息：{{!isNotShowagain}}</span>
+
+<div class="container">
+  <span #introStep1 style="top: 10px; left: 30px">1号新功能</span>
+  <span #introStep2 style="top: 200px; left: 100px">2号新功能</span>
+  <span #introStep3 style="right: 50px; top: 30px">3号新功能</span>
+</div>
+<style>
+  .container {
+    height: 500px;
+    margin: 50px;
+    position: relative;
+  }
+  span {
+    position: absolute;
+    padding: 4px 8px;
+  }
+</style>
+<ng-template #modalTemp>
+  <img src="assets/food/cake.png" style="width: 225px; height: 150px" /><br />
+  <input type="checkbox" tiCheckbox label="下次不再显示" [(ngModel)]="isNotShowagain" />
+</ng-template>
+<ng-template #introTem>
+  <img src="assets/food/coffee.png" style="width: 300px; height: 160px" />
+</ng-template>

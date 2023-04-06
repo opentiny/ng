@@ -1,0 +1,87 @@
+:host {
+  --ti-intro-step-list-item-width: 5px;
+  --ti-intro-modal-padding-horizontal: calc(var(--ti-common-space-base) * 12);
+  --ti-intro-tip-container-width: 400px;
+}
+.ti3-intro-steplist-item() {
+  background-color: var(--ti-common-color-line-normal);
+  float: left;
+  width: var(--ti-intro-step-list-item-width);
+  height: var(--ti-intro-step-list-item-width);
+  border-radius: calc(var(--ti-intro-step-list-item-width) * 0.5); // IE下 不识别 "/ 2"，改为" * 0.5"
+  margin: 0 3px;
+  cursor: pointer;
+  &:last-child {
+    margin-right: 0;
+  }
+  &.ti-step-showed {
+    background-color: var(--ti-common-color-line-hover);
+  }
+  &.active {
+    width: var(--ti-common-size-5x);
+  }
+}
+::ng-deep ti-tip-container ti-intromodal {
+  display: block;
+  // 366px = 400(最终宽度) - 16 * 2 (tip的横向padding) - 1 * 2(border);
+  width: calc(var(--ti-intro-tip-container-width) - var(--ti-common-space-4x) * 2 - 2px);
+}
+:host.ti3-intromodal-wrapper {
+  .ti3-intro-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+  }
+  ti-modal-header {
+    text-align: center;
+    padding: var(--ti-common-space-8x) var(--ti-common-space-10x) var(--ti-common-space-3x);
+  }
+  ti-modal-body.ti3-intro-body {
+    text-align: center;
+    padding: 0 var(--ti-intro-modal-padding-horizontal);
+    .ti3-intro-steplist-wrapper {
+      margin-top: var(--ti-common-space-3x);
+      line-height: 0;
+      font-size: 0;
+    }
+    .ti3-intro-steplist-container {
+      display: inline-block;
+      .ti3-intro-steplist-item {
+        .ti3-intro-steplist-item();
+      }
+    }
+  }
+  .ti3-intro-header {
+    font-size: var(--ti-common-font-size-2);
+    line-height: var(--ti-common-line-height-number);
+    font-weight: var(--ti-common-font-weight-7);
+    color: var(--ti-common-color-text-primary);
+    margin-right: var(--ti-common-space-10);
+  }
+
+  .ti3-intro-body {
+    padding: var(--ti-common-space-3x) 0 var(--ti-common-space-8x);
+    color: var(--ti-common-color-text-secondary);
+    line-height: var(--ti-common-line-height-number);
+  }
+
+  .ti3-intro-footer {
+    .ti3-intro-steplist-container {
+      float: left;
+      margin-top: var(--ti-common-space-2x);
+      .ti3-intro-steplist-item {
+        .ti3-intro-steplist-item();
+      }
+    }
+    .ti3-intro-button-container {
+      float: right;
+      button {
+        margin-right: var(--ti-common-space-2x);
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

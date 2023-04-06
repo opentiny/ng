@@ -1,0 +1,16 @@
+<section class="ti-foldtext-wraper" [ngStyle]="{'height': folded? height:''}">
+  <section tiOverflow *ngFor="let text of texts; index as i">
+    <span [innerHTML]="text" [id]="appendId('text_' + i)"></span>
+  </section>
+</section>
+<section
+  class="ti-foldtext-toggle"
+  [id]="appendId('toggle')"
+  [tabindex]="0"
+  tiOutline
+  *ngIf="texts?.length > line"
+  (click)="onClick($event)"
+  (keydown.enter)="onClick($event)"
+>
+  {{folded? showMore:showLess}} <span *ngIf="folded">({{texts.length}})</span>
+</section>

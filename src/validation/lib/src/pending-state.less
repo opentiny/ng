@@ -1,0 +1,37 @@
+:host {
+  --ti-pending-state-container-height: var(--ti-common-size-7x);
+  --ti-pending-state-loading-icon-top: calc(
+    (var(--ti-pending-state-container-height) - var(--ti-common-border-weight-normal) * 2 - var(--ti-common-size-3x)) / 2
+  ); // 7px (container高度 - 上下边框 - loading默认高度) / 2
+  --ti-pending-state-loading-icon-left: calc((var(--ti-common-space-10) + var(--ti-common-size-3x)) * -1); // -22px 右间距 + loading默认宽度
+}
+
+:host.ti3-validation-pending-container {
+  position: relative; // 用于给ti-loading定位，但是宽度要为0，不能占位置，免得影响input后面的元素位置
+  vertical-align: top;
+  display: inline-block;
+  height: var(--ti-pending-state-container-height);
+  width: 0;
+}
+
+.ti3-validation-pending-loading {
+  position: absolute; // 定位，脱离文档流
+  top: var(--ti-pending-state-loading-icon-top);
+  left: var(--ti-pending-state-loading-icon-left);
+}
+
+::ng-deep [tiText].ti3-text-input-show-clear + .ti3-validation-pending-container .ti3-validation-pending-loading {
+  left: calc(
+    (var(--ti-common-space-10) + var(--ti-common-size-3x) + var(--ti-common-size-4x)) * -1
+  ); // -38px 右间距 + loading默认宽度 + clear默认宽度
+}
+
+::ng-deep [tiText].ti3-text-input-show-pending {
+  padding-right: calc(var(--ti-common-space-10) * 2 + var(--ti-common-size-3x)) !important; // 32px 左右间距 + loading默认宽度
+}
+
+::ng-deep [tiText].ti3-text-input-show-pending.ti3-text-input-show-clear {
+  padding-right: calc(
+    var(--ti-common-space-10) * 2 + var(--ti-common-size-3x) + var(--ti-common-size-4x)
+  ) !important; // 48px 左右间距 + loading默认宽度 + clear默认宽度
+}

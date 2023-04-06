@@ -1,0 +1,22 @@
+:host.ti3-autocomplete-container {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: var(--ti-common-border-radius-normal);
+  border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-normal);
+  background-color: var(--ti-common-color-bg-white-normal); // У��������ʽ�����ڸ�Ԫ���ϣ������ڴ˴�����background-color����
+  &:hover {
+    border-color: var(--ti-common-color-line-hover);
+  }
+  &[tifocused] {
+    border-color: var(--ti-common-color-line-active);
+  }
+  &[disabled] {
+    border-color: var(--ti-common-color-line-disabled);
+    background-color: var(--ti-common-color-bg-disabled);
+  }
+  & .ti3-autocomplete-input[tiText] {
+    width: 100%;
+    border: none !important;
+    background-color: transparent; // ����͸��������Ϊ�˸���tiText���õİ�ɫ������ʹti-autocomplete���õ�background-color��Ϊ��Ч���
+  }
+}

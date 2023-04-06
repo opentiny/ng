@@ -1,0 +1,11 @@
+<h3>描述</h3>
+<p>带参数的校验指令：支持参数变更</p>
+<p>注意：使用 tiText 组件，请导入 TiTextModule。</p>
+
+<h3>示例</h3>
+<h4>1.tiEqual(带参数)：输入值等于{{equal}}</h4>
+<input tiValidation [tiEqual]="equal" [(ngModel)]="myValue" tiText /><br /><br />
+<button (click)="onClick()">输入值等于bb</button>
+<h4>1.tiNumber(不带参数)</h4>
+<input tiValidation [tiNumber]="number" [(ngModel)]="myValue1" tiText /><br /><br />
+<button (click)="onClick1()">校验/不校验</button>

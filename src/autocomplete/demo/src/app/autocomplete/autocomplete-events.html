@@ -1,0 +1,16 @@
+<ti-autocomplete
+  class="w-96"
+  id="autocomplete-events"
+  [(ngModel)]="value"
+  [clearable]="true"
+  placeholder="请选择/输入邮箱"
+  (focus)="onFocus()"
+  (blur)="onBlur()"
+  (ngModelChange)="onChange($event)"
+  (suggest)="onSuggest($event)"
+  (clear)="onClear($event)"
+  (select)="onSelect($event)"
+  clearable
+></ti-autocomplete>
+
+<demo-log [logs]="myLogs"></demo-log>

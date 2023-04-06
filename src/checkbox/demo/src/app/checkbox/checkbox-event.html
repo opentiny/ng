@@ -1,0 +1,12 @@
+<input
+  id="checkbox-event1"
+  type="checkbox"
+  tiCheckbox
+  label="Checkbox Event"
+  [(ngModel)]="myValue"
+  (ngModelChange)="onNgModelChange($event)"
+/>
+<br />
+<ti-checkbox-group id="checkbox-group-event" class="mt-4" [items]="items" [(ngModel)]="value" (ngModelChange)="onNgModelChange1($event)">
+</ti-checkbox-group>
+<demo-log [logs]="myLogs"></demo-log>

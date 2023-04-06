@@ -1,0 +1,11 @@
+<h3>1.描述</h3>
+<p>开始或结束值固定测试用例</p>
+<h3>2.示例</h3>
+<p>(2.1)开始日期固定</p>
+<ti-date-range style="width: 300px" [isBeginFixed]="isBeginFixed" [clearIcon]="false" [(ngModel)]="value"></ti-date-range>
+
+<p>(2.2)结束日期固定</p>
+<ti-date-range style="width: 300px" [isEndFixed]="isEndFixed" [clearIcon]="false" [(ngModel)]="value"></ti-date-range>
+<p>(2.3)动态变更结束日期</p>
+<ti-date-range style="width: 300px" [isEndFixed]="isEndFixed" [clearIcon]="false" [(ngModel)]="value"></ti-date-range>
+<button (click)="onChange()">动态变更固定结束值</button>

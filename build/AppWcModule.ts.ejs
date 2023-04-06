@@ -1,0 +1,44 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Component, Injector, NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
+import { DemoModules } from './DemoModules';
+<% imports.forEach(importItem => { %>
+<%-importItem-%>;
+<% }) %>
+@Component({
+    selector: `app-root`,
+    template: ``
+  })
+export class AppComponent { }
+
+const WCS: any = [<% WCS.forEach(item => { %>
+ { selector: <%-item.selector%>, component: <%-item.component%> },
+<% }) %>]
+
+@NgModule({
+    imports: [
+      DemoModules.allModules,
+      BrowserModule.withServerTransition({ appId: 'serverApp' }),
+      BrowserAnimationsModule // 因为modal,message,collapse,accordion组件使用了angular动画，所以需要引入此模块
+    ],
+    declarations: [
+      AppComponent
+    ],
+    bootstrap: [AppComponent]
+  })
+  export class AppModule {
+    constructor(private injector: Injector) {
+      // 国际化功能开启，测试其它语种的显示，可打开这段注释
+      // 设置当前语言，默认为中文
+      // TiLocale.setLocale(TiLocale.EN_US); // 设置国际化语种
+      for (const item of WCS) {
+        if (!customElements.get(item.selector)) {
+          const el: any = createCustomElement(item.component, { injector: this.injector });
+          customElements.define(item.selector, el);
+        }
+      }
+    }
+
+    ngDoBootstrap(): void { }
+}

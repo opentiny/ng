@@ -1,0 +1,14 @@
+<h3>1.format：设置为非字符串类型、不设置时，使用默认类型</h3>
+<ti-date-edit [(ngModel)]="value"></ti-date-edit>
+<br /><br />
+
+<h3>2.format：设置为空</h3>
+<ti-date-edit [format]="format" [(ngModel)]="value1"></ti-date-edit>
+<br /><br />
+<h3>3.format:设置yyyy/MM</h3>
+<ti-date-edit format="yyyy-MM" [(ngModel)]="value2"></ti-date-edit>
+<br /><br />
+<h3>4.format:设置dd/MM/yyyy</h3>
+<ti-date-edit [format]="format1" [(ngModel)]="value3"></ti-date-edit>
+<button (click)="clickFn()">改变为：yyyy/MM/dd</button>
+<button (click)="clickFn1()">改变为：yyyy.MM.dd</button>

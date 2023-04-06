@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/checkbox/lib",
+  "sourceRoot": "src/checkbox/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/checkbox"],
+      "options": {
+        "project": "src/checkbox/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/checkbox"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js checkbox"
+          },
+          {
+            "command": "ng default-build checkbox"
+          },
+          {
+            "command": "node build/clear-default-theme.js checkbox"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/checkbox && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build checkbox && ng pack checkbox && node build/publish.js checkbox --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>表格表头过滤下拉面板如果数据量很大，可通过 virtual 接口开启下拉面板虚拟滚动功能，默认不开启</p>
+  <p>
+    表格表头过滤要结合 tiCellText 组件和 tiHeadFilter 组件来实现。ti-cell-text包裹的是表头单元格
+    文本，ti-head-filter为表头过滤的漏斗图标，tiHeadFilter的接口说明请查询 TiHeadFilterComponent。
+  </p>
+  <p>multiple 接口控制表头过滤是否为多选，默认为单选。</p>
+  <p>selectAll 接口控制表头过滤下拉多选是否开启全选功能，默认不开启增。</p>
+  <p>searchable 接口控制表头过滤下拉是否开启搜索功能，默认不开启</p>
+  <p>virtual 接口控制表头过滤下拉是否开启下拉面板虚拟滚动功能，默认不开启</p>
+  <p class="demo-text-warn">注意：使用 tiOverflow 组件，请导入 TiOverflowModule。</p>
+  <h3>示例</h3>
+  <br /><br />
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">
+    <table>
+      <thead>
+        <tr>
+          <ng-container *ngFor="let column of columns;index as i;">
+            <th width="{{column.width}}">
+              <!--当表头有排序图标或漏斗排序图标，文本title需要显示不下出省略号及tip时需使用ti-cell-text组件；
+                                ti-head-filter为表头过滤漏斗图标-->
+              <ti-cell-text>{{column.title}}</ti-cell-text>
+              <!--ngModel接口可设置和获取headfilter下拉选中值，ti3-head-filtered样式类是
+                                组件提供的设置有过滤时漏斗的高亮样式，可自定义高亮时机-->
+              <ti-head-filter
+                [ngClass]="{'ti3-head-filtered': column.selected && ((!column.multiple && column.selected.label !== 'all')  || (column.multiple && column.selected.length))}"
+                [options]="column.options"
+                [(ngModel)]="column.selected"
+                [searchable]="column.searchable"
+                [multiple]="column.multiple"
+                [selectAll]="column.selectAll"
+                [virtual]="column.virtual"
+                (select)="onSelect($event, column)"
+              ></ti-head-filter>
+            </th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+        <tr *ngFor="let row of displayed">
+          <td tiOverflow>{{row.firstName}}</td>
+          <td tiOverflow>{{row.lastName}}</td>
+          <td tiOverflow>{{row.total}}</td>
+          <td tiOverflow>{{row.balance}}</td>
+          <td tiOverflow>{{row.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!--tiPagination实现分页功能-->
+    <!-- 在表格中使用分页组件时必须保证其父元素是ti-table -->
+    <ti-pagination [(currentPage)]="currentPage" [(totalNumber)]="totalNumber"> </ti-pagination>
+  </ti-table>
+</div>

@@ -1,0 +1,68 @@
+<h3>描述</h3>
+<p>Checkgroup复选框组组件在配合表格使用时业务发现反馈的目前存在的一些场景问题(待修复)</p>
+<h3>示例</h3>
+
+<p>
+  1. 初始一项选中，其他项非选中且禁用， 点击 “查看已选” 去除 dataArray1 数据中的非选中禁用项，
+  然后正常来说全选和之前的选中项应依旧是选中的状态，但实际结果却不是。
+</p>
+<input type="checkbox" tiCheckgroup [items]="dataArray1" [(checkeds)]="checkedArray1" valueKey="id" label="全选" />
+<div style="margin-top: 12px"></div>
+<span *ngFor="let item of dataArray1;trackBy: trackByFn">
+  <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" [disabled]="item.disabled" />
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<div>
+  checked =
+  <span *ngFor="let item of checkedArray1"> {{item}} </span>
+</div>
+<br />
+<button type="button" (click)="showCheckedData()">查看已选</button><br /><br />
+
+<p>
+  2. 初始化后只要去操作选中第一个子项，然后点击 “下一页” 改变items数据, 新数据全部禁用，然后再点击 “返回” 将数据置回，
+  置回后正常来说应该选中状态不变，但实际上却是所有都成选中状态了。
+</p>
+<input type="checkbox" tiCheckgroup [items]="dataArray2" [(checkeds)]="checkedArray2" valueKey="id" label="全选" />
+<div style="margin-top: 12px"></div>
+<span *ngFor="let item of dataArray2">
+  <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" [disabled]="item.disabled" />
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<div>
+  checked =
+  <span *ngFor="let item of checkedArray2"> {{item}} </span>
+</div>
+<br />
+<button type="button" (click)="next()" style="margin-right: 20px">下一页</button>
+<button type="button" (click)="back()">返回</button>
+
+<p>
+  3. 初始化后去操作选中第一个子项，然后点击 “过滤数据” 改变items数据, 结果第一项和第二项都选中了，正常应该是选中状态不变的只有第一是选中的；
+</p>
+<input
+  type="checkbox"
+  tiCheckgroup
+  [items]="dataArray3"
+  [(checkeds)]="checkedArray3"
+  valueKey="id"
+  label="全选"
+/><!-- 这里用不用valueKey="id"表现都是一样的 -->
+<div style="margin-top: 12px"></div>
+<span *ngFor="let item of dataArray3;trackBy: trackByFn"
+  ><!-- 这里用不用trackBy表现都是一样的 -->
+  <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" [disabled]="item.disabled" />
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<div>
+  checked =
+  <span *ngFor="let item of checkedArray3"> {{item}} </span>
+</div>
+<br />
+<button type="button" (click)="filter()" style="margin-right: 20px">过滤数据</button>

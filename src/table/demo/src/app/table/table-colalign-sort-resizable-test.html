@@ -1,0 +1,46 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>表格列对齐方式、排序、列拖动</p>
+  <h3>示例</h3>
+  <ti-table tiColsResizable [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">
+    <div class="ti3-resize-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <!--当表头有排序图标或漏斗排序图标，文本title需要显示不下出省略号及tip时需使用ti-cell-text组件；
+                            ti-head-sort为排序图标-->
+            <th>
+              <ti-cell-text>{{columns[0].title}}</ti-cell-text>
+              <ti-head-sort [sortKey]="columns[0].sortKey"></ti-head-sort>
+            </th>
+            <!-- 当某一列需要设置文本对齐方式时，可自己给对应的 th 和 td 元素添加 text-align 样式，默认左对齐 -->
+            <th style="text-align: right">
+              <ti-cell-text>{{columns[1].title}}</ti-cell-text>
+              <ti-head-sort [sortKey]="columns[1].sortKey"></ti-head-sort>
+            </th>
+            <th style="text-align: center">
+              <ti-cell-text>{{columns[2].title}}</ti-cell-text>
+              <ti-head-sort [sortKey]="columns[2].sortKey"></ti-head-sort>
+            </th>
+            <th>
+              <ti-cell-text>{{columns[3].title}}</ti-cell-text>
+              <ti-head-sort [sortKey]="columns[3].sortKey"></ti-head-sort>
+            </th>
+            <!--该列无法排序，因为未做ti-sort设置-->
+            <th tiOverflow>{{columns[4].title}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+          <tr *ngFor="let row of displayed">
+            <td tiOverflow>{{row.firstName}}</td>
+            <td tiOverflow style="text-align: right">{{row.lastName}}</td>
+            <td tiOverflow style="text-align: center">{{row.age}}</td>
+            <td tiOverflow>{{row.balance}}</td>
+            <td tiOverflow>{{row.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ti-table>
+</div>

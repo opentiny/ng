@@ -1,0 +1,8 @@
+<ti-date-range
+  id="daterange-customize"
+  [(ngModel)]="value"
+  [customizeOptions]="customizeOptions"
+  (customizeOptionClick)="onCustomizeOptionClick($event)"
+></ti-date-range>
+
+<demo-log [logs]="myLogs"></demo-log>

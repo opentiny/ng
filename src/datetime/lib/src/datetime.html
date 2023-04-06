@@ -1,0 +1,133 @@
+<ti-date-dominator
+  #dominator
+  [id]="appendId('dominator')"
+  [clearable]="clearIcon"
+  [(ngModel)]="inputValue"
+  [disabled]="disabled"
+  (clear)="onIconClearClick($event)"
+  (click)="onShowClick()"
+  >{{ placeholder }}</ti-date-dominator
+>
+<ti-drop
+  #drop
+  [id]="appendId('drop')"
+  class="ti3-datetime-picker"
+  [ngClass]="{'ti3-date-time-customize': hasCustomizeTime}"
+  [dominatorElem]="dominatorCom.nativeElement"
+  fixMaxHeight="true"
+  [panelWidth]="datePanelWidth"
+  [panelAlign]="panelAlign"
+  [browserSpace]="browserSpace"
+  [dominatorSpace]="dominatorSpace"
+  [determinPositionFn]="determinPositionFn"
+  theme="noborder"
+>
+  <!-- <section *ngIf="dropCom.isShow"> -->
+
+  <section class="ti3-date-clear">
+    <section *ngIf="hasCustomizeTime" class="ti3-date-time-customize-contianer">
+      <ng-container *ngTemplateOutlet="customizeTemplate; context:  {$implicit: customizeOptions}"></ng-container>
+    </section>
+
+    <section [ngClass]="{'ti3-datetime-panel-container': hasCustomizeTime}">
+      <ti-date-edit
+        class="ti3-datetime-dateedit"
+        [ngClass]="{'ti3-datetime-dateedit-input': this.focusedPosition === 'begin'}"
+        [(ngModel)]="datePanel.value.begin"
+        [min]="datePanel.min"
+        [max]="datePanel.max"
+        [time]="beginTime.value"
+        (keydown)="onKeydownFn($event, datePanel.value.begin)"
+        (click)="dateEditClick('begin')"
+        (focus)="dateEditFocus('begin')"
+        (blur)="editBlur(datePanel.value.begin)"
+        (inputChange)="onInputChange($event)"
+        [format]="datePanel.format"
+        [id]="appendId('edit')"
+      ></ti-date-edit>
+      <!-- 确认按钮禁用场景下，结束框输入之后无法直接tab切换焦点至确认按钮，故添加此过度input -->
+      <input #input type="text" class="ti3-tab-input" />
+      <input
+        class="ti3-datetime-timeedit"
+        [ngClass]="{'ti3-datetime-timeedit-input': this.focusedPosition === 'beginTime'}"
+        type="text"
+        (focus)="timeFocus('begin')"
+        (blur)="timeBlur()"
+        maxlength="8"
+        [disabled]="timeEditDisabled"
+        [placeholder]="timeplaceholder"
+        [(ngModel)]="beginTime.value"
+        (keydown)="timeKeydown($event)"
+        [id]="appendId('input')"
+        tiText
+      />
+      <ti-date-panel
+        [id]="appendId('panel')"
+        [(value)]="datePanel.value"
+        [(picker)]="datePanel.picker"
+        [focusedPosition]="focusedPosition"
+        [isRange]="false"
+        [beginTime]="beginTime"
+        [selectTime]="selectTime"
+        (selectTimeFn)="datePanel.selectTimeFn($event)"
+        [min]="datePanel.min"
+        [max]="datePanel.max"
+        [nowDateTime]="datePanel.nowDateTime"
+        [format]="format.date"
+        [timeFormat]="format.time"
+        (select)="datePanel.select()"
+        (valueChange)="setOkBtnState()"
+      ></ti-date-panel>
+    </section>
+  </section>
+  <section class="ti3-datetime-btn-picker-footer" [ngClass]="{'ti3-datetime-select-time': selectTime}">
+    <section *ngIf="timeZoneable" class="ti3-datetime-picker-footer-left">
+      <ti-select
+        noborder
+        [options]="timeZoneOptions"
+        [(ngModel)]="timeZone"
+        [valueKey]="'label'"
+        [panelWidth]="'auto'"
+        [appendToBody]="false"
+        [id]="appendId('timeZone_select')"
+      >
+      </ti-select>
+    </section>
+    <section class="ti3-datetime-picker-footer-right" [ngClass]="{'ti3-datetime-select-time': selectTime}">
+      <button
+        class="ti3-datetime-picker-footer-btn"
+        [id]="appendId('okBtn')"
+        label="ok"
+        type="button"
+        size="small"
+        (click)="onOkClick()"
+        tiButton
+      ></button>
+      <section
+        (click)="selectTimeFn()"
+        [id]="appendId('select_time')"
+        *ngIf="!selectTime"
+        [ngClass]="{'ti3-datetime-select-btn-disabled': timeEditDisabled}"
+        class="ti3-datetime-select-btn"
+      >
+        {{'tiDatedominator.selectTime' | tiTranslate}}
+      </section>
+      <section (click)="selectDateFn()" [id]="appendId('select_date')" *ngIf="selectTime" class="ti3-datetime-select-btn">
+        {{'tiDatedominator.selectDate' | tiTranslate}}
+      </section>
+    </section>
+  </section>
+</ti-drop>
+
+<ng-template #customizeTemplate let-options>
+  <ul [id]="appendId('list')">
+    <li
+      *ngFor="let option of options; index as i;"
+      class="ti3-customize-time-label"
+      (click)="customizeTimeClickFn(option.value.begin)"
+      [id]="appendId('label_' + i)"
+    >
+      {{option.label}}
+    </li>
+  </ul>
+</ng-template>

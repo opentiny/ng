@@ -1,0 +1,13 @@
+<ti-leftmenu [(active)]="active" (collapsedChange)="toggleClick($event)">
+  <ti-leftmenu-level1 [item]="m1" *ngFor="let m1 of items">
+    <ti-leftmenu-item>
+      <div>{{ m1.label }}</div>
+    </ti-leftmenu-item>
+    <ti-leftmenu-level2 [item]="m2" *ngFor="let m2 of m1.children">
+      <a>{{ m2.label }}</a>
+    </ti-leftmenu-level2>
+  </ti-leftmenu-level1>
+</ti-leftmenu>
+<div class="p-4" [ngStyle]="{marginLeft : marginLeft}">
+  <router-outlet></router-outlet>
+</div>

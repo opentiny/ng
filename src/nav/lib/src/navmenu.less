@@ -1,0 +1,186 @@
+@import './common.less';
+
+:host.ti3-nav-menu {
+  flex-grow: 1;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: var(--ti-common-space-0) var(--ti-common-space-10x);
+}
+
+.ti3-nav-menu-item-label {
+  position: relative;
+  margin: var(--ti-common-space-0) var(--ti-common-space-5x);
+  font-size: var(--ti-common-font-size-2);
+  font-weight: var(--ti-common-font-weight-4);
+  line-height: var(--ti-nav-height);
+  flex-shrink: 0;
+  color: var(--ti-nav-color-text);
+  cursor: default;
+
+  &.ti3-nav-selectable {
+    cursor: pointer;
+  }
+
+  &[disabled] {
+    color: var(--ti-nav-color-text-disabled);
+    cursor: not-allowed;
+    .ti3-nav-submenu-icon {
+      border-top-color: var(--ti-nav-color-text-disabled);
+    }
+  }
+
+  &::before {
+    content: '';
+    height: 3px;
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: center;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+
+  &.ti3-nav-submenu-label::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--ti-nav-color-text);
+    margin-left: 4px;
+    display: inline-block;
+    position: relative;
+    top: -3px;
+  }
+
+  &.ti3-nav-active:not([disabled]),
+  &:hover:not([disabled]) {
+    color: var(--ti-nav-color-text-active);
+    &::before {
+      transform: scaleX(1);
+      background-color: var(--ti-nav-color-text-active);
+    }
+    &.ti3-nav-submenu-label::after {
+      border-top-color: var(--ti-nav-color-text-active);
+    }
+  }
+}
+
+.ti3-nav-submenu {
+  position: absolute;
+  width: fit-content;
+  cursor: default;
+  padding: 0;
+  background-color: var(--ti-nav-color-bg);
+  box-shadow: var(--ti-common-shadow-2-down);
+  top: var(--ti-nav-height);
+  left: 50%;
+  transform: translateX(-50%);
+  height: 0;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  &.expand {
+    padding: var(--ti-common-space-5x) var(--ti-common-space-0);
+    height: fit-content;
+  }
+}
+
+.ti3-nav-submenu-item {
+  word-break: keep-all;
+  font-size: var(--ti-common-font-size-1);
+  font-weight: var(--ti-common-font-weight-4);
+  line-height: var(--ti-common-line-height-number);
+  color: var(--ti-nav-color-text);
+  padding: var(--ti-common-space-10) var(--ti-common-space-6x);
+  background-color: inherit;
+  cursor: default;
+
+  &.ti3-nav-selectable {
+    cursor: pointer;
+  }
+  &[disabled] {
+    color: var(--ti-nav-color-text-disabled);
+    cursor: not-allowed;
+  }
+
+  &:hover:not([disabled]) {
+    color: var(--ti-nav-color-text-active);
+  }
+
+  &.ti3-nav-active:not([disabled]) {
+    color: var(--ti-nav-color-text-white);
+    background-color: var(--ti-nav-color-bg-active);
+  }
+}
+
+.ti3-nav-panel {
+  position: absolute;
+  top: var(--ti-nav-height);
+  left: 0;
+  right: 0;
+  padding: 0;
+  background-color: var(--ti-common-color-bg-gray);
+  box-shadow: var(--ti-common-shadow-2-down);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.2s ease;
+
+  &.expand {
+    transform: scaleY(1);
+    padding: var(--ti-common-space-3x) var(--ti-common-space-5x) var(--ti-common-space-10x) var(--ti-common-space-5x);
+  }
+}
+
+.ti3-nav-panel-list {
+  flex-shrink: 0;
+  width: 255px;
+  & > * {
+    padding: var(--ti-common-space-2x) var(--ti-common-space-10);
+  }
+}
+
+.ti3-nav-panel-list-title {
+  font-size: var(--ti-common-font-size-2);
+  line-height: var(--ti-common-line-height-number);
+  color: var(--ti-nav-color-text-light);
+  font-weight: var(--ti-common-font-weight-6);
+  cursor: default;
+
+  &.ti3-nav-selectable {
+    cursor: pointer;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    color: var(--ti-nav-color-text-disabled);
+  }
+}
+
+.ti3-nav-panel-item {
+  font-size: var(--ti-common-font-size-1);
+  line-height: var(--ti-common-line-height-number);
+  color: var(--ti-nav-color-text-light-brand);
+  font-weight: var(--ti-common-font-weight-4);
+  cursor: default;
+
+  &.ti3-nav-selectable {
+    cursor: pointer;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: var(--ti-nav-color-text-disabled);
+  }
+
+  &:hover:not([disabled]),
+  &.ti3-nav-active:not([disabled]) {
+    color: var(--ti-nav-color-text-active);
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/buttonselect/lib",
+  "sourceRoot": "src/buttonselect/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/buttonselect"],
+      "options": {
+        "project": "src/buttonselect/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/buttonselect"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js buttonselect"
+          },
+          {
+            "command": "ng default-build buttonselect"
+          },
+          {
+            "command": "node build/clear-default-theme.js buttonselect"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/buttonselect && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build buttonselect && ng pack buttonselect && node build/publish.js buttonselect --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

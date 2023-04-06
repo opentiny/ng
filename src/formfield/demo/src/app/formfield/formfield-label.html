@@ -1,0 +1,25 @@
+<h4 class="mb-3">1.通过<code>label</code>属性：</h4>
+<ti-formfield>
+  <ti-item [label]="labelName">
+    <input type="text" tiText [(ngModel)]="inputValue" clearable />
+  </ti-item>
+</ti-formfield>
+<button tiButton class="my-3" type="button" color="primary" (click)="clickHandle()">改变 Label 内容</button>
+<h4 class="my-3">2.通过 ti-item-label：</h4>
+<ti-formfield>
+  <ti-item>
+    <ti-item-label>
+      <div>
+        <em style="color: red">自定义</em>
+        <span style="color: blue">结构:</span>
+      </div>
+    </ti-item-label>
+    <input type="text" tiText [(ngModel)]="customInputValue" clearable />
+  </ti-item>
+</ti-formfield>
+<h4 class="my-3">3.Label 宽度：</h4>
+<ti-formfield [labelWidth]="labelWidth">
+  <ti-item [label]="'自定义 Label 宽度：'">
+    <input type="text" tiText [(ngModel)]="labelWidthInputValue" clearable />
+  </ti-item>
+</ti-formfield>

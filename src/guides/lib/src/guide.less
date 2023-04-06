@@ -1,0 +1,165 @@
+@import '../../../themes/basic/mixins.less';
+
+// 卡片容器样式
+:host/* .ti3-guide-card-container */ {
+  position: relative;
+  display: inline-block;
+  margin-right: var(--ti-common-space-2x);
+  box-shadow: var(--ti-common-shadow-1-down);
+  background: var(--ti-common-color-bg-white-normal);
+  flex: 1;
+  &:hover {
+    box-shadow: var(--ti-common-shadow-3-down);
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+// 卡片样式
+::ng-deep .ti3-guide-card {
+  background: var(--ti-common-color-bg-white-normal);
+  border-top: var(--ti-guide-card-border-top) solid var(--ti-common-color-line-active);
+  .box-sizing(border-box);
+  padding: var(--ti-common-space-6x) var(--ti-common-space-6x) var(--ti-common-space-5x);
+  // 待办项卡片
+  :host.ti3-guide-card-undo & {
+    border-top-color: var(--ti-common-color-line-normal);
+  }
+  // 当前项卡片
+  :host.ti3-guide-card-active & {
+    border-top-color: var(--ti-common-color-line-active);
+    [small] & {
+      border-top-color: var(--ti-common-color-warn);
+    }
+  }
+  // 已完成卡片
+  :host.ti3-guide-card-done & {
+    border-top-color: var(--ti-common-color-success);
+  }
+
+  // 错误/失败
+  :host.ti3-guide-card-error & {
+    border-top-color: var(--ti-common-color-error-border);
+    [small] & {
+      border-top-color: var(--ti-common-color-error-border);
+    }
+  }
+
+  // 用户设置small属性卡片样式
+  :host & {
+    [small] & {
+      padding: var(--ti-common-space-3x) 0 var(--ti-common-space-3x) var(--ti-common-space-6x);
+    }
+  }
+}
+
+// 卡片标志样式
+::ng-deep .ti3-guide-circle {
+  position: absolute;
+  top: -15px;
+  left: var(--ti-guide-circle-space-left);
+  width: var(--ti-guide-circle-size);
+  height: var(--ti-guide-circle-size);
+  border-radius: 50%;
+  border: var(--ti-guide-circle-border) solid var(--ti-common-color-line-active);
+  .box-sizing(border-box);
+  background: var(--ti-common-color-bg-white-normal);
+  & .ti3-guide-number {
+    display: inline-block;
+    color: var(--ti-common-color-text-highlight);
+    font-size: var(--ti-common-font-size-4);
+    width: 100%;
+    height: 100%;
+    line-height: var(--ti-common-line-height-number);
+    text-align: center;
+  }
+  // 待办项卡片
+  :host.ti3-guide-card-undo & {
+    border-color: var(--ti-common-color-line-normal);
+    & .ti3-guide-number {
+      color: var(--ti-common-color-text-primary);
+    }
+  }
+  // 当前项卡片
+  :host.ti3-guide-card-active & {
+    border-color: var(--ti-common-color-line-active);
+    background: var(--ti-common-color-icon-graybg-active);
+    & .ti3-guide-number {
+      color: var(--ti-common-color-text-white);
+    }
+    [small] & {
+      border-color: var(--ti-common-color-warn);
+      background: var(--ti-common-color-warn);
+      & .ti3-guide-number {
+        color: var(--ti-common-color-text-white);
+      }
+    }
+  }
+  // 已完成卡片
+  :host.ti3-guide-card-done & {
+    border-color: var(--ti-common-color-success);
+    & .ti3-guide-number {
+      color: var(--ti-common-color-success);
+      line-height: var(--ti-guide-circle-size); // 为使图标居中显示
+    }
+  }
+
+  // 错误/失败
+  :host.ti3-guide-card-error & {
+    border-color: var(--ti-common-color-error-border);
+    background-color: var(--ti-common-color-bg-white-normal);
+    & .ti3-guide-number {
+      color: var(--ti-common-color-error);
+      line-height: calc(var(--ti-guide-circle-size) - 2 * var(--ti-guide-circle-border)); // 为使图标居中显示
+    }
+
+    [small] & {
+      border-color: var(--ti-common-color-error-border);
+      background-color: var(--ti-common-color-bg-white-normal);
+      & .ti3-guide-number {
+        color: var(--ti-common-color-error);
+      }
+    }
+  }
+
+  // 用户设置small属性卡片标志样式
+  :host & {
+    [small] & {
+      width: var(--ti-guide-circle-size-small);
+      height: var(--ti-guide-circle-size-small);
+      top: -10px;
+      & .ti3-guide-number {
+        font-size: var(--ti-common-font-size-base);
+        line-height: 16px;
+      }
+    }
+  }
+}
+
+// 卡片标志线
+.ti3-guide-line {
+  position: absolute;
+  width: calc(var(--ti-guide-circle-size) + 2 * var(--ti-guide-circle-white-space));
+  height: var(--ti-guide-card-border-top);
+  background: var(--ti-common-color-bg-white-normal);
+  left: calc(var(--ti-guide-circle-space-left) - var(--ti-guide-circle-white-space));
+  // 用户设置small属性卡片标志线样式
+  :host & {
+    [small] & {
+      width: calc(var(--ti-guide-circle-size-small) + 2 * var(--ti-guide-circle-white-space));
+    }
+  }
+}
+
+// 有body时间距样式
+.ti3-guide-space {
+  width: 100%;
+  height: var(--ti-guide-body-space);
+  position: absolute;
+  bottom: calc(-1 * var(--ti-guide-body-space));
+  background: transparent;
+  &.ti3-guide-space-active {
+    background: var(--ti-common-color-bg-white-normal);
+  }
+}

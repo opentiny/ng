@@ -1,0 +1,74 @@
+@import '../../../themes/basic/base-all.less';
+
+.ti-iconaction {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+// 深色背景下有问题未解决
+.ti-iconaction-icon {
+  font-size: var(--ti-common-font-size-2);
+  display: inline-flex;
+  margin-right: var(--ti-common-space-2x);
+  color: var(--ti-common-color-icon-normal);
+  .ti-iconaction:hover &,
+  .ti-iconaction:active &,
+  .ti-iconaction:focus & {
+    color: var(--ti-common-color-icon-hover);
+    .transition(color; 0.2s);
+  }
+  :host[dark] & {
+    color: var(--ti-common-color-icon-darkbg-normal);
+  }
+  :host[dark] .ti-iconaction:hover &,
+  :host[dark] .ti-iconaction:active &,
+  :host[dark] .ti-iconaction:focus & {
+    color: var(--ti-common-color-icon-darkbg-hover);
+    .transition(color; 0.2s);
+  }
+}
+
+:host[disabled] {
+  & .ti-iconaction {
+    cursor: not-allowed;
+    outline: none;
+  }
+  & .ti-iconaction-icon {
+    color: var(--ti-common-color-icon-disabled) !important;
+  }
+  & .ti-iconaction-text {
+    color: var(--ti-common-color-text-disabled) !important;
+  }
+}
+
+:host[dark][disabled] {
+  & .ti-iconaction-icon {
+    color: var(--ti-common-color-icon-darkbg-disabled) !important;
+  }
+  & .ti-iconaction-text {
+    color: var(--ti-common-color-text-weaken) !important;
+  }
+}
+
+.ti-iconaction-text {
+  font-size: var(--ti-common-font-size-base);
+  line-height: var(--ti-common-line-height-number);
+
+  color: var(--ti-common-color-text-primary);
+  .ti-iconaction:hover &,
+  .ti-iconaction:active &,
+  .ti-iconaction:focus & {
+    color: var(--ti-common-color-text-highlight);
+    .transition(color; 0.2s);
+  }
+  :host[dark] & {
+    color: var(--ti-common-color-text-gray);
+  }
+  :host[dark] .ti-iconaction:hover &,
+  :host[dark] .ti-iconaction:active &,
+  :host[dark] .ti-iconaction:focus & {
+    color: var(--ti-common-color-text-link-darkbg-hover);
+  }
+}

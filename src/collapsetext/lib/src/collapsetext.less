@@ -1,0 +1,122 @@
+// 因为CSS Var补丁，处理:host内变量有问题。所以写为::ng-deep :root
+::ng-deep :root {
+  --ti-collapsetext-label-color: var(--ti-common-color-text-primary);
+  --ti-collapsetext-label-color-highlight: var(--ti-common-color-text-highlight);
+  --ti-collapsetext-label-color-hover: var(--ti-common-color-text-link-hover);
+}
+
+// 组件容器
+.ti3-collapsetext-container {
+  .flex-container(row, flex-start, center);
+  .user-select(none);
+  display: inline-flex;
+  cursor: pointer;
+}
+
+// 文字显示（默认内容类型）
+.ti3-collapsetext-label {
+  line-height: var(--ti-common-line-height-number);
+  &:hover {
+    color: var(--ti-collapsetext-label-color-hover);
+    & + .ti3-collapsetext-arrow {
+      border-top-color: var(--ti-collapsetext-label-color-hover);
+    }
+  }
+}
+
+// 文字显示（标题类型）
+.ti3-collapsetext-label-title {
+  font-size: var(--ti-common-font-size-2);
+}
+
+// 文字高亮显示
+.ti3-collapsetext-label-highlight {
+  color: var(--ti-collapsetext-label-color-highlight);
+  & + .ti3-collapsetext-arrow {
+    border-top-color: var(--ti-collapsetext-label-color-highlight);
+  }
+}
+
+// 三角箭头
+.ti3-collapsetext-arrow {
+  .triangle-down(8px, 5px, var(--ti-collapsetext-label-color));
+  margin-left: var(--ti-common-space-2x);
+}
+
+/******************************** 箭头动效 ************************************/
+// 展开动画：旋转 -180-0deg
+.rotate-aniamtion(ti3-collapsetext-rotate-uncollapsed-keyframes, 0deg, 180deg);
+
+// 展开时动效
+.ti3-collapsetext-arrow {
+  .animation(ti3-collapsetext-rotate-uncollapsed-keyframes, 0.15s);
+}
+
+// 收起动画：旋转 0-180deg
+.rotate-aniamtion(ti3-collapsetext-rotate-collapsed-keyframes, -180deg, 0deg);
+
+// 收起时动效
+.ti3-collapsetext-arrow-collapsed {
+  .animation(ti3-collapsetext-rotate-collapsed-keyframes, 0.15s);
+}
+
+.flex-container(@direction: row, @justify-content: flex-start, @align-items: stretch) {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: @direction;
+  -ms-flex-direction: @direction;
+  -moz-flex-direction: @direction;
+  flex-direction: @direction;
+  -webkit-justify-content: @justify-content;
+  -moz-justify-content: @justify-content;
+  -ms-justify-content: @justify-content;
+  justify-content: @justify-content;
+  -webkit-align-items: @align-items;
+  -moz-align-items: @align-items;
+  -ms-align-items: @align-items;
+  align-items: @align-items;
+}
+
+.triangle-down(@triangle-width; @triangle-height; @triangle-color) {
+  width: 0;
+  height: 0;
+  border-left: calc(@triangle-width / 2) solid transparent;
+  border-right: calc(@triangle-width / 2) solid transparent;
+  border-top: @triangle-height solid @triangle-color;
+}
+
+// 文字选择
+.user-select (@type:none) {
+  // 火狐
+  -moz-user-select: @type;
+  // webkit浏览器
+  -webkit-user-select: @type;
+  // IE10
+  -ms-user-select: @type;
+  // 早期浏览器
+  -khtml-user-select: @type;
+  user-select: @type;
+}
+
+//定义一个旋转函数
+.rotate-aniamtion(@rotate-name,@from-rotate,@to-rotate) {
+  @keyframes @rotate-name {
+    from {
+      transform: rotate(@from-rotate);
+      -moz-transform: rotate(@from-rotate);
+      -ms-transform: rotate(@from-rotate);
+      -webkit-transform: rotate(@from-rotate);
+    }
+    to {
+      transform: rotate(@to-rotate);
+      -moz-transform: rotate(@to-rotate);
+      -ms-transform: rotate(@to-rotate);
+      -webkit-transform: rotate(@to-rotate);
+    }
+  }
+}
+
+//动效公共的less方法
+.animation(@animate-name, @time, @timing-function: cubic-bezier(0.4, 0, 0.2, 1), @delay:0s, @count:1,@wards:forwards) {
+  animation: @animate-name @time @timing-function @delay @count @wards;
+}

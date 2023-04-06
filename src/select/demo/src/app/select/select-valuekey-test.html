@@ -1,0 +1,73 @@
+<h3>描述</h3>
+<p>Select选择下拉组件, 自定义选中值, 设置valueKey时选中值基于valueKey</p>
+<p>valueKey接口</p>
+<h3>示例</h3>
+
+<h4>1.单选，设置valueKey:</h4>
+<br />
+<span>国家: </span>
+<ti-select
+  style="width: 120px"
+  valueKey="englishname"
+  [options]="myOptions"
+  [(ngModel)]="mySelected1"
+  placeholder="请选择国家"
+  id="myselect"
+>
+</ti-select>
+<br />
+<p>选中项：{{mySelected1 | json}}</p>
+<br />
+
+<h4>2.多选，设置valueKey:</h4>
+<br />
+<span>国家: </span>
+<ti-select
+  style="width: 120px"
+  [multiple]="true"
+  valueKey="englishname"
+  [options]="myOptions"
+  [(ngModel)]="mySelecteds"
+  placeholder="请选择国家"
+  id="myselect2"
+>
+</ti-select>
+<br />
+<p>选中项：{{mySelecteds | json}}</p>
+<br />
+
+<h4>
+  3.动态修改
+  <b>options</b> 接口数据测试：（<b>select组件的选中值高亮不应发生变化</b>）
+</h4>
+<br />
+<button ti-button (click)="changeOptions()">change options</button>
+<br />
+<br />
+<p><b>单选/多选的options：</b>{{myOptions | json}}</p>
+
+<h4>4.多选+分组，设置valueKey:</h4>
+<br />
+<ti-select
+  valueKey="englishname"
+  [multiple]="true"
+  [options]="myOptions3"
+  [(ngModel)]="mySelecteds2"
+  placeholder="请选择"
+  id="myselectmulti"
+>
+</ti-select>
+&nbsp;&nbsp;
+<button ti-button (click)="addOptions()">options 无 => 有</button>
+<br />
+<br />
+<p>选中项：{{mySelecteds2 | json}}</p>
+<br />
+<!--原生Select参考-->
+<h3>原生Select参考</h3>
+<select>
+  <option>红豆生南国</option>
+  <option>春来发几枝</option>
+  <option>愿君多采撷</option>
+  <option>此物最相思</option>
+</select>

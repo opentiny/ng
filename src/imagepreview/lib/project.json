@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/imagepreview/lib",
+  "sourceRoot": "src/imagepreview/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/imagepreview"],
+      "options": {
+        "project": "src/imagepreview/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/imagepreview"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js imagepreview"
+          },
+          {
+            "command": "ng default-build imagepreview"
+          },
+          {
+            "command": "node build/clear-default-theme.js imagepreview"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/imagepreview && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build imagepreview && ng pack imagepreview && node build/publish.js imagepreview --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

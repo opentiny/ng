@@ -1,0 +1,33 @@
+// 步骤头部标题样式
+:host {
+  position: relative;
+  display: inline-block;
+  padding-left: calc(var(--guidestep-dot-size) + var(--guidestep-icon-space));
+  padding-bottom: 8px;
+  font-size: var(--ti-common-font-size-base, 12px);
+  line-height: var(--ti-common-line-height-number, 1.5);
+  &:before {
+    content: '';
+    position: absolute;
+    width: var(--guidestep-dot-size);
+    height: var(--guidestep-dot-size);
+    background-color: #8a8e99; // 无对应场景变量
+    border: var(--guidestep-dot-border) solid #eef0f5; // 无对应场景变量
+    border-radius: 50%;
+    left: 0;
+    top: calc((var(--guidestep-header-line-height) - (var(--guidestep-dot-outer-size))) / 2);
+  }
+
+  // 用户设置large属性时样式
+  [large] & {
+    font-size: var(--ti-common-font-size-2, 16px);
+    &:before {
+      background: var(--ti-common-color-icon-normal, #575d6c);
+      top: calc((var(--guidestep-header-large-line-height) - (var(--guidestep-dot-outer-size))) / 2);
+    }
+  }
+}
+// 步骤完成后，标志点为成功状态颜色
+:host.ti-guidestep-dot-complete:before {
+  background: var(--ti-common-color-success, #50d4ab);
+}

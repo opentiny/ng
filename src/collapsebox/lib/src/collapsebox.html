@@ -1,0 +1,13 @@
+<div class="ti3-collapsebox-container" [tiCollapse]="collapsed">
+  <ti-icon
+    tiOutline
+    [hidden]="!closeable"
+    class="ti3-collapsebox-close"
+    name="close"
+    (click)="onClickClose($event)"
+    [id]="appendId('collapsed')"
+    [tabindex]="0"
+    (keydown.enter)="onClickClose($event)"
+  ></ti-icon>
+  <ng-content></ng-content>
+</div>

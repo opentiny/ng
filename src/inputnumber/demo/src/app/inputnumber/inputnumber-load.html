@@ -1,0 +1,20 @@
+<h3>描述</h3>
+<p>inputnumber组件，数据加载</p>
+<h3>示例</h3>
+<h4>1.使用典型场景：空数据->数据A->数据B</h4>
+<br />
+<input width="280px" id="inputnumber1" tiText type="text" tiNumber [(ngModel)]="inputValue" />
+<br /><br />
+<button (click)="changeA()">changeA</button>
+&nbsp;&nbsp;
+<button (click)="changeB()">changeB</button>
+<br />
+<h4>2.使用典型场景：数据A->数据C->空数据(当用户给组件传递为非法值时，数据不会改变)</h4>
+<br />
+<input width="280px" id="inputnumber2" tiText type="text" tiNumber [(ngModel)]="inputValue1" />
+<br /><br />
+<button (click)="changeC()">changeC</button>
+&nbsp;&nbsp;
+<button (click)="changeInvalid()">changeInvalid</button>
+&nbsp;&nbsp;
+<button (click)="clear()">clear</button>

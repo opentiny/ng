@@ -1,0 +1,18 @@
+<ti-pagination
+  [currentPage]="1"
+  [pageSize]="pageSize"
+  [totalNumber]="40"
+  [loading]="true"
+></ti-pagination>
+<br />
+
+<ti-pagination
+  [currentPage]="1"
+  [pageSize]="pageSize"
+  [totalNumber]="90"
+  [loading]="loading"
+></ti-pagination>
+<br />
+<button (click)="switch()" tiButton>
+  切换加载态，当前是否正在加载：{{ loading }}
+</button>

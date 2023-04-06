@@ -1,0 +1,89 @@
+@import '../../../themes/basic/base-all.less';
+@import '../../../themes/basic/compnent-container-border.less';
+
+ti-drop {
+  --ti-time-select-title-height: 30px;
+}
+
+:host.ti3-time-container :extend(.ti3-compnent-container-border all) {
+  width: var(--ti-common-size-30x);
+}
+
+::ng-deep :root .ti3-time-drop-container {
+  &:focus {
+    outline: 0px;
+  }
+}
+:host.ti3-time-container {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--ti-common-font-size-base);
+  border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-normal);
+  border-radius: var(--ti-common-border-radius-normal);
+  height: var(--ti-common-size-7x);
+  line-height: normal;
+  background-color: var(--ti-common-color-bg-white-normal);
+  .box-sizing(border-box);
+  .user-select();
+}
+.ti3-time-select-container {
+  display: flex;
+  justify-content: space-around;
+  border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-dividing);
+}
+.ti3-time-select-item-container {
+  width: 100%;
+  border-right: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-dividing);
+}
+.ti3-time-select-item-container:last-child {
+  border-right: none;
+}
+::ng-deep :root .ti3-time-select-list {
+  height: 230px;
+  width: 100%;
+  overflow-y: auto;
+  & li {
+    text-align: center;
+    margin-top: 0;
+  }
+}
+.ti3-dropdown-container.ti3-time-drop-container {
+  height: 365px;
+  padding: var(--ti-common-space-3x) var(--ti-common-space-4x);
+  z-index: 10002;
+}
+.ti3-time-edit {
+  display: block;
+  margin-bottom: var(--ti-common-space-3x);
+  width: 100%;
+}
+
+::ng-deep .ti3-time-edit {
+  border-color: var(--ti-common-color-line-active) !important;
+}
+
+.ti3-time-select-title {
+  width: 100%;
+  display: block;
+  margin-left: -8px; // ���������ȵ�һ��
+  height: var(--ti-time-select-title-height);
+  line-height: var(--ti-time-select-title-height);
+  text-align: center;
+}
+.ti3-time-button-confirm {
+  margin-top: var(--ti-common-space-3x);
+  float: right;
+}
+::ng-deep .ti3-time-edit-with-button-disabled {
+  opacity: 0;
+}
+::ng-deep .ti3-time-edit-with-button-undisabled {
+  display: none;
+}
+.ti3-time-tab-input {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}

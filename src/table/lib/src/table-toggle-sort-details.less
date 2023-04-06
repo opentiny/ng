@@ -1,0 +1,124 @@
+@import '../../../themes/basic/base-all.less';
+ti-drop.ti3-cols-toggle-drop {
+  --ti-table-cols-toggle-horizontal-padding: var(--ti-common-space-10);
+}
+/* ---------------table列动态隐藏和显示（colsToggle）----START----------------------------------------------*/
+.ti3-cols-toggle-drop {
+  .border-radius(var(--ti-common-border-radius-normal));
+  .box-shadow(var(--ti-common-shadow-2-down));
+  min-width: 200px !important;
+  max-width: 300px !important;
+  & > .ti3-cols-toggle-searchbox-wrap {
+    padding: var(--ti-common-space-10) var(--ti-table-cols-toggle-horizontal-padding) var(--ti-common-space-base) !important;
+    .box-sizing(border-box);
+    .ti3-cols-toggle-searchbox {
+      width: 100% !important;
+    }
+  }
+  .ti3-overflow-padding {
+    padding: 0 var(--ti-table-cols-toggle-horizontal-padding) !important;
+  }
+  .ti3-dropdown-no-data {
+    padding-left: var(--ti-table-cols-toggle-horizontal-padding) !important;
+  }
+  .ti3-dropdown-option-hover {
+    color: var(--ti-common-color-text-primary);
+  }
+}
+
+/* ---------------table列动态隐藏和显示（colsToggle）----END----------------------------------------------*/
+
+/* ---------------table列排序（sort）----START----------------------------------------------*/
+.ti3-table > table,
+.ti3-table > .ti3-resize-wrapper > table,
+.ti3-table > .ti3-table-fixed-head > table,
+.ti3-table > .ti3-table-container > table {
+  & > thead > tr > th {
+    & > .ti3-sort-container {
+      display: inline-block;
+      cursor: pointer; // 鼠标的形态与是否触发排序功能保持一致，避免在整个th区域表现为手型
+      outline-offset: -1px; // 防止tab聚焦的时候，上下outline被遮挡。
+      // padding-right由原来的30px改为0.6em是为了解决 #7611
+      // 原因：当父元素设置内容溢出时出省略号的功能时将内部元素的padding和margin也算作内容
+      & .ti3-sort {
+        cursor: pointer;
+        width: var(--ti-common-size-4x);
+        height: var(--ti-common-size-4x);
+        font-size: var(--ti-common-size-4x);
+        display: inline-block;
+        margin-left: var(--ti-common-space-2x);
+        vertical-align: middle;
+        line-height: var(--ti-common-size-4x);
+        &:hover {
+          color: var(--ti-common-color-icon-hover);
+        }
+        & .ti3-headsort-icon-active {
+          color: var(--ti-common-color-icon-active);
+        }
+      }
+    }
+  }
+}
+
+/* ---------------table列排序（sort）----END----------------------------------------------*/
+
+/* ---------------table表头有排序图标或漏斗图标或其他图标时文本样式和图标容器样式----START----------------------------------------------*/
+.ti3-table > table,
+.ti3-table > .ti3-resize-wrapper > table,
+.ti3-table > .ti3-table-fixed-head > table,
+.ti3-table > .ti3-table-container > table {
+  & > thead > tr > th,
+  & > tbody > tr > td {
+    & > .ti3-cell-text-container {
+      & > .ti3-cell-text {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+    & > .ti3-cell-icons-container {
+      display: inline-block;
+    }
+  }
+}
+/* ---------------table列排序（sort）----END----------------------------------------------*/
+
+/* ---------------table详情展开（details）----START----------------------------------------------*/
+
+// 由于每次详情展开时，需要给当前行的下展详情底部与下一行表格数据之间增加下边框，因此增加border-bottom属性
+.ti3-table > table > tbody,
+.ti3-table > .ti3-resize-wrapper > table > tbody,
+.ti3-table > .ti3-table-container > table > tbody {
+  & > .ti3-details-tr {
+    background: var(--ti-common-color-bg-white-emphasize);
+    & > td {
+      padding: var(--ti-common-space-0);
+      border-bottom: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-dividing);
+      // 隔离作用，防止td的white-space：nowrap 属性继承下去，影响详情行样式
+      white-space: normal;
+      & > .ti3-table-detail-container {
+        padding: var(--ti-common-space-5x);
+        background-color: var(--ti-common-color-bg-white-normal);
+      }
+    }
+  }
+  & > tr > td .ti3-toggle-details {
+    cursor: pointer;
+    color: var(--ti-common-color-icon-normal);
+    & .ti3-icon {
+      vertical-align: middle;
+      font-size: 15px;
+      &:hover {
+        color: var(--ti-common-color-icon-hover);
+      }
+    }
+  }
+}
+.ti3-icon-angle-transform-up-thin {
+  display: inline-block;
+  .rotate(-90deg);
+}
+.ti3-icon-angle-transform-down-thin {
+  display: inline-block;
+  .rotate(90deg);
+}
+/* ---------------table详情展开（details）----END----------------------------------------------*/

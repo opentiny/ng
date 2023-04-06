@@ -1,0 +1,90 @@
+{
+  "projectType": "application",
+  "root": "src/card/demo",
+  "sourceRoot": "src/card/demo/src",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "less"
+    }
+  },
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "dependsOn": [],
+      "options": {
+        "outputPath": "dist/apps/card",
+        "index": "src/card/demo/src/index.html",
+        "main": "src/card/demo/src/main.ts",
+        "polyfills": "src/polyfills.ts",
+        "tsConfig": "src/card/demo/tsconfig.app.json",
+        "assets": ["src/card/demo/src/favicon.ico", "src/card/demo/src/assets"],
+        "styles": ["src/themes/basic/build.less", "src/themes/theme-default/build.less", "src/styles.less"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "src/environments/environment.ts",
+              "with": "src/environments/environment.prod.ts"
+            }
+          ],
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "10mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ]
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "card-demo:build:production"
+        },
+        "development": {
+          "browserTarget": "card-demo:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "preview": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "node build/preview-demo.js card"
+          }
+        ]
+      }
+    },
+    "test": {
+      "builder": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "src/card/demo/test.ts",
+        "polyfills": "src/polyfills.ts",
+        "tsConfig": "src/card/demo/tsconfig.spec.json",
+        "karmaConfig": "src/card/demo/karma.conf.js",
+        "inlineStyleLanguage": "less",
+        "styles": ["src/styles.less"],
+        "scripts": []
+      }
+    }
+  }
+}

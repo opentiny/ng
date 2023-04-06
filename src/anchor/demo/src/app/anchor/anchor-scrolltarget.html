@@ -1,0 +1,9 @@
+<div class="flex">
+  <ti-anchor id="anchor-scrolltarget" [items]="items" [scrollTarget]="scrollTarget"></ti-anchor>
+  <div class="h-96 w-full ml-32 overflow-auto" #scrollTarget>
+    <div class="h-48 border border-gray-300 border-bottom-solid" id="{{item.id}}" *ngFor="let item of items">
+      <h3 class="text-xl font-bold my-4">{{item.title}}</h3>
+      <span>{{item.title}}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+{
+  "projectType": "library",
+  "root": "src/ng/lib",
+  "sourceRoot": "src/ng/lib",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/ng"],
+      "options": {
+        "project": "src/ng/lib/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "dependsOn": [
+        {
+          "target": "pack",
+          "projects": "dependencies"
+        }
+      ],
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/ng && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build ng && ng pack ng && node build/publish.js ng --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

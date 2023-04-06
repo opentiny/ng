@@ -1,0 +1,86 @@
+{
+  "projectType": "application",
+  "root": "src/imagepreview/demo",
+  "sourceRoot": "src/imagepreview/demo/src",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "less"
+    }
+  },
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "dependsOn": [],
+      "options": {
+        "outputPath": "dist/apps/imagepreview",
+        "index": "src/imagepreview/demo/src/index.html",
+        "main": "src/imagepreview/demo/src/main.ts",
+        "polyfills": "src/polyfills.ts",
+        "tsConfig": "src/imagepreview/demo/tsconfig.app.json",
+        "assets": [
+          "src/imagepreview/demo/src/favicon.ico",
+          "src/imagepreview/demo/src/assets",
+          {
+            "glob": "**/*",
+            "input": "src/ng/demo/src/assets/image",
+            "output": "/assets/image/"
+          }
+        ],
+        "styles": ["src/themes/basic/build.less", "src/themes/theme-default/build.less", "src/styles.less"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "src/environments/environment.ts",
+              "with": "src/environments/environment.prod.ts"
+            }
+          ],
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "10mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ]
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "imagepreview-demo:build:production"
+        },
+        "development": {
+          "browserTarget": "imagepreview-demo:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "preview": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "node build/preview-demo.js imagepreview"
+          }
+        ]
+      }
+    }
+  }
+}

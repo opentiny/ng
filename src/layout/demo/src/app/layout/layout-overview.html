@@ -1,0 +1,38 @@
+<!-- 本示例只是为了体现布局，给 leftmenu 并未配置路由， 所以 leftmenu功能是不起作用的 -->
+<!-- 左侧leftmenu -->
+<ti-leftmenu
+  [(active)]="active"
+  [(collapsed)]="config.collapsed"
+  [(reloadState)]="config.reloadState"
+  [toggleable]="config.toggleable"
+  (collapsedChange)="config.collapsedChangeFn($event)"
+  [routable]="false"
+>
+  <ti-leftmenu-head>
+    <div>{{config.serviceName}}</div>
+  </ti-leftmenu-head>
+  <ti-leftmenu-level1 [item]="m1" *ngFor="let m1 of items" [disabled]="m1.disabled">
+    <ti-leftmenu-item>
+      <div>{{m1.label}}</div>
+    </ti-leftmenu-item>
+    <ti-leftmenu-level2 [item]="m2" *ngFor="let m2 of m1.children" [disabled]="m2.disabled">
+      <span>{{m2.label}}</span>
+    </ti-leftmenu-level2>
+  </ti-leftmenu-level1>
+</ti-leftmenu>
+
+<!-- 内容容器 -->
+<ti-layout-content leftmenu [ngStyle]="{marginLeft: marginLeft}">
+  <!-- 内容头部 -->
+  <ti-layout-content-header> descandbuy </ti-layout-content-header>
+  <!-- 内容主体部分 -->
+  <ti-layout-content-body>
+    <!-- 存在左右两块内容时，需要给两个内容快设置宽度，不设置平分处理 -->
+    <!-- 左侧内容 -->
+    <ti-layout-section id="section"> 资源列表 resources </ti-layout-section>
+    <!-- 右侧内容 -->
+    <ti-layout-section id="aside">
+      <a href="">linklist</a>
+    </ti-layout-section>
+  </ti-layout-content-body>
+</ti-layout-content>

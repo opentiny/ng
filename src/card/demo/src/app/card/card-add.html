@@ -1,0 +1,6 @@
+<div class="flex justify-between">
+  <ti-card-add class="w-96 h-48" (add)="onAddCard($event)"> </ti-card-add>
+  <ti-card-add class="w-96 h-48" (add)="onAddCard($event)" [active]="true"> </ti-card-add>
+  <ti-card-add class="w-96 h-48" (add)="onAddCard($event)" [disabled]="true"> </ti-card-add>
+</div>
+<demo-log [logs]="myLogs"></demo-log>

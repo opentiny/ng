@@ -1,0 +1,19 @@
+<input type="checkbox" id="checkbox-level1" tiCheckgroup [items]="dataArray1" [(checkeds)]="checkedSet1" label="全选" />
+<div class="my-2">
+  <span class="mr-7" *ngFor="let item of dataArray2; index as i">
+    <input
+      [id]="'checkbox-level2-' + i"
+      type="checkbox"
+      tiCheckgroup
+      [items]="item.items"
+      [(checkeds)]="item.checkeds"
+      [label]="item.label"
+    />
+  </span>
+</div>
+<div class="my-2">
+  <span class="inline-block w-48" *ngFor="let item of dataArray1">
+    <input [id]="'checkitem-level2-' + item.id" type="checkbox" tiCheckitem [item]="item" />
+    <label [for]="'checkitem-level2-' + item.id">{{item.name}} {{item.age}}岁 {{item.sex}}</label>
+  </span>
+</div>

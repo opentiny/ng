@@ -1,0 +1,162 @@
+<h3>描述</h3>
+<p>Checkgroup复选框组组件，树形结构</p>
+<h3>示例</h3>
+<p>1.1动漫人物（方案一，全选管两个子选项）：</p>
+<input type="checkbox" id="allCheck" tiCheckgroup [items]="rootArray" [(checkeds)]="rootCheckeds" label="全选" />
+<div style="margin-top: 12px"></div>
+<!--Goup继承自Item，所以一个节点可以既是Group有是Item-->
+<!--[item]既是数据，它的引用也是一个身份标识，所以只要是唯一对象即可。-->
+<input type="checkbox" tiCheckgroup [item]="malesItem" [items]="males" [(checkeds)]="malesCheckeds" label="男性组" />
+<span style="padding-left: 20px"></span>
+<input type="checkbox" tiCheckgroup [item]="femalesItem" [items]="females" [(checkeds)]="femalesCheckeds" label="女性组" />
+<div style="margin-top: 12px"></div>
+<span *ngFor="let item of males">
+  <input type="checkbox" tiCheckitem [item]="item" [id]="item.id" [checked]="item.checked" />
+  <label [for]="item.id">{{item.name}} {{item.age}}岁 {{item.sex}}</label>
+  <span style="padding-left: 20px"></span>
+</span>
+<span *ngFor="let item of females">
+  <input type="checkbox" tiCheckitem [item]="item" [id]="item.id" [checked]="item.checked" />
+  <label [for]="item.id">{{item.name}}{{item.age}}岁{{item.sex}}</label>
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<br />
+<div>
+  rootCheckeds =
+  <span *ngFor="let item of rootCheckeds"> {{item | json}} </span>
+</div>
+<br />
+<div>
+  malesCheckeds =
+  <span *ngFor="let item of malesCheckeds"> {{item | json}} </span>
+</div>
+<br />
+<div>
+  femalesCheckeds =
+  <span *ngFor="let item of femalesCheckeds"> {{item | json}} </span>
+</div>
+<br />
+<span>rootArray.length:{{rootArray.length}}</span>
+<span>rootArray.includes(males[0]):{{rootArray.includes(males[0])}}</span>
+<br />
+<br />
+<br />
+<p>1.2动漫人物（方案二, 全选管两个子选项， item临时用一个唯一对象即可）：</p>
+<input type="checkbox" tiCheckgroup [items]="rootArray2" [(checkeds)]="rootCheckeds2" label="全选" />
+<div style="margin-top: 12px"></div>
+<!--Goup继承自Item，所以一个节点可以既是Group有是Item-->
+<!--[item]既是数据，它的引用也是一个身份标识，所以只要是唯一对象即可。这里临时用已经有的唯一对象（数组）作为身份标识，也可以用其他对象。-->
+<input type="checkbox" tiCheckgroup [item]="males2" [items]="males2" [(checkeds)]="malesCheckeds2" label="男性组" />
+<span style="padding-left: 20px"></span>
+<input type="checkbox" tiCheckgroup [item]="females2" [items]="females2" [(checkeds)]="femalesCheckeds2" label="女性组" />
+<div style="margin-top: 12px"></div>
+<span *ngFor="let item of males2">
+  <input type="checkbox" tiCheckitem [item]="item" [id]="item.id" />
+  <label [for]="item.id">{{item.name}} {{item.age}}岁 {{item.sex}}</label>
+  <span style="padding-left: 20px"></span>
+</span>
+<span *ngFor="let item of females2">
+  <input type="checkbox" tiCheckitem [item]="item" [id]="item.id" />
+  <label [for]="item.id">{{item.name}}{{item.age}}岁{{item.sex}}</label>
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<br />
+<div>
+  rootCheckeds2 =
+  <span *ngFor="let item of rootCheckeds2"> {{item | json}} </span>
+</div>
+<br />
+<div>
+  malesCheckeds2 =
+  <span *ngFor="let item of malesCheckeds2"> {{item | json}} </span>
+</div>
+<br />
+<div>
+  femalesCheckeds2 =
+  <span *ngFor="let item of femalesCheckeds2"> {{item | json}} </span>
+</div>
+<br />
+<span>rootArray2.length:{{rootArray.length}}</span>
+<br />
+<br />
+<br />
+<p>1.3动漫人物（方案三, 全选管第三排所有子选项，方便检出选中的叶子节点）：</p>
+<input type="checkbox" tiCheckgroup [items]="rootArray3" [(checkeds)]="rootCheckeds3" label="全选" />
+<div style="margin-top: 12px"></div>
+<!--Goup继承自Item，所以一个节点可以既是Group有是Item-->
+<!--[item]既是数据，它的引用也是一个身份标识，所以只要是唯一对象即可。这里临时用已经有的唯一对象（数组）作为身份标识，也可以用其他对象。-->
+<input type="checkbox" tiCheckgroup [item]="males3" [items]="males3" [(checkeds)]="malesCheckeds3" label="男性组" />
+<span style="padding-left: 20px"></span>
+<input type="checkbox" tiCheckgroup [item]="females3" [items]="females3" [(checkeds)]="femalesCheckeds3" label="女性组" />
+<div style="margin-top: 12px"></div>
+<span *ngFor="let item of males3">
+  <input type="checkbox" tiCheckitem [item]="item" [id]="item.id" />
+  <label [for]="item.id">{{item.name}} {{item.age}}岁 {{item.sex}}</label>
+  <span style="padding-left: 20px"></span>
+</span>
+<span *ngFor="let item of females3">
+  <input type="checkbox" tiCheckitem [item]="item" [id]="item.id" />
+  <label [for]="item.id">{{item.name}}{{item.age}}岁{{item.sex}}</label>
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<br />
+<div>
+  rootCheckeds3 =
+  <span *ngFor="let item of rootCheckeds3"> {{item | json}} </span>
+</div>
+<br />
+<div>
+  malesCheckeds3 =
+  <span *ngFor="let item of malesCheckeds3"> {{item | json}} </span>
+</div>
+<br />
+<div>
+  femalesCheckeds3 =
+  <span *ngFor="let item of femalesCheckeds3"> {{item | json}} </span>
+</div>
+<br />
+<span>rootArray3.length:{{rootArray3.length}}</span>
+<br />
+<br />
+<br />
+<p>2.两组group联动：刘德华既是歌手，也是演员，所以是联动的</p>
+<br />
+<input type="checkbox" id="allCheck2" tiCheckgroup [items]="rootItems" [(checkeds)]="rootItemsCheckeds" label="所有晚会人物" />
+<div style="margin-top: 12px"></div>
+<!--Goup继承自Item，所以一个节点可以既是Group有是Item-->
+<!--[item]只是一个身份标识，所以只要是唯一对象即可。这里临时用已经有的唯一对象（数组）作为身份标识，也可以用其他对象。-->
+<input type="checkbox" tiCheckgroup [item]="singers" [items]="singers" [(checkeds)]="singersCheckeds" label="歌手" />
+<span style="padding-left: 20px"></span>
+<input type="checkbox" tiCheckgroup [item]="actors" [items]="actors" [(checkeds)]="actorsCheckeds" label="演员" />
+<div style="margin-top: 12px"></div>
+<span *ngFor="let item of singers">
+  <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" />
+  <span style="padding-left: 20px"></span>
+</span>
+<span *ngFor="let item of actors">
+  <input type="checkbox" tiCheckitem [item]="item" [label]="item.text" />
+  <span style="padding-left: 20px"></span>
+</span>
+<br />
+<br />
+<br />
+<div>
+  rootItemsCheckeds =
+  <span *ngFor="let item of rootItemsCheckeds"> {{item | json}} </span>
+</div>
+<br />
+<div>
+  singersCheckeds =
+  <span *ngFor="let item of singersCheckeds"> {{item | json}} </span>
+</div>
+<br />
+<div>
+  actorsCheckeds =
+  <span *ngFor="let item of actorsCheckeds"> {{item | json}} </span>
+</div>

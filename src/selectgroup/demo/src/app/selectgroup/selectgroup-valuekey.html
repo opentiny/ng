@@ -1,0 +1,6 @@
+<ti-selectgroup id="selectgroup-valuekey-group" [(ngModel)]="value" valueKey="iconName">
+  <ti-selectitem [id]="'selectgroup-valuekey-item' + i" *ngFor="let item of items;index as i;" [item]="item"> </ti-selectitem>
+</ti-selectgroup>
+<div class="current-value-container">
+  <pre>Current Vlaue: {{ value | json }}</pre>
+</div>

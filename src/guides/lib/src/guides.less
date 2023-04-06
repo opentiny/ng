@@ -1,0 +1,16 @@
+@import '../../../themes/basic/mixins.less';
+
+::ng-deep :root {
+  --ti-guide-circle-space-left: var(--ti-common-space-6x); // 圆圈距离卡片左边的距离是24px
+  --ti-guide-circle-white-space: 1px;
+  --ti-guide-circle-size: 32px;
+  --ti-guide-circle-size-small: 20px;
+  --ti-guide-card-border-top: 3px;
+  --ti-guide-body-space: var(--ti-common-space-2x);
+  --ti-guide-circle-border: 2px;
+}
+:host/* .ti-guides-container */ {
+  display: flex;
+  padding-top: 15px;
+  .box-sizing(border-box);
+}

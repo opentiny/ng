@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/autocomplete/lib",
+  "sourceRoot": "src/autocomplete/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/autocomplete"],
+      "options": {
+        "project": "src/autocomplete/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/autocomplete"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js autocomplete"
+          },
+          {
+            "command": "ng default-build autocomplete"
+          },
+          {
+            "command": "node build/clear-default-theme.js autocomplete"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/autocomplete && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build autocomplete && ng pack autocomplete && node build/publish.js autocomplete --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

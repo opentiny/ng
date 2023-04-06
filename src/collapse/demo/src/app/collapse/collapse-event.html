@@ -1,0 +1,11 @@
+<div [tiCollapse]="collapsed" (toggleDone)="onToggleDone($event)">
+  <div class="collapse-panel">
+    <p>通过折叠面板收纳内容区域。</p>
+    <p>此组件中使用了 Angular 动画，需要引入 BrowserAnimationsModule。</p>
+    <p>建议在根模块引入 BrowserAnimationsModule。</p>
+    <p>当面板状态改变的时候触发 <code>toggleDone</code> 事件。</p>
+    <p>传递出去的参数为 <code>boolean</code> 类型，表示当前面板是否为收起状态。</p>
+  </div>
+</div>
+<button class="my-3" tiButton (click)="change()" color="primary">展开/收起</button>
+<demo-log [logs]="myLogs"></demo-log>

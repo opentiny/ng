@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/date/lib",
+  "sourceRoot": "src/date/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/date"],
+      "options": {
+        "project": "src/date/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/date"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js date"
+          },
+          {
+            "command": "ng default-build date"
+          },
+          {
+            "command": "node build/clear-default-theme.js date"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/date && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build date && ng pack date && node build/publish.js date --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

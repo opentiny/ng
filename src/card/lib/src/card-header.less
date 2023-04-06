@@ -1,0 +1,27 @@
+@import '../../../themes/basic/base-all.less';
+
+:host {
+  display: block;
+  width: 100%;
+  height: var(--ti-common-size-13x);
+  background-color: transparent;
+  border-bottom: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-dividing);
+  border-top-left-radius: var(--ti-common-border-radius-normal);
+  border-top-right-radius: var(--ti-common-border-radius-normal);
+}
+
+ti-card:not(.ti3-card-disabled):not(.ti3-card-active) {
+  &:focus {
+    :host {
+      background-color: var(--ti-common-color-bg-light-emphasize);
+      border-bottom-color: var(--ti-common-color-line-active);
+      .transition(background-color 200ms);
+    }
+  }
+}
+
+ti-card.ti3-card-active > :host {
+  outline: none;
+  background-color: var(--ti-common-color-bg-light-emphasize);
+  border-bottom-color: var(--ti-common-color-line-active);
+}

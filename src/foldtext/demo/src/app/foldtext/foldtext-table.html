@@ -1,0 +1,25 @@
+<ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" tiColsResizable>
+  <div class="ti3-resize-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let column of columns" width="{{column.width}}">{{column.title}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of displayed">
+          <td tiOverflow>
+            <div>{{row.name_id.name}}</div>
+            <div>{{row.name_id.id}}</div>
+          </td>
+          <td tiOverflow>{{row.access}}</td>
+          <td>唐</td>
+          <td>{{row.status}}</td>
+          <td>
+            <ti-foldtext [line]="3" [texts]="row.users"></ti-foldtext>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ti-table>

@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/collapsebox/lib",
+  "sourceRoot": "src/collapsebox/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/collapsebox"],
+      "options": {
+        "project": "src/collapsebox/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/collapsebox"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js collapsebox"
+          },
+          {
+            "command": "ng default-build collapsebox"
+          },
+          {
+            "command": "node build/clear-default-theme.js collapsebox"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/collapsebox && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build collapsebox && ng pack collapsebox && node build/publish.js collapsebox --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

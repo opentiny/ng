@@ -1,0 +1,31 @@
+<h3>示例</h3>
+
+<h4>1.basic 下拉没有滚动条:</h4>
+<br />
+<span>国家: </span>
+<input #myInput [(ngModel)]="model && model.label" (focus)="onFocus(droplist)" (blur)="onBlur(droplist)" />
+<ti-droplist [dominatorElem]="myInput" [(ngModel)]="model" [options]="options" #droplist> </ti-droplist>
+<br /><br />
+
+<h4>2.basic 下拉有滚动条</h4>
+<br />
+<span>国家: </span>
+<input #myInput1 [(ngModel)]="model1 && model1.label" (focus)="onFocus(droplist1)" (blur)="onBlur(droplist1)" />
+<ti-droplist [dominatorElem]="myInput1" [(ngModel)]="model1" [options]="options1" #droplist1> </ti-droplist>
+<br /><br />
+
+<h4>3.虚拟滚动，没有滚动条:</h4>
+<br />
+<span>国家: </span>
+<input #myInput2 [(ngModel)]="model2 && model2.label" (focus)="onFocus(droplist2)" (blur)="onBlur(droplist2)" />
+<ti-droplist [dominatorElem]="myInput2" [virtual]="true" [(ngModel)]="model2" [options]="options" #droplist2> </ti-droplist>
+<br /><br />
+
+<h4>4.虚拟滚动，有滚动条:</h4>
+<br />
+<span>国家: </span>
+<input #myInput3 [(ngModel)]="model3 && model3.label" (focus)="onFocus(droplist3)" (blur)="onBlur(droplist3)" />
+<ti-droplist [dominatorElem]="myInput3" [virtual]="true" [(ngModel)]="model3" [options]="options1" #droplist3> </ti-droplist>
+<br /><br />
+
+<button type="bnutton" (click)="changeNoData()">changeNoData</button>

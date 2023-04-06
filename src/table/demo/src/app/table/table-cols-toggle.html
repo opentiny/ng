@@ -1,0 +1,21 @@
+<ti-table [srcData]="srcData" [(displayedData)]="displayedData" [columns]="columns">
+  <ti-cols-toggle class="mb-3 float-right" [searchable]="searchable" [selectAll]="selectAll"></ti-cols-toggle>
+  <table>
+    <thead>
+      <tr>
+        <ng-container *ngFor="let column of columns">
+          <th *ngIf="column.show || column.show === undefined">{{column.title}}</th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of displayedData">
+        <td>{{row.id}}</td>
+        <td *ngIf="columns[1].show">{{row.firstName}}</td>
+        <td *ngIf="columns[2].show">{{row.lastName}}</td>
+        <td *ngIf="columns[3].show">{{row.age}}</td>
+        <td *ngIf="columns[4].show">{{row.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ti-table>

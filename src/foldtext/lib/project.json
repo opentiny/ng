@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/foldtext/lib",
+  "sourceRoot": "src/foldtext/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/foldtext"],
+      "options": {
+        "project": "src/foldtext/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/foldtext"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js foldtext"
+          },
+          {
+            "command": "ng default-build foldtext"
+          },
+          {
+            "command": "node build/clear-default-theme.js foldtext"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/foldtext && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build foldtext && ng pack foldtext && node build/publish.js foldtext --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

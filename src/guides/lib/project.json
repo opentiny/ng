@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/guides/lib",
+  "sourceRoot": "src/guides/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/guides"],
+      "options": {
+        "project": "src/guides/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/guides"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js guides"
+          },
+          {
+            "command": "ng default-build guides"
+          },
+          {
+            "command": "node build/clear-default-theme.js guides"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/guides && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build guides && ng pack guides && node build/publish.js guides --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/dropsearch/lib",
+  "sourceRoot": "src/dropsearch/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/dropsearch"],
+      "options": {
+        "project": "src/dropsearch/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/dropsearch"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js dropsearch"
+          },
+          {
+            "command": "ng default-build dropsearch"
+          },
+          {
+            "command": "node build/clear-default-theme.js dropsearch"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/dropsearch && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build dropsearch && ng pack dropsearch && node build/publish.js dropsearch --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

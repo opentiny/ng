@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/collapsebutton/lib",
+  "sourceRoot": "src/collapsebutton/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/collapsebutton"],
+      "options": {
+        "project": "src/collapsebutton/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/collapsebutton"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js collapsebutton"
+          },
+          {
+            "command": "ng default-build collapsebutton"
+          },
+          {
+            "command": "node build/clear-default-theme.js collapsebutton"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/collapsebutton && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build collapsebutton && ng pack collapsebutton && node build/publish.js collapsebutton --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<button
+  #toggleMenu
+  type="button"
+  [onlyIcon]="true"
+  [disabled]="disabled"
+  tiButton
+  [id]="appendId('cols-toggle-menu')"
+  (click)="onClickDominator()"
+  (keydown)="preventKeydownDefault($event)"
+>
+  <div class="ti3-icon ti3-icon-config ti3-cols-toggle-menu" [tiTip]="tipContent" [tiTipPosition]="tipPosition"></div>
+</button>
+<ti-cols-toggle-drop
+  [dominatorElem]="toggleMenuEleRef.nativeElement"
+  [panelWidth]="panelWidth"
+  [searchable]="searchable"
+  [options]="table.columns"
+  [selectAll]="selectAll"
+  [noDataText]="noDataText"
+  (select)="onSelect($event)"
+  [id]="appendId('colstoggle_drop')"
+></ti-cols-toggle-drop>

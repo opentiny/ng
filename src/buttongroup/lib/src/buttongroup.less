@@ -1,0 +1,193 @@
+@import '../../../themes/basic/base-all.less';
+:host {
+  --ti-button-group-item-max-width: 300px;
+  --ti-button-group-item-sup-height: var(--ti-common-size-4x);
+  --ti-button-group-item-height: var(--ti-common-size-7x);
+  --ti-button-group-item-small-height: var(--ti-common-size-5x);
+  --ti-button-group-border-weight: var(--ti-common-border-weight-normal);
+  --ti-button-group-radio-item-margin-right: 2px;
+  --ti-button-group-radio-item-padding-horizontal: 30px;
+}
+
+:host[disabled] {
+  .ti3-btn-item-container.ti3-active .ti3-btn-item-radio {
+    background-color: var(--ti-common-color-bg-dark-disabled);
+    color: var(--ti-common-color-text-disabled);
+  }
+}
+.ti3-btn-item-container {
+  display: inline-block;
+  position: relative;
+  margin-right: var(--ti-button-group-radio-item-margin-right);
+
+  & .ti3-btn-item-sup {
+    position: absolute;
+    min-width: var(--ti-button-group-item-sup-height);
+    height: var(--ti-button-group-item-sup-height);
+    top: calc(-1 * var(--ti-button-group-item-sup-height) / 2);
+    color: var(--ti-common-color-icon-white);
+    right: 0px;
+    font-size: var(--ti-common-size-3x);
+    line-height: var(--ti-button-group-item-sup-height);
+    text-align: center;
+  }
+
+  & .ti3-btn-item.ti3-btn-item-checkbox {
+    border-radius: var(--ti-common-border-radius-normal);
+  }
+
+  &:last-child {
+    margin-right: 0;
+
+    & .ti3-btn-item.ti3-btn-item-radio {
+      border-radius: 0 var(--ti-common-border-radius-normal) var(--ti-common-border-radius-normal) 0;
+    }
+    & .ti3-btn-item.ti3-btn-item-noBorder {
+      border-radius: var(--ti-common-border-radius-normal);
+    }
+  }
+
+  &:first-child {
+    & .ti3-btn-item.ti3-btn-item-radio {
+      border-radius: var(--ti-common-border-radius-normal) 0 0 var(--ti-common-border-radius-normal);
+    }
+
+    & .ti3-btn-item.ti3-btn-item-noBorder {
+      border-radius: var(--ti-common-border-radius-normal);
+    }
+  }
+
+  // 单选按钮选中状态有背景色
+  &.ti3-active .ti3-btn-item-radio {
+    background-color: var(--ti-common-color-bg-emphasize);
+    color: var(--ti-common-color-text-white);
+    .transition (background; 250ms, color; 250ms);
+    &[disabled] {
+      background-color: var(--ti-common-color-bg-dark-disabled);
+      color: var(--ti-common-color-text-disabled);
+    }
+  }
+  .ti3-btn-item[disabled] {
+    // 灰化样式优先级要高于hover，所以在选择器上套了一层父容器，增加样式权重
+    cursor: not-allowed;
+    background-color: var(--ti-common-color-bg-disabled);
+    color: var(--ti-common-color-text-disabled);
+    border-color: var(--ti-common-color-bg-disabled);
+    &.ti3-btn-item-noBorder {
+      background-color: var(--ti-common-color-bg-white-normal);
+    }
+  }
+}
+// 多选块：空间充足
+.ti3-btn-checkbox-enough-space {
+  margin-right: var(--ti-common-space-2x);
+  &:last-child {
+    margin-right: 0px;
+  }
+  .ti3-btn-item.ti3-btn-item-checkbox {
+    padding: var(--ti-common-space-0) var(--ti-common-space-5x);
+  }
+}
+// 多选块：空间不足
+.ti3-btn-checkbox-deficient-space {
+  margin-right: var(--ti-common-space-2x);
+  &:last-child {
+    margin-right: 0px;
+  }
+  .ti3-btn-item.ti3-btn-item-checkbox {
+    padding: var(--ti-common-space-0) var(--ti-common-space-2x);
+  }
+}
+
+.ti3-btn-item {
+  position: relative;
+  display: inline-block;
+  .transition (border-color; 150ms; ease-in, background; 150ms; ease-in);
+  height: var(--ti-button-group-item-height);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  color: var(--ti-common-color-text-primary);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+  .box-sizing(border-box);
+  background-color: var(--ti-common-color-bg-light-normal);
+  line-height: calc(var(--ti-button-group-item-height) - var(--ti-button-group-border-weight) * 2);
+  border: var(--ti-button-group-border-weight) var(--ti-common-border-style-solid) var(--ti-common-color-bg-light-normal);
+  max-width: var(--ti-button-group-item-max-width);
+
+  // 单选：
+  &.ti3-btn-item-radio {
+    padding: var(--ti-common-space-0) var(--ti-button-group-radio-item-padding-horizontal);
+    border: none;
+    line-height: var(--ti-button-group-item-height);
+  }
+}
+.ti3-btn-item-text {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  .ellipsis();
+}
+
+.ti3-btn-item-small .ti3-btn-item {
+  height: var(--ti-button-group-item-small-height);
+  line-height: var(--ti-button-group-item-small-height);
+  padding: var(--ti-common-space-0) var(--ti-common-space-5x);
+}
+
+.ti3-btn-item-container:not(.ti3-active) .ti3-btn-item:not([disabled]) {
+  &:hover,
+  &:focus {
+    background-color: var(--ti-common-color-bg-light-emphasize);
+    color: var(--ti-common-color-text-primary);
+    border-color: var(--ti-common-color-prompt-border);
+    .transition (border-color; 200ms, background; 200ms);
+  }
+}
+
+.ti3-btn-item-container.ti3-active .ti3-btn-item {
+  border-color: var(--ti-common-color-line-active);
+}
+
+// buttton无边框的样式
+.ti3-btn-item-noBorder.ti3-btn-item {
+  border-radius: var(--ti-common-border-radius-normal);
+  padding: var(--ti-common-space-0) var(--ti-common-space-5x);
+  background-color: transparent;
+  &:hover {
+    background-color: var(--ti-common-color-bg-light-emphasize);
+  }
+
+  &[disabled] {
+    border: none;
+  }
+}
+
+// 多选块按钮右上角标：
+.ti3-btn-multi-selection-icon {
+  display: inline-block;
+  color: var(--ti-common-color-icon-white);
+  width: 0;
+  height: 0;
+  line-height: normal;
+  border-right: var(--ti-common-size-4x) solid var(--ti-common-color-bg-emphasize);
+  border-bottom: var(--ti-common-size-4x) solid transparent;
+  position: absolute;
+  right: var(--ti-button-group-border-weight);
+  top: var(--ti-button-group-border-weight);
+  font-size: var(--ti-common-size-3x);
+  & .ti3-icon-checkmark-small {
+    position: relative;
+    right: -5px;
+    top: -2px;
+  }
+}
+
+// buttonGroup组件在换行时，添加样式类来控制间距
+:host.ti3-button-group-bottom-space {
+  .ti3-btn-item-container {
+    margin-bottom: var(--ti-common-space-base);
+  }
+}

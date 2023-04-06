@@ -1,0 +1,39 @@
+@import '../../../themes/basic/base-all.less';
+@import '../../../themes/basic/compnent-container-border.less';
+@import './date-common.less';
+
+ti-drop.ti3-date-picker {
+  --ti-date-picker-padding-horizon: var(--ti-common-space-4x);
+  --ti-date-picker-line-width: 1px;
+  --ti-date-picker-line-color: var(--ti-common-color-line-dividing);
+}
+
+:host.ti3-date-input-container :extend(.ti3-compnent-container-border all) {
+  width: var(--ti-common-size-40x);
+}
+
+.ti3-dropdown-container.ti3-date-picker {
+  padding: var(--ti-common-space-3x) var(--ti-date-picker-padding-horizon);
+  font-weight: var(--ti-common-font-weight-4);
+  font-size: var(--ti-common-font-size-base);
+  z-index: 10002;
+  &:focus {
+    outline: 0px;
+  }
+}
+
+.ti3-date-customize-container {
+  padding-right: var(--ti-common-space-4x);
+  width: var(--ti-common-size-20x);
+  border-right: var(--ti-date-picker-line-width) var(--ti-common-border-style-solid) var(--ti-date-picker-line-color);
+}
+
+.ti3-date-edit {
+  width: 100%;
+}
+::ng-deep .ti3-date-edit input[tiText] {
+  border-color: var(--ti-common-color-line-active) !important;
+}
+.ti3-date-panel-container {
+  padding-left: var(--ti-common-space-4x);
+}
