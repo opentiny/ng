@@ -1,0 +1,9 @@
+@import '../../../themes/basic/base-all.less';
+
+:host.ti3-select-small ti-dominator {
+  --ti-dominator-container-height: var(--ti-common-size-6x);
+}
+
+// ::ng-deep，表示后面紧跟的样式选择器，不做属性[]包装。
+// CSS标准中 /deep/  >>>刺穿Shadow DOM, 已废弃。所以，这里暂时用::ng-deep angular关键词，以兼容未来可能其他标准。
+// https://blog.csdn.net/sky_sunshine_x/article/details/80622617

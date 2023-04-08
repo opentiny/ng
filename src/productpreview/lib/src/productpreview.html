@@ -1,0 +1,48 @@
+<div class="ti-product-preview-container" *ngIf="files && files.length">
+  <!-- 大图显示 -->
+  <div
+    tiOutline
+    class="ti-product-preview-main"
+    (click)="onClickMain($event)"
+    [tabindex]="0"
+    (keydown.enter)="onClickMain($event)"
+    [id]="appendId('main')"
+  >
+    <img [src]="files[currentPreviewIndex].previewUrl" tiZoom />
+  </div>
+  <!-- 缩略图显示及左右切换 -->
+  <div class="ti-product-preview-thumb-container">
+    <!-- 向前翻页 -->
+    <div
+      tiOutline
+      class="ti-product-preview-thumb-left ti-product-preview-thumb-page"
+      [ngClass]="{'ti-product-preview-thumb-page-disabled': currentThumbPage === 1}"
+      (click)="prev()"
+      [tabindex]="currentThumbPage === 1 ? -1 : 0"
+      (keydown.enter)="prev()"
+      [id]="appendId('prev')"
+    >
+      <ti-icon class="ti-product-preview-icon" name="angle-left"></ti-icon>
+    </div>
+    <!-- 缩略图列表 -->
+    <div class="ti-product-preview-thumb-wapper">
+      <div class="ti-product-preview-thumb" #productThumb>
+        <div class="ti-product-preview-thumb-item" *ngFor="let item of thumbList; index as i;">
+          <img [src]="item.previewUrl" (mouseenter)="onMouseenterThumb($event, i)" [id]="appendId('active_' + i)" />
+        </div>
+      </div>
+    </div>
+    <!-- 向后翻页 -->
+    <div
+      tiOutline
+      class="ti-product-preview-thumb-right tp-product-preview-thumb-page"
+      [ngClass]="{'ti-product-preview-thumb-page-disabled': currentThumbPage === totalThumbPage}"
+      (click)="next()"
+      [tabindex]="currentThumbPage === totalThumbPage ? -1 : 0"
+      (keydown.enter)="next()"
+      [id]="appendId('next')"
+    >
+      <ti-icon class="ti-product-preview-icon" name="angle-right"></ti-icon>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+@import '../../../themes/basic/base-all.less';
+
+ti-error-msg {
+  --ti-error-icon-size: var(--ti-common-size-4x);
+}
+
+ti-error-msg {
+  color: var(--ti-common-color-text-gray);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+  line-height: var(--ti-common-line-height-number);
+}
+
+.ti3-error-icon-bg {
+  width: var(--ti-error-icon-size);
+  height: var(--ti-error-icon-size);
+  border-radius: 50%;
+  text-align: center;
+  background-color: var(--ti-common-color-error);
+  margin-right: var(--ti-common-space-2x);
+  flex-shrink: 0; // 校验文本过多时不允许挤压图标部分
+  margin-top: calc(
+    (var(--ti-common-font-size-base) * var(--ti-common-line-height-number) - var(--ti-error-icon-size)) / 2
+  ); // 左侧图标16px 与右侧文字18px 保持垂直居中
+}
+.ti3-error-icon {
+  color: var(--ti-common-color-text-white);
+  font-size: calc(var(--ti-error-icon-size) * 0.75);
+  line-height: var(--ti-error-icon-size);
+}
+
+.ti3-unifyvalid-error-container {
+  color: var(--ti-common-color-error-text);
+  display: block; // IE9不支持flex，故使用block代替
+  margin-top: var(--ti-common-space-2x);
+}
+.ti3-unifyvalid-tip-error-container {
+  display: flex;
+  align-content: center;
+}

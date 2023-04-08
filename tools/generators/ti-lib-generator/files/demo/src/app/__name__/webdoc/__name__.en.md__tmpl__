@@ -1,0 +1,13 @@
+---
+title: <%= camelName %>
+---
+# <%= camelName %>
+
+<div class="used-tiny">
+
+```typescript
+import { <%= moduleName %> } from '@opentiny/ng';
+```
+</div>
+
+

@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/popup/lib",
+  "sourceRoot": "src/popup/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/popup"],
+      "options": {
+        "project": "src/popup/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/popup"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js popup"
+          },
+          {
+            "command": "ng default-build popup"
+          },
+          {
+            "command": "node build/clear-default-theme.js popup"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/popup && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build popup && ng pack popup && node build/publish.js popup --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<a
+  #a
+  role="radio"
+  class="ti3-switch"
+  unselectable="on"
+  href="javascript:void(0)"
+  oncontextmenu="return false"
+  (click)="onClick()"
+  [ngClass]="{
+    'ti3-switch-off': !model,
+    'ti3-switch-on': model,
+    'ti3-switch-with-explanation': onText || offText || onTemplate || offTemplate}"
+  [id]="appendId('awrapper')"
+>
+  <div class="ti3-switch-track">
+    <ng-container *ngIf="onText || offText || onTemplate || offTemplate">
+      <ng-container *ngIf="model else off">
+        <div class="ti3-switch-explanation-container">
+          <span *ngIf="!onTemplate else onTemplate">{{onText}}</span>
+        </div>
+      </ng-container>
+      <ng-template #off>
+        <div class="ti3-switch-explanation-container">
+          <span *ngIf="!offTemplate else offTemplate">{{offText}}</span>
+        </div>
+      </ng-template>
+    </ng-container>
+  </div>
+  <span class="ti3-switch-pointer"></span>
+</a>

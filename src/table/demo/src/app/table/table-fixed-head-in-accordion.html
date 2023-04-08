@@ -1,0 +1,49 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>放在手风琴中的表格表头锁定特性</p>
+  <p class="demo-text-warn">注意：使用 accordion 组件，请导入 TiAccordionModule</p>
+  <br /><br />
+  <h3>示例</h3>
+  <ti-accordion [headClass]="headClass" [bodyClass]="bodyClass">
+    <ti-accordion-item>
+      <!--条目二的头部展示内容-->
+      <ti-accordion-head>Fixed head table in accordion</ti-accordion-head>
+      <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">
+        <!--.ti3-table-fixed-head是表头的容器，它的子元素中的table(thead)是实际显示的表头-->
+        <!--注意:此处一定要使用.ti3-table-fixed-head样式类-->
+        <div class="ti3-table-fixed-head">
+          <table>
+            <thead>
+              <tr>
+                <!--注意:给表格设置宽度时，给.ti3-table-fixed-head和.ti3-table-container下的对应的th都要设置-->
+                <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title}}</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div *ngIf="false">dasdf</div>
+        <!--.ti3-table-container是表体的容器，它的子元素中的table的thead是用来控制各列宽度，实际不显示；tbody是实际显示的表体-->
+        <!--注意1:此处一定要使用.ti3-table-container样式类-->
+        <!--注意2:用户在有.ti3-table-container样式类的容器上来设置表体的高度或最大高度-->
+        <div class="ti3-table-container" style="max-height: 420px">
+          <table>
+            <thead>
+              <tr>
+                <th *ngFor="let column of columns" width="{{column.width}}"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of displayed">
+                <td tiOverflow>{{row.firstName}}</td>
+                <td tiOverflow>{{row.lastName}}</td>
+                <td tiOverflow>{{row.age}}</td>
+                <td tiOverflow>{{row.balance}}</td>
+                <td tiOverflow>{{row.email}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ti-table>
+    </ti-accordion-item>
+  </ti-accordion>
+</div>

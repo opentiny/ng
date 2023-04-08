@@ -1,0 +1,51 @@
+<h2>一级页签测试用例</h2>
+
+<h3>场景1：</h3>
+<div [hidden]="hiden">
+  <ti-tabs [id]="tabsId">
+    <ti-tab [id]="tab1.id" *ngIf="tab1.show" [(active)]="tab1.active" (activeChange)="onActiveChange($event, tab1.id)">
+      <ti-tab-header>
+        <span>{{tab1.title}}</span>
+        <span [ngClass]="{'sum-color': tab1.active}">({{tab1.sum}})</span>
+      </ti-tab-header>
+      If the expression evaluates to a string, the string should be one or more space-delimited class names.<br />
+      If the expression evaluates to an object.
+    </ti-tab>
+    <ti-tab
+      *ngFor="let tab of otherTabs"
+      [(active)]="tab.active"
+      [disabled]="tab.disabled"
+      [id]="tab.id"
+      (activeChange)="onActiveChange($event, tab.id)"
+    >
+      <div>
+        <ti-tab-header>{{tab.title}}</ti-tab-header>
+        <div>{{tab.content}}</div>
+        <div *ngFor="let item of tab.child">{{item.title}}</div>
+      </div>
+    </ti-tab>
+  </ti-tabs>
+</div>
+<br /><br />
+<button type="button" (click)="showTabs()">用[hidden]控制tabs父元素的隐藏/显示</button>
+<br /><br />
+<button type="button" (click)="activeTab3()">activeTab3</button>
+<br /><br />
+<button type="button" (click)="add()">add</button>
+<br /><br />
+<button type="button" (click)="remove()">remove</button>
+<br /><br />
+<button type="button" (click)="changeHeader()">changeHeader</button>
+<br /><br />
+
+<h3>场景2：</h3>
+<div [hidden]="notShow">
+  <ti-tabs>
+    <ti-tab *ngFor="let tab of otherTabs" [(active)]="tab.active" [disabled]="tab.disabled" [id]="tab.id" [header]="tab.title">
+      <div>
+        <div>{{tab.content}}</div>
+        <div *ngFor="let item of tab.child">{{item.title}}</div>
+      </div>
+    </ti-tab>
+  </ti-tabs>
+</div>

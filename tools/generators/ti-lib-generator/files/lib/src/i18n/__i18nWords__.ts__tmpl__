@@ -1,0 +1,5 @@
+export interface <%= i18nWords %> {
+  <%= i18nWordsName %>: {
+    label: string
+  }
+}

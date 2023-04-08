@@ -1,0 +1,62 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>当表格有列拖动功能且单元格文本后有可操作图标时，在拖动列宽变小内容显示不下时，需要使文本出'...', 而图标显示完全。</p>
+  <p>需要使用tiCellText组件包裹单元格中的文本，使用tiCellIcons组件包裹图标</p>
+  <p class="demo-text-warn">注意：使用 tiOverflow 组件，请导入 TiOverflowModule。</p>
+  <h3>示例</h3>
+  <h4>表格单元格中有图标 + 列拖动</h4>
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" tiColsResizable>
+    <div class="ti3-resize-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <ti-cell-text>{{columns[0].title}}</ti-cell-text>
+              <ti-head-sort [sortKey]="columns[0].sortKey"></ti-head-sort>
+              <ti-cell-icons>
+                <i style="padding-left: 15px; color: greenyellow"><ti-icon name="info-circle"></ti-icon></i>
+              </ti-cell-icons>
+            </th>
+            <th>
+              <ti-cell-text>{{columns[1].title}}</ti-cell-text>
+              <ti-head-sort [sortKey]="columns[1].sortKey"></ti-head-sort>
+              <ti-cell-icons>
+                <i style="padding-left: 15px; color: blueviolet"><ti-icon name="info-circle"></ti-icon></i>
+              </ti-cell-icons>
+            </th>
+            <th>
+              <ti-cell-text>{{columns[2].title}}</ti-cell-text>
+              <ti-head-sort [sortKey]="columns[2].sortKey"></ti-head-sort>
+            </th>
+            <th>
+              <ti-cell-text>{{columns[3].title}}</ti-cell-text>
+              <ti-head-sort [sortKey]="columns[3].sortKey"></ti-head-sort>
+            </th>
+            <th tiOverflow>{{columns[4].title}}</th>
+            <!--该列无法排序，因为未做ti-sort设置-->
+          </tr>
+        </thead>
+        <tbody>
+          <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+          <tr *ngFor="let row of displayed">
+            <td>
+              <ti-cell-text>{{row.firstName}}</ti-cell-text>
+              <ti-cell-icons>
+                <i style="padding-left: 20px; color: green"><ti-icon name="file"></ti-icon></i>
+              </ti-cell-icons>
+            </td>
+            <td tiOverflow>{{row.lastName}}</td>
+            <td tiOverflow>{{row.age}}</td>
+            <td>
+              <ti-cell-text>{{row.balance}}</ti-cell-text>
+              <ti-cell-icons>
+                <i style="padding-left: 20px; color: red"><ti-icon name="sold-out"></ti-icon></i>
+              </ti-cell-icons>
+            </td>
+            <td tiOverflow>{{row.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ti-table>
+</div>

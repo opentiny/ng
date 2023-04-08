@@ -1,0 +1,7 @@
+import { <%= i18nWords %> } from './<%= i18nWords %>';
+
+export const pt_BR: <%= i18nWords %> = {
+  <%= i18nWordsName %>: {
+    label: 'Confirmar'
+  }
+};

@@ -1,0 +1,8 @@
+<ti-swiper [(activeIndex)]="activeIndex" (activeIndexChange)="activeIndexChange($event)">
+  <ti-swipercard *ngFor="let item of items">
+    <div>
+      <span>{{item}}</span>
+    </div>
+  </ti-swipercard>
+</ti-swiper>
+<demo-log [logs]="myLogs"></demo-log>

@@ -1,0 +1,43 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>
+    表格的基本使用<br />
+    使用前先了解一下表格的主要功能和数据流。表格组件的功能是把传入的srcData 通过一系列的处理，<br />
+    输出到displayedData中，再用displayedData的数据显示出来。<br />
+    表格的数据流是 srcData =>(根据srcData.state状态转化)=>displayedData，<br />
+    一系列的转化包括分页、排序、搜索。所以srcData.data 中的数据变化， 以及srcData.state 中的分页、排序、搜索状态变化，都会触发一次
+    srcData.data =>(srcData.state)=>displayedData的转化。<br />
+    用户只需输入源数据srcData.data 以及初始化状态srcData.state, 使用输出数据displayedData 展示成表格。
+  </p>
+
+  <p class="demo-text-warn">注意：使用 tiOverflow 组件，请导入 TiOverflowModule。</p>
+  <h3>导入</h3>
+  <p>import {{ '{' }} TiTableModule {{ '}' }} from '@opentiny/ng';</p>
+  <h3>示例</h3>
+
+  <button type="button" (click)="changeData()">新增一行</button>
+  <button type="button" (click)="changeData2()">删除一行(splice)</button>
+  <button type="button" (click)="changeData3()">改变某行数据</button>
+
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData">
+    <table>
+      <thead>
+        <tr>
+          <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+        <!--为了更好的渲染性能，建议在ngFor数据时总是trackBy数据条目中的某个唯一属性值(如id)-->
+        <tr *ngFor="let row of displayed;trackBy: trackByFn">
+          <!-- tiOverflow指令的作用是使文本溢出时出'...'，且hover时出tip-->
+          <td tiOverflow>{{row.firstName}}</td>
+          <td tiOverflow>{{row.lastName}}</td>
+          <td tiOverflow>{{row.age}}</td>
+          <td tiOverflow>{{row.balance}}</td>
+          <td tiOverflow>{{row.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ti-table>
+</div>

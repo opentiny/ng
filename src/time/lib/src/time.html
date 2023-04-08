@@ -1,0 +1,93 @@
+<ti-date-dominator
+  #dominator
+  [id]="appendId('dominator')"
+  [clearable]="clearIcon"
+  [disabled]="disabled"
+  [isTime]="true"
+  [(ngModel)]="timeValue"
+  (clear)="onIconClearClick()"
+  (click)="onShowClick()"
+  >{{ placeholder }}</ti-date-dominator
+>
+
+<ti-drop
+  #drop
+  [dominatorElem]="dominatorCom"
+  [dominatorSpace]="dominatorSpace"
+  fixMaxHeight="true"
+  [panelWidth]="timePanelWidth"
+  class="ti3-time-drop-container"
+  [id]="appendId('drop')"
+  [panelAlign]="panelAlign"
+>
+  <input
+    class="ti3-time-edit"
+    type="text"
+    [(ngModel)]="inputValue"
+    (ngModelChange)="onInputChangeFn($event)"
+    (blur)="timeBlur(inputValue)"
+    maxlength="8"
+    (keydown)="timeKeydownFn($event, inputValue)"
+    [id]="appendId('input')"
+    #text
+    tiText
+  />
+  <!-- 确认按钮禁用场景下，时间输入之后无法直接tab切换焦点至确认按钮，故添加此过度input -->
+  <input
+    #input
+    type="text"
+    [ngClass]="{'ti3-time-edit-with-button-disabled': buttonDisabled,
+                    'ti3-time-edit-with-button-undisabled': !buttonDisabled}"
+    class="ti3-time-tab-input"
+  />
+  <section class="ti3-time-select-container">
+    <!-- 时 -->
+    <div class="ti3-time-select-item-container" *ngIf="!onlyMinuteSecond">
+      <span class="ti3-time-select-title">{{ 'tiTime.hour' | tiTranslate }}</span>
+      <ti-list
+        #hourContainer
+        class="ti3-time-select-list"
+        [options]="hourOptions"
+        tabindex="-1"
+        [(ngModel)]="selectedHour"
+        [scrollTop]="hourScroll"
+        (select)="onSelect($event, 'hour')"
+        (mouseleave)="onMouseleave(hourContainer)"
+        [id]="appendId('list_hour')"
+      ></ti-list>
+    </div>
+    <!-- 分 -->
+    <div class="ti3-time-select-item-container" *ngIf="!onlyHour">
+      <span class="ti3-time-select-title">{{ 'tiTime.minute' | tiTranslate }}</span>
+      <ti-list
+        #minuteContainer
+        class="ti3-time-select-list"
+        [options]="minuteOptions"
+        tabindex="-1"
+        [(ngModel)]="selectedMinute"
+        [scrollTop]="minuteScroll"
+        (select)="onSelect($event, 'minute')"
+        (mouseleave)="onMouseleave(minuteContainer)"
+        [id]="appendId('list_minute')"
+      ></ti-list>
+    </div>
+    <!-- 秒 -->
+    <div class="ti3-time-select-item-container" *ngIf="!onlyHour && !onlyHourMinute">
+      <span class="ti3-time-select-title">{{ 'tiTime.second' | tiTranslate }}</span>
+      <ti-list
+        #secondContainer
+        class="ti3-time-select-list"
+        [options]="secondOptions"
+        tabindex="-1"
+        [(ngModel)]="selectedSecond"
+        [scrollTop]="secondScroll"
+        (select)="onSelect($event, 'second')"
+        (mouseleave)="onMouseleave(secondContainer)"
+        [id]="appendId('list_second')"
+      ></ti-list>
+    </div>
+  </section>
+  <div class="ti3-time-button-confirm">
+    <button #button tiButton label="ok" size="small" [disabled]="buttonDisabled" (click)="okClickFn()" [id]="appendId('button')"></button>
+  </div>
+</ti-drop>

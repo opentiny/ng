@@ -1,0 +1,36 @@
+<h3>1.描述</h3>
+<p>showCardNum接口设置每页展示卡片数量</p>
+<h3>2.示例，查看最后一页是否存在显示不全，或者两个卡片没有间隙的情况</h3>
+<h4>1.共4张卡片，每页展示3张卡片</h4>
+<br />
+<div style="width: 90%">
+  <ti-swiper [activeIndex]="currentIndex" [showCardNum]="3">
+    <ti-swipercard *ngFor="let card of newCards;let i = index">
+      <ti-card (click)="activeCard(i)" [active]="currentIndex === i" class="demo-card">
+        <h2>{{card.text}}</h2>
+      </ti-card>
+    </ti-swipercard>
+  </ti-swiper>
+</div>
+<br /><br />
+<h4>2.共9张卡片，每页展示5张卡片</h4>
+<br />
+<div style="width: 90%">
+  <ti-swiper [activeIndex]="currentIndex1" [showCardNum]="5">
+    <ti-swipercard *ngFor="let card of newCards1;let i = index">
+      <ti-card (click)="activeCard1(i)" [active]="currentIndex1 === i" class="demo-card">
+        <h2>{{card.text}}</h2>
+      </ti-card>
+    </ti-swipercard>
+  </ti-swiper>
+</div>
+<style>
+  .demo-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+  }
+</style>

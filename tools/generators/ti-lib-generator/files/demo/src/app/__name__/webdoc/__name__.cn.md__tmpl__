@@ -1,0 +1,15 @@
+---
+title: <%= camelName %> 组件中文名
+---
+# <%= camelName %> 组件中文名
+
+<div class="used-tiny">
+
+组件总述。
+
++ 可列举的特性。
+
+```typescript
+import { <%= moduleName %> } from '@opentiny/ng';
+```
+</div>

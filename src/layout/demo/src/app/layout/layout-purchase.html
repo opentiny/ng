@@ -1,0 +1,34 @@
+<!-- 固定居中布局，内容区宽度一直固定为 1192px -->
+
+<!-- 只是模拟console的实际场景(console-ui左侧有48px宽的一个菜单栏)，开发者可不用关注这层div -->
+<div style="margin-left: 48px">
+  <!-- 头部 -->
+  <ti-layout-header>
+    <ti-subtitle dark href="" target="_blank" [items]="items" style="padding: 8px 0"></ti-subtitle>
+  </ti-layout-header>
+
+  <!-- 内容容器 -->
+  <ti-layout-content>
+    <!-- 内容主体部分 -->
+    <!-- 浮层默认高度70px,当浮层内容较多时，高度会撑高，需要服务额外设置padding -->
+    <ti-layout-content-body style="padding-bottom: 102px">
+      <!-- 步骤条 -->
+      <ti-steps [steps]="steps" [(activeStep)]="activeStep"></ti-steps>
+      <div *ngIf="activeStep.label === 'General'">
+        <ti-layout-section>
+          <div style="background-color: #eeeeee; height: 200px; text-align: center; line-height: 200px">buy content1</div>
+        </ti-layout-section>
+        <ti-layout-section>
+          <div style="background-color: #eeeeee; height: 200px; text-align: center; line-height: 200px">buy content1</div>
+        </ti-layout-section>
+        <ti-layout-section>
+          <div style="background-color: #eeeeee; height: 200px; text-align: center; line-height: 200px">buy content1</div>
+        </ti-layout-section>
+        <ti-layout-section>
+          <div style="background-color: #eeeeee; height: 200px; text-align: center; line-height: 200px">buy content1</div>
+        </ti-layout-section>
+      </div>
+    </ti-layout-content-body>
+  </ti-layout-content>
+  <div>购买浮层 buylayer</div>
+</div>

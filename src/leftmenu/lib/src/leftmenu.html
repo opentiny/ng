@@ -1,0 +1,17 @@
+<div class="ti3-leftmenu-panel-container">
+  <div class="ti3-leftmenu-panel">
+    <ng-content></ng-content>
+  </div>
+</div>
+<ng-content *ngIf="!collapsed" select="ti-leftmenu-foot"></ng-content>
+<div
+  class="ti3-leftmenu-toggle"
+  *ngIf="toggleable"
+  [ngClass]="{'ti3-leftmenu-toggle-show' : !collapsed,
+                 'ti3-leftmenu-toggle-hide' : collapsed }"
+  [tabindex]="0"
+  tiOutline
+  (keydown.enter)="toggleClickFn()"
+  (click)="toggleClickFn()"
+  [id]="appendId('toggle')"
+></div>

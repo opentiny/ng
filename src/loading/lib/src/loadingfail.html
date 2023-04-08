@@ -1,0 +1,12 @@
+<ti-icon class="ti3-loadingfail-icon" name="alert-warn"></ti-icon>
+<span
+  >{{tiLoadingWords.loadingfail}}
+  <a
+    href="javascript:void(0)"
+    [id]="appendId('reload')"
+    oncontextmenu="return false"
+    class="ti3-loadingfail-link"
+    (click)="onReload($event)"
+    >{{tiLoadingWords.reload}}
+  </a>
+</span>

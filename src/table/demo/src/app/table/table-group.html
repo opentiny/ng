@@ -1,0 +1,42 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>开发者可结合数据利用表格dom结构来实现简单的表格分组</p>
+  <h3>示例</h3>
+
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" tiColsResizable>
+    <div class="ti3-resize-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let column of columns">{{column.title}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--注意:ngFor中的displayed数据与displayedData传入的数据一致,初始化设置为[]即可-->
+          <ng-container *ngFor="let you of displayed">
+            <tr>
+              <td tiColspan>
+                <span
+                  class="ti3-toggle-details"
+                  (click)="you.showSub = !you.showSub"
+                  style="padding-right: 8px"
+                  *ngIf="you.subData !== undefined"
+                >
+                  <i><ti-icon [name]="!you.showSub ? 'arrow-right' : 'arrow-down'"></ti-icon></i>
+                </span>
+                <strong style="vertical-align: middle">{{you.name}}</strong>
+              </td>
+            </tr>
+            <ng-container *ngFor="let son of you.subData">
+              <tr *ngIf="you.showSub">
+                <td style="padding-left: 30px">{{son.name}}</td>
+                <td>{{son.size}}</td>
+                <td>{{son.type}}</td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </ti-table>
+</div>

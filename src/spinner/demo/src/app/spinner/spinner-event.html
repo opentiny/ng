@@ -1,0 +1,9 @@
+<ti-spinner
+  style="width: 200px"
+  id="spinner-event"
+  [max]="max"
+  [min]="min"
+  [(ngModel)]="spinnerValue"
+  (ngModelChange)="onModelChange($event)"
+></ti-spinner>
+<demo-log [logs]="myLogs"></demo-log>

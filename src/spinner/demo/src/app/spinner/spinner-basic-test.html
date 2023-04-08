@@ -1,0 +1,129 @@
+<h1>Spinner组件默认样式展示</h1>
+<hr style="border-color: #ca4848" />
+<div class="wrapper-content">
+  <h4>用在表单中(第一个form)--模板驱动表单</h4>
+  <form #form="ngForm">
+    <ti-spinner
+      #spinner1
+      name="spinner"
+      autofocus
+      [format]="spinnerModel.format"
+      [max]="spinnerModel.max"
+      [min]="spinnerModel.min"
+      [step]="spinnerModel.step"
+      [disabled]="spinnerModel.disable"
+      [placeholder]="spinnerModel.placeholder"
+      (focus)="focusFn($event)"
+      (blur)="blurFn($event)"
+      (ngModelChange)="spinnerModel.change($event)"
+      [(ngModel)]="spinnerModel.spinnerValue"
+    >
+    </ti-spinner>
+    <input name="text1" [(ngModel)]="spinnerModel.spinnerValue" />
+  </form>
+  <p>form's touched: {{form.touched | json}}</p>
+  <p>form's untouched: {{form.untouched | json}}</p>
+  <pre>{{form.value | json}}</pre>
+  <h4>用在表单外</h4>
+  <ti-spinner
+    [format]="spinnerModel.format"
+    [max]="spinnerModel.max"
+    [min]="spinnerModel.min"
+    [step]="spinnerModel.step"
+    [disabled]="spinnerModel.disable"
+    [placeholder]="spinnerModel.placeholder"
+    (blur)="blurFn($event)"
+    (ngModelChange)="changeFn($event)"
+    [(ngModel)]="spinnerModel.spinnerValue1"
+  >
+  </ti-spinner>
+</div>
+<br />
+<h4>用在表单中(第二个form)--响应式表单</h4>
+<form [formGroup]="spinnerForm">
+  <ti-spinner
+    [format]="spinnerModel.format"
+    [max]="spinnerModel.max"
+    [min]="spinnerModel.min"
+    [step]="spinnerModel.step"
+    (blur)="blurFn($event)"
+    [placeholder]="spinnerModel.placeholder"
+    formControlName="spinnerValue"
+  >
+  </ti-spinner>
+  <input type="text" formControlName="text1Value" />
+  <input type="text" formControlName="text2Value" />
+</form>
+<label>spinner当前值：{{spinnerForm.value | json}}</label>
+<br />
+<br />
+<button ti-button class="ti3-btn" (click)="changeValue()">changeValue</button>
+<button ti-button class="ti3-btn" (click)="changeMax()">changeMax</button>
+<button ti-button class="ti3-btn" (click)="changeMin()">changeMin</button>
+<button ti-button class="ti3-btn" (click)="changeDisable()">changeDisable</button>
+<button ti-button class="ti3-btn" (click)="changePlaceholder()">changePlaceholder</button>
+<button ti-button class="ti3-btn" (click)="changeReactiveValue()">changeReactiveValue</button>
+<button ti-button class="ti3-btn" (click)="focusSpinner1()">focusSpinner1</button>
+<br />
+<br />
+<br />
+<style>
+  td,
+  th {
+    white-space: nowrap;
+    padding: 10px 15px;
+  }
+</style>
+<h4>表格单元格设置white-space: nowrap;时，spinner布局问题，方案：spinner外框设置white-space: normal;</h4>
+<br />
+<table border="1" cellspacing="0">
+  <thead>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ti-spinner
+          [format]="spinnerModel.format"
+          [max]="spinnerModel.max"
+          [min]="spinnerModel.min"
+          [step]="spinnerModel.step"
+          [disabled]="spinnerModel.disable"
+          [placeholder]="spinnerModel.placeholder"
+          (blur)="blurFn($event)"
+          (ngModelChange)="changeFn($event)"
+          [(ngModel)]="spinnerModel.spinnerValue3"
+        >
+        </ti-spinner>
+      </td>
+      <td>456</td>
+      <td>dfdf</td>
+      <td>dfdfdf</td>
+    </tr>
+    <tr>
+      <td>dfdf</td>
+      <td>dhgderjhed</td>
+      <td>tkirkl</td>
+      <td>8756856</td>
+    </tr>
+    <tr>
+      <td>685689569</td>
+      <td>5685632</td>
+      <td>fgjfrkj</td>
+      <td>wtyp;yul</td>
+    </tr>
+    <tr>
+      <td>dujrtik</td>
+      <td>dfgdfhj</td>
+      <td>dfkjfrtki</td>
+      <td>djft</td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<br />

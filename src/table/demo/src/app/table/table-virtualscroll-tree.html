@@ -1,0 +1,67 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>表格虚拟滚动</p>
+  <p>虚拟滚动是和表头锁定功能搭配使用的。</p>
+  <p>虚拟滚动不支持详情展开、数据分组。</p>
+  <p>
+    表格表头锁定功能：使用双表来实现的，样式类ti3-table-fixed-head包裹的是表头(第一个表格)，样式类ti3-table-container包裹的是表体(第二个表格)。
+  </p>
+  <p>
+    表格虚拟滚动功能：在有样式类 ti3-table-container 的元素(第二个表格的父容器)上使用 itemSize
+    接口设置每条数据占据的高度，并且给其设置最大高度或高度，然后在 div.ti3-table-container > table > tbody > tr 上用 cdkVirtualFor
+    替换原有的 ngFor。
+  </p>
+  <h3>导入</h3>
+  <p>import {{ '{' }} TiTableModule {{ '}' }} from '@opentiny/ng';</p>
+  <p>使用虚拟滚动需要引入 ScrollingModule 模块， 前提是安装了 @angular/cdk 三方库。</p>
+  <p>import {{ '{' }} ScrollingModule {{ '}' }} from '@angular/cdk/scrolling';</p>
+  <h3>示例</h3>
+  <button type="button" (click)="changeEmpty()">改变数据：无数据</button>
+  <button type="button" (click)="changeMany()">改变数据：大量(有滚动条)</button>
+
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">
+    <!--.ti3-table-fixed-head是表头的容器，它的子元素中的table(thead)是实际显示的表头-->
+    <!--注意:此处一定要使用.ti3-table-fixed-head样式类-->
+    <div class="ti3-table-fixed-head">
+      <table>
+        <thead>
+          <tr>
+            <!--实际显示的表头。注意:给表格设置宽度时，给.ti3-table-fixed-head和.ti3-table-container下的对应的th都要设置-->
+            <th *ngFor="let column of columns" width="{{column.width}}">{{column.title}}</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <!-- .ti3-table-container 是表体的容器，它的子元素中的table的thead是用来控制各列宽度，实际不显示；tbody是实际显示的表体-->
+    <!--注意1:此处一定要使用 .ti3-table-container 样式类-->
+    <!--注意2:在有 .ti3-table-container 样式类的容器上来设置表体的高度或最大高度-->
+    <!--注意3:在有 .ti3-table-container 样式类的容器上使用 itemSize 接口来设置表体每行的高度(单位是px)来开启虚拟滚动 -->
+    <div class="ti3-table-container" itemSize="43" style="max-height: 400px">
+      <table>
+        <thead>
+          <tr>
+            <!--此处的表头是用来控制各列宽度，实际不显示，所以注意 th 标签内部不要嵌套任何内容。-->
+            <th *ngFor="let column of columns" width="{{column.width}}"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--此处需要用 cdkVirtualFor 替换 ngFor, cdkVirtualFor 与 ngFor 的使用方法完全一致。-->
+          <tr *cdkVirtualFor="let node of displayed;index as i;" id="{{'mytable_data_' + i}}">
+            <td [ngStyle]="getLevelStyle(node)">
+              <span *ngIf="node.hasChildren" class="ti3-table-tree" (click)="toggle(node)">
+                <i><ti-icon [name]="!node.expand ? 'plus-square' : 'minus-square'"></ti-icon></i>
+              </span>
+              <span [ngClass]="{'ti3-table-tree-no-leaf': !node.hasChildren}">{{node.name}}</span>
+            </td>
+            <td>{{node.size}}</td>
+            <td>{{node.type}}</td>
+          </tr>
+          <!-- 无数据时。-->
+          <tr *ngIf="displayed.length === 0" class="ti3-table-nodata">
+            <td tiColspan>{{noDadaInfo}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ti-table>
+</div>

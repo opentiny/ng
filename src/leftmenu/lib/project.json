@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/leftmenu/lib",
+  "sourceRoot": "src/leftmenu/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/leftmenu"],
+      "options": {
+        "project": "src/leftmenu/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/leftmenu"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js leftmenu"
+          },
+          {
+            "command": "ng default-build leftmenu"
+          },
+          {
+            "command": "node build/clear-default-theme.js leftmenu"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/leftmenu && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build leftmenu && ng pack leftmenu && node build/publish.js leftmenu --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

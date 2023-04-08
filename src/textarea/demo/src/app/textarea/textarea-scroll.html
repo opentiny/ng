@@ -1,0 +1,19 @@
+<h3>1.描述</h3>
+<p>
+  场景测试：在有textarea的页面，且textarea的宿主元素初始display:none,
+  页面有滚动条时，将页面滚动条拖至formfiled的头部不在视野范围内时，textarea动态显示时页面滚动条会异常跳动到顶部。
+</p>
+<h3>2.示例</h3>
+<ti-formfield [verticalAlign]="'middle'">
+  <ti-item [label]="'测试'" *ngFor="let item of items">
+    <span>item1</span>
+  </ti-item>
+  <ti-item [required]="item1.required" [show]="item1.show" [index]="99">
+    <ti-item-label> ewdfwew</ti-item-label>
+    <ti-switch style="width: 42px" [(ngModel)]="enableWhiteList"></ti-switch>
+  </ti-item>
+  <ti-item [show]="enableWhiteList" [required]="item2.required" [index]="100">
+    <ti-item-label> wqwqw</ti-item-label>
+    <textarea tiTextarea style="width: 220px; height: 100px" resize="vertical"></textarea>
+  </ti-item>
+</ti-formfield>

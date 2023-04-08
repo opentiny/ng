@@ -1,0 +1,75 @@
+<form>
+  <span>1.Equal:aa</span>
+  <input tiValidation tiEqual="aa" name="a1" [(ngModel)]="myValue1" tiText />
+  <br /><br />
+  <span>2.MaxLength:5</span>
+  <input [tiValidation]="validationObj" tiMaxLength="5" name="a2" [(ngModel)]="myValue2" tiText />
+  <br /><br />
+  <span>3.Email:</span>
+  <input tiValidation tiEmail name="a3" [(ngModel)]="myValue3" tiText />
+  <br /><br />
+  <span>4.Digits:</span>
+  <input tiValidation tiDigits name="a4" [(ngModel)]="myValue4" tiText />
+  <br /><br />
+  <span>5.Script:</span>
+  <input tiValidation tiNotScript name="a5" [(ngModel)]="myValue5" tiText />
+  <br /><br />
+  <span>6.tiContains:aa</span>
+  <input tiValidation tiContains="aa" name="a6" [(ngModel)]="myValue6" tiText />
+  <br /><br />
+  <span>7.tiNotContains:aa</span>
+  <input tiValidation tiNotContains="aa" name="a7" [(ngModel)]="myValue7" tiText />
+  <br /><br />
+  <span>8.Date</span>
+  <input tiValidation tiDate name="a8" [(ngModel)]="myValue8" tiText />
+  <br /><br />
+  <span>9.Integer</span>
+  <input tiValidation tiInteger name="a9" [(ngModel)]="myValue9" tiText />
+  <br /><br />
+  <span>10.IPv4</span>
+  <input tiValidation tiIpv4 name="a10" [(ngModel)]="myValue10" tiText />
+  <br /><br />
+  <span>11.IPv6</span>
+  <input [tiValidation] tiIpv6 name="a11" [(ngModel)]="myValue11" tiText />
+  <br /><br />
+  <span>12.MaxValue:6</span>
+  <input tiValidation tiMaxValue="6" name="a12" [(ngModel)]="myValue12" tiText />
+  <br /><br />
+  <span>13.MinLength:3</span>
+  <input tiValidation tiMinLength="3" name="a13" [(ngModel)]="myValue13" tiText />
+  <br /><br />
+  <span>14.MinValue:5</span>
+  <input tiValidation tiMinValue="5" name="a14" [(ngModel)]="myValue14" tiText />
+  <br /><br />
+  <span>15.NotEqual:aa</span>
+  <input tiValidation tiNotEqual="aa" name="a15" [(ngModel)]="myValue15" tiText />
+  <br /><br />
+  <span>16.Number</span>
+  <input tiValidation tiNumber name="a16" [(ngModel)]="myValue16" tiText />
+  <br /><br />
+  <span>17.tiPassword</span>
+  <input tiValidation tiPassword name="a17" [(ngModel)]="myValue17" tiText />
+  <br /><br />
+  <span>18.port</span>
+  <input tiValidation tiPort="6" name="a18" [(ngModel)]="myValue18" tiText />
+  <br /><br />
+  <span>19.MinLength:3 required</span>
+  <input tiValidation tiMinLength="3" tiRequired name="a19" [(ngModel)]="myValue19" tiText />
+  <br /><br />
+  <span>20.RangeSize:[3,5]</span>
+  <input tiValidation [tiRangeSize]="[3,5]" name="a20" [(ngModel)]="myValue20" tiText />
+  <br /><br />
+  <span>21.RangeValue:[5,10]</span>
+  <input tiValidation [tiRangeValue]="[5,10]" name="a21" [(ngModel)]="myValue21" tiText />
+  <br /><br />
+  <span>22.regExp:</span>
+  <input tiValidation tiRegExp="[a-zA-Z ]*" name="a22" [(ngModel)]="myValue22" tiText />
+  <br /><br />
+  <span>23.Required</span>
+  <input tiValidation tiRequired name="a23" [(ngModel)]="myValue23" tiText />
+  <br /><br />
+  <span>24.URL</span>
+  <input tiValidation tiUrl name="a24" [(ngModel)]="myValue24" tiText />
+  <br /><br />
+  <button (click)="changeDisable()">setD</button>
+</form>

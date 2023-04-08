@@ -1,0 +1,18 @@
+<ti-upload
+  url="/upload"
+  type="button"
+  buttonText="自定义按钮文字"
+  note="预设的信息"
+  errorMessage="自定义错误信息"
+  listMaxHeight="100px"
+  method="post"
+  [disabled]="!isOpen"
+  [showUploadList]="showUploadList"
+  [showErrorMessage]="showErrorMessage"
+  [initFiles]="initFiles"
+>
+</ti-upload>
+<br />
+<button class="mr-3 mt-3" tiButton (click)="changeDisabled()" color="primary">启用/禁用</button>
+<button class="mr-3 mt-3" tiButton (click)="changeShowList()" color="primary">显示/隐藏列表</button>
+<button class="mt-3" tiButton (click)="changeShowError()" color="primary">显示/隐藏错误提示</button>

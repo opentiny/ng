@@ -1,0 +1,187 @@
+@import '../../../themes/basic/base-all.less';
+
+ti-table {
+  --ti-table-box-model: border-box;
+  --ti-table-th-horizontal-padding: var(--ti-common-space-10);
+  --ti-table-nodata-lead-icon-padding: var(--ti-common-space-5x);
+  --ti-table-nodata-td-bg-img-url: data-uri('../../../themes/basic/img/table-nodata-bg.png');
+  --ti-table-small-td-horizontal-padding: var(--ti-common-space-10);
+  --ti-table-nodata-height: 210px;
+  --ti-table-small-nodata-height: 190px;
+  --ti-table-nodata-lead-icon-height: var(--ti-common-size-20x);
+  --ti-table-cols-toggle-menu-size: var(--ti-common-size-7x);
+  --ti-table-tree-square-icon-font-size: var(--ti-common-font-size-2);
+  --ti-table-th-height: var(--ti-common-size-7x);
+  --ti-table-small-th-height: var(--ti-common-size-7x);
+  --ti-table-nest-th-height: var(--ti-common-size-7x);
+  --ti-table-column-select-icon-width: var(--ti-common-size-8x);
+  --ti-table-column-icon-width: 42px;
+  --ti-table-timing-function-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ---------------table基础样式----START----------------------------------------------*/
+.ti3-table {
+  display: block;
+}
+.table-nodata-a {
+  a {
+    color: var(--ti-common-color-text-link);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: var(--ti-common-color-text-link-hover);
+      cursor: pointer;
+    }
+  }
+}
+
+.ti3-table > table,
+.ti3-table > .ti3-resize-wrapper > table,
+.ti3-table > .ti3-table-fixed-head > table,
+.ti3-table > .ti3-table-container > table {
+  .box-sizing(var(--ti-table-box-model));
+  border-width: 0;
+  border-collapse: separate;
+  table-layout: fixed;
+  border-spacing: 0;
+  empty-cells: show;
+  margin-bottom: 0;
+  width: 100%;
+  & > thead > tr > th {
+    .box-sizing(var(--ti-table-box-model));
+    position: relative;
+    cursor: default;
+    background-color: var(--ti-common-color-bg-white-emphasize);
+    outline: 0;
+    height: var(--ti-table-th-height);
+    line-height: calc(var(--ti-table-th-height) - 1px);
+    color: var(--ti-common-color-text-secondary);
+    font-weight: var(--ti-common-font-weight-6);
+    border-left: none;
+    padding: 0;
+    padding-left: var(--ti-table-th-horizontal-padding);
+    padding-right: var(--ti-table-th-horizontal-padding);
+    text-align: left;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-bottom: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-dividing);
+    &:not(:last-child)::after {
+      width: 1px;
+      background: var(--ti-common-color-text-white);
+      color: transparent;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      content: '';
+    }
+    &[checkbox-column],
+    &[radio-column] {
+      width: var(--ti-common-size-8x) !important;
+      overflow: visible;
+      padding-right: var(--ti-common-space-6);
+      font-size: 0; // 解决图标溢出问题
+      &::after {
+        width: 0;
+      }
+    }
+    // 单选时，th不需要radio按钮
+    &[checkbox-column] {
+      cursor: pointer;
+    }
+    &.ti3-disabled-cell {
+      cursor: not-allowed;
+    }
+    &[details-icon-column] {
+      width: var(--ti-table-column-icon-width) !important;
+      overflow: visible;
+      padding-right: var(--ti-common-space-6);
+      &::after {
+        width: 0;
+      }
+    }
+    &:first-child {
+      &[checkbox-column],
+      &[radio-column] {
+        width: var(--ti-table-column-icon-width) !important;
+        padding-left: var(--ti-common-space-5x) !important;
+      }
+    }
+  }
+  & > tbody > tr {
+    border-spacing: 0;
+    background-color: var(--ti-common-color-bg-white-normal);
+    .transition (background-color 150ms var(--ti-table-timing-function-default));;
+    //行hover时显示当前行下的cti-rename组件图标
+    &:hover {
+      .cti-rename-edit {
+        visibility: visible;
+      }
+    }
+    &.ti3-selected-tr {
+      background-color: var(--ti-common-color-bg-white-normal);
+      &:hover {
+        background-color: var(--ti-common-color-bg-white-normal);
+      }
+    }
+
+    &.ti3-disabled-tr {
+      background-color: var(--ti-common-color-bg-disabled);
+      & > td {
+        color: var(--ti-common-color-text-disabled);
+        &[checkbox-column],
+        &[radio-column] {
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    &:not(.ti3-details-tr):not(.ti3-disabled-tr):not(.ti3-table-nodata):not(.ti3-table-nodata-simple):not(.ti3-table-loadfail):not(
+        .ti3-table-nodata-guide
+      ):not(.ti3-selected-tr) {
+      &:hover {
+        background-color: var(--ti-common-color-bg-white-emphasize);
+        .transition (background-color 200ms var(--ti-table-timing-function-default));;
+      }
+    }
+
+    & > td {
+      .box-sizing(var(--ti-table-box-model));
+      border-left: none;
+      border-top: none;
+      padding: var(--ti-common-space-3x) var(--ti-common-space-10);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
+      vertical-align: middle;
+      line-height: var(--ti-common-line-height-number);
+      color: var(--ti-common-color-text-primary);
+      border-bottom: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-dividing);
+      &[checkbox-column],
+      &[radio-column] {
+        overflow: visible;
+        padding-right: var(--ti-common-space-6);
+        font-size: 0; // 解决图标溢出问题
+        cursor: pointer;
+      }
+      &.ti3-disabled-cell {
+        cursor: not-allowed;
+      }
+      &[details-icon-column] {
+        overflow: visible;
+        padding-left: var(--ti-common-space-5x);
+        padding-right: var(--ti-common-space-6);
+      }
+      &:first-child {
+        &[checkbox-column],
+        &[radio-column] {
+          padding-left: var(--ti-common-space-5x);
+        }
+      }
+    }
+  }
+}
+/* ---------------table基础样式----End----------------------------------------------*/

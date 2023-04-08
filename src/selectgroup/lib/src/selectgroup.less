@@ -1,0 +1,180 @@
+@import '../../../themes/basic/base-all.less';
+
+::ng-deep :root {
+  --ti-selectitem-corner-width: 20px;
+  --ti-selectitem-border-color-hover: var(--ti-common-color-line-active); // 激活/hover 边框色
+}
+
+// 选中样式角标公共样式
+.ti3-selectitem-corner {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  animation: showCorner 200ms;
+  right: 0;
+}
+
+// 非灰化状态
+:host.ti3-selectitem-box {
+  .clearfix();
+  display: inline-block;
+  cursor: pointer;
+  width: 190px;
+  height: 54px;
+  padding: var(--ti-common-space-2x) var(--ti-common-space-2x) var(--ti-common-space-2x) var(--ti-common-space-10);
+  border-radius: var(--ti-common-border-radius-normal);
+  background-color: var(--ti-common-color-bg-white-normal);
+  box-sizing: border-box;
+  margin-right: var(--ti-common-space-3x);
+  position: relative;
+  box-shadow: none;
+  border: 1px solid var(--ti-common-color-line-normal);
+  // 选中状态
+  &.ti3-selectitem-checked {
+    background-color: var(--ti-common-color-bg-light-normal);
+    border: 1px solid var(--ti-selectitem-border-color-hover);
+    .ti3-selectitem-corner-right-bottom {
+      &:extend(.ti3-selectitem-corner);
+      border-left: var(--ti-selectitem-corner-width) solid transparent;
+      border-bottom: var(--ti-selectitem-corner-width) solid var(--ti-selectitem-border-color-hover);
+      bottom: 0;
+      & .ti3-selectitem-checkmark {
+        position: absolute;
+        color: var(--ti-common-color-icon-white);
+        top: calc(var(--ti-selectitem-corner-width) - 12px);
+        right: 0;
+      }
+    }
+    .ti3-selectitem-corner-right-top {
+      .ti3-selectitem-corner-right-bottom();
+      top: 0;
+      .rotate(-90deg);
+      & .ti3-selectitem-checkmark {
+        .rotate(90deg);
+      }
+    }
+  }
+  // 自定义模板
+  &.ti3-selectitem-template {
+    width: auto;
+    height: auto;
+    padding-left: var(--ti-common-space-2x);
+    vertical-align: middle;
+  }
+  &:hover {
+    border: 1px solid var(--ti-selectitem-border-color-hover);
+  }
+}
+
+// 灰化状态
+:host.ti3-selectitem-box.ti3-selectitem-disabled {
+  background: var(--ti-common-color-bg-disabled);
+  cursor: not-allowed;
+  border-color: var(--ti-common-color-line-disabled);
+  box-shadow: none;
+  :hover {
+    border-color: var(--ti-common-color-line-disabled);
+  }
+  .ti3-selectitem-lefticon,
+  .ti3-selectitem-title,
+  .ti3-selectitem-content {
+    color: var(--ti-common-color-text-disabled);
+  }
+  // 选中状态的角标
+  &.ti3-selectitem-checked {
+    .ti3-selectitem-corner-right-bottom,
+    .ti3-selectitem-corner-right-top {
+      border-bottom-color: var(--ti-common-color-line-disabled);
+    }
+  }
+}
+:host .ti3-selectitem-lefticon {
+  float: left;
+  margin-top: var(--ti-common-space-base);
+  margin-right: var(--ti-common-space-2x);
+  font-size: 28px;
+  line-height: 100%; // FireFox下，该元素float：left或display：block会导致line-height：1.2，高度增加
+}
+// 文本溢出的公共样式
+.ti3-selectitem-text {
+  width: 100%;
+  display: block;
+}
+.ti3-selectitem-right {
+  float: left;
+  width: calc(100% - 50px);
+  .ti3-selectitem-title {
+    &:extend(.ti3-selectitem-text);
+    .ellipsis();
+    font-size: var(--ti-common-font-size-1);
+    color: var(--ti-common-color-text-primary);
+    line-height: 20px;
+  }
+  .ti3-selectitem-title-top-space {
+    margin-top: var(--ti-common-space-2x);
+  }
+  .ti3-selectitem-content {
+    &:extend(.ti3-selectitem-text);
+    .ellipsis();
+    font-size: var(--ti-common-font-size-base);
+    color: var(--ti-common-color-text-secondary);
+    line-height: var(--ti-common-line-height-number);
+  }
+}
+
+// 镜像+下拉组件中：定制select组件的样式
+::ng-deep.ti3-selectitem-box {
+  ti-select {
+    position: relative;
+    left: calc(-1 * var(--ti-common-space-10) - 1px);
+    bottom: calc(-1 * var(--ti-common-space-2x) - 1px);
+    &:not([disabled]) {
+      border-color: transparent;
+      border-top-color: var(--ti-common-color-line-dividing);
+      background: transparent;
+      &:hover,
+      &[tiFocused] {
+        border-color: transparent;
+        border-top-color: var(--ti-common-color-line-dividing);
+      }
+    }
+  }
+  // 悬停
+  &:hover ti-select {
+    &:not([disabled]) {
+      border-top-color: var(--ti-selectitem-border-color-hover);
+      &:hover,
+      &[tiFocused] {
+        border-top-color: var(--ti-selectitem-border-color-hover);
+      }
+    }
+  }
+  // 选中
+  &.ti3-selectitem-checked ti-select {
+    &:not([disabled]) {
+      border-top-color: var(--ti-selectitem-border-color-hover);
+      &:hover,
+      &[tiFocused] {
+        border-top-color: var(--ti-selectitem-border-color-hover);
+      }
+    }
+  }
+}
+
+@keyframes showCorner {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes showCheckmark {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

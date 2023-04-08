@@ -1,0 +1,55 @@
+<h3>描述</h3>
+<p>表格列动态显示/隐藏功能需要配合tiColsToggle组件来实现，具体可参考tiColsToggle组件的使用说明。</p>
+<p>
+  tiColsToggle组件需要放在tiTable标签内部，具体布局位置由开发者来控制；此功能与columns的中的show属性
+  设置密切相关，需要使用ngIf利用show的值来控制需要动态显示/隐藏的列；columns的相关配置可参考tiTable组 件的columns接口说明。
+</p>
+<p>
+  另外：selectAll- 设置是否有全选项，默认false <br />
+  disabled- 设置禁用 <br />
+  searchable-设置是否有搜索，默认true
+</p>
+<p>列隐藏/显示按钮悬浮时有默认提示文本和方向，服务也可自行配置。</p>
+<p class="demo-text-warn">注意：使用 tiTip 组件，请导入 TiTipModule；使用 tiOverflow 组件，请导入 TiOverflowModule。</p>
+<h3>示例</h3>
+<button (click)="onClick()">disabled:{{disabled}}</button>
+<button (click)="onClick2()">selectAll:{{selectAll}}</button>
+<button (click)="onClick3()">searchable:{{searchable}}</button>
+
+<ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">
+  <div style="height: 28px; margin-bottom: 10px">
+    <!--控制列隐藏/显示-->
+    <ti-cols-toggle
+      style="float: right"
+      [searchable]="searchable"
+      [panelWidth]="panelWidth"
+      [selectAll]="selectAll"
+      [tipContent]="tipContent"
+      [tipPosition]="tipPosition"
+      [disabled]="disabled"
+      [noDataText]="noDataText"
+      (blur)="onBlur()"
+      (select)="onSelect($event)"
+    >
+    </ti-cols-toggle>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <ng-container *ngFor="let column of columns">
+          <th tiOverflow *ngIf="column.show || column.show === undefined">{{column.title}}</th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+      <tr *ngFor="let row of displayed">
+        <td tiOverflow *ngIf="columns[0].show">{{row.firstName}}</td>
+        <td tiOverflow *ngIf="columns[1].show">{{row.lastName}}</td>
+        <td tiOverflow *ngIf="columns[2].show">{{row.age}}</td>
+        <td tiOverflow>{{row.balance}}</td>
+        <td tiOverflow *ngIf="columns[4].show">{{row.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ti-table>

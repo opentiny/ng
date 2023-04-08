@@ -1,0 +1,20 @@
+:host.ti3-head-filter-container {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: var(--ti-common-space-2x);
+  line-height: var(--ti-common-size-4x);
+  width: var(--ti-common-size-4x);
+  .ti3-head-filter-icon {
+    font-size: var(--ti-common-size-4x);
+    display: block;
+    cursor: pointer;
+    color: var(--ti-common-color-icon-normal);
+    &:hover {
+      color: var(--ti-common-color-icon-hover);
+    }
+  }
+
+  &.ti3-head-filtered .ti3-head-filter-icon {
+    color: var(--ti-common-color-icon-active);
+  }
+}

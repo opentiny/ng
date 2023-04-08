@@ -1,0 +1,10 @@
+<ti-tags-input
+  class="w-96"
+  id="tagsinput-separators"
+  [suggestions]="suggestions"
+  [(ngModel)]="selected"
+  [separators]="[',', '|', ' ']"
+></ti-tags-input>
+<div class="current-value-container">
+  <pre>Current value: {{ selected | json }}</pre>
+</div>

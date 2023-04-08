@@ -1,0 +1,34 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>表格列拖动特性 + 数据加载失败特性</p>
+  <h3>示例</h3>
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" tiColsResizable>
+    <div class="ti3-resize-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title}}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="status !== 404">
+          <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+          <tr *ngFor="let row of displayed">
+            <td tiOverflow>{{row.firstName}}</td>
+            <td tiOverflow>{{row.lastName}}</td>
+            <td tiOverflow>{{row.age}}</td>
+            <td tiOverflow>{{row.balance}}</td>
+            <td tiOverflow>{{row.email}}</td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="status === 404">
+          <tr class="ti3-table-loadfail">
+            <td tiColspan>
+              <span>{{failLoadInfo}}</span>
+              <a href="javascript:void(0)" (click)="reloadFn()">{{reloadInfo}}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ti-table>
+</div>

@@ -1,0 +1,9 @@
+<ti-selectgroup id="selectgroup-multiple-group" [(ngModel)]="value" [multiple]="true">
+  <ti-selectitem
+    [id]="'selectgroup-multiple-item' + i"
+    *ngFor="let item of items;index as i;"
+    [item]="item"
+    [checkPosition]="checkPosition"
+  >
+  </ti-selectitem>
+</ti-selectgroup>

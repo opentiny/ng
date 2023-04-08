@@ -1,0 +1,23 @@
+<ti-tabs>
+  <ti-tab
+    id="tab-beforeactivechange-1"
+    [header]="tabs[0].title"
+    [(active)]="tabs[0].active"
+    (activeChange)="tabs[0].onActiveChange($event)"
+  >
+    <div>Content of Tab Pane 1</div>
+  </ti-tab>
+  <ti-tab id="tab-beforeactivechange-2" [header]="tabs[1].title">
+    <div>Content of Tab Pane 2</div>
+  </ti-tab>
+  <ti-tab
+    id="tab-beforeactivechange-3"
+    [header]="tabs[2].title"
+    [(active)]="tabs[2].active"
+    (beforeActiveChange)="tabs[2].beforeActiveChange($event)"
+  >
+    <div>Content of Tab Pane 3</div>
+  </ti-tab>
+</ti-tabs>
+
+<demo-log [logs]="myLogs"></demo-log>

@@ -1,0 +1,41 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>表格复选列固定</p>
+  <h3>示例</h3>
+
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">
+    <div class="ti3-table-container">
+      <table>
+        <thead>
+          <tr>
+            <ng-container *ngFor="let column of columns;index as i;">
+              <th *ngIf="i === 0" checkbox-column [tiColumnFixed]="column.fixed">
+                <!--全选按钮-->
+                <input type="checkbox" tiCheckgroup [items]="displayed" [(checkeds)]="checkedList" />
+              </th>
+              <th *ngIf="i > 0" [tiColumnFixed]="column.fixed" tiOverflow width="{{column.width}}">{{column.title}}</th>
+            </ng-container>
+          </tr>
+        </thead>
+        <tbody>
+          <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+          <tr *ngFor="let row of displayed;trackBy: trackByFn" [ngClass]="{'ti3-selected-tr': checkedList.indexOf(row) !== -1}">
+            <!-- tiOverflow指令的作用是使文本溢出时出'...'，且hover时出tip-->
+            <td checkbox-column tiColumnFixed="left">
+              <input type="checkbox" tiCheckitem [item]="row" />
+            </td>
+            <td tiColumnFixed="left" tiOverflow>{{row.firstName}}</td>
+            <td tiColumnFixed="left" tiOverflow>{{row.lastName}}</td>
+            <td tiColumnFixed="left" tiOverflow>{{row.age}}</td>
+            <td tiOverflow>{{row.balance}}</td>
+            <td tiOverflow>{{row.email}}</td>
+            <td tiOverflow>{{row.address}}</td>
+            <td tiOverflow>{{row.phone}}</td>
+            <td tiOverflow>{{row.parents}}</td>
+            <td tiColumnFixed="right" tiOverflow>{{row.school}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ti-table>
+</div>

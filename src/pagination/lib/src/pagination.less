@@ -1,0 +1,231 @@
+@import '../../../themes/basic/base-all.less';
+
+:host {
+  --ti-pagination-box-model: border-box;
+  --ti-pagination-height: var(--ti-common-size-6x);
+  --ti-pagination-prev-next-width: 22px;
+  --ti-pagination-goto-input-width: 45px;
+}
+
+/* -----ti-table with ti-pagination----START----*/
+::ng-deep .ti3-table > .ti3-page-container {
+  margin-top: var(--ti-common-space-10);
+}
+/* -----ti-table with ti-pagination----END----*/
+
+/* 将所有的类名包含在ti-page-container内部的原因是整体提升组件样式的权重
+防止组件样式被框架样式覆盖 */
+:host.ti3-page-container {
+  display: inline-block;
+  .ti3-pag-container {
+    .user-select(none);
+    display: inline-block;
+    line-height: normal;
+    float: left;
+  }
+
+  .ti3-pag-total-items {
+    float: left;
+    margin: var(--ti-common-space-0) var(--ti-common-space-4x);
+    vertical-align: middle;
+    line-height: var(--ti-pagination-height);
+    height: var(--ti-pagination-height);
+    font-size: var(--ti-common-font-size-base);
+    font-weight: var(--ti-common-font-weight-4);
+    color: var(--ti-common-color-text-secondary);
+  }
+  .ti3-pag-pages {
+    float: left;
+    height: var(--ti-pagination-height);
+    & > .ti3-pag-prev {
+      margin-right: var(--ti-common-space-base);
+    }
+  }
+
+  .ti3-pag-page,
+  .ti3-pag-prev,
+  .ti3-pag-next {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    height: var(--ti-pagination-height);
+    line-height: var(--ti-pagination-height);
+    vertical-align: middle;
+    text-align: center;
+    font-size: var(--ti-common-font-size-base);
+    font-weight: var(--ti-common-font-weight-4);
+    .box-sizing(var(--ti-pagination-box-model));
+    .border-radius(var(--ti-common-border-radius-normal));
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .ti3-pag-page {
+    color: var(--ti-common-color-text-secondary);
+    margin-right: var(--ti-common-space-base);
+    padding: var(--ti-common-space-0) var(--ti-common-space-6);
+    &.active {
+      background-color: var(--ti-common-color-bg-emphasize);
+      color: var(--ti-common-color-text-white);
+    }
+    &.ellipse {
+      outline: none;
+      border: none;
+      background: transparent;
+      cursor: default;
+    }
+    &:not(.ellipse):hover {
+      background-color: var(--ti-common-color-bg-light-normal);
+      color: var(--ti-common-color-icon-hover);
+    }
+    &.active,
+    &.simple {
+      &:hover {
+        background-color: var(--ti-common-color-bg-emphasize);
+        color: var(--ti-common-color-text-white);
+      }
+    }
+    &:not(.ellipse):active {
+      background-color: var(--ti-common-color-bg-emphasize);
+      color: var(--ti-common-color-text-white);
+    }
+  }
+
+  .ti3-pag-pages-disable {
+    .ti3-page-disable {
+      color: var(--ti-common-color-text-disabled);
+      background-color: var(--ti-common-color-bg-white-normal);
+      cursor: not-allowed !important;
+      outline: none;
+      &:hover {
+        color: var(--ti-common-color-text-disabled) !important;
+        background-color: var(--ti-common-color-bg-white-normal);
+      }
+    }
+  }
+
+  .ti3-pag-prev,
+  .ti3-pag-next {
+    width: var(--ti-pagination-prev-next-width);
+    color: var(--ti-common-color-icon-normal);
+    height: var(--ti-pagination-prev-next-width);
+    line-height: var(--ti-pagination-prev-next-width);
+    &.disabled {
+      cursor: not-allowed;
+      background-color: var(--ti-common-color-bg-white-normal);
+      color: var(--ti-common-color-text-disabled);
+      outline: none;
+      & > .ti3-icon-angle-left,
+      & > .ti3-icon-angle-right {
+        color: var(--ti-common-color-icon-disabled);
+      }
+    }
+    &:not(.disabled):hover {
+      color: var(--ti-common-color-icon-hover);
+      background-color: var(--ti-common-color-bg-light-normal);
+    }
+    &:not(.disabled):active {
+      color: var(--ti-common-color-text-white);
+      background-color: var(--ti-common-color-bg-emphasize);
+    }
+  }
+
+  /* Set up special height for select that shows page size. */
+  .ti3-page-size-option,
+  .ti3-page-mini-option {
+    float: left;
+  }
+
+  .ti3-pag-mini-pages {
+    .ti3-pag-prev,
+    .ti3-pag-next {
+      float: left;
+    }
+    .ti3-page-mini-option {
+      float: left;
+      margin: var(--ti-common-space-0) var(--ti-common-space-2x);
+    }
+    .ti3-pag-total-items {
+      margin-left: var(--ti-common-space-0);
+    }
+  }
+
+  /* style for disable condition */
+  .ti3-pag-container-disable {
+    cursor: not-allowed;
+  }
+  .ti3-pag-total-disable {
+    color: var(--ti-common-color-text-disabled);
+    cursor: not-allowed;
+  }
+
+  /* For Page Goto */
+  .ti3-pag-goto {
+    float: left;
+    display: inline-block;
+    height: var(--ti-pagination-height);
+    & .ti3-pag-goto-text {
+      float: left;
+      color: var(--ti-common-color-text-secondary);
+      display: inline-block;
+      height: var(--ti-pagination-height);
+      line-height: var(--ti-pagination-height);
+      margin: var(--ti-common-space-0) 15px;
+      vertical-align: middle;
+      font-size: var(--ti-common-font-size-base);
+      font-weight: var(--ti-common-font-weight-4);
+    }
+    & .ti3-pag-goto-input {
+      float: left;
+      padding: var(--ti-common-space-0) 5px;
+      width: var(--ti-pagination-goto-input-width);
+      height: var(--ti-pagination-height);
+    }
+    & .ti3-pag-goto-icon-container {
+      display: inline-block;
+      margin-left: 15px;
+      height: var(--ti-pagination-height);
+      width: var(--ti-pagination-height);
+      border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-normal);
+      .border-radius(3px);
+      background-color: var(--ti-common-color-bg-white-normal);
+      cursor: pointer;
+      text-decoration: none;
+      vertical-align: middle;
+      .box-sizing(var(--ti-pagination-box-model));
+      & .ti3-pag-goto-icon {
+        .triangle-up(var(--ti-common-size-3x), calc(var(--ti-common-size-3x) / 1.6), var(--ti-common-color-bg-emphasize));
+        transform: translateY(-50%) rotate(90deg);
+        margin-left: calc((var(--ti-pagination-height) - (var(--ti-common-size-3x) / 1.6)) / 2 - 2px);
+        margin-top: 50%;
+      }
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: var(--ti-common-color-line-active);
+      }
+    }
+  }
+
+  .ti3-pag-goto-disable {
+    color: var(--ti-common-color-text-disabled);
+    cursor: not-allowed;
+    & .ti3-pag-goto-icon {
+      border-bottom-color: var(--ti-common-color-icon-disabled) !important;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// 组件吸底展示，主要用于表格数据量过多时，方便切换页码
+:host.ti3-page-container-fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: var(--ti-common-shadow-1-up);
+  background: var(--ti-common-color-bg-white-normal);
+  box-sizing: border-box;
+  padding: var(--ti-common-space-5x) var(--ti-common-space-6x); // 左右间距需要和tp-layout-section间距一致
+  z-index: 10;
+}

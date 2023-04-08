@@ -1,0 +1,27 @@
+<span #filterIcon class="ti3-icon ti3-icon-filter ti3-head-filter-icon" (click)="onClickDominator()" [id]="appendId('head-filter')"> </span>
+<ti-head-filter-drop
+  [dominatorElem]="filterIconEleRef.nativeElement"
+  [(ngModel)]="modelWhole"
+  [panelWidth]="getDropWidth()"
+  [panelAlign]="panelAlign"
+  [searchable]="searchable"
+  [options]="options"
+  [multiple]="multiple"
+  [selectAll]="selectAll"
+  [panelMaxHeight]="panelMaxHeight"
+  [labelKey]="labelKey"
+  [idKey]="idKey"
+  [noDataText]="noDataText"
+  [virtual]="virtual"
+  [isDatetime]="isDatetime"
+  [datetimeConfig]="datetimeConfig"
+  (select)="onSelect($event)"
+  [id]="appendId('headfilter_drop')"
+>
+  <ng-template #item let-item let-i="index">
+    <ng-container
+      *ngTemplateOutlet="itemTemplate ? itemTemplate : defaultItemTemplate; context: {$implicit: item, index: i}"
+    ></ng-container>
+  </ng-template>
+</ti-head-filter-drop>
+<ng-template #defaultItemTemplate let-item let-i="index"><span [title]="item[labelKey]">{{item[labelKey]}}</span></ng-template>

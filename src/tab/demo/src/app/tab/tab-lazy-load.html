@@ -1,0 +1,18 @@
+<ti-tabs>
+  <ti-tab id="tab-lazy-load-1" [(active)]="tabs[0].active" [header]="tabs[0].title">
+    <ng-template #tiTabContent>
+      <div>Content of Tab Pane 1</div>
+    </ng-template>
+  </ti-tab>
+  <ti-tab id="tab-lazy-load-2" [header]="tabs[1].title">
+    <ng-template #tiTabContent>
+      <div>Content of Tab Pane 2</div>
+      <div *ngFor="let item of ['f', 'i', 'g']">{{ item }}</div>
+    </ng-template>
+  </ti-tab>
+  <ti-tab id="tab-lazy-load-3" [header]="tabs[2].title">
+    <ng-template #tiTabContent>
+      <div>Content of Tab Pane 3</div>
+    </ng-template>
+  </ti-tab>
+</ti-tabs>

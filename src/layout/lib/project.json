@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/layout/lib",
+  "sourceRoot": "src/layout/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/layout"],
+      "options": {
+        "project": "src/layout/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/layout"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js layout"
+          },
+          {
+            "command": "ng default-build layout"
+          },
+          {
+            "command": "node build/clear-default-theme.js layout"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/layout && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build layout && ng pack layout && node build/publish.js layout --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

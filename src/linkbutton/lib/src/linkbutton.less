@@ -1,0 +1,33 @@
+@import '../../../themes/basic/base-all.less';
+
+::ng-deep :root {
+  --ti-link-btn-height: 24px;
+}
+
+:host {
+  display: inline-block;
+  text-decoration: none;
+  height: var(--ti-link-btn-height);
+  line-height: calc(var(--ti-link-btn-height) - 2px); // border上下2px
+  font-size: var(--ti-common-font-size-base);
+  color: var(--ti-common-color-text-secondary);
+  .box-sizing(border-box);
+  border: 1px solid var(--ti-common-color-line-normal);
+  padding: 0 var(--ti-common-space-10);
+
+  &:link,
+  &:active {
+    text-decoration: none;
+    color: var(--ti-common-color-text-secondary);
+  }
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+    border-color: var(--ti-common-color-line-active);
+    color: var(--ti-common-color-icon-hover);
+  }
+}
+
+.ti-link-btn-icon {
+  margin-right: var(--ti-common-space-base);
+}

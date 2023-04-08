@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/timeline/lib",
+  "sourceRoot": "src/timeline/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/timeline"],
+      "options": {
+        "project": "src/timeline/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/timeline"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js timeline"
+          },
+          {
+            "command": "ng default-build timeline"
+          },
+          {
+            "command": "node build/clear-default-theme.js timeline"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/timeline && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build timeline && ng pack timeline && node build/publish.js timeline --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

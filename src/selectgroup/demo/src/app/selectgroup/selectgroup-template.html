@@ -1,0 +1,28 @@
+<ti-selectgroup id="selectgroup-template-group" [(ngModel)]="value">
+  <ti-selectitem
+    [id]="'selectgroup-template-item' + i"
+    *ngFor="let item of items;index as i;"
+    [item]="item"
+    [checkPosition]="checkPosition"
+  >
+    <ng-template #item>
+      <div class="box">
+        <section class="boxSection">{{item.title}}</section>
+        <section class="boxSection">{{item.content}}</section>
+      </div>
+    </ng-template>
+  </ti-selectitem>
+</ti-selectgroup>
+
+<style>
+  .box {
+    width: 200px;
+    height: 50px;
+    background-color: lightblue;
+    text-align: center;
+  }
+  .boxSection {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+</style>

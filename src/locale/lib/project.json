@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/locale/lib",
+  "sourceRoot": "src/locale/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/locale"],
+      "options": {
+        "project": "src/locale/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/locale"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js locale"
+          },
+          {
+            "command": "ng default-build locale"
+          },
+          {
+            "command": "node build/clear-default-theme.js locale"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/locale && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build locale && ng pack locale && node build/publish.js locale --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}
