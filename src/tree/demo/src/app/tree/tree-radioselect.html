@@ -1,5 +1,0 @@
-<ti-tree id="tree-radioselect" [data]="innerData" (select)="onSelect($event)"> </ti-tree>
-<div class="current-value-container">
-  <pre>选中项: {{ selectedData[0].label }}</pre>
-  <pre>父节点:<ng-container *ngFor="let child of selectedData[0].parent">{{child.label}}/</ng-container></pre>
-</div>

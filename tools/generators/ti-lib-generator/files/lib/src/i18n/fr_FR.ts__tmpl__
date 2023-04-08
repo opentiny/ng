@@ -1,7 +1,0 @@
-import { <%= i18nWords %> } from './<%= i18nWords %>';
-
-export const fr_FR: <%= i18nWords %> = {
-  <%= i18nWordsName %>: {
-      label: 'Confirmer'
-  }
-};

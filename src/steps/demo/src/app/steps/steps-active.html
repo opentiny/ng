@@ -1,9 +1,0 @@
-<h3>1.描述</h3>
-<p>activeStep接口测试</p>
-<h3>2.示例</h3>
-<p>(2.1)activeStep动态变更</p>
-<ti-steps [steps]="steps" [clickable]="clickable" [(activeStep)]="activeStep"></ti-steps>
-<p>当前选中项:{{activeStep.label}}</p>
-<br />
-
-<button (click)="jump()">点击跳转第2步</button>

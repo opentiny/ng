@@ -1,8 +1,0 @@
-<ti-tabs>
-  <ti-tab *ngFor="let tab of tabs" [header]="tab.title" [(active)]="tab.active" (activeChange)="tab.onActiveChange($event, tab.title)">
-  </ti-tab>
-</ti-tabs>
-
-<div class="m-6">
-  <router-outlet></router-outlet>
-</div>

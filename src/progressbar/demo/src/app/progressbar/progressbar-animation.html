@@ -1,9 +1,0 @@
-<div class="container no-underline">
-  <div class="w-4/5 inline-block mr-3">
-    <ti-progressbar [animation]="isAnimation" [value]="value" [max]="max"> </ti-progressbar>
-  </div>
-  <span>{{ 100 * value / max }}%</span>
-</div>
-<button class="mt-3 mr-3" (click)="switchState()" tiButton color="primary">打开/关闭动效</button>
-<button class="mt-3 mr-3" (click)="down()" tiButton color="primary">后退</button>
-<button class="mt-3" (click)="up()" tiButton color="primary">前进</button>

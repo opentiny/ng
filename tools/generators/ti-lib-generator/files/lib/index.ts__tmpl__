@@ -1,2 +1,0 @@
-export * from './src/<%= moduleName %>';
-export * from './src/<%= componentName %>';

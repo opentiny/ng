@@ -1,8 +1,0 @@
-<ti-searchbox [(ngModel)]="value" (suggest)="onSuggest($event)">
-  <ng-template #item let-item let-i="index">
-    <span> {{i}}<img src="{{item.url}}" class="w-7 h-5 inline-block align-middle" />{{item.label}} </span>
-  </ng-template>
-</ti-searchbox>
-<div class="current-value-container">
-  <pre>Current Value: {{ value }}</pre>
-</div>

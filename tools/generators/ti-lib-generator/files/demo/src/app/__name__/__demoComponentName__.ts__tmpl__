@@ -1,7 +1,0 @@
-import { Component } from '@angular/core';
-
-@Component({
-  templateUrl: './<%= name %>-basic.html'
-})
-export class <%= demoComponentName %> {
-}

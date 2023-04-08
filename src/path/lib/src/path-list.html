@@ -1,8 +1,0 @@
-<div class="ti3-pathList-item" *ngFor="let item of items; index as i;">
-  <span class="ti3-pathList-index">{{i + 1}}.</span>
-  <ti-icon class="ti3-pathList-icon" [name]="item.type === 'file' ? 'file' : 'document'"> </ti-icon>
-  <span tiOverflow [id]="appendId('item' + i + '_label')">{{item.label}}</span>
-  <div class="ti3-pathList-close" *ngIf="clearable" (click)="clearItem(item)" [id]="appendId('item' + i + '_close')">
-    <ti-icon class="ti3-pathList-closeIcon" name="close"></ti-icon>
-  </div>
-</div>
