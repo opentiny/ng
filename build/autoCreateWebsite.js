@@ -1,7 +1,7 @@
 /**
  * 该脚本用于自动化生成AppWcModules.ts文件、组件的md文件 js文件
- * 在根目录下，执行`npm run createfiles`命令即可生效
- * 如果有需要忽略的文件，使用ignore参数处理，例如：npm run createfiles --ignore button,alert
+ * 在根目录下，执行`npm run create:websitefiles`命令即可生效
+ * 如果有需要忽略的文件，使用ignore参数处理，例如：npm run createWebsiteFiles --ignore button,alert
 */
 const fs = require('fs-extra');
 const path = require('path');
@@ -12,10 +12,10 @@ const blackFiles = ['app.html', 'app.server.module.ts', 'AppComponent.ts', 'AppM
 'AppWcModule.ts', 'DemoModules.ts', 'IndexComponent.ts', 'NoneComponent.ts',
 'app\\zoom', 'app\\vars', 'app\\datedominator', 'app\\dateedit','app\\tab-old',
 'app\\droplist', 'app\\drop', 'app\\dominator', 'app\\drag',
-'app\\list', 'app\\many', 'app\\tokens', 'table-row-drag1.html', 'app\\allcomp'
-]; // 文件黑名单
+'app\\list', 'app\\many', 'app\\tokens', 'table-row-drag1.html', 'app\\allcomp', 'src\\ng'
+]; // 文件黑名单 //TODO:
 
-const appDir = path.resolve(__dirname, '../src/app/'); // __dirname是当前模块的目录名
+const appDir = path.resolve(__dirname, '../src'); // __dirname是当前模块的目录名
 
 const filesList = [];
 const selectors = [];
@@ -34,21 +34,28 @@ function isContain(fullPath, blackFiles) {
     return ans;
 }
 
-function getFileList(dir, filesList = []) {
+function getFileList(dir, filesList = [], isFirst = false) {
   const files = fs.readdirSync(dir); // 返回一个指定目录下的数组对象。
   files.forEach((item, index) => {
-    var fullPath = path.resolve(dir, item); // 将路径或路径片段的序列解析为绝对路径。给定的路径序列从右到左处理
+    var fullPath = path.resolve(dir, isFirst ? `${item}/demo/src/app` : item); // 将路径或路径片段的序列解析为绝对路径。给定的路径序列从右到左处理
+    if (!fs.pathExistsSync(fullPath)) {
+      return;
+    }
     const stat = fs.statSync(fullPath); // 获取路径的<fs.Stats>
     if (stat.isDirectory()) {
         getFileList(fullPath, filesList); //递归读取文件
     } else {
-        if (!isContain(fullPath, blackFiles) && fullPath.endsWith('.html')) {
-            let pathArr = fullPath.split('\\');
-            let appIndex = pathArr.indexOf('app');
-            let compName = pathArr[appIndex + 1]; // 组件名称是app目录的下一层
+        if (stat.isFile() && !isContain(fullPath, blackFiles) && fullPath.endsWith('.html')) {
+            const pathArr = fullPath.split('\\');
+            if (pathArr.includes('leftmenu') && !pathArr.includes('website-views')) {
+              return;
+            }
+            const appIndex = pathArr.indexOf('app');
+            const compName = pathArr[appIndex + 1]; // 组件名称是app目录的下一层
+            const firstSrcIndex = pathArr.indexOf('src');
             filesList.push({
                 component: compName,
-                path: pathArr.slice(appIndex + 1).join('/')
+                path: `../../../../${pathArr.slice(firstSrcIndex + 1).join('/')}`
             });
         }
     }
@@ -74,7 +81,7 @@ function getSelectorAndComp(filesList) {
         let com = `${transform2CamelCase(temp.split('-'))}${'Component'}`
 
         let tempSelector = {
-            selector: `\'${'website-tiny-'}${temp}\'`,
+            selector: `\'${'website-tiny-'}${temp.replace('-website-view', '')}\'`,
             component: com,
         };
 
@@ -104,7 +111,7 @@ const generatorAppCode = () => {
 const copy = async () => {
     await fs.copy(
         path.resolve(__dirname, 'autoAppWcModule.ts'),
-        path.resolve(__dirname, '../src/app/AppWcModule.ts')
+        path.resolve(__dirname, '../src/ng/demo/src/app/AppWcModule.ts')
     )
 
     fs.removeSync(path.resolve(__dirname, 'autoAppWcModule.ts'))
@@ -132,7 +139,7 @@ const deleteWebdoc = () =>  {
     });
 }
 const generatorComponentCode = () => {
-    const folderPath = path.resolve(__dirname, '../src/app/');
+    const folderPath = path.resolve(__dirname, '../src/app/'); // TODO:
     filesList.forEach((item, index) => {
         if(ignoreComs[0]?.includes(item.component)) {
             return;
@@ -156,10 +163,10 @@ const generatorComponentCode = () => {
     });
 }
 
-getFileList(appDir, filesList);
+getFileList(appDir, filesList, true);
 getSelectorAndComp(filesList);
 generatorAppCode();
 copy();
 // deleteWebdoc(); // 删除webdoc中目录
-generatorComponentCode();
+// generatorComponentCode();
 

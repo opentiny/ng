@@ -1,0 +1,39 @@
+<h3>描述</h3>
+<p>表单整体校验调用check方法实现</p>
+<h3>示例</h3>
+<h4>多层FormGroup嵌套，并且在formGroup上添加自定义校验规则</h4>
+
+<form [formGroup]="form">
+  <span class="label">name：</span><input tiValidation formControlName="myInput" tiText /> <br /><br />
+  <span class="label">age：</span><input tiValidation formControlName="myInput1" tiText /> <br /><br />
+  <div formArrayName="nest">
+    <div *ngFor="let item of nest.controls; index as i;">
+      <div [formGroupName]="i">
+        <span class="label">{{labelData[i][0]}}：</span><input tiValidation formControlName='{{ "myInput" + i + "1"}}' tiText />
+        <br /><br />
+        <span class="label">{{labelData[i][1]}}：</span><input tiValidation formControlName='{{ "myInput" + i + "2"}}' tiText />
+      </div>
+      <span *ngIf="item.errors && item.errors.myValidator">
+        <span class="label"></span><span class="errormessage">{{item.errors.errorMessage}}</span>
+      </span>
+      <br /><br />
+    </div>
+  </div>
+  <br /><br />
+  <!-- 默认-->
+  <button type="button" (click)="checkGroup()">CheckGroup</button>
+  <!-- 从10.0.1版本开始，开发者可配置updateValueAndValidity方法的参数-->
+  <button type="button" (click)="checkGroupWithConfig()">checkGroupWithConfig</button>
+</form>
+<style>
+  .label {
+    display: inline-block;
+    width: 50px;
+    text-align: right;
+  }
+  .errormessage {
+    color: #f66f6a;
+    margin-top: 8px;
+    display: inline-flex;
+  }
+</style>

@@ -1,0 +1,19 @@
+<h2>1.描述</h2>
+<p>路由跳转测试， 支持href和routerLink 两种形式</p>
+<p>使用routerLink实现路由跳转时，可设置queryParams属性传递参数</p>
+<h2>2.示例</h2>
+<ti-crumb id="crumb" [items]="items" (select)="onSelect($event)"></ti-crumb>
+<div class="demo-router">
+  <router-outlet></router-outlet>
+</div>
+
+<style>
+  .demo-router {
+    width: 800px;
+    height: 400px;
+    line-height: 400px;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 18px;
+  }
+</style>

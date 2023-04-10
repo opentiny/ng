@@ -1,0 +1,4 @@
+<ti-cascader [items]="items" [clearable]="true" [(ngModel)]="selected" valueKey="id"></ti-cascader>
+<div class="current-value-container">
+  <pre>Current value: {{ selected | json }}</pre>
+</div>

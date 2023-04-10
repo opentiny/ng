@@ -1,0 +1,52 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>列拖动特性 + 列动态显示/隐藏特性 + 表头锁定特性</p>
+  <h3>示例</h3>
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" tiColsResizable
+    ><!-- 使用列拖动功能时，需要在ti-table标签上使用tiColsResizable指令。 -->
+    <div style="height: 28px; margin-bottom: 10px">
+      <!--控制列隐藏/显示-->
+      <ti-cols-toggle style="float: right" [searchable]="false"></ti-cols-toggle>
+    </div>
+
+    <!--.ti3-table-fixed-head是表头的容器，它的子元素中的table(thead)是实际显示的表头-->
+    <!--注意:此处一定要使用.ti3-table-fixed-head样式类-->
+    <div class="ti3-table-fixed-head">
+      <table>
+        <thead>
+          <tr>
+            <ng-container *ngFor="let column of columns">
+              <!--注意:给表格设置宽度时，给.ti3-table-fixed-head和.ti3-table-container下的对应的th都要设置-->
+              <th tiOverflow *ngIf="column.show || column.show === undefined" width="{{column.width}}">{{column.title}}</th>
+            </ng-container>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <!--.ti3-table-container是表体的容器，它的子元素中的table的thead是用来控制各列宽度，实际不显示；tbody是实际显示的表体-->
+    <!--注意1:此处一定要使用.ti3-table-container样式类-->
+    <!--注意2:用户在有.ti3-table-container样式类的容器上来设置表体的高度或最大高度-->
+    <!-- 同时使用列拖动功能时，需要给table一个带有ti3-resize-wrapper样式类的父容器，其父节点是ti-table, 子节点是table。 -->
+    <div class="ti3-table-container ti3-resize-wrapper" style="max-height: 195px">
+      <table>
+        <thead>
+          <tr>
+            <ng-container *ngFor="let column of columns">
+              <!--此处的表头是用来控制各列宽度，实际不显示，所以注意 th 标签内部不要嵌套任何内容。-->
+              <th tiOverflow *ngIf="column.show || column.show === undefined" width="{{column.width}}"></th>
+            </ng-container>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of displayed">
+            <td tiOverflow *ngIf="columns[0].show">{{row.firstName}}</td>
+            <td tiOverflow *ngIf="columns[1].show">{{row.lastName}}</td>
+            <td tiOverflow *ngIf="columns[2].show">{{row.age}}</td>
+            <td tiOverflow>{{row.balance}}</td>
+            <td tiOverflow *ngIf="columns[4].show">{{row.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ti-table>
+</div>

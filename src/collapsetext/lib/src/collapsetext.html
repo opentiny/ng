@@ -1,0 +1,10 @@
+<section class="ti3-collapsetext-container" (click)="changeCollapse($event)">
+  <span
+    class="ti3-collapsetext-label"
+    [ngClass]="{ 'ti3-collapsetext-label-title': type === 'title',
+                   'ti3-collapsetext-label-highlight': highlight }"
+  >
+    {{label}}
+  </span>
+  <span class="ti3-collapsetext-arrow" [ngClass]="{ 'ti3-collapsetext-arrow-collapsed': collapsed }"> </span>
+</section>

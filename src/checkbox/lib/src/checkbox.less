@@ -1,0 +1,226 @@
+@import '../../../themes/basic/base-all.less';
+
+@checkbox-name: tiCheckbox;
+@border-box-model: border-box;
+
+:host[@{checkbox-name}] + label {
+  --ti-checkbox-container-size: var(--ti-common-size-4x);
+  --ti-checkbox-partial-center-size: 6px;
+  --ti-checkbox-border-weight: var(--ti-common-border-weight-normal);
+  --ti-checkbox-partial-center-position: calc(
+    (var(--ti-checkbox-container-size) - var(--ti-checkbox-partial-center-size) - var(--ti-checkbox-border-weight) * 2) / 2
+  );
+  --ti-checkbox-timing-function-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ti-checkbox-checked-mark-size: 7px;
+}
+
+// :hostinput 的写法只是编译器不认识，能正常运行
+:hostinput[type='checkbox'][@{checkbox-name}] {
+  // checkbox的input框不需要显示：checkbox的样式使用span/label定制，此处只使用input的点选功能
+  // 之前设置为left: -9999px，虽然也能让元素不可见，但是当有横向滚动条时，元素聚焦会导致页面移向最左边
+  display: none !important;
+  // 1.基础样式
+  & + .ti3-checkbox {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-bottom: 0;
+    line-height: 1em;
+    font-weight: normal;
+    cursor: pointer;
+    .user-select();
+    .box-sizing(@border-box-model);
+
+    // 复选框样式
+    .ti3-checkbox-skin {
+      position: relative;
+      display: inline-block;
+      flex-shrink: 0;
+      margin-right: var(--ti-common-space-2x);
+      margin-bottom: 0;
+      height: var(--ti-checkbox-container-size);
+      width: var(--ti-checkbox-container-size);
+      line-height: calc(var(--ti-checkbox-container-size) - var(--ti-checkbox-border-weight) * 2);
+      background-color: var(--ti-common-color-bg-white-normal);
+      border: var(--ti-checkbox-border-weight) var(--ti-common-border-style-solid) var(--ti-common-color-line-normal);
+      text-align: center;
+      color: transparent;
+      vertical-align: top;
+      // 如果继承父节点的border-collapse属性且为collapse，IE下对勾不显示
+      // 场景：复选框用在formfield组件中对勾不显示；多选树在表格中对勾不显示（多选树测试用例）
+      border-collapse: separate;
+      .border-radius(var(--ti-common-border-radius-normal));
+      .box-sizing(@border-box-model);
+      .transition (background-color; 0.15s, border-color; 0.15s);
+    }
+
+    // 文本样式
+    .ti3-checkbox-label {
+      margin-bottom: 0px;
+      display: inline-block;
+      color: var(--ti-common-color-text-primary);
+      line-height: var(--ti-checkbox-container-size);
+      .user-select();
+      font-weight: var(--ti-common-font-weight-4);
+      font-size: var(--ti-common-font-size-base);
+    }
+  }
+
+  // 2.非禁用状态样式：focus hover active等状态
+  &:not([disabled]) {
+    // 2.1选中状态
+    &:checked + .ti3-checkbox {
+      .ti3-checkbox-skin {
+        border-color: var(--ti-common-color-line-active);
+        background-color: var(--ti-common-color-bg-emphasize);
+        color: var(--ti-common-color-icon-white);
+        &:hover,
+        &:focus {
+          border-color: var(--ti-common-color-bg-hover);
+          background-color: var(--ti-common-color-bg-hover);
+        }
+        &:active {
+          border-color: var(--ti-common-color-bg-hover);
+          background-color: var(--ti-common-color-bg-hover);
+        }
+      }
+    }
+
+    // 2.2非选中状态
+    &:not(:checked) + .ti3-checkbox {
+      .ti3-checkbox-skin {
+        &:hover,
+        &:focus {
+          border-color: var(--ti-common-color-line-active);
+        }
+        &:active {
+          border-color: var(--ti-common-color-line-active);
+          background-color: var(--ti-common-color-bg-white-normal);
+        }
+      }
+    }
+
+    // 2.3半选状态
+    &:indeterminate + .ti3-checkbox {
+      .ti3-checkbox-skin {
+        background-color: var(--ti-common-color-bg-emphasize);
+        border-color: var(--ti-common-color-line-active);
+        &:before {
+          background-color: var(--ti-common-color-icon-white);
+        }
+        // 半选且Hover状态
+        &:hover {
+          background-color: var(--ti-common-color-bg-hover);
+          border-color: var(--ti-common-color-bg-hover);
+        }
+      }
+    }
+  }
+
+  // 3.禁用状态样式
+  &[disabled] {
+    + .ti3-checkbox {
+      cursor: not-allowed;
+      .ti3-checkbox-skin {
+        outline: none;
+      }
+      .ti3-checkbox-label {
+        color: var(--ti-common-color-text-disabled);
+      }
+    }
+
+    // 3.1 选中状态
+    &:checked + .ti3-checkbox {
+      .ti3-checkbox-skin {
+        color: var(--ti-common-color-icon-disabled);
+        background-color: var(--ti-common-color-bg-disabled);
+        border-color: var(--ti-common-color-line-disabled);
+      }
+    }
+
+    // 3.2 不选中状态
+    &:not(:checked) + .ti3-checkbox {
+      .ti3-checkbox-skin {
+        color: transparent;
+        background-color: var(--ti-common-color-bg-disabled);
+        border-color: var(--ti-common-color-line-disabled);
+      }
+    }
+
+    // 3.3 半选状态
+    &:indeterminate + .ti3-checkbox {
+      .ti3-checkbox-skin {
+        &:before {
+          background-color: var(--ti-common-color-icon-disabled);
+        }
+      }
+    }
+  }
+
+  //对勾(灰化/正常下的全选)
+  &:checked + .ti3-checkbox {
+    .ti3-checkbox-skin:before {
+      content: ' ';
+      display: table;
+      position: absolute;
+      .box-sizing(@border-box-model);
+      top: 50%;
+      left: 21%;
+      width: var(--ti-checkbox-checked-mark-size);
+      height: calc(var(--ti-checkbox-checked-mark-size) * (9 / 7)); // 按照比例计算 9 / 7;
+      border-width: 0 2px 2px 0;
+      border-style: solid;
+      transform: rotate(45deg) translate(-55%, -55%) scale(1);
+    }
+  }
+
+  // 内部小块儿(灰化/正常下的半选)
+  &:indeterminate + .ti3-checkbox {
+    .ti3-checkbox-skin:before {
+      content: '';
+      position: absolute;
+      top: var(--ti-checkbox-partial-center-position);
+      left: var(--ti-checkbox-partial-center-position);
+      width: var(--ti-checkbox-partial-center-size);
+      height: var(--ti-checkbox-partial-center-size);
+      .border-radius(1px);
+    }
+  }
+}
+
+/*******************************************动效************************************************/
+/*选中时tick对号及半选时的内部小方块动效*/
+@keyframes rect-selectedAnimate {
+  from {
+    transform: scale(0);
+    transform-origin: center;
+  }
+  to {
+    color: var(--ti-common-color-text-white);
+    transform: scale(1);
+    transform-origin: center;
+  }
+}
+@keyframes tick-selectedAnimate {
+  from {
+    transform: rotate(45deg) translate(-55%, -55%) scale(0);
+    transform-origin: center;
+  }
+  to {
+    color: var(--ti-common-color-text-white);
+    transform: rotate(45deg) translate(-55%, -55%) scale(1);
+    transform-origin: center;
+  }
+}
+
+/*动效*/
+input[type='checkbox'][@{checkbox-name}]:not(:disabled):checked + .ti3-checkbox .ti3-icon-checkmark:before {
+  animation: tick-selectedAnimate 0.2s var(--ti-checkbox-timing-function-default) forwards;
+}
+input[type='checkbox'][@{checkbox-name}]:not(:disabled):indeterminate + .ti3-checkbox .ti3-icon-checkmark:before {
+  animation: rect-selectedAnimate 0.2s var(--ti-checkbox-timing-function-default) forwards;
+}
+
+/*选中状态hover动画*/
+input[type='checkbox'][@{checkbox-name}]:not(:disabled):checked + .ti3-checkbox .ti3-checkbox-skin:hover {
+  .transition(border-color; 0.2s; var(--ti-checkbox-timing-function-default), background-color; 0.2s; var(--ti-checkbox-timing-function-default));
+}

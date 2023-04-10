@@ -1,0 +1,23 @@
+// @import "../../themes/basic/base-.allless";
+
+::ng-deep :root {
+  --ti3-collapsebox-close-position: 20px;
+}
+
+.ti3-collapsebox-container {
+  display: block;
+  background: var(--ti-common-color-bg-white-normal);
+  padding: var(--ti-common-space-6x) var(--ti-common-space-8x);
+  box-shadow: var(--ti-common-shadow-1-down);
+  position: relative;
+}
+
+.ti3-collapsebox-close {
+  cursor: pointer;
+  position: absolute;
+  top: var(--ti3-collapsebox-close-position);
+  right: var(--ti3-collapsebox-close-position);
+  &:hover {
+    color: var(--ti-common-color-icon-hover);
+  }
+}

@@ -1,0 +1,34 @@
+.ti3-table-virtual-scroll-viewport {
+  display: block;
+  position: relative;
+  overflow: auto;
+  contain: strict;
+  transform: translateZ(0);
+  will-change: scroll-position;
+  -webkit-overflow-scrolling: touch;
+
+  &.ti3-table-virtual-scroll-viewport-nodata {
+    // 以下样式都是为了让在无数据时无数据的dom能够显示出来（撑起 ti3-table-virtual-scroll-viewport 的高度）
+    height: auto !important; // 覆盖 style.height: 0 的设置；
+    contain: none;
+    & > .ti3-table-virtual-scroll-content-wrapper {
+      position: static;
+    }
+  }
+}
+
+.ti3-table-virtual-scroll-content-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  contain: content;
+}
+
+.ti3-table-virtual-scroll-spacer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  width: 1px;
+  transform-origin: 0 0;
+}

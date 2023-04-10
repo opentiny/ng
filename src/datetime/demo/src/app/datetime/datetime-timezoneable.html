@@ -1,0 +1,33 @@
+<ti-datetime
+  class="mb-3"
+  id="datetime-timezoneable-localzone"
+  [(ngModel)]="value"
+  [timeZoneable]="true"
+  (timeZoneChange)="getCurrentTimeZone($event)"
+>
+</ti-datetime>
+<div class="current-value-container">
+  <pre>Current timeZone: {{ timeZone }}</pre>
+  <pre>Current value: {{ value | json }}</pre>
+</div>
+<br />
+<ti-datetime class="mb-3" id="datetime-timezoneable-utczone" [(ngModel)]="value1" [timeZoneable]="true" [(timeZone)]="timeZone1">
+</ti-datetime>
+<div class="current-value-container">
+  <pre>Current timeZone: {{ timeZone1 }}</pre>
+  <pre>Current value: {{ value1 | json }}</pre>
+</div>
+<br />
+<ti-datetime
+  class="mb-3"
+  id="datetime-customize-timezoneable-localzone"
+  [(ngModel)]="value2"
+  [timeZoneable]="true"
+  (timeZoneChange)="getCurrentTimeZone2($event)"
+  [customizeOptions]="customizeOptions"
+>
+</ti-datetime>
+<div class="current-value-container">
+  <pre>Current timeZone: {{ timeZone2 }}</pre>
+  <pre>Current value: {{ value2 | json }}</pre>
+</div>

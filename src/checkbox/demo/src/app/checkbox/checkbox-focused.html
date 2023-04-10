@@ -1,0 +1,31 @@
+<h3>描述</h3>
+<p>Checkbox复选框组件，支持聚焦autofocus/focus()/tabindex演示</p>
+<h3>示例</h3>
+<p>1.autofocus演示：</p>
+<input type="checkbox" tiCheckbox autofocus label="autofocus初始化焦点" />
+<br />
+<br /><br /><br />
+<p>2.focus()演示：</p>
+<input id="myinput" type="checkbox" tiCheckbox label="element.focus()" />
+<button type="button" onclick="document.getElementById('myinput').focus()">点击获取焦点</button>
+<span>document.getElementById('myinput').focus()</span>
+<br />
+<input #myinput2 type="checkbox" tiCheckbox label="compnent.focus()" />
+<button type="button" (click)="myinput2.focus()">点击获取焦点</button>
+<span>(click)="myinput2.focus()"</span>
+<button type="button" (click)="myinput2.blur()">点击失去焦点</button>
+<span>(click)="myinput2.blur()"</span>
+<br /><br /><br />
+<p>3.tabindex演示：</p>
+<input type="checkbox" tiCheckbox tabindex="4" label="tabindex=4" />
+<br />
+<input type="checkbox" tiCheckbox tabindex="2" label="tabindex=2" />
+<br />
+<input type="checkbox" tiCheckbox tabindex="6" label="tabindex=6" />
+<br />
+<input type="checkbox" tiCheckbox [disabled]="myDisabled" tabindex="3" label="tabindex=3，disabled={{myDisabled}}" />
+<button type="button" (click)="changeDisabled()">点击改变disabled</button>
+<p>置灰时不参与tabindex</p>
+<br /><br />
+<p>4.click演示：</p>
+<input type="checkbox" tiCheckbox label="点我" />

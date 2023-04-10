@@ -1,0 +1,11 @@
+@import '../../../themes/basic/mixins.less';
+.ti3-guide-body {
+  display: block;
+  font-size: var(--ti-common-font-size-base);
+  background: var(--ti-common-color-bg-white-normal);
+  box-shadow: var(--ti-common-shadow-1-down);
+  width: 100%;
+  padding: var(--ti-common-space-6x) var(--ti-common-space-6x) var(--ti-common-space-6x) var(--ti-common-space-6x);
+  .box-sizing(border-box);
+  margin-top: var(--ti-guide-body-space); // 内容区域和卡片非分离
+}

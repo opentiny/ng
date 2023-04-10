@@ -1,0 +1,30 @@
+<ti-modal-header class="ti3-image-preview-modal-header">
+  <span *ngIf="showFileName" [id]="appendId('name')">{{fileList[index].name}}</span>
+</ti-modal-header>
+<ti-modal-body class="ti3-image-preview-modal-body">
+  <div class="ti3-image-preview-container">
+    <img #imgTemplate [src]="sanitizer.bypassSecurityTrustUrl(fileList[index].previewUrl)" />
+  </div>
+  <div #switchBtn class="ti3-image-preview-icon-container">
+    <ti-icon
+      tiOutline
+      [tabindex]="index === 0 ? -1 : 0"
+      name="angle-left"
+      class="ti3-image-preview-icon ti3-image-preview-icon-left"
+      [ngClass]="{'ti3-image-preview-icon-disabled': index === 0 ? true: false }"
+      (click)="toPrevious()"
+      (keydown.enter)="toPrevious()"
+      [id]="appendId('left')"
+    ></ti-icon>
+    <ti-icon
+      tiOutline
+      [tabindex]="index === fileList.length - 1 ? -1 : 0"
+      name="angle-right"
+      class="ti3-image-preview-icon ti3-image-preview-icon-right"
+      [ngClass]="{'ti3-image-preview-icon-disabled': index === fileList.length - 1 ? true : false}"
+      (click)="toNext()"
+      (keydown.enter)="toNext()"
+      [id]="appendId('right')"
+    ></ti-icon>
+  </div>
+</ti-modal-body>

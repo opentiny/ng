@@ -1,0 +1,17 @@
+<div class="example-container">
+  <ti-nav>
+    <ti-nav-left>TinyNG</ti-nav-left>
+    <ti-nav-menu [items]="items">
+      <ng-template #item let-item>
+        {{ item.label }}
+        <ti-icon *ngIf="item.icon" [name]="item.icon" style="color: green"></ti-icon>
+      </ng-template>
+    </ti-nav-menu>
+  </ti-nav>
+</div>
+
+<style>
+  .example-container {
+    min-height: 350px;
+  }
+</style>

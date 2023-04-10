@@ -1,0 +1,21 @@
+<ti-formfield verticalAlign="middle">
+  <ti-item [label]="'国家'" [index]="order[0]">
+    <input type="text" tiText [(ngModel)]="contryValue" />
+  </ti-item>
+  <ti-item [label]="'性别'" [index]="order[1]">
+    <input type="text" tiText [(ngModel)]="sexValue" />
+  </ti-item>
+  <ti-item [label]="'身份证号码'" [index]="order[2]">
+    <input type="text" tiText [(ngModel)]="IDValue" />
+  </ti-item>
+  <ti-item [label]="'Email'" [index]="order[3]">
+    <input type="text" tiText [(ngModel)]="emailValue" />
+  </ti-item>
+  <ti-item [label]="'昵称'" [index]="order[4]">
+    <input type="text" tiText [(ngModel)]="nickValue" />
+  </ti-item>
+  <ti-button-item>
+    <button class="mr-3" type="button" color="danger" tiButton>确认</button>
+    <button type="button" tiButton>取消</button>
+  </ti-button-item>
+</ti-formfield>

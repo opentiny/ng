@@ -1,0 +1,8 @@
+{
+	"name": "<%= importPath %>",
+	"version": "<%= version %>",
+	"peerDependencies": {
+		"@angular/common": ">=13.0.0",
+		"@angular/core": ">=13.0.0"
+	}
+}

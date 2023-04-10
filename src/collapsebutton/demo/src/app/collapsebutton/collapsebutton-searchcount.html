@@ -1,0 +1,19 @@
+<ti-collapsebutton id="collapsebutton-searchcount" [(collapsed)]="collapsed" [searchCount]="searchCount" style="margin: 20px 8px 0">
+</ti-collapsebutton>
+
+<ti-collapsepanel *ngIf="!collapsed">
+  <div>
+    <ti-formfield [verticalAlign]="fieldVerticalAlign" [colsNumber]="colsNumber" cols="textForm1.cols">
+      <ti-item [label]="text1">
+        <ti-searchbox [(ngModel)]="advancedSearch.serviceName"></ti-searchbox>
+      </ti-item>
+      <ti-item [label]="text2">
+        <ti-searchbox [(ngModel)]="advancedSearch.status"></ti-searchbox>
+      </ti-item>
+    </ti-formfield>
+  </div>
+  <div style="margin-top: 12px">
+    <button tiButton type="button" style="margin-right: 10px" (click)="onSearchClick()">{{collapseButtonSearch}}</button>
+    <button tiButton type="button" (click)="onResetButtonClick()">{{collapseButtonReset}}</button>
+  </div>
+</ti-collapsepanel>

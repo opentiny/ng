@@ -1,0 +1,21 @@
+<h3>描述</h3>
+<p>时间面板时分秒禁用场景测试</p>
+<h3>示例</h3>
+<p>1.不设置最大最小值：</p>
+<ti-time [(ngModel)]="timeValue" [id]="'time1'"></ti-time>
+<br /><br />
+<p>2.只设置最大值：</p>
+<ti-time [(ngModel)]="timeValue1" [id]="'time2'" [max]="max"></ti-time>
+<br /><br />
+<p>3.只设置最小值：</p>
+<ti-time [(ngModel)]="timeValue2" [id]="'time3'" [min]="min"></ti-time>
+<br /><br />
+<p>4.最大最小值都设置：</p>
+<ti-time [(ngModel)]="timeValue3" [id]="'time4'" [max]="max" [min]="min"></ti-time>
+<br /><br />
+<p>5.最大时与最小时相同：</p>
+<ti-time [(ngModel)]="timeValue4" [id]="'time5'" [max]="max1" [min]="min1"></ti-time>
+<br /><br />
+<p>6.最大时分与最小时分相同：</p>
+<ti-time [(ngModel)]="timeValue5" [id]="'time6'" [max]="max2" [min]="min2"></ti-time>
+<button type="button" tiButton (click)="changeMaxMinValue()">changeMaxMinValue</button>

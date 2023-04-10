@@ -2,10 +2,13 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+export const environment: any = {
   production: false,
-  isWc: false  // 是否构建成web component
+  isWc: false // 是否构建成web component
 };
+
+window['DEPLOY_URL'] = '';
+window['PUBLIC_URL'] = '';
 
 /*
  * In development mode, to ignore zone related error stack frames such as

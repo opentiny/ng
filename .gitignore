@@ -3,6 +3,7 @@
 /dist
 /tmp
 /out-tsc
+/src_bak
 
 # dependencies
 /node_modules
@@ -43,8 +44,9 @@ Thumbs.db
 
 /tiny-design
 
-@opentiny/ng-tinydoc/webdoc
-@opentiny/ng-tinydoc/app
-@opentiny/ng-tinydoc/scripts
-@opentiny/ng-tinydoc/.npmrc
-@opentiny/ng-tinydoc/package-lock.json
+website-tinydoc/webdoc
+website-tinydoc/app
+website-tinydoc/scripts
+website-tinydoc/.npmrc
+website-tinydoc/package-lock.json
+/build/basicVarList.json

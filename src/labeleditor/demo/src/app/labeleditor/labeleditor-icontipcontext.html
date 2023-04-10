@@ -1,0 +1,25 @@
+<h4 class="mb-3">1.component</h4>
+<ti-labeleditor
+  id="labeleditor-iconTipContext-component"
+  class="demo-labeleditor-container"
+  [(ngModel)]="label"
+  [iconTip]="componentClass"
+  [iconTipContext]="tipContext"
+>
+</ti-labeleditor>
+
+<h4 class="my-3">2.template</h4>
+<ti-labeleditor
+  id="labeleditor-iconTipContext-template"
+  class="demo-labeleditor-container"
+  [(ngModel)]="label"
+  [autoTip]="false"
+  [iconTip]="iconTemplate"
+  [iconTipContext]="iconContext"
+>
+</ti-labeleditor>
+
+<ng-template #iconTemplate let-context="context">
+  <span>{{context}}</span>
+</ng-template>
+<demo-log [logs]="myLogs"></demo-log>

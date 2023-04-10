@@ -33,5 +33,12 @@
     "less.validate": true,
     "scss.validate": false,
     "CodeCheck.RealTimeCodeMarsCheck.Enable": false,
-    "CodeCheck.AllRelatedRemoteBranch": ""
+    "CodeCheck.AllRelatedRemoteBranch": "",
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+      },
+     "editor.formatOnSave": false
+    }
 }

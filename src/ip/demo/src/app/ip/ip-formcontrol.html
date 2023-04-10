@@ -1,0 +1,6 @@
+<form [formGroup]="ipForm">
+  <ti-ip id="ip-form" formControlName="ipValue" [version]="4"></ti-ip>
+</form>
+<div class="current-value-container">
+  <pre>Current Value: {{ ipForm.value.ipValue }}</pre>
+</div>

@@ -22,7 +22,7 @@ TinyNG
 - 支持 OnPush 模式。
 - 使用 TypeScript 开发。
 - 利用 CSS variables 提供强大的主题配置能力。
-- 支持 7 种 国际化语言。
+- 支持 5 种 国际化语言。
 
 ## 支持环境
 

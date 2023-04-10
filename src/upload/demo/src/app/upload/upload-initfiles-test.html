@@ -1,0 +1,9 @@
+<h3>描述</h3>
+<p>同时设置 initFiles 和 maxCount 时，供测试使用。</p>
+<h3>场景1：</h3>
+<h4>直接删除 initFiles 中文件：</h4>
+<ti-upload url="/upload" type="button" [initFiles]="initFiles" [filters]="filters"> </ti-upload>
+<h3>场景2：</h3>
+<h4>调用 remove 方法删除 initFiles 中文件：</h4>
+<ti-upload url="/upload" type="button" [initFiles]="initFiles1" [filters]="filters1" (beforeRemoveItems)="onBeforeRemoveItems($event)">
+</ti-upload>

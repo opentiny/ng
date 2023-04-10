@@ -1,0 +1,18 @@
+<ul [id]="appendId('list')">
+  <li class="tp-anchor-link" *ngFor="let item of items index as i" [ngClass]="{'tp-anchor-link-active': item.id === currentId}">
+    <a
+      href="javascript:void(0);"
+      oncontextmenu="return false"
+      class="tp-anchor-link-title"
+      (click)="onClick(item)"
+      [id]="appendId('title_' + item.id)"
+    >
+      <ng-container *ngIf="itemTemplete else defaultTemplete">
+        <ng-container *ngTemplateOutlet="itemTemplete; context: {$implicit: item,index: i}"></ng-container>
+      </ng-container>
+      <ng-template #defaultTemplete>
+        <span>{{item.title}}</span>
+      </ng-template>
+    </a>
+  </li>
+</ul>

@@ -1,0 +1,32 @@
+<h3>描述</h3>
+<p>设置最大最小值时，鼠标移入时显示输入范围提示</p>
+<h3>示例</h3>
+<h4>1.不设置最大最小值</h4>
+<ti-spinner name="spinner" [(ngModel)]="spinnerValue" style="width: 200px"></ti-spinner>
+<br /><br />
+<h4>2.设置最大最小值默认配置</h4>
+<ti-spinner name="spinner" [max]="max" [min]="min" [(ngModel)]="spinnerValue1" style="width: 200px"></ti-spinner>
+<br /><br />
+<h4>3.只设置最小值</h4>
+<ti-spinner name="spinner" [min]="min" [(ngModel)]="spinnerValue2" style="width: 200px"></ti-spinner>
+<br /><br />
+<h4>4.只设置最大值</h4>
+<ti-spinner name="spinner" [max]="max" [(ngModel)]="spinnerValue3" style="width: 200px"></ti-spinner>
+<br /><br />
+<h4>5.设置最大最小值自定义提示内容</h4>
+<ti-spinner
+  name="spinner"
+  [max]="max"
+  [min]="min"
+  [(ngModel)]="spinnerValue4"
+  [tipContent]="'Enter attention range'"
+  [tipPosition]="'bottom'"
+  style="width: 200px"
+></ti-spinner>
+<br /><br />
+<h5>6.设置最大最小值时，若不想显示默认提示文本，可自定义提示内容为空字符串''</h5>
+<ti-spinner name="spinner" [max]="max" [min]="min" [(ngModel)]="spinnerValue5" [tipContent]="''" style="width: 200px"></ti-spinner>
+<br /><br />
+<button type="button" (click)="changeMaxValue()">changeMax</button>
+<button type="button" (click)="changeMinValue()">changeMin</button>
+<button type="button" (click)="changeRange()">changeRange</button>

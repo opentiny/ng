@@ -1,0 +1,42 @@
+<h3>描述</h3>
+<p>min，max临界值测试</p>
+<h3>示例</h3>
+<h4>1.max 接口测试，设置max为 new Date()</h4>
+<br />
+<ti-date-range [(ngModel)]="value" [max]="max" [format]="format"></ti-date-range>
+<br /><br />
+<span>开始日期：{{value?.begin}}</span>
+<br />
+<span>结束日期：{{value?.end}}</span>
+<br /><br />
+<h4>2.min 接口测试，设置min为 new Date()</h4>
+<br />
+<ti-date-range [(ngModel)]="value1" [min]="min" [max]="max" [format]="format"></ti-date-range>
+<br /><br />
+<span>开始日期：{{value1?.begin}}</span>
+<br />
+<span>结束日期：{{value1?.end}}</span>
+<br /><br />
+<h4>3.max min 接口测试，设置max1，min1都为 new Date()</h4>
+<br />
+<ti-date-range [(ngModel)]="value2" [max]="max1" [min]="min1" [format]="format"></ti-date-range>
+<br /><br />
+<span>开始日期：{{value2?.begin}}</span>
+<br />
+<span>结束日期：{{value2?.end}}</span>
+<br /><br />
+<h4>4.max min 接口测试，设置max2，min2都为 new Date()</h4>
+<br />
+<ti-date-range [(ngModel)]="value3" [max]="max2" [min]="min2" [format]="format"></ti-date-range>
+<br /><br />
+<span>开始日期：{{value3?.begin}}</span>
+<br />
+<span>结束日期：{{value3?.end}}</span>
+<br /><br />
+<span>切换日期格式：</span>
+<button (click)="changeFormat()">日期格式‘yyyy’</button>
+<button (click)="changeFormat1()">日期格式‘yyyy/MM’</button>
+<button (click)="changeFormat2()">日期格式‘YYYY/QQ’</button>
+<button (click)="changeFormat3()">日期格式‘yyyy/MM/dd’</button>
+<button (click)="onMaxAndMinClick()">动态更改 max1 小于 min1</button>
+<button (click)="onMaxAndMinClick1()">动态更改 max2 大于 min2</button>

@@ -1,0 +1,31 @@
+<!-- 本示例只是为了体现布局，给 leftmenu 并未配置路由， 所以 leftmenu功能是不起作用的 -->
+<div class="clear-transform">
+  <ti-leftmenu
+    [(active)]="active"
+    [routable]="false"
+    [(collapsed)]="config.collapsed"
+    [(reloadState)]="config.reloadState"
+    (collapsedChange)="config.collapsedChangeFn($event)"
+    [toggleable]="config.toggleable"
+  >
+    <ti-leftmenu-head>
+      <div>{{config.serviceName}}</div>
+    </ti-leftmenu-head>
+    <ti-leftmenu-level1 [item]="m1" *ngFor="let m1 of items" [disabled]="m1.disabled">
+      <ti-leftmenu-item>
+        <div>{{m1.label}}</div>
+      </ti-leftmenu-item>
+      <ti-leftmenu-level2 [item]="m2" *ngFor="let m2 of m1.children" [disabled]="m2.disabled">
+        <span>{{m2.label}}</span>
+      </ti-leftmenu-level2>
+    </ti-leftmenu-level1>
+  </ti-leftmenu>
+
+  <ti-layout-content leftmenu [ngStyle]="{marginLeft: marginLeft}" class="layout-content">
+    <ti-layout-content-header class="layout-header"> Header </ti-layout-content-header>
+    <ti-layout-content-body>
+      <ti-layout-section class="basic-section"> Content </ti-layout-section>
+      <ti-layout-section class="basic-aside"> Aside </ti-layout-section>
+    </ti-layout-content-body>
+  </ti-layout-content>
+</div>

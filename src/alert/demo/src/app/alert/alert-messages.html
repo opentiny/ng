@@ -1,0 +1,13 @@
+<ti-alert id="alert-messages-1" type="prompt" autoplaySpeed="2000">
+  <ti-alert-message *ngFor="let item of items1">
+    <p>{{item.title}}</p>
+    <span>{{item.content}}</span>
+  </ti-alert-message>
+</ti-alert>
+<br />
+<ti-alert id="alert-messages-2" type="prompt" [autoplay]="false">
+  <ti-alert-message *ngFor="let item of items2">
+    <p>{{item.title}}</p>
+    <span>{{item.content}}</span>
+  </ti-alert-message>
+</ti-alert>

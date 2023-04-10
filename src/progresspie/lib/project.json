@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/progresspie/lib",
+  "sourceRoot": "src/progresspie/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/progresspie"],
+      "options": {
+        "project": "src/progresspie/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/progresspie"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js progresspie"
+          },
+          {
+            "command": "ng default-build progresspie"
+          },
+          {
+            "command": "node build/clear-default-theme.js progresspie"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/progresspie && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build progresspie && ng pack progresspie && node build/publish.js progresspie --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

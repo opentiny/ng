@@ -1,0 +1,35 @@
+<h3>描述</h3>
+<p>Select选择下拉组件，数据加载。</p>
+<h3>示例</h3>
+<h4>使用典型场景：空数据->数据A->数据B：</h4>
+<br />
+<span>单选: </span>
+<ti-select style="width: 120px" [options]="myOptions" [(ngModel)]="mySelected" placeholder="请选择" id="myselect"> </ti-select>
+<br />
+<p>选中项：{{mySelected | json}}</p>
+
+<span>多选: </span>
+<ti-select style="width: 120px" [multiple]="true" [options]="myOptions" [(ngModel)]="mySelecteds" placeholder="请选择" id="myselectmulti">
+</ti-select>
+<br />
+<p>选中项：{{mySelecteds | json}}</p>
+
+<p>每个组件改变数据，都用下面六个按钮。不变化</p>
+<button id="changeUndefined" (click)="changeUndefined()">changeUndefined</button><br />
+<button id="changeNull" (click)="changeNull()">changeNull</button><br />
+<button id="changeWrongType" (click)="changeWrongType()">changeWrongType</button><br />
+<button id="changeZeroData" (click)="changeZeroData()">changeZeroData</button><br />
+<button id="changeDataA" (click)="changeDataA()">changeDataA</button><br />
+<button id="changeDataB" (click)="changeDataB()">changeDataB</button><br />
+<br />
+<button id="changeSelect" (click)="changeSelect()">changeSelect</button><br />
+<button id="changeSelects" (click)="changeSelects()">changeSelects</button><br />
+
+<!--原生Select参考-->
+<h3>原生Select参考</h3>
+<select>
+  <option>红豆生南国</option>
+  <option>春来发几枝</option>
+  <option>愿君多采撷</option>
+  <option>此物最相思</option>
+</select>

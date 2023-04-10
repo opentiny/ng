@@ -1,0 +1,8 @@
+<div style="background-color: #eef0f5; padding: 20px">
+  <ti-collapsebox *ngIf="show" (close)="onClose()" id="collapsebox-event">
+    <h2>collapsebox content</h2>
+    <p>collapsebox组件通过事件close，在面板被关闭时，触发相应回调。</p>
+  </ti-collapsebox>
+</div>
+<button class="mb-3 mt-3" tiButton (click)="onClickToggle()" [disabled]="show" color="primary">显示面板</button>
+<demo-log [logs]="myLogs"></demo-log>

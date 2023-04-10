@@ -1,0 +1,5 @@
+<ti-loading *ngIf="loading"></ti-loading>
+<section *ngIf="label else templateLabel">{{ buttonWords[label] }}</section>
+<ng-template #templateLabel>
+  <ng-content></ng-content>
+</ng-template>

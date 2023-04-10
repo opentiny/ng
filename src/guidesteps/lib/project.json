@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/guidesteps/lib",
+  "sourceRoot": "src/guidesteps/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/guidesteps"],
+      "options": {
+        "project": "src/guidesteps/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/guidesteps"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js guidesteps"
+          },
+          {
+            "command": "ng default-build guidesteps"
+          },
+          {
+            "command": "node build/clear-default-theme.js guidesteps"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/guidesteps && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build guidesteps && ng pack guidesteps && node build/publish.js guidesteps --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

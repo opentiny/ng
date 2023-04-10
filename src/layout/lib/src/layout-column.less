@@ -1,0 +1,11 @@
+.ti3-layout-content[adaptive] ti-layout-content-body :host {
+  width: 100%; // flex布局下column容器宽度默认等分
+
+  &:not(:first-child) {
+    margin-left: var(--ti-common-space-3x);
+  }
+
+  ::ng-deep .ti3-layout-section {
+    padding: var(--ti-common-space-5x) var(--ti-common-space-6x);
+  }
+}

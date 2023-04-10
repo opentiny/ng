@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'rightsFont';
+  src: data-uri('fonts/rightsFont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.rights-icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'rightsFont' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.tp-icon-cloud-action-support:before {
+  content: '\e900';
+  color: #50d4ab;
+}
+
+.tp-icon-cloud-action-prompt:before {
+  content: '\e901';
+  color: #adb0b8;
+}

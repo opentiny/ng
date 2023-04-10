@@ -1,0 +1,9 @@
+<ti-tag class="mr-2" *ngFor="let item of items; let i = index" [id]="'tag-edit-' + i" [disabled]="item.disabled" (delete)="onDelete(item)"
+  >{{item.label}}
+</ti-tag>
+<input *ngIf="showInput; else addTag" class="w-32" [(ngModel)]="inputValue" (keyup.enter)="onInputKeyup($event)" tiText />
+<ng-template #addTag>
+  <button class="w-32" tiButton size="small" (click)="onClick()"><ti-icon class="mr-1" name="add"></ti-icon>New Tag</button>
+</ng-template>
+
+<demo-log [logs]="myLogs"></demo-log>

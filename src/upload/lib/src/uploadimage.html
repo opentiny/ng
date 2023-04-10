@@ -1,0 +1,96 @@
+<!-- 上传结果展示 -->
+<ng-container *ngIf="listType==='picture-card'">
+  <div class="ti3-picture-card-container" *ngFor="let item of fileList; index as i;">
+    <div class="ti3-picture-card-item" [ngClass]="{'ti3-picture-card-item-error': item.imgFileItem.isError}">
+      <img
+        class="ti3-picture-card-item-img"
+        *ngIf="item.imgFileItem.isSuccess && item.isImage"
+        [src]="item.fromInitFiles ? item.previewUrl : sanitizer.bypassSecurityTrustUrl(item.previewUrl)"
+      />
+      <div
+        class="ti3-picture-card-item-not-img"
+        *ngIf="item.imgFileItem.isError || item.imgFileItem.isCancel || (item.imgFileItem.isSuccess && !item.isImage)"
+      ></div>
+      <!-- 进度 -->
+      <div class="ti3-upload-image-progress" *ngIf="item.imgFileItem.isUploading">
+        <ti-progressbar [value]="item.imgFileItem.progress" [animation]="true"></ti-progressbar>
+        <span class="ti3-upload-image-cancel-text" (click)="item.imgFileItem.cancel()" [id]="appendId('cancel')">{{uploadLan.cancel}}</span>
+      </div>
+    </div>
+    <div
+      class="ti3-picture-card-drop"
+      *ngIf="item.imgFileItem.isUploaded || item.imgFileItem.isCancel"
+      [tiTip]="item.imgFileItem.isError ? tipContent : ''"
+      [tiTipContext]='{"item": item}'
+    >
+      <span
+        class="ti3-picture-card-operation ti3-picture-card-operation-preview"
+        *ngIf="item.imgFileItem.isSuccess && item.isImage"
+        (click)="preview(i)"
+        [id]="appendId('preview')"
+        [ngClass]="{
+                    'ti3-picture-card-operation-center': !deletable
+                }"
+      >
+      </span>
+      <span
+        class="ti3-picture-card-operation ti3-picture-card-operation-delete"
+        *ngIf="item.imgFileItem.isError || item.imgFileItem.isCancel || (item.imgFileItem.isSuccess && deletable)"
+        (click)="item.imgFileItem.remove(isRemove)"
+        [id]="appendId('remove')"
+        [ngClass]="{
+                    'ti3-picture-card-operation-delete-success': item.imgFileItem.isSuccess && deletable,
+                    'ti3-picture-card-operation-success-center': item.imgFileItem.isError || item.imgFileItem.isCancel || (item.imgFileItem.isSuccess && !item.isImage && deletable)
+                }"
+      >
+      </span>
+    </div>
+    <span
+      tiOverflow
+      tiTipPosition="right"
+      class="ti3-picture-card-name"
+      [ngClass]="{'ti3-picture-card-name-error': item.imgFileItem.isError}"
+      [id]="appendId('name')"
+      >{{item.name}}</span
+    >
+  </div>
+</ng-container>
+
+<!-- 上传按钮 -->
+<div
+  #uploadBtn
+  class="ti3-upload-image-btn"
+  tiButton
+  [tiDisabled]="disabled"
+  tabindex="0"
+  (keydown.enter)="onKeydown()"
+  tiOutline
+  *ngIf="!maxCount || fileList.length < maxCount"
+>
+  <ng-container *ngTemplateOutlet="uploadContainerTemplate?uploadContainerTemplate:defaultUploadTemplate;"></ng-container>
+  <input
+    #uploadInput
+    class="ti3-upload-image-input"
+    type="file"
+    tabindex="-1"
+    [tiDisabled]="disabled"
+    [title]="title"
+    [accept]="accept"
+    (click)="selectFile($event)"
+    [tiFileSelect]="uploadInst"
+    [multiple]="!uploadInst.isSingleFile"
+    [id]="appendId('select_file')"
+  />
+</div>
+
+<!-- 默认上传样式 -->
+<ng-template #defaultUploadTemplate>
+  <div class="ti3-upload-image-content" *ngIf="!uploadContainerTemplate">
+    <ti-icon name="add" class="ti3-upload-image-icon"></ti-icon>
+  </div>
+</ng-template>
+
+<!-- 提示 -->
+<ng-template #tipContent let-item="context.item">
+  <ti-error-msg [errorMessage]="item.imgFileItem.errorInfo || uploadLan.error" [appendToTip]="true"></ti-error-msg>
+</ng-template>

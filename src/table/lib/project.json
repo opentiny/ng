@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/table/lib",
+  "sourceRoot": "src/table/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/table"],
+      "options": {
+        "project": "src/table/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/table"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js table"
+          },
+          {
+            "command": "ng default-build table"
+          },
+          {
+            "command": "node build/clear-default-theme.js table"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/table && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build table && ng pack table && node build/publish.js table --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

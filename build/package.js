@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const log = require('fancy-log');
-const wcSrc = './dist/tiny3doc/tiny3demo';
+const wcSrc = './dist/apps/ng';
 
 function read(fileName) {
   return new Promise((res, rej) => {

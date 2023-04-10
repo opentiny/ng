@@ -1,7 +1,7 @@
 {
-        "tsconfig": "./@opentiny/ng/tsconfig.lib.json",
-        "output": "./dist/tiny3doc",
-        "name": "NG API Doc",
+        "tsconfig": "./src/tsconfig.lib.json",
+        "output": "./dist/tinydoc",
+        "name": "TinyNG Website API Doc",
         "language": "zh-CN",
         "hideGenerator": true,
         "disableSourceCode": true,

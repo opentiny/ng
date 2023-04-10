@@ -1,0 +1,23 @@
+<h3>1、描述</h3>
+<p>时间线组件，呈现为一组时间序列的文本展示</p>
+<h3>导入</h3>
+<p>import {{ '{' }} TpTimelineModule {{ '}' }} from '@opentiny/ng';</p>
+<h3>基本展示</h3>
+<div class="box">
+  <ti-timeline dark [activeIndex]="activeIndex" [options]="options"></ti-timeline>
+  <br /><br />
+  <button (click)="changeActiveStep()">跳转到“绑定安全组”阶段</button>
+  <button (click)="changeDanger()">“绑定安全组”阶段执行失败</button>
+</div>
+<h3>tip场景</h3>
+<span [tiTip]="tipContent" tiTipMaxWidth="300px">鼠标移入出tip使用场景</span>
+<ng-template #tipContent>
+  <ti-timeline dark [activeIndex]="activeIndex1" [options]="options1"></ti-timeline>
+</ng-template>
+<style>
+  .box {
+    width: 500px;
+    padding-left: 20px;
+    background-color: #464c59;
+  }
+</style>

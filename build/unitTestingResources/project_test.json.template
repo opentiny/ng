@@ -1,0 +1,17 @@
+,
+    "test": {
+      "builder": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "src/##component##/demo/test.ts",
+        "polyfills": "src/polyfills.ts",
+        "tsConfig": "src/##component##/demo/tsconfig.spec.json",
+        "karmaConfig": "src/##component##/demo/karma.conf.js",
+        "inlineStyleLanguage": "less",
+        "styles": [
+          "src/styles.less"
+        ],
+        "scripts": []
+      }
+    }
+  }
+}

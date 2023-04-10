@@ -1,0 +1,27 @@
+<ng-container *ngFor="let item of items; index as i let last=last;">
+  <ng-container *ngIf="!last">
+    <a
+      class="tp-crumb-label"
+      rel="noopener noreferrer"
+      *ngIf="!item.routerLink"
+      [href]="item.href"
+      [target]="item.target || '_self'"
+      (click)="onClick(item)"
+      tiTipPosition="bottom-left"
+      [id]="appendId('label_' + i)"
+      >{{item.label}}</a
+    >
+    <a
+      class="tp-crumb-label"
+      *ngIf="item.routerLink"
+      [routerLink]="item.routerLink"
+      [queryParams]="item.queryParams"
+      (click)="onClick(item)"
+      tiTipPosition="bottom-left"
+      [id]="appendId('label_' + i)"
+      >{{item.label}}</a
+    >
+    <span class="tp-crumb-divider">/</span>
+  </ng-container>
+  <span *ngIf="last" class="tp-crumb-nohref-label" tiTipPosition="bottom-left" [id]="appendId('last_label')">{{item.label}}</span>
+</ng-container>

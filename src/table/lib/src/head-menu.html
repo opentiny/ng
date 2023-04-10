@@ -1,0 +1,15 @@
+<span
+  #angle
+  tiOutline
+  class="ti3-icon-angle-right ti3-icon ti3-head-menu-angle"
+  [ngClass]="{'ti3-head-menu-angle-up': drop.isShow,  'ti3-head-menu-angle-down': !drop.isShow}"
+  [attr.tabindex]="0"
+  [id]="appendId('head_menu')"
+  (click)="drop.toggle()"
+  (keydown.enter)="drop.toggle()"
+  (blur)="onBlur()"
+>
+</span>
+<ti-drop #drop [dominatorElem]="angle.nativeElement" panelAlign="left" panelWidth="auto" [dominatorSpace]="dominatorSpace">
+  <ti-list [options]="options" [(ngModel)]="selected" style="display: block" (select)="onSelect($event)" [id]="appendId('list')"> </ti-list>
+</ti-drop>

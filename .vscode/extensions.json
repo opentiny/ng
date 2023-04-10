@@ -6,6 +6,8 @@
       "angular.ng-template",
       /*eslint检查*/
       "dbaeumer.vscode-eslint",
+      /*prettier检查*/
+      "esbenp.prettier-vscode",
       /*style静态检查，初期暂不要求*/
       "stuartzhang.stylelint-stzhang",
       /*彩色括号配对*/
@@ -31,6 +33,7 @@
       "wix.vscode-import-cost",
       /*中文包*/
       "ms-ceintl.vscode-language-pack-zh-hans",
+      "nrwl.angular-console"
     ],
     "unwantedRecommendations": [
     ]

@@ -1,0 +1,78 @@
+{
+  "projectType": "application",
+  "root": "src/drag/demo",
+  "sourceRoot": "src/drag/demo/src",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "less"
+    }
+  },
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "dependsOn": [],
+      "options": {
+        "outputPath": "dist/apps/drag",
+        "index": "src/drag/demo/src/index.html",
+        "main": "src/drag/demo/src/main.ts",
+        "polyfills": "src/polyfills.ts",
+        "tsConfig": "src/drag/demo/tsconfig.app.json",
+        "assets": ["src/drag/demo/src/favicon.ico", "src/drag/demo/src/assets"],
+        "styles": ["src/themes/basic/build.less", "src/themes/theme-default/build.less", "src/styles.less"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "src/environments/environment.ts",
+              "with": "src/environments/environment.prod.ts"
+            }
+          ],
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "10mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ]
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "drag-demo:build:production"
+        },
+        "development": {
+          "browserTarget": "drag-demo:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "preview": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "node build/preview-demo.js drag"
+          }
+        ]
+      }
+    }
+  }
+}

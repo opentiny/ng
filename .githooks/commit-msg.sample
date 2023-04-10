@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# 去掉文件名后面的 .sample 从而启用该 hook
+#
+
+echo -e "\nGit hooks (commit-msg): \n"
+
+# 获取提交信息，保存在 COMMIT_MSG 变量中
+COMMIT_MSG=`awk '{printf("%s",$0)}' $1`
+
+# 使用标准输入 stdin 传递给 commitlint 用于检查提交信息
+echo "${COMMIT_MSG}" | npx --no-install commitlint

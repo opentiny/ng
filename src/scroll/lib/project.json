@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/scroll/lib",
+  "sourceRoot": "src/scroll/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/scroll"],
+      "options": {
+        "project": "src/scroll/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/scroll"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js scroll"
+          },
+          {
+            "command": "ng default-build scroll"
+          },
+          {
+            "command": "node build/clear-default-theme.js scroll"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/scroll && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build scroll && ng pack scroll && node build/publish.js scroll --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

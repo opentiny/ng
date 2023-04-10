@@ -1,0 +1,108 @@
+@import '../../../themes/basic/base-all.less';
+//  根据规范，总共分四种分辨率 lg: 1760~1920【1920】,md:1600~1759【1680】, sm:1440~1599【1440】, xs：1280~1439【1280、1366】
+//  以下变量要在less 函数中使用，所以没有使用css-var
+
+@tp-grid-columns: 24;
+@tp-grid-gutter-width: 20px;
+@tp-screen-xs-min: 1280px;
+@tp-screen-sm-min: 1440px;
+@tp-screen-md-min: 1600px;
+@tp-screen-lg-min: 1760px;
+
+.make-grid-columns();
+
+.ti-row {
+  .make-row();
+}
+
+// 网格函数
+.make-row(@gutter: @tp-grid-gutter-width) {
+  margin-right: -@gutter;
+  .clearfix();
+}
+
+.make-grid(xs);
+
+@media (min-width: @tp-screen-sm-min) {
+  .make-grid(sm);
+}
+
+@media (min-width: @tp-screen-md-min) {
+  .make-grid(md);
+}
+
+@media (min-width: @tp-screen-lg-min) {
+  .make-grid(lg);
+}
+
+.make-grid-columns() {
+  .col(@index) {
+    @item: ~'.ti3-col-xs-@{index}, .ti3-col-sm-@{index}, .ti3-col-md-@{index}, .ti3-col-lg-@{index}';
+    .col((@index + 1), @item);
+  }
+
+  .col(@index, @list) when (@index =< @tp-grid-columns) {
+    @item: ~'.ti3-col-xs-@{index}, .ti3-col-sm-@{index}, .ti3-col-md-@{index}, .ti3-col-lg-@{index}';
+    .col((@index + 1), ~'@{list}, @{item}');
+  }
+
+  .col(@index, @list) when (@index > @tp-grid-columns) {
+    @{list} {
+      position: relative;
+      min-height: 1px;
+    }
+  }
+
+  .col(1);
+}
+
+.make-grid(@class, @gutter: @tp-grid-gutter-width) {
+  .float-grid-columns(@class);
+  .loop-grid-columns(@tp-grid-columns, @class, width, @gutter);
+}
+
+.remake-grid(@class, @gutter: @tp-grid-gutter-width) {
+  .loop-grid-columns(@tp-grid-columns, @class, width, @gutter);
+}
+
+.float-grid-columns(@class) {
+  .col(@index) {
+    @item: ~'.ti3-col-@{class}-@{index}';
+    .col((@index + 1), @item);
+  }
+
+  .col(@index, @list) when (@index =< @tp-grid-columns) {
+    @item: ~'.ti3-col-@{class}-@{index}';
+    .col((@index + 1), ~'@{list}, @{item}');
+  }
+
+  .col(@index, @list) when (@index > @tp-grid-columns) {
+    @{list} {
+      float: left;
+    }
+  }
+
+  .col(1);
+}
+
+.loop-grid-columns(@index, @class, @type, @gutter) when (@index >= 0) {
+  .calc-grid-column(@index, @class, @type, @gutter);
+  .width-grid-column(@index, @class, @type, @gutter);
+  .loop-grid-columns((@index - 1), @class, @type, @gutter);
+}
+
+.width-grid-column(@index, @class, @type, @gutter) when (@type = width) and (@index > 0) and (@gutter = 0) {
+  .ti3-col-@{class}-@{index} {
+    margin-right: @gutter;
+    width: percentage((@index / @tp-grid-columns));
+  }
+}
+
+.calc-grid-column(@index, @class, @type, @gutter) when (@type = width) and (@index > 0) and (@gutter > 0) {
+  @tmp-width: percentage((@index / @tp-grid-columns));
+
+  .ti3-col-@{class}-@{index} {
+    margin-right: @gutter;
+    width: calc(~'@{tmp-width} - @{gutter}');
+  }
+}

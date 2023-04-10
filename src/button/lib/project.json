@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/button/lib",
+  "sourceRoot": "src/button/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/button"],
+      "options": {
+        "project": "src/button/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/button"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js button"
+          },
+          {
+            "command": "ng default-build button"
+          },
+          {
+            "command": "node build/clear-default-theme.js button"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/button && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build button && ng pack button && node build/publish.js button --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

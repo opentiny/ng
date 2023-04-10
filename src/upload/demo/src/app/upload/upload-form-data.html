@@ -1,0 +1,9 @@
+<h3>描述</h3>
+<p>
+  文件上传附加信息定义使用示例，可通过两种方式添加附加信息：<br />
+  1.静态信息：可通过定义formData属性方式添加<br />
+  2.动态信息：可通过在beforeSendItems事件回调中动态定义item的formData属性方式添加（本示例中展示的是该种用法）
+</p>
+<h3>示例</h3>
+<input [(ngModel)]="inputValue" tiText />
+<ti-upload [url]="url" (beforeSendItems)="onBeforeSendItems($event)"></ti-upload>

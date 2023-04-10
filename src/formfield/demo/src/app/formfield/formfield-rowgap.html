@@ -1,0 +1,61 @@
+<h3>描述</h3>
+<p>配置 colsWidth 属性设置列宽且是带输入控件类表单时，相邻两行间的间距， 设置 rowGap 接口</p>
+<h3>示例</h3>
+<ti-formfield title="默认行间距 20px" [colsWidth]="colsWidth">
+  <ti-item [label]="item1.label" [required]="item1.required" [show]="item1.show">
+    <button tiButton type="button">Default</button>
+  </ti-item>
+  <ti-item [label]="item2.label" [required]="item2.required">
+    <input type="text" tiText [(ngModel)]="item2.value" style="width: 230px" />
+  </ti-item>
+  <ti-item [required]="item3.required" [verticalAlign]="item3.verticalAlign">
+    <span>不设置label</span>
+  </ti-item>
+  <ti-item [required]="item4.required" [label]="item4.label" [verticalAlign]="item4.verticalAlign">
+    <ti-item-label>
+      <span>测试标签dom</span>
+    </ti-item-label>
+    <span *ngFor="let item of [1, 2, 3]">{{item}}</span>
+  </ti-item>
+  <ti-item [required]="item5.required" [verticalAlign]="item5.verticalAlign">
+    <ti-item-label>
+      <span>存储地址:</span>
+    </ti-item-label>
+    <textarea tiTextarea style="width: 180px; height: 100px"></textarea>
+  </ti-item>
+
+  <ti-button-item>
+    <button tiButton type="button" style="margin-right: 20px">{{button.okLabel}}</button
+    ><!--
+        --><button tiButton type="button">{{button.cancelLabel}}</button>
+  </ti-button-item>
+</ti-formfield>
+<ti-formfield title="设置行间距 12px" [colsWidth]="colsWidth" [rowGap]="['12px']">
+  <ti-item [label]="item1.label" [required]="item1.required" [show]="item1.show">
+    <button tiButton type="button">Default</button>
+  </ti-item>
+  <ti-item [label]="item2.label" [required]="item2.required">
+    <input type="text" tiText [(ngModel)]="item2.value" style="width: 230px" />
+  </ti-item>
+  <ti-item [required]="item3.required" [verticalAlign]="item3.verticalAlign">
+    <span>不设置label</span>
+  </ti-item>
+  <ti-item [required]="item4.required" [label]="item4.label" [verticalAlign]="item4.verticalAlign">
+    <ti-item-label>
+      <span>测试标签dom</span>
+    </ti-item-label>
+    <span *ngFor="let item of [1, 2, 3]">{{item}}</span>
+  </ti-item>
+  <ti-item [required]="item5.required" [verticalAlign]="item5.verticalAlign">
+    <ti-item-label>
+      <span>存储地址:</span>
+    </ti-item-label>
+    <textarea tiTextarea style="width: 180px; height: 100px"></textarea>
+  </ti-item>
+
+  <ti-button-item>
+    <button tiButton type="button" style="margin-right: 20px">{{button.okLabel}}</button
+    ><!--
+        --><button tiButton type="button">{{button.cancelLabel}}</button>
+  </ti-button-item>
+</ti-formfield>

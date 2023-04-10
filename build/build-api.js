@@ -1,6 +1,6 @@
 /**
  * 基于 CompoDoc 导出的组件数据，提取组件 api
- * 使用方式：在根目录下，执行 `npm run build:api`
+ * 使用方式：在 Tiny3 根目录下，执行 `npm run build:api`
  * 如组件源码无变化，可使用 `npm run build:api -- --quick` 跳过 CompoDoc 导出
  */
 const { execSync } = require('child_process');
@@ -16,14 +16,15 @@ chalk.level = 1;
 
 const processArgvs = minimist(process.argv.slice(2));
 const baseDir = process.cwd();
-const compoDocJsonFile = path.resolve(baseDir, './dist/tiny3doc/documentation.json');
-const docDir = path.resolve(baseDir, './src/app/');
-const outputDocDir = path.resolve(baseDir, './dist/tiny3doc/tiny3apis/');
+const compoDocJsonFile = path.resolve(baseDir, './dist/tinydoc/documentation.json');
+const docDir = path.resolve(baseDir, './src');
+const outputDocDir = path.resolve(baseDir, './dist/tinydoc/tinyapis/');
 // 全局性的文档
 const globalDocDir = ['interfaces', 'types'];
 // 过滤的目录
 const excludeDocDir = [
   'allcomp',
+  'base',
   'code',
   'datedominator',
   'dateedit',
@@ -31,13 +32,14 @@ const excludeDocDir = [
   'drag',
   'droplist',
   'drop',
+  'ng',
   'imagepreview',
   'list',
   'many',
   'progresspie',
   'tab-old',
   'tokens',
-  'utils',
+  // 'utils',
   'vars',
   'webdoc',
   'zoom',
@@ -103,13 +105,6 @@ const Utils = {
     });
 
     return map;
-  },
-
-  getTinyPathPrefix: (path) => {
-    const reg = /^@cloud\/tiny3\/([components|directives|services]\/)?[\S]+\//;
-    const match = path.match(reg);
-
-    return match ? match[0] : '';
   },
 
   escape: (str) => {
@@ -326,7 +321,7 @@ function getDocData() {
 
   if (!isQuickMode || !isFileExisted) {
     Logger.log(`${chalk.green.bold('======> CompoDoc 导出文档 JSON 中，稍等一小会...')}`);
-    execSync('npx compodoc --exportFormat json');
+    execSync('npx compodoc --exportFormat json', { maxBuffer: 1024 * 1024 * 10 }); // 超出 maxBuffer 会停止执行
 
     if (fs.existsSync(compoDocJsonFile)) {
       Logger.log({
@@ -363,12 +358,32 @@ function getDocData() {
  * 获取组件文档文件夹列表
  */
 function getDocDirList() {
-  return fs.readdirSync(docDir).filter((file) => {
-    const filePath = path.resolve(docDir, file);
+  const result = [];
+  const dirPath = path.resolve(baseDir, './src');
+  const dirs = fs.readdirSync(dirPath);
+  dirs.forEach((dir) => {
+    const filePath = path.resolve(dirPath, dir);
     const stat = fs.statSync(filePath);
 
-    return !excludeDocDir.includes(file) && stat.isDirectory();
+    if (!excludeDocDir.includes(dir) && stat.isDirectory()) {
+      const childDirsPath = path.resolve(filePath, 'demo/src/app');
+      if (fs.pathExistsSync(childDirsPath)) {
+        const childDirs = fs.readdirSync(childDirsPath);
+
+        childDirs.forEach((childDir) => {
+          const childFilePath = path.resolve(childDirsPath, childDir);
+          const childStat = fs.statSync(childFilePath);
+
+          if (childStat.isDirectory()) {
+            result.push([dir, childDir]);
+          }
+        });
+      }
+    }
   });
+
+  return result;
+
 }
 
 /**
@@ -537,7 +552,7 @@ function validDemos(demos, dir) {
       return;
     }
 
-    const dirPath = path.resolve(docDir, `./${dir}/`);
+    const dirPath = path.resolve(docDir, `./${dir[0]}/demo/src/app/${dir[1]}`);
     const unExistedFiles = codeFiles.filter((file) => !fs.existsSync(`${dirPath}/${file}`));
 
     if (unExistedFiles.length) {
@@ -554,12 +569,12 @@ function validDemos(demos, dir) {
  * 获取组件 demos 数据，文件为 `${组件目录名}-demos.js`
  */
 function getDemosData(dir) {
-  const demosFile = path.resolve(docDir, `./${dir}/webdoc/${dir}-demos.js`);
+  const demosFile = path.resolve(docDir, `./${dir[0]}/demo/src/app/${dir[1]}/webdoc/${dir[1]}-demos.js`);
   let data;
 
   if (!fs.existsSync(demosFile)) {
     return {
-      message: `Demos 文档不存在, 请补充 ${dir}-demos.js!`,
+      message: `Demos 文档不存在, 请补充 ${dir[1]}-demos.js!`,
     };
   }
 
@@ -668,17 +683,16 @@ function getInterfacesAndTypes(docData) {
 /**
  * 拷贝文档源目录到 dist, 只复制文件夹部分
  */
-async function copyDocDirToDist() {
+async function copyDocDirToDist(docDirList) {
   await fs.remove(outputDocDir);
-  const dirList = await fs.readdir(docDir);
 
   return Promise.all(
-    dirList.map(async (dir) => {
-      const filePath = `${docDir}/${dir}`;
+    docDirList.map(async (dir) => {
+      const filePath = path.resolve(docDir, `./${dir[0]}/demo/src/app/${dir[1]}`);
       const stat = await fs.stat(filePath);
 
       if (stat.isDirectory()) {
-        return fs.copy(filePath, `${outputDocDir}/${dir}`);
+        return fs.copy(filePath, `${outputDocDir}/${dir[1]}`);
       }
     })
   );
@@ -726,7 +740,7 @@ function handleDatas(docDirList, docData, types) {
       logs.push({
         type: Logger.types.warn,
         title: TipsConfig.getDisplayApis,
-        info: `需展示 apis 项为空，请检查 ${dir}-demos.js 下 apis 字段是否填写正确！`,
+        info: `需展示 apis 项为空，请检查 ${dir[1]}-demos.js 下 apis 字段是否填写正确！`,
       });
     }
 
@@ -802,15 +816,15 @@ function getLinkMap(data) {
  * 写入组件文档 js
  */
 function writeDocFile(json, dir) {
-  const outputWebdocPath = path.resolve(outputDocDir, `./${dir}/webdoc/`);
-  const apiFilePath = `${outputWebdocPath}/${dir}.js`;
+  const outputWebdocPath = path.resolve(outputDocDir, `./${dir[1]}/webdoc/`);
+  const apiFilePath = `${outputWebdocPath}/${dir[1]}.js`;
   const apisJsonStr = JSON5.stringify(json, {
     space: 2,
     quote: '"',
   });
-
+  console.log(outputWebdocPath);
   // 删除 output 下的不需要的 demos js
-  fs.remove(`${outputWebdocPath}/${dir}-demos.js`);
+  fs.remove(`${outputWebdocPath}/${dir[1]}-demos.js`);
   fs.ensureDirSync(outputWebdocPath);
   // 改为同步，log 信息不会乱
   try {
@@ -836,11 +850,13 @@ function dealAllDocData(allDocData) {
     column: 2,
   };
   allDocData.forEach((item) => {
-    const { dir, logs = [], demosData, apisData } = item;
-    const isCompDocDir = !globalDocDir.includes(dir);
-    const apisKey = dir === 'types' ? 'types' : 'apis';
+    const { logs = [], demosData, apisData } = item;
+    const dir = Array.isArray(item.dir) ? item.dir : [item.dir, item.dir];
+    const isCompDocDir = !globalDocDir.includes(dir[1]);
 
-    Logger.log(`${chalk.green.bold(`======> ${dir} 文档生成中...`)}`);
+    const apisKey = dir[1] === 'types' ? 'types' : 'apis';
+
+    Logger.log(`${chalk.green.bold(`======> ${dir[1]} 文档生成中...`)}`);
 
     // 输出处理数据时收集的 logs
     logs.forEach((item) => Logger.log(item));
@@ -851,7 +867,7 @@ function dealAllDocData(allDocData) {
         Logger.log({
           type: Logger.types.error,
           title: TipsConfig.generateFail,
-          info: `${dir} demos 数据获取失败！`,
+          info: `${dir[1]} demos 数据获取失败！`,
         });
 
         return;
@@ -884,14 +900,18 @@ function dealAllDocData(allDocData) {
  */
 async function generateApiDoc() {
   const docData = getDocData();
+
   if (!docData) {
     return;
   }
 
   Logger.log(`${chalk.green.bold('======> 组件文档生成中...')}`);
 
+  // 一般组件文档
+  const docDirList = getDocDirList();
+
   try {
-    await copyDocDirToDist();
+    await copyDocDirToDist(docDirList);
   } catch (err) {
     Logger.log({
       type: Logger.types.error,
@@ -904,8 +924,6 @@ async function generateApiDoc() {
 
   // interface & type 文档
   const globalDocData = getGlobalDocData(globalDocDir, docData);
-  // 一般组件文档
-  const docDirList = getDocDirList();
   const compsDocData = getCompsDocData(docDirList, docData, globalDocData);
   const allDocData = [...globalDocData, ...compsDocData];
 

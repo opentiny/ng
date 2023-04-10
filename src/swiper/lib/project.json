@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/swiper/lib",
+  "sourceRoot": "src/swiper/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/swiper"],
+      "options": {
+        "project": "src/swiper/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/swiper"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js swiper"
+          },
+          {
+            "command": "ng default-build swiper"
+          },
+          {
+            "command": "node build/clear-default-theme.js swiper"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/swiper && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build swiper && ng pack swiper && node build/publish.js swiper --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import '../../../themes/basic/base-all.less';
+:host/* .ti3-halfmodal-container */ {
+  position: fixed;
+  bottom: 0;
+  background-color: var(--ti-common-color-bg-white-normal);
+  padding: var(--ti-common-space-8x);
+  padding-right: var(--ti-common-space-10x); // 右侧间距40px
+  box-shadow: var(--ti-common-shadow-4-left);
+  overflow-y: auto;
+  .box-sizing();
+  .ti3-halfmodal-close {
+    font-size: var(--ti-common-size-3x);
+    color: var(--ti-common-color-icon-normal);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    &:hover {
+      color: var(--ti-common-color-icon-hover);
+    }
+  }
+}
+
+::ng-deep .ti3-halfmodal-layout-container {
+  padding-right: 0;
+  .ti3-halfmodal-content,
+  ng-component {
+    // 通过service把一个component放入halfmodal，会产生一个ng-component标签，该标签也需要是flex布局
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+::ng-deep.ti3-halfmodal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1200;
+  box-sizing: border-box;
+  background-color: #000000;
+  opacity: 0.2;
+}
+
+::ng-deep.ti3-halfmodal-animation {
+  animation: show 0.25s forwards;
+}
+@keyframes show {
+  100% {
+    right: 0;
+  }
+}

@@ -1,0 +1,102 @@
+@import '../../../themes/basic/base-all.less';
+::ng-deep :root {
+  --ti-phonenumber-width: 300px; // 组件整体宽度
+  --ti-phonenumber-input-width: 220px; // 输入框宽度
+  --ti-phonenumber-line-height: 14px; // 短竖线高度
+  --ti-phonenumber-select-border-right-height: 26px; // select组件右边框竖线高度
+}
+
+.ti3-phonenumber-input(@border-color) {
+  width: calc(var(--ti-phonenumber-input-width) + 1px); // 由于要覆盖中间分隔线，左移了1px,故input框总宽+1
+  border: 1px solid @border-color;
+  margin-left: -1px; // 覆盖select框与input框中间的分隔线
+}
+
+:host {
+  display: inline-block;
+  width: var(--ti-phonenumber-width);
+  height: var(--ti-input-height);
+}
+
+.ti3-phonenumber-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+
+  // select组件样式
+  .ti3-phonenumber-select {
+      width: calc(var(--ti-phonenumber-width) - var(--ti-phonenumber-input-width));
+      border-right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      position: relative;
+      &:before { // 定义中间竖线
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 0;
+          border-left: 1px solid transparent;
+          height: var(--ti-phonenumber-select-border-right-height);
+          z-index: 1; // hover或focus时提高层级，覆盖select框与searchbox框中间的透明分隔线
+      }
+
+      &:hover:not([disabled]):not([tiFocused]):before {
+          border-left-color: var(--ti-common-color-line-hover);
+      }
+
+      &[tiFocused]:before {
+          border-left-color: var(--ti-common-color-line-active);
+      }
+
+      // 正常状态时select组件和输入框组件之间短的竖线
+      ::ng-deep & .ti3-select-dominator-dropdown-btn:before {
+          content: "";
+          position: absolute;
+          right: 0;
+          height: var(--ti-phonenumber-line-height);
+          top: calc((var(--ti-phonenumber-select-border-right-height) - var(--ti-phonenumber-line-height)) / 2);
+          border-left: 1px solid var(--ti-common-color-line-dividing);
+      }
+  }
+
+  // 输入框组件样式
+  input[tiText].ti3-phonenumber-input {
+      width: var(--ti-phonenumber-input-width);
+      z-index: 1; // 左边框被select遮挡，故需要提高权重
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      order: 1; // 父级为弹性布局，order值越大排列越靠后
+      // select灰化时输入框的样式
+      &.ti3-phonenumber-select-disable {
+          .ti3-phonenumber-input(var(--ti-common-color-line-normal));
+      }
+      // 输入框hover时的样式
+      &:hover {
+          .ti3-phonenumber-input(var(--ti-common-color-line-hover));
+      }
+      // 输入框聚焦时的样式
+      &:focus {
+          .ti3-phonenumber-input(var(--ti-common-color-line-active));
+      }
+  }
+}
+// 失焦校验：错误且已输入失焦时显示错误样式，及时校验：错误且已输入时显示错误样式
+@tiny-invalid-class:
+&.ng-invalid.ng-touched[tiBlurCheck]:not([tiFocused]),
+&.ng-invalid.ng-dirty[tiBlurCheck]:not([tiFocused]),
+&.ng-invalid.ng-touched:not([tiBlurCheck]),
+&.ng-invalid.ng-dirty:not([tiBlurCheck]);
+
+// 校验失败样式
+@{tiny-invalid-class}.ti3-phonenumber-input { // input框校验失败时
+  + .ti3-phonenumber-select {
+      &:not([disabled]) { // 非灰化select组件的边框和背景色
+          border-color: var(--ti-common-color-error-border);
+          background-color: var(--ti-common-color-error-bg);
+      }
+      &:hover:before, &[tiFocused]:before { // 中间分割线hover和聚焦边框色
+          border-left-color: var(--ti-common-color-error-border);
+      }
+  }
+}

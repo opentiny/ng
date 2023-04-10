@@ -1,0 +1,12 @@
+<h3>1.max:不设置、设置为非法日期时，默认最大值限制2099.12.31</h3>
+<ti-date-edit [(ngModel)]="value"></ti-date-edit>
+<br /><br />
+<h3>2.max:设置的max小于设置的value时，以最大值显示;max:2016/2/23;value:2016/11/5</h3>
+<ti-date-edit [max]="max" [(ngModel)]="value1"></ti-date-edit>
+<br /><br />
+<h3>3.max:设置为正常日期值时，显示及用户操作改变时都必须小于这个最大值;max:2020/11/12;value:2016/11/5</h3>
+<ti-date-edit [max]="max1" [(ngModel)]="value2"></ti-date-edit>
+<br /><br />
+
+<button (click)="clickFn()">改变为：2060/11/12</button>
+<button (click)="clickFn1()">改变为：2019/11/12</button>

@@ -1,0 +1,13 @@
+<a
+  #a
+  rel="noopener noreferrer"
+  class="ti-iconaction"
+  [href]="href"
+  [target]="target"
+  (click)="onClickFn($event)"
+  (contextmenu)="oncontextmenu()"
+  [id]="appendId('awrapper')"
+>
+  <ti-svg [name]="iconName" class="ti-iconaction-icon"></ti-svg>
+  <span class="ti-iconaction-text" [id]="appendId('label')">{{label}}</span>
+</a>

@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/selectgroup/lib",
+  "sourceRoot": "src/selectgroup/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/selectgroup"],
+      "options": {
+        "project": "src/selectgroup/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/selectgroup"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js selectgroup"
+          },
+          {
+            "command": "ng default-build selectgroup"
+          },
+          {
+            "command": "node build/clear-default-theme.js selectgroup"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/selectgroup && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build selectgroup && ng pack selectgroup && node build/publish.js selectgroup --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

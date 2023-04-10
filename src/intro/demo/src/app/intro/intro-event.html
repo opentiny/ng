@@ -1,0 +1,10 @@
+<button class="mb-12" tiButton (click)="start()">开始引导</button>
+
+<div class="h-48 relative">
+  <span #introStep1 class="absolute p-2 top-3 left-10">第一步</span>
+  <span #introStep2 class="absolute p-2 top-12 left-28">第二步</span>
+  <span #introStep3 class="absolute p-2 right-3 top-10">第三步</span>
+  <span #introStep4 class="absolute p-2 top-40 left-10">第四步</span>
+</div>
+
+<demo-log [logs]="myLogs"></demo-log>

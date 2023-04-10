@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/formfield/lib",
+  "sourceRoot": "src/formfield/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/formfield"],
+      "options": {
+        "project": "src/formfield/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/formfield"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js formfield"
+          },
+          {
+            "command": "ng default-build formfield"
+          },
+          {
+            "command": "node build/clear-default-theme.js formfield"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/formfield && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build formfield && ng pack formfield && node build/publish.js formfield --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@import '../../../themes/basic/base-all.less';
+
+:host {
+  display: block;
+  min-width: var(--ti-common-size-50x);
+  position: relative;
+  padding: var(--ti-common-space-5x);
+  border-radius: var(--ti-common-border-radius-normal);
+  border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-normal);
+  background: var(--ti-common-color-bg-white-normal);
+  font-size: var(--ti-common-font-size-base);
+  color: var(--ti-common-color-text-primary);
+  .box-sizing(border-box);
+}
+
+// 悬浮、激活
+:host:not(.ti3-card-disabled):hover,
+:host:not(.ti3-card-disabled):active {
+  border-color: var(--ti-common-color-line-active);
+  .transition(border-color 200ms);
+}
+
+// 聚焦
+:host:not(.ti3-card-disabled):focus {
+  outline: none;
+  border-color: var(--ti-common-color-line-active);
+}
+// 激活
+:host.ti3-card-active {
+  border-color: var(--ti-common-color-line-active);
+}
+// 禁选
+:host.ti3-card-disabled {
+  background-color: var(--ti-common-color-bg-disabled);
+  border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-disabled);
+  color: var(--ti-common-color-text-disabled);
+  outline: none;
+  &:hover {
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,12 @@
+<!-- 测试封装 ti-item 在formfield 中使用 -->
+<ti-item [label]="item1.label" [required]="item1.required" [formGroup]="profileForm" [show]="item1.show">
+  <ti-button-group [items]="item1.options" formControlName="time"> </ti-button-group>
+</ti-item>
+<ti-item [label]="item2.label" [show]="item2.show" [required]="item2.required" [formGroup]="profileForm">
+  <ti-spinner name="spinner" formControlName="spinner" [max]="max" [min]="min" style="width: 200px"></ti-spinner>
+</ti-item>
+<!-- 封裝ti-item 使用ti-item-label 指令测试 -->
+<ti-item [show]="item3.show" [required]="item3.required" verticalAlign="middle">
+  <ti-item-label>{{item3.label}}</ti-item-label>
+  <span>美好时光</span>
+</ti-item>

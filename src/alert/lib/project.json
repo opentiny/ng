@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/alert/lib",
+  "sourceRoot": "src/alert/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/alert"],
+      "options": {
+        "project": "src/alert/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/alert"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js alert"
+          },
+          {
+            "command": "ng default-build alert"
+          },
+          {
+            "command": "node build/clear-default-theme.js alert"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/alert && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build alert && ng pack alert && node build/publish.js alert --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

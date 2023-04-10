@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/dateedit/lib",
+  "sourceRoot": "src/dateedit/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/dateedit"],
+      "options": {
+        "project": "src/dateedit/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/dateedit"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js dateedit"
+          },
+          {
+            "command": "ng default-build dateedit"
+          },
+          {
+            "command": "node build/clear-default-theme.js dateedit"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/dateedit && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build dateedit && ng pack dateedit && node build/publish.js dateedit --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<h3>1.描述</h3>
+<p>value接口测试</p>
+<h3>导入</h3>
+<p>import {{ '{' }} TiDateModule {{ '}' }} from '@opentiny/ng';</p>
+<h3>2.示例</h3>
+<p>(2.1)设置为非字符串类型、非法日期时，显示空</p>
+<ti-date [(ngModel)]="value" [id]="id" [format]="format" [min]="min" [max]="max"></ti-date>
+<br />
+<br />
+<br />
+<p>(2.2)设置为null时，显示空白</p>
+<ti-date [(ngModel)]="value1" [format]="format1" [min]="min" [max]="max"></ti-date>
+<br />
+<br />
+<br />
+<p>(2.3)设置为最小日期时，正常显示</p>
+<ti-date [format]="format2" [min]="min" [max]="max" [(ngModel)]="value2"></ti-date>
+<br />
+<br />
+<br />
+<p>(2.4)设置为最大日期时，正常显示，modelChange测试</p>
+<ti-date [format]="format3" [min]="min" [max]="max" [(ngModel)]="value3" (ngModelChange)="ngModelChange($event)"></ti-date>

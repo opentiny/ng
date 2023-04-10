@@ -1,0 +1,265 @@
+@import '../../../themes/basic/base-all.less';
+
+:host {
+  --ti-tab-second-level-header-height: var(--ti-common-size-7x);
+  --ti-tab-second-level-header-line-height: calc(var(--ti-tab-second-level-header-height) - 2px);
+  --ti-tab-dark-container-height: var(--ti-common-size-10x);
+  --ti-tab-dark-li-height: var(--ti-common-size-9x);
+  --ti-tab-slider-height: var(--ti-common-border-weight-2);
+}
+
+:host.ti3-tabs-container {
+  display: block;
+}
+
+.ti3-tab-content {
+  border-top: 1px solid var(--ti-common-color-line-dividing);
+}
+
+.ti3-tabs {
+  .box-sizing();
+  display: flex;
+  white-space: nowrap;
+  flex-shrink: 1;
+  overflow: hidden;
+  position: relative;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  font-size: 0;
+  height: var(--ti-common-size-9x);
+  &::before {
+    display: table;
+    content: ' ';
+    .box-sizing();
+  }
+  &::after {
+    display: table;
+    content: ' ';
+    clear: both;
+    .box-sizing();
+  }
+  & > li {
+    .box-sizing();
+    margin: 0 var(--ti-common-space-5x);
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    line-height: var(--ti-common-line-height-number);
+    height: 100%;
+    font-size: var(--ti-common-font-size-1);
+    &:first-child {
+      margin-left: 0;
+    }
+    & > a {
+      .box-sizing();
+      position: relative;
+      display: block;
+      // 修改a标签的下padding
+      padding: var(--ti-common-space-6) 0 var(--ti-common-space-2x);
+      text-decoration: none;
+      //此处line-height值与height值不一致是为了使文字距蓝色下边线的距离为10px
+      line-height: var(--ti-common-line-height-number);
+      height: 100%;
+      color: var(--ti-common-color-text-secondary);
+      .transition (color 150ms);
+    }
+    &:not(.disabled) > a:hover,
+    &:not(.disabled) > a:focus {
+      border-bottom-color: transparent;
+      color: var(--ti-common-color-text-highlight);
+      //添加此属性用来兼容ie和火狐下a标签会产生外围的虚线框
+      outline: none;
+      .transition (color 200ms);
+    }
+    &.ti3-tab-active:not(.disabled) > a {
+      cursor: default;
+      color: var(--ti-common-color-text-highlight);
+      font-weight: normal;
+    }
+    &.disabled > a {
+      color: var(--ti-common-color-text-disabled);
+      cursor: not-allowed;
+      background-color: transparent;
+      &:focus {
+        outline: none !important;
+      }
+    }
+  }
+}
+.ti3-tab-slider-container {
+  border-bottom: var(--ti-tab-slider-height) solid transparent;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.ti3-tab-slider {
+  .box-sizing();
+  border-bottom: var(--ti-tab-slider-height) solid var(--ti-common-color-bg-emphasize);
+  width: 0px;
+  position: absolute;
+  left: -50px;
+}
+
+:host[level2] .ti3-tabs-container1 {
+  position: relative;
+  top: 1px;
+}
+
+:host[level2] .ti3-tabs {
+  //二级页签的时候，滑块儿不显示
+  & + .ti3-tab-more + .ti3-tab-slider-container .ti3-tab-slider {
+    display: none;
+    border-bottom: none;
+  }
+  height: var(--ti-tab-second-level-header-height);
+  & > li {
+    font-size: var(--ti-common-font-size-base);
+    height: var(--ti-tab-second-level-header-height);
+    line-height: var(--ti-tab-second-level-header-line-height);
+    margin: 0;
+    & > a {
+      .box-sizing();
+      height: var(--ti-tab-second-level-header-height);
+      line-height: var(--ti-tab-second-level-header-line-height);
+      color: var(--ti-common-color-text-secondary);
+      padding: 0 var(--ti-common-space-3x);
+      border: 1px solid transparent;
+    }
+    &:not(.disabled) > a:hover,
+    &:not(.disabled) > a:focus {
+      color: var(--ti-common-color-text-highlight);
+      //添加此属性用来兼容ie和火狐下a标签会产生外围的虚线框
+      outline: none;
+    }
+    &.ti3-tab-active:not(.disabled) > a {
+      border-color: var(--ti-common-color-line-dividing);
+      border-bottom-color: var(--ti-common-color-bg-white-normal);
+      color: var(--ti-common-color-text-highlight);
+      padding: 0 var(--ti-common-space-3x);
+    }
+    &.ti3-tab-active:not(.disabled),
+    &:last-child {
+      margin-right: 0;
+    }
+    &.disabled > a {
+      color: var(--ti-common-color-text-disabled);
+      cursor: not-allowed;
+      background-color: transparent;
+    }
+  }
+}
+:host[dark] > .ti3-tabs-container1 .ti3-tabs-header {
+  background-color: var(--ti-common-color-bg-dark-normal);
+}
+
+:host[dark] > .ti3-tabs-container1 .ti3-tabs {
+  height: var(--ti-tab-dark-container-height);
+  padding-top: calc(var(--ti-tab-dark-container-height) - var(--ti-tab-dark-li-height));
+  & + .ti3-tab-more {
+    padding-right: var(--ti-common-space-5x);
+    color: var(--ti-common-color-text-darkbg);
+    &:hover {
+      color: var(--ti-common-color-bg-emphasize);
+    }
+  }
+  //暗色页签的时候，滑块儿不显示
+  & + .ti3-tab-more + .ti3-tab-slider-container .ti3-tab-slider {
+    display: none;
+    border-bottom: none;
+  }
+  & > li {
+    margin-left: 0;
+    margin-right: var(--ti-common-space-base);
+    & > a {
+      .box-sizing();
+      height: var(--ti-tab-dark-li-height);
+      line-height: var(--ti-tab-dark-li-height);
+      color: var(--ti-common-color-text-darkbg);
+      padding: 0 var(--ti-common-space-6x);
+      border-radius: var(--ti-common-border-radius-normal) var(--ti-common-border-radius-normal) 0 0;
+      .transition (background 150ms ease-in);
+    }
+    &:not(.disabled) > a:hover,
+    &:not(.disabled) > a:focus {
+      background-color: var(--ti-common-color-bg-dark-emphasize);
+      color: var(--ti-common-color-text-white);
+      outline: none;
+      .transition (background 200ms);
+    }
+    &.ti3-tab-active:not(.disabled) > a {
+      background-color: var(--ti-common-color-bg-normal);
+      color: var(--ti-common-color-text-primary);
+      .transition (background 250ms);
+    }
+    &.disabled > a {
+      color: var(--ti-common-color-text-gray-disabled);
+      cursor: not-allowed;
+      background-color: transparent;
+    }
+    &:first-child {
+      margin-left: var(--ti-common-space-5x);
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// 去掉下边框
+:host[dark].ti3-tabs-container {
+  & > .ti3-tab-content {
+    border: none;
+  }
+}
+
+// 小尺寸页签
+:host[small] .ti3-tab-li {
+  font-size: var(--ti-common-font-size-base);
+  margin: 0 var(--ti-common-space-10);
+}
+
+@-webkit-keyframes tiFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tiFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.ti3-tab-more {
+  cursor: pointer;
+  display: none;
+  padding-left: var(--ti-common-space-10);
+  &:hover {
+    color: var(--ti-common-color-text-highlight);
+  }
+  & ti-icon[local] {
+    display: block;
+  }
+}
+
+.ti3-tabs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.ti3-tabs-container1 {
+  overflow: hidden;
+}
+
+.ti3-tab-head-no-outline {
+  outline: none;
+}

@@ -1,0 +1,6 @@
+<h4 class="mb-3">1. 自定义错误信息</h4>
+<input [tiValidation]="errorMsgBaseConfig" [errorMessageWrapper]="wrapper" tiEqual="hello tiny" [(ngModel)]="errorMsgBaseValue" tiText />
+<div class="my-3" #wrapper>自定义检验信息容器:</div>
+<input [tiValidation]="errorMsgMultirowConfig" tiEqual="hello tiny" [(ngModel)]="errorMsgMultirowValue" tiText />
+<h4 class="mb-3 mt-4">2. 清空错误信息</h4>
+<input [tiValidation]="errorMsgClearConfig" tiEqual="hello tiny" [(ngModel)]="errorMsgClearValue" tiText />

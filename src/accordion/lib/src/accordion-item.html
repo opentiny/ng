@@ -1,0 +1,26 @@
+<div
+  [ngClass]="[headClass, disabled ? 'disabled': '', 'ti3-accordion-panel-heading']"
+  [tabindex]="disabled ? -1 : 0"
+  tiOutline
+  (keydown.enter)="toggleOpen($event)"
+  (click)="toggleOpen($event)"
+  [id]="appendId('head')"
+>
+  <div class="ti3-accordion-panel-title">
+    <div
+      class="ti3-icon ti3-icon-angle-right ti3-accordion-panel-title-icon"
+      [ngClass]="{'ti3-icon-angle-transform-down': !open,'ti3-icon-angle-transform-up': open,
+             'ti3-accordion-panel-title-icon-disabled': disabled}"
+    ></div>
+    <span class="ti3-accordion-panel-title-content">
+      <span [ngClass]="{'ti3-accordion-panel-title-content-disabled': disabled}">
+        <ng-content select="ti-accordion-head"></ng-content>
+      </span>
+    </span>
+  </div>
+</div>
+<div class="ti3-accordion-panel-collapse" [@accordionAnimate]="open ? 'expanded' : 'collapsed'">
+  <div class="ti3-accordion-panel-body" [ngClass]="[bodyClass]">
+    <ng-content></ng-content>
+  </div>
+</div>

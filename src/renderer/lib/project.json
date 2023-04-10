@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/renderer/lib",
+  "sourceRoot": "src/renderer/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/renderer"],
+      "options": {
+        "project": "src/renderer/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/renderer"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js renderer"
+          },
+          {
+            "command": "ng default-build renderer"
+          },
+          {
+            "command": "node build/clear-default-theme.js renderer"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/renderer && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build renderer && ng pack renderer && node build/publish.js renderer --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

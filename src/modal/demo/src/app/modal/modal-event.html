@@ -1,0 +1,11 @@
+<ng-template #myModal let-context="context">
+  <ti-modal-header> modal title </ti-modal-header>
+  <ti-modal-body> body content </ti-modal-body>
+  <ti-modal-footer>
+    <button type="button" color="danger" autofocus (click)="context.close()" tiButton>OK</button>
+    <button type="button" (click)="context.dismiss()" tiButton>Cancel</button>
+  </ti-modal-footer>
+</ng-template>
+
+<button (click)="showModal(myModal)" tiButton>show Modal</button>
+<demo-log [logs]="myLogs"></demo-log>

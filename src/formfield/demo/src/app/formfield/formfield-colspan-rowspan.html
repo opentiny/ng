@@ -1,0 +1,41 @@
+<ti-formfield [colsNumber]="colsNumber" [colsGap]="colsGap" [title]="'默认表单布局合并：'" verticalAlign="middle">
+  <ti-item [label]="'选择框：'">
+    <input type="checkbox" label="checkbox" tiCheckbox [(ngModel)]="checkboxValue" />
+  </ti-item>
+  <ti-item [label]="'文本域：'" [rowspan]="2">
+    <textarea style="width: 200px; height: 100px" tiTextarea></textarea>
+  </ti-item>
+  <ti-item [label]="'标签：'">
+    <span>标签内容</span>
+  </ti-item>
+  <ti-item [label]="'输入框：'">
+    <input type="text" style="width: 90%" tiText [(ngModel)]="inputValueyle" />
+  </ti-item>
+  <ti-item [label]="'按钮：'">
+    <button type="button" tiButton>Default</button>
+  </ti-item>
+  <ti-item [label]="'可清除输入框：'" [colspan]="3">
+    <input type="text" style="width: 100%" tiText [(ngModel)]="inputValueyle" clearable />
+  </ti-item>
+</ti-formfield>
+<br /><br />
+<ti-formfield [colsNumber]="colsNumber" [colsGap]="colsGap" [title]="'上下表单布局合并：'" vertical verticalAlign="middle">
+  <ti-item [label]="'选择框：'">
+    <input type="checkbox" label="checkbox" tiCheckbox [(ngModel)]="checkboxValue" />
+  </ti-item>
+  <ti-item [label]="'文本域：'" [rowspan]="2">
+    <textarea style="width: 200px; height: 100px" tiTextarea></textarea>
+  </ti-item>
+  <ti-item [label]="'标签：'">
+    <span>标签内容</span>
+  </ti-item>
+  <ti-item [label]="'输入框：'">
+    <input type="text" style="width: 90%" tiText [(ngModel)]="inputValueyle" />
+  </ti-item>
+  <ti-item [label]="'按钮：'">
+    <button type="button" tiButton>Default</button>
+  </ti-item>
+  <ti-item [label]="'可清除输入框：'" [colspan]="3">
+    <input type="text" style="width: 100%" tiText [(ngModel)]="inputValueyle" clearable />
+  </ti-item>
+</ti-formfield>

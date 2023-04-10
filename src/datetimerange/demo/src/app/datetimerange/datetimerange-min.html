@@ -1,0 +1,26 @@
+<h3>描述</h3>
+<p>min接口测试</p>
+<h3>示例</h3>
+<h4>1.最小值设置为字符串类型、非法日期时：最小值为默认值</h4>
+<br />
+<ti-datetime-range [(ngModel)]="value" [min]="min"></ti-datetime-range>
+<br />
+<br />
+<h4>2.设置为正常日期值时，显示正常</h4>
+<br />
+<ti-datetime-range [(ngModel)]="value1" [min]="min1"></ti-datetime-range>
+<br />
+<br />
+最小值：{{min1 | date: "yyyy-MM-dd"}}
+<br />
+<br />
+<button (click)="minValueClick()">改变最小值（2013/12/23）:最小值大于起始值，显示最小值</button>
+<button (click)="minValueClick2()">改变最小值undefined</button>
+<br />
+<br />
+<h4>3.dayClick事件中设置最小值（选择结束时间，更改最小值 10.1.13版本支持）</h4>
+<br />
+最小值： {{ min2 | date: "yyyy-MM-dd HH:mm:ss" }}
+<br />
+<br />
+<ti-datetime-range [(ngModel)]="value2" [min]="min2" (dayClick)="onDayClick($event)"></ti-datetime-range>

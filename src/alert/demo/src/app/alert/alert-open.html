@@ -1,0 +1,4 @@
+<ti-alert id="alert-open" [(open)]="open" (openChange)="onOpenChange($event)">{{label}}</ti-alert>
+<br />
+<button (click)="setOpen()" tiButton>控制显示/隐藏</button>
+<demo-log [logs]="myLogs"></demo-log>

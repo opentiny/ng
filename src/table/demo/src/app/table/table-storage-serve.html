@@ -1,0 +1,34 @@
+<h3>描述</h3>
+<p>表格记忆--后台分页</p>
+<h3>示例</h3>
+
+<h4>事件日志：</h4>
+<demo-log [logs]="myLogs"></demo-log>
+<br />
+
+<ti-table
+  [storageId]="storageId"
+  [storageConfig]="storageConfig"
+  [(displayedData)]="displayed"
+  [srcData]="srcData"
+  [columns]="columns"
+  (stateUpdate)="stateUpdate($event)"
+>
+  <table>
+    <thead>
+      <tr>
+        <th tiOverflow *ngFor="let column of columns" [width]="column.width">{{column.title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of displayed">
+        <td tiOverflow>{{row.firstName}}</td>
+        <td tiOverflow>{{row.lastName}}</td>
+        <td tiOverflow>{{row.age}}</td>
+        <td tiOverflow>{{row.balance}}</td>
+        <td tiOverflow>{{row.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ti-pagination [(currentPage)]="currentPage" [pageSize]="pageSize" [(totalNumber)]="totalNumber"> </ti-pagination>
+</ti-table>

@@ -1,0 +1,17 @@
+export default {
+  column: '2',
+  demos: [
+    {
+      demoId: '<%= name %>-basic',
+      name: {
+        'zh-CN': '基本用法',
+        'en-US': 'Basic usage'
+      },
+      desc: {
+        'zh-CN':'',
+        'en-US':''
+      },
+      apis: []
+    }
+  ]
+};

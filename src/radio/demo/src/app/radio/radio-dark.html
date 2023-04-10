@@ -1,0 +1,12 @@
+<h3>1.描述</h3>
+<p>深色背景</p>
+<h3>2.示例</h3>
+<div style="background-color: #464c59; padding: 10px; width: 100px">
+  <input type="radio" tiRadio name="group2" dark disabled="true" [(ngModel)]="selected" value="option1" label="选项1" /><br /><br />
+  <input type="radio" tiRadio name="group2" dark disabled="true" [(ngModel)]="selected" value="option2" label="选项2" /><br /><br />
+  <input type="radio" tiRadio name="group2" dark [(ngModel)]="selected" value="option3" label="选项3" /><br /><br />
+  <input type="radio" tiRadio name="group2" dark [(ngModel)]="selected" value="option4" label="选项4" />
+</div>
+<br />
+<br />
+选中项：<span>{{selected}}</span>

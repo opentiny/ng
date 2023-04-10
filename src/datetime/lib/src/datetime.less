@@ -1,0 +1,104 @@
+@import '../../../themes/basic/base-all.less';
+@import '../../../themes/basic/compnent-container-border.less';
+@import '../../../date/lib/src/date-common.less';
+
+ti-drop.ti3-datetime-picker {
+  --ti-date-picker-padding-horizon: var(--ti-common-space-4x);
+  --ti-date-picker-line-width: 1px;
+  --ti-date-picker-line-color: var(--ti-common-color-line-dividing);
+}
+
+:host.ti3-datetime-input-container :extend(.ti3-compnent-container-border all) {
+  width: var(--ti-common-size-50x);
+}
+
+.ti3-dropdown-container.ti3-datetime-picker {
+  padding: var(--ti-common-space-3x) var(--ti-date-picker-padding-horizon);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+  z-index: 10002;
+
+  &:focus {
+    outline: 0px;
+  }
+}
+
+.ti3-datetime-picker-footer {
+  padding-bottom: var(--ti-common-space-10);
+  width: 100%;
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+  clear: both;
+  .box-sizing(border-box);
+  .user-select();
+  .clearfix();
+}
+
+.ti3-date-picker-footer-right {
+  float: right;
+}
+
+.ti3-datetime-btn-picker-footer {
+  margin-top: var(--ti-common-space-3x);
+  padding-top: var(--ti-common-space-3x);
+  width: 100%;
+  clear: both;
+  border-top: var(--ti-date-picker-line-width) var(--ti-common-border-style-solid) var(--ti-date-picker-line-color);
+  .box-sizing(border-box);
+  .user-select();
+  .clearfix();
+
+  .ti3-datetime-picker-footer-btn {
+    float: right;
+    &:last-child {
+      margin-right: var(--ti-common-space-10);
+    }
+  }
+}
+.ti3-datetime-btn-picker-footer.ti3-datetime-select-time {
+  margin-top: 0;
+  border-top: none;
+}
+
+.ti3-date-time-customize-contianer {
+  float: left;
+  padding-right: var(--ti-common-space-4x);
+  width: var(--ti-common-size-20x);
+  border-right: var(--ti-date-picker-line-width) var(--ti-common-border-style-solid) var(--ti-date-picker-line-color);
+}
+
+.ti3-datetime-dateedit {
+  display: inline-block;
+  width: calc((var(--ti-common-size-9x) * 7 - var(--ti-common-space-2x)) / 2 - 2px);
+  margin-right: var(--ti-common-space-2x);
+}
+.ti3-datetime-timeedit {
+  display: inline-block;
+  width: calc((var(--ti-common-size-9x) * 7 - var(--ti-common-space-2x)) / 2 - 2px);
+}
+.ti3-datetime-panel-container {
+  float: right;
+  padding-left: var(--ti-common-space-4x);
+}
+
+::ng-deep .ti3-datetime-dateedit-input input[tiText] {
+  border-color: var(--ti-common-color-line-active) !important;
+}
+
+::ng-deep .ti3-datetime-timeedit-input {
+  border-color: var(--ti-common-color-line-active) !important;
+}
+
+.ti3-datetime-picker-footer-right {
+  float: right;
+}
+.ti3-datetime-picker-footer-left {
+  float: left;
+  margin-left: calc(var(--ti-common-space-10) * -1); // select组件左边距是10px，设置margin-left是为了与面板其它内容左对齐
+  ::ng-deep ti-select {
+    width: auto;
+    ti-dominator .ti3-overflow-padding {
+      padding-right: 0;
+    }
+  }
+}

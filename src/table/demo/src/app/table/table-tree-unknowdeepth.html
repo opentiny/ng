@@ -1,0 +1,21 @@
+<ti-table [(displayedData)]="displayedData" [srcData]="srcData">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns">{{column.title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let node of displayedData">
+        <td [ngStyle]="getLevelStyle(node)">
+          <span class="ti3-table-tree" *ngIf="node.hasChildren" (click)="toggle(node)">
+            <ti-icon [name]="!node.expand ? 'plus-square' : 'minus-square'"></ti-icon>
+          </span>
+          <span [ngClass]="{'ti3-table-tree-no-leaf': !node.hasChildren}">{{node.name}}</span>
+        </td>
+        <td>{{node.size}}</td>
+        <td>{{node.type}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ti-table>

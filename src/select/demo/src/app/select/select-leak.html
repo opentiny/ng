@@ -1,0 +1,10 @@
+<button id="select-leak-toggle" (click)="toggle()">显示/隐藏</button>
+<br />
+<br />
+<div *ngIf="show">
+  <span>国家: </span>
+  <ti-select id="select-leak" [options]="myOptions" [(ngModel)]="mySelected" placeholder="请选择国家"> </ti-select>
+</div>
+<br />
+<p>选中项：{{mySelected | json}}</p>
+<p>ti-drop个数：<input [(ngModel)]="dropLen" id="dropNumInput" /></p>

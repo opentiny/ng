@@ -1,0 +1,11 @@
+<ti-upload
+  url="/upload"
+  type="button"
+  method="get"
+  alias="customFileName"
+  [headers]="customHeaders"
+  [formData]="customFormData"
+  [formDataFirst]="false"
+  (beforeSendItems)="beforeSendItems($event)"
+></ti-upload>
+<demo-log [logs]="myLogs"></demo-log>

@@ -22,7 +22,7 @@ English | [简体中文](README-zh_CN.md)
 - Support OnPush mode.
 - Use TypeScript.
 - Powerful theme customization with CSS variables.
-- Internationalization support for 7 languages.
+- Internationalization support for 5 languages.
 
 ## Environment Support
 

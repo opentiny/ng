@@ -1,0 +1,60 @@
+@import '../../../themes/basic/base-all.less';
+
+:host {
+  display: block;
+  position: relative;
+  min-width: var(--ti-common-size-50x);
+  padding: var(--ti-common-space-5x);
+  border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-dashed) var(--ti-common-color-line-normal);
+  border-radius: var(--ti-common-border-radius-normal);
+  background-color: var(--ti-common-color-bg-white-normal);
+  outline: none;
+  .box-sizing(border-box);
+
+  &:not(.ti3-card-add-disabled):active,
+  &:not(.ti3-card-add-disabled):hover,
+  &:not(.ti3-card-add-disabled):focus,
+  &.ti3-card-add-active {
+    border-color: var(--ti-common-color-line-active);
+
+    .ti3-card-add-icon {
+      color: var(--ti-common-color-icon-active);
+    }
+  }
+}
+
+// diabled 状态
+:host.ti3-card-add-disabled {
+  border-color: var(--ti-common-color-line-disabled);
+  color: var(--ti-common-color-text-disabled);
+  cursor: not-allowed;
+
+  &:hover,
+  &:active {
+    outline: none;
+    border-color: var(--ti-common-color-line-disabled);
+  }
+}
+
+// 卡片加号图标
+.ti3-card-add-icon {
+  position: absolute;
+  font-size: var(--ti-common-size-4x);
+  color: var(--ti-common-color-icon-normal);
+  top: 50%;
+  left: 50%;
+  // ng9 calc 计算有问题，所以 margin 写成固定值，正常写法如下
+  // calc(0px - (var(--ti-common-font-size-2) / 2))
+  margin-top: -8px;
+  margin-left: -8px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+:host.ti3-card-add-disabled > .ti3-card-add-icon {
+  color: var(--ti-common-color-text-disabled);
+}
+
+:host.ti3-card-add-disabled:hover > .ti3-card-add-icon {
+  cursor: not-allowed;
+}

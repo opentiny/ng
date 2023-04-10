@@ -1,0 +1,25 @@
+<input id="checkbox-label1" type="checkbox" tiCheckbox />
+<label class="cls" for="checkbox-label1">我已阅读<a class="link" target="_blank" href="">《隐私协议》</a></label>
+<br />
+<ti-checkbox-group id="checkbox-group-label" class="w-auto mt-4" [items]="items" [(ngModel)]="value">
+  <ng-template #item let-item let-index="index">
+    <label class="w-32 cursor-pointer" [for]="item.id">第{{item.id}}项：{{item.label}}</label>
+  </ng-template>
+</ti-checkbox-group>
+<style>
+  .cls {
+    cursor: pointer;
+    color: #de504e;
+    vertical-align: middle;
+  }
+  .link {
+    color: var(--ti-common-color-text-link);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .link:hover {
+    color: var(--ti-common-color-text-link-hover);
+    text-decoration: underline;
+  }
+</style>

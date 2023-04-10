@@ -1,0 +1,78 @@
+{
+  "projectType": "application",
+  "root": "src/datedominator/demo",
+  "sourceRoot": "src/datedominator/demo/src",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "less"
+    }
+  },
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "dependsOn": [],
+      "options": {
+        "outputPath": "dist/apps/datedominator",
+        "index": "src/datedominator/demo/src/index.html",
+        "main": "src/datedominator/demo/src/main.ts",
+        "polyfills": "src/polyfills.ts",
+        "tsConfig": "src/datedominator/demo/tsconfig.app.json",
+        "assets": ["src/datedominator/demo/src/favicon.ico", "src/datedominator/demo/src/assets"],
+        "styles": ["src/themes/basic/build.less", "src/themes/theme-default/build.less", "src/styles.less"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "src/environments/environment.ts",
+              "with": "src/environments/environment.prod.ts"
+            }
+          ],
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "10mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ]
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "datedominator-demo:build:production"
+        },
+        "development": {
+          "browserTarget": "datedominator-demo:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "preview": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "node build/preview-demo.js datedominator"
+          }
+        ]
+      }
+    }
+  }
+}

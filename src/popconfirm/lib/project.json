@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/popconfirm/lib",
+  "sourceRoot": "src/popconfirm/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/popconfirm"],
+      "options": {
+        "project": "src/popconfirm/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/popconfirm"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js popconfirm"
+          },
+          {
+            "command": "ng default-build popconfirm"
+          },
+          {
+            "command": "node build/clear-default-theme.js popconfirm"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/popconfirm && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build popconfirm && ng pack popconfirm && node build/publish.js popconfirm --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

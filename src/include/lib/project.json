@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/include/lib",
+  "sourceRoot": "src/include/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/include"],
+      "options": {
+        "project": "src/include/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/include"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js include"
+          },
+          {
+            "command": "ng default-build include"
+          },
+          {
+            "command": "node build/clear-default-theme.js include"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/include && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build include && ng pack include && node build/publish.js include --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

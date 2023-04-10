@@ -1,0 +1,51 @@
+<div class="containerStyle">
+  <h3>描述</h3>
+  <p>表格排序要结合tiCellText组件和tiHeadSort组件来实现。ti-cell-text包裹的是表头单元格 文本，ti-head-sort为点击的排序图标。</p>
+  <p class="demo-text-warn">注意：使用 tiOverflow 组件，请导入 TiOverflowModule。</p>
+  <h3>示例</h3>
+
+  <button type="button" (click)="clearSort()" style="margin-right: 20px">手动清除排序状态</button>
+  <!-- 10.1.13 版本支持手动改变排序状态-->
+  <button type="button" (click)="changeSort()">手动改变排序状态 =》 使 firstName 那一列降序</button>
+  <br /><br />
+  <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">
+    <table>
+      <thead>
+        <tr>
+          <!--当表头有排序图标或漏斗排序图标，文本title需要显示不下出省略号及tip时需使用ti-cell-text组件；
+                          ti-head-sort为排序图标-->
+          <th width="{{columns[0].width}}">
+            <ti-cell-text>{{columns[0].title}}</ti-cell-text>
+            <!-- sort接口为排序的属性名(字段，例如‘firstName’)-->
+            <ti-head-sort [sortKey]="columns[0].sortKey"></ti-head-sort>
+          </th>
+          <th width="{{columns[1].width}}">
+            <ti-cell-text>{{columns[1].title}}</ti-cell-text>
+            <ti-head-sort [sortKey]="columns[1].sortKey"></ti-head-sort>
+          </th>
+          <th width="{{columns[2].width}}">
+            <ti-cell-text>{{columns[2].title}}</ti-cell-text>
+            <!-- asc接口指定初始排序是升序(true)还是降序(false)-->
+            <ti-head-sort [sortKey]="columns[2].sortKey" [asc]="columns[2].asc"></ti-head-sort>
+          </th>
+          <th width="{{columns[3].width}}">
+            <ti-cell-text>{{columns[3].title}}</ti-cell-text>
+            <ti-head-sort [sortKey]="columns[3].sortKey"></ti-head-sort>
+          </th>
+          <!--该列无法排序，因为未做ti-head-sort设置-->
+          <th tiOverflow>{{columns[4].title}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+        <tr *ngFor="let row of displayed">
+          <td tiOverflow>{{row.firstName}}</td>
+          <td tiOverflow>{{row.lastName}}</td>
+          <td tiOverflow>{{row.birthday}}</td>
+          <td tiOverflow>{{row.balance}}</td>
+          <td tiOverflow>{{row.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ti-table>
+</div>

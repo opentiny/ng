@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo -e "\nGit hooks (pre-commit): \n"
+
+# 启动 lint-staged 进行代码格式和语法检查和自动修复
+npx --no-install lint-staged

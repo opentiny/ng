@@ -1,0 +1,62 @@
+{
+  "projectType": "library",
+  "root": "src/base/lib",
+  "sourceRoot": "src/base/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/base"],
+      "options": {
+        "project": "src/base/lib/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/base"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js base"
+          },
+          {
+            "command": "ng default-build base"
+          },
+          {
+            "command": "node build/clear-default-theme.js base"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/base && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build base && ng pack base && node build/publish.js base --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

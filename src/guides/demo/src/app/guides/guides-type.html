@@ -1,0 +1,16 @@
+<h4 class="mb-3">1.基础样式</h4>
+<ti-guides id="guides-type" [activeIndex]="activeIndex">
+  <ti-guide *ngFor="let step of steps" [type]="step.type">
+    <ti-guide-header>{{step.label}}</ti-guide-header>
+    <ti-guide-content> {{step.content}} </ti-guide-content>
+    <ti-guide-body> {{step.body}} </ti-guide-body>
+  </ti-guide>
+</ti-guides>
+<h4 class="my-3">2.小尺寸样式</h4>
+<ti-guides small id="guides-type-small" [activeIndex]="activeIndex">
+  <ti-guide *ngFor="let step of steps" [type]="step.type">
+    <ti-guide-header>{{step.label}}</ti-guide-header>
+    <ti-guide-content> {{step.content}} </ti-guide-content>
+    <ti-guide-body> {{step.body}} </ti-guide-body>
+  </ti-guide>
+</ti-guides>

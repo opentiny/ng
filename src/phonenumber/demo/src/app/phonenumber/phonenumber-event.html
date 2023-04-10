@@ -1,0 +1,8 @@
+<ti-phonenumber
+  id="phoneNumber-event"
+  [(ngModel)]="value"
+  [options]="countryOptions"
+  (countryChange)="countryChange($event)"
+  (countrySelect)="countrySelect($event)"
+></ti-phonenumber>
+<demo-log [logs]="myLogs"></demo-log>

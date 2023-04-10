@@ -1,0 +1,49 @@
+<ti-icon
+  name="close"
+  class="ti3-intro-close"
+  tiOutline
+  (click)="close(false)"
+  [tabindex]="0"
+  (keydown.enter)="close(false)"
+  [id]="appendId('close')"
+></ti-icon>
+<div class="ti3-intro-header" [id]="appendId('header')">{{title}}</div>
+<div class="ti3-intro-body" [id]="appendId('body')">
+  <ng-container *ngIf="isStringContent else templateContent">
+    <span>{{content}}</span>
+  </ng-container>
+  <div *ngIf="image" [class]="image"></div>
+</div>
+<div class="ti3-intro-footer">
+  <div class="ti3-intro-steplist-container" *ngIf="totalNumber > 1">
+    <span
+      *ngFor="let item of totalArray;let i = index;"
+      class="ti3-intro-steplist-item"
+      [ngClass]="{'active': i === currentNumber,
+                        'ti-step-showed': currentNumber > i }"
+      (click)="wantStep(i)"
+      [id]="appendId(i)"
+    ></span>
+  </div>
+  <div class="ti3-intro-button-container">
+    <button type="button" tiButton *ngIf="skipable" [hasBorder]="false" (click)="close(false)" [id]="appendId('skip')">
+      {{ 'tiIntro.skip' | tiTranslate }}
+    </button>
+    <button type="button" tiButton *ngIf="currentNumber > 0" (click)="wantStep(currentNumber - 1)" [id]="appendId('previous')">
+      {{ 'tiIntro.previous' | tiTranslate }}
+    </button>
+    <button
+      type="button"
+      tiButton
+      color="danger"
+      *ngIf="currentNumber < totalNumber"
+      (click)="wantStep(currentNumber + 1)"
+      [id]="appendId('next')"
+    >
+      {{ 'tiIntro.next' | tiTranslate }}
+    </button>
+    <button type="button" tiButton color="danger" *ngIf="currentNumber === totalNumber" (click)="close(true)" [id]="appendId('finish')">
+      {{ finishButtonText ? finishButtonText : 'tiIntro.finish' | tiTranslate }}
+    </button>
+  </div>
+</div>

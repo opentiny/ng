@@ -1,0 +1,153 @@
+<div
+  class="ti3-transfer-list-container"
+  [ngStyle]="{'width': width ? width : type === 'list' ? '200px' :  '340px',
+    'height': height ? height : type === 'list' ? '300px' :  '443px'}"
+>
+  <div class="ti3-transfer-list-header">
+    <ng-container *ngTemplateOutlet="selectAllTemplate"></ng-container>
+    <span class="ti3-transfer-list-selected-number">{{selectedNumber}} / {{totalNumber}}</span>
+  </div>
+  <div *ngIf="searchable" class="ti3-transfer-searchbox-container">
+    <ti-searchbox-notsearch
+      [placeholder]="placeholder"
+      [(ngModel)]="searchWord"
+      (ngModelChange)="searchWordChange($event)"
+      [id]="appendId('searchbox')"
+      style="width: 100%"
+    >
+    </ti-searchbox-notsearch>
+  </div>
+  <!-- list面板 -->
+  <div
+    *ngIf="type === 'list'"
+    class="ti3-transfer-list-body"
+    [ngClass]="{
+            'ti3-transfer-searchbox-drop' : searchable && !pageable,
+            'ti3-transfer-pagination-drop' : !searchable && pageable,
+            'ti3-transfer-searchbox-pagination-drop' : searchable && pageable
+        }"
+  >
+    <ti-list
+      *ngIf="searchable ? (searchResult?.length > 0) : (options?.length > 0) "
+      [multiple]="true"
+      [options]="dispalyData"
+      [(ngModel)]="model"
+      [labelKey]="labelKey"
+      [idKey]="idKey"
+      (select)="onSelect($event)"
+      (mousedown)="onListMousedown($event)"
+      [id]="appendId('list')"
+      style="display: block"
+    >
+    </ti-list>
+    <!-- 暂无数据DOM -->
+    <div
+      *ngIf="type === 'list' && (searchable ? (!searchResult || searchResult.length === 0) : (!options || options.length === 0))"
+      class="ti3-transfer-list-no-data"
+      [innerHtml]="noDataText"
+    ></div>
+  </div>
+  <!-- 分页 -->
+  <div class="ti3-transfer-pagination" *ngIf="type === 'list' && pageable && (searchResult?.length > 0 || options?.length > 0)">
+    <ti-pagination
+      [id]="appendId('pagination')"
+      type="mini"
+      [showTotalNumber]="false"
+      [pageSize]="{size: pageSize}"
+      (currentPageChange)="changePagination($event)"
+      [(currentPage)]="currentPage"
+      [(totalNumber)]="total"
+    ></ti-pagination>
+  </div>
+
+  <!-- 表格类型 -->
+  <div
+    *ngIf="type === 'table'"
+    class="ti3-transfer-table-height"
+    [ngClass]="{
+            'ti3-transfer-searchbox-drop' : searchable && !pageable,
+            'ti3-transfer-pagination-drop' : !searchable && pageable,
+            'ti3-transfer-searchbox-pagination-drop' : searchable && pageable
+        }"
+  >
+    <ti-table
+      [id]="appendId('table')"
+      [(displayedData)]="displayed"
+      [srcData]="srcData"
+      [columns]="columns"
+      [searchWords]="this.searchable ? [searchWord] : null"
+      [searchKeys]="this.searchable ? searchKeys : null"
+      tiColsResizable
+      style="height: 100%"
+    >
+      <div class="ti3-table-fixed-head">
+        <table>
+          <thead>
+            <tr>
+              <th [id]="appendId('checkth')" checkbox-column not-resizable>
+                <input
+                  [id]="appendId('checkgroup')"
+                  type="checkbox"
+                  tiCheckgroup
+                  [items]="displayed"
+                  [(checkeds)]="checkedList"
+                  (checkedsChange)="onCheckedsChange($event)"
+                />
+              </th>
+              <ng-container *ngFor="let column of columns;">
+                <th tiOverflow width="{{column.width}}">{{column.title}}</th>
+              </ng-container>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="ti3-table-container ti3-resize-wrapper ti3-transfer-table-body-height">
+        <table [ngClass]="{'ti3-transfer-table-border': displayed.length !==0 && displayed.length !== pageSize}">
+          <thead>
+            <tr>
+              <th checkbox-column></th>
+              <th *ngFor="let column of columns" width="{{column.width}}"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of displayed; let i = index;" [ngClass]="{'ti3-selected-tr': checkedList.indexOf(row) !== -1}">
+              <td checkbox-column [id]="appendId('checktd'+i)" [ngClass]="{'ti3-disabled-cell': row.disabled}">
+                <input [id]="appendId('checkitem'+i)" type="checkbox" tiCheckitem [disabled]="row.disabled" [item]="row" />
+              </td>
+              <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: row,index: i}"></ng-container>
+            </tr>
+          </tbody>
+          <tbody *ngIf="displayed.length === 0">
+            <tr class="ti3-table-nodata">
+              <td tiColspan>{{noDataText}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ti-pagination
+        [id]="appendId('table_pagination')"
+        *ngIf="pageable"
+        [ngClass]="{'ti3-transfer-table-pagination-hidden': displayed.length === 0}"
+        type="mini"
+        [showTotalNumber]="false"
+        [pageSize]="{size: pageSize}"
+        [(currentPage)]="currentPage"
+        [(totalNumber)]="tableTotalNumber"
+      ></ti-pagination>
+    </ti-table>
+  </div>
+</div>
+
+<!--全选项的模板 -->
+<ng-template #selectAllTemplate>
+  <label
+    *ngIf="type === 'list'"
+    class="ti3-icon ti3-icon-checkmark ti3-transfer-list-checkbox"
+    [ngClass]="{'ti3-transfer-list-checkbox-selected': selectAllState === true,
+                            'ti3-transfer-list-checkbox-indeterminate': selectAllState === null}"
+    [id]="appendId('select_all')"
+    (click)="onClickSelectAll()"
+  >
+  </label>
+  <span>{{ title }}</span>
+</ng-template>

@@ -1,0 +1,64 @@
+@import '../../../themes/basic/base-all.less';
+
+:host {
+  --ti-ip-container-height: var(--ti-common-size-7x);
+  --ti-ipv4-container-width: var(--ti-common-size-40x);
+  --ti-ipv6-container-width: 380px;
+  --ti-ip-division-width: var(--ti-common-size-base);
+}
+
+.ti_input_ip_container (@width, @inputWidth) {
+  border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-normal);
+  border-radius: var(--ti-common-border-radius-normal);
+  background-color: var(--ti-common-color-bg-white-normal);
+  display: inline-block;
+  width: @width;
+  height: var(--ti-ip-container-height);
+  display: flex;
+  align-items: center;
+  .box-sizing(border-box);
+  .form-border-animat-init();
+  .ti_input_ip_anchor[tiText] {
+    text-align: center;
+    height: calc(var(--ti-ip-container-height) - var(--ti-common-border-weight-normal) * 2);
+    vertical-align: middle;
+    padding: 0;
+    // 由于IE无法正确解析 @{number} -1情况下的样式，因此此处新定义了divisionNum来做算式处理
+    width: @inputWidth;
+    background-color: var(--ti-common-color-transparent);
+  }
+  .ti_input_ip_division {
+    color: var(--ti-common-color-icon-normal);
+    font-weight: var(--ti-common-font-weight-7);
+    display: inline-block;
+    width: var(--ti-ip-division-width);
+    text-align: center;
+    font-family: 'Helvetica', 'Myriad', Arial, 'Microsoft Yahei', '????', 'SimSun', Tahoma;
+  }
+  &:hover {
+    border-color: var(--ti-common-color-line-hover);
+    //默认状态下的hover动画
+    .form-border-animat-enter();
+  }
+  &[tiFocused] {
+    border-color: var(--ti-common-color-line-active);
+  }
+  &[disabled] {
+    background-color: var(--ti-common-color-bg-disabled);
+    border-color: var(--ti-common-color-line-disabled);
+    .ti_input_ip_octet,
+    .ti_input_ip_octet_v6,
+    .ti_input_ip_division {
+      color: var(--ti-common-color-icon-disabled);
+      cursor: not-allowed;
+    }
+  }
+}
+
+:host.ti_input_ip_container_ipv4 {
+  .ti_input_ip_container(var(--ti-ipv4-container-width), calc((100% - var(--ti-ip-division-width) * 3) / 4));
+}
+
+:host.ti_input_ip_container_ipv6 {
+  .ti_input_ip_container(var(--ti-ipv6-container-width), calc((100% - var(--ti-ip-division-width) * 7) / 8));
+}

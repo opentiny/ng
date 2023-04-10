@@ -1,0 +1,9 @@
+<h4>1.autofocus方式聚焦:</h4>
+<input id="inputnumber-autofocus" type="text" tiText tiNumber autofocus [(ngModel)]="inputValue" />
+<br /><br />
+<h4>2.focus()方式聚焦:</h4>
+<input #inputnumberfocus id="inputnumber-focus" type="text" tiText tiNumber [(ngModel)]="inputValue" />
+<br /><br />
+<button tiButton (click)="inputnumberfocus.nativeElement.focus()">标签元素focus</button>
+&nbsp;
+<button tiButton (click)="inputnumberfocus.nativeElement.blur()">标签元素blur</button>

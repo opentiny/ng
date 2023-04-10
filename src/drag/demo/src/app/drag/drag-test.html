@@ -1,0 +1,17 @@
+<h3>1.描述</h3>
+<p>测试 tiDragDisabled/tiDraggable</p>
+<h3>2.示例</h3>
+<p>
+  <button (click)="changeDisable()">changeDisable</button>
+</p>
+<div style="position: relative">
+  <div class="blockCls" tiDraggable [tiDragDisabled]="disabled">test disable</div>
+
+  <div class="blockCls" [tiDraggable]="options1">test axis = 'x'</div>
+  <div class="blockCls" [tiDraggable]="options2">test axis = 'y'</div>
+  <div class="blockCls" tiDraggable style="position: absolute; left: 200px; top: 50px">test absolute</div>
+  <div class="blockCls" tiDraggable style="position: fixed; left: 200px; top: 120px">test fixed</div>
+  <div style="position: fixed; left: 200px; top: 160px">
+    <div class="blockCls" tiDraggable>fixed-parent</div>
+  </div>
+</div>

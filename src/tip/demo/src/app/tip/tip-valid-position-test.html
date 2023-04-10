@@ -1,0 +1,17 @@
+<h3>本测试用例主要测试tip在开发者指定的位置显示不下时，能够自适应在其能显示的位置显示</h3>
+<div style="margin: 10px">
+  <div>
+    <div [tiTip]="tipStr11" tiTipPosition="top" class="test-tip">top</div>
+    <div [tiTip]="tipStr12" tiTipPosition="top" class="test-tip" style="margin: 0 620px">top</div>
+    <div [tiTip]="tipStr13" tiTipPosition="top-left" class="test-tip">top-left</div>
+  </div>
+  <div style="margin: 250px 0">
+    <div [tiTip]="tipStr21" tiTipPosition="left" class="test-tip">left</div>
+    <div [tiTip]="tipStr22" tiTipPosition="right" class="test-tip" style="margin-left: 1400px">right</div>
+  </div>
+  <div>
+    <div [tiTip]="tipStr31" tiTipPosition="bottom-right" class="test-tip">bottom-right</div>
+    <div [tiTip]="tipStr32" tiTipPosition="bottom" class="test-tip" style="margin: 0 620px">bottom</div>
+    <div [tiTip]="tipStr33" tiTipPosition="bottom-left" class="test-tip">bottom-left</div>
+  </div>
+</div>

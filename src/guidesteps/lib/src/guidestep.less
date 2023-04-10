@@ -1,0 +1,39 @@
+// 纵向步骤间分割线样式
+:host {
+  display: block;
+  position: relative;
+  background: var(--ti-common-color-bg-white-normal, #ffffff);
+  &:before {
+    content: '';
+    position: absolute;
+    width: var(--guidestep-line-width);
+    height: calc(
+      100% - (var(--guidestep-dot-outer-size)) - var(--guidestep-line-dot-space) -
+        (var(--guidestep-header-line-height) - (var(--guidestep-dot-outer-size))) / 2
+    );
+    top: calc(
+      var(--guidestep-dot-outer-size) + var(--guidestep-line-dot-space) +
+        (var(--guidestep-header-line-height) - (var(--guidestep-dot-outer-size))) / 2
+    );
+    left: calc((var(--guidestep-dot-outer-size) - var(--guidestep-line-width)) / 2);
+    background: var(--ti-common-color-line-dividing, #dfe1e6);
+  }
+  &:last-child {
+    &:before {
+      background: transparent;
+    }
+  }
+  // 用户设置large属性时样式
+  [large] & {
+    &:before {
+      top: calc(
+        var(--guidestep-dot-outer-size) + var(--guidestep-line-dot-space) +
+          (var(--guidestep-header-large-line-height) - (var(--guidestep-dot-outer-size))) / 2
+      );
+      height: calc(
+        100% - (var(--guidestep-dot-outer-size)) - var(--guidestep-line-dot-space) -
+          (var(--guidestep-header-large-line-height) - (var(--guidestep-dot-outer-size))) / 2
+      );
+    }
+  }
+}

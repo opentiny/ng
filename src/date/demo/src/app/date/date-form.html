@@ -1,0 +1,13 @@
+<h3>1.描述</h3>
+<p>date 在响应式表单中使用的场景测试</p>
+<h3>2.示例</h3>
+<br />
+<div>
+  <form [formGroup]="myFormControls">
+    <p>2.1 初始化值为null</p>
+    <ti-date formControlName="field1" (ngModelChange)="onNgModelChange($event)"></ti-date>
+    <br />
+    <p>2.2 初始化值为正常日期</p>
+    <ti-date formControlName="field2" (ngModelChange)="onNgModelChange($event)"></ti-date>
+  </form>
+</div>

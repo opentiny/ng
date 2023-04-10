@@ -1,0 +1,28 @@
+<button
+  class="ti-buttonselect-button"
+  #button
+  tiOutline
+  [id]="appendId('button')"
+  (mouseenter)="onMouseenterButton()"
+  (mouseleave)="onMouseleaveButton($event)"
+  (click)="onClickButton()"
+  [ngClass]="{'ti-buttonselect-dominator-border': model}"
+>
+  <span class="ti-buttonselect-text" [title]="candidate[labelKey]">{{candidate[labelKey]}}</span>
+  <span class="ti-btnselect-triangle" [ngClass]="{'ti-btnselect-triangle-up': droplistCom?droplistCom.isShow:false}"></span>
+  <span class="ti-buttonselect-badge" *ngIf="model">
+    <span class="ti3-icon ti3-icon-checkmark-small"></span>
+  </span>
+</button>
+<ti-droplist
+  [id]="appendId('droplist')"
+  [dominatorElem]="button"
+  panelWidth="auto"
+  [options]="options"
+  [(ngModel)]="model"
+  (ngModelChange)="onDroplistChange($event)"
+>
+  <ng-template #item let-item>
+    <span class="ti-buttonselect-list">{{item[labelKey]}}</span>
+  </ng-template>
+</ti-droplist>

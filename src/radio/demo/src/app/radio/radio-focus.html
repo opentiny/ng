@@ -1,0 +1,39 @@
+<h3>1.描述</h3>
+<p>单选框焦点功能测试</p>
+<h3>2.示例</h3>
+<p>2.1 可以通过组件或者原生元素获取焦点</p>
+<p>2.2 tab键可以切换焦点</p>
+<p>单选组1：</p>
+<div>
+  <input
+    type="radio"
+    *ngFor="let item of radioList, index as i;"
+    tiRadio
+    name="group1"
+    [(ngModel)]="selected1"
+    [value]="item.value"
+    [label]="item.label"
+    (focus)="onFocus(i)"
+  /><br />
+</div>
+选中项：{{selected1}}<br />
+<br />
+<p>单选组2：</p>
+<input type="radio" tiRadio name="group2" [(ngModel)]="selected2" value="option1" label="选项1" #input (focus)="onFocus(4)" tabindex="1" />
+tabindex="1"
+<input type="radio" tiRadio name="group2" [(ngModel)]="selected2" value="option2" label="选项2" (focus)="onFocus(5)" tabindex="4" />
+tabindex="4"
+<input type="radio" tiRadio name="group2" [(ngModel)]="selected2" value="option3" label="选项3" (focus)="onFocus(6)" tabindex="2" />
+tabindex="2"
+<input type="radio" tiRadio name="group2" [(ngModel)]="selected2" value="option4" label="选项4" (focus)="onFocus(7)" tabindex="3" />
+tabindex="3" <br />
+选中项：{{selected2}}<br />
+<button id="comp_focus" (click)="input.focus()">组件focus()</button>
+&nbsp;
+<button id="comp_blur" (click)="input.blur()">组件blur()</button>
+&nbsp;
+<button id="element_focus" (click)="input.nativeElement.focus()">标签元素focus()</button>
+&nbsp;
+<button id="element_blur" (click)="input.nativeElement.blur()">标签元素blur()</button>
+<h4>事件日志：</h4>
+<demo-log [logs]="myLogs"></demo-log>

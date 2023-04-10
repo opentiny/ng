@@ -1,0 +1,48 @@
+::ng-deep :root {
+  --ti3-score-item-height: 28px;
+}
+
+:host {
+  display: inline-block;
+  font-weight: normal;
+  font-size: var(--ti-common-font-size-base);
+  line-height: var(--ti-common-line-height-number);
+  color: var(--ti-common-color-text-primary);
+}
+
+// 每项评分样式
+.ti3-score-item {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  height: var(--ti3-score-item-height);
+  line-height: var(--ti3-score-item-height);
+  margin-right: 2px;
+  background-color: var(--ti-common-color-bg-light-normal);
+
+  &:hover {
+    background-color: var(--ti-common-color-bg-light-emphasize);
+  }
+
+  &.ti3-score-item-active {
+    background-color: var(--ti-common-color-bg-emphasize);
+    color: var(--ti-common-color-text-white);
+  }
+
+  &:first-child {
+    border-radius: var(--ti-common-border-radius-normal) 0 0 var(--ti-common-border-radius-normal);
+  }
+
+  &:last-child {
+    margin-right: 0;
+    border-radius: 0 var(--ti-common-border-radius-normal) var(--ti-common-border-radius-normal) 0;
+  }
+}
+
+// 文本描述，使用flex布局，文本两端对齐
+.ti3-score-text {
+  display: flex;
+  justify-content: space-between;
+  color: var(--ti-common-color-text-weaken);
+  margin-bottom: var(--ti-common-space-2x);
+}

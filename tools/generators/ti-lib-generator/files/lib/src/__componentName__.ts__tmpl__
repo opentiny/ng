@@ -1,0 +1,14 @@
+import { Component, Input } from '@angular/core';
+<% if(i18n === 'y') { %>
+import { TiLocale } from '@opentiny/ng-locale';
+<% } %>
+/**
+ * 组件描述
+ */
+@Component({
+  selector: 'ti-<%= name %>',
+  templateUrl: '<%= name %>.html',
+  styleUrls: ['<%= name %>.less']
+})
+export class <%= componentName %> {
+}

@@ -1,0 +1,14 @@
+@import '../../../themes/basic/link-no-decoration.less';
+
+.ti-foldtext-wraper {
+  overflow-y: hidden;
+  ::ng-deep a {
+    .ti-link-no-decoration();
+  }
+}
+.ti-foldtext-toggle {
+  color: var(--ti-common-color-text-highlight);
+  &:hover {
+    cursor: pointer;
+  }
+}

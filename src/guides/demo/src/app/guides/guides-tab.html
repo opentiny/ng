@@ -1,0 +1,38 @@
+<h2>1.描述</h2>
+<p>特殊场景展示</p>
+<h2>2.示例</h2>
+<p>2.1 guides和tab组件结合使用，且第一个页签下，卡片第二项为激活项</p>
+<p>
+  <ti-tabs>
+    <ti-tab id="guides-tabs" [(active)]="tab.active" *ngFor="let tab of card1">
+      <ti-tab-header> {{tab.title}} </ti-tab-header>
+      <ti-guides [activeIndex]="tab.activeIndex">
+        <ti-guide *ngFor="let item of tab.items">
+          <ti-guide-header>{{item.label}}</ti-guide-header>
+          <ti-guide-content> {{item.content}} </ti-guide-content>
+        </ti-guide>
+      </ti-guides>
+    </ti-tab>
+  </ti-tabs>
+  <br /><br />
+  <!-- 内部测试用例暂无collapsebox先注释等合入后 -->
+  <!-- <p>2.2 实际场景示例，使用collapsebox容器组件，服务可以写自己的业务逻辑</p> -->
+  <!-- <tp-collapsebox>
+    <span style="font-size: 16px; color:#252b3a;line-height: 1.5;">流程引导</span>
+    <ti-tabs>
+        <ti-tab [(active)]="tab.active" *ngFor="let tab of card2">
+            <ti-tab-header>
+                {{tab.title}}
+            </ti-tab-header>
+            <ti-guides id='guides-collapsebox'>
+            <ti-guide *ngFor="let item of tab.items">
+                <ti-guide-header>{{item.label}}</ti-guide-header>
+                <ti-guide-content>
+                    {{item.content}}
+                </ti-guide-content>
+            </ti-guide>
+        </ti-guides>
+        </ti-tab>
+    </ti-tabs>
+  </tp-collapsebox> -->
+</p>

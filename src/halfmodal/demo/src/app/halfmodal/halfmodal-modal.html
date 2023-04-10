@@ -1,0 +1,7 @@
+<button (click)="click(modal)">打开半屏弹窗</button>
+
+<ti-halfmodal #modal id="halfmodal-modal">
+  <div *ngFor="let key of [1, 2, 3, 4, 5]" class="list"><span class="dot"></span><span>这是第{{key}}条内容</span></div>
+  <br />
+  <button id="halfmodal-modal-button" tiButton (click)="openMessage()">打开一个弹窗</button>
+</ti-halfmodal>

@@ -1,0 +1,103 @@
+<ng-container *ngIf="!isEditing">
+  <ng-container *ngIf="autoTip">
+    <span
+      #edit
+      (iconClick)="onClickEdit()"
+      [iconFocusable]="'true'"
+      [iconDisabled]="disabled"
+      [textContent]="model ? model : emptyValue"
+      [iconTip]="iconTip"
+      [iconTipContext]="iconTipContext"
+      [maxLine]="maxLine"
+      [iconName]="'edit'"
+      tiOverflow
+      (keydown.enter)="onClickEdit()"
+      [id]="appendId('edit')"
+    ></span>
+    <span style="display: none" class="ti3-icon"></span>
+  </ng-container>
+  <ng-container *ngIf="!autoTip">
+    <span>{{ model ? model : emptyValue}}</span>
+    <ti-icon
+      tiOutline
+      (click)="onClickEdit()"
+      [attr.tabindex]="disabled? -1 : 0"
+      (keydown.enter)="onClickEdit()"
+      class="ti3-editor-icon"
+      name="edit"
+      [tiTip]="iconTip"
+      [tiTipContext]="iconTipContext"
+      tiTipPosition="auto"
+      [id]="appendId('edit')"
+    ></ti-icon>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf="isEditing">
+  <span *ngIf="multiline" class="ti3-labeleditor-textarea-container">
+    <ng-container *ngIf="maxlength else noMaxlengthTemplate">
+      <textarea
+        #textarea
+        tiTextarea
+        [ngStyle]="{'width': width, 'height': height}"
+        [tiValidation]="validation"
+        [formControl]="control"
+        [errorMessageWrapper]="wrapper"
+        [resize]="resize"
+        [id]="appendId('textarea')"
+        maxlength="maxlength"
+      >
+      </textarea>
+    </ng-container>
+    <ng-template #noMaxlengthTemplate>
+      <textarea
+        #textarea
+        tiTextarea
+        [ngStyle]="{'width': width,'height': height}"
+        [tiValidation]="validation"
+        [formControl]="control"
+        [errorMessageWrapper]="wrapper"
+        [id]="appendId('textarea')"
+        [resize]="resize"
+      >
+      </textarea>
+    </ng-template> </span
+  ><!--
+ --><span *ngIf="!multiline">
+    <input
+      type="text"
+      #text
+      style="width: 200px"
+      [tiValidation]="validation"
+      [formControl]="control"
+      [maxlength]="maxlength"
+      [errorMessageWrapper]="wrapper"
+      [id]="appendId('input')"
+      tiText
+    /> </span
+  ><!--
+ --><span [ngClass]="{'ti3-labeleditor-icon-container': !multiline}">
+    <span #confirmIcon>
+      <ti-icon
+        tiOutline
+        name="alert-success"
+        class="ti3-labeleditor-icon ti3-icon-confirm"
+        [ngClass]="{'ti3-confirm-disabled': valueInvalid}"
+        (click)="onClickConfirm()"
+        [id]="appendId('confirm')"
+        [attr.tabindex]="valueInvalid ? -1 : 0"
+        (keydown.enter)="onClickConfirm()"
+      ></ti-icon>
+    </span>
+    <ti-icon
+      tiOutline
+      name="close"
+      class="ti3-labeleditor-icon ti3-icon-cancel"
+      (click)="onClickCancel()"
+      [attr.tabindex]="0"
+      (keydown.enter)="onClickCancel()"
+      [id]="appendId('cancel')"
+    ></ti-icon> </span
+  ><!--
+  --><span #wrapper class="ti3-editor-errorMessageWrapper"></span>
+</ng-container>

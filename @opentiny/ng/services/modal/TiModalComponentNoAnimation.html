@@ -1,9 +1,0 @@
-<div #modalEle class='ti3-modal' tabindex='-1'>
-    <div [ngClass]='["ti3-modal-dialog", modalClass||""]'>
-        <div class="ti3-modal-content" #modalContent [tiDraggable] = "dragOptions" [tiDragDisabled] = "!draggable">
-            <span *ngIf='closeIcon' class='ti3-modal-close ti3-icon ti3-icon-close'
-            [tabindex]="0" (keydown.enter)="dismissModal()" (click)='dismissModal()' [id]="appendId('close')"></span>
-            <ng-content></ng-content>
-        </div>
-    </div>
-</div>

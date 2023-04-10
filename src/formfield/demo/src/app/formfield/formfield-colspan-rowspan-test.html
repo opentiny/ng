@@ -1,0 +1,34 @@
+<h3>描述</h3>
+<p>动态修改colspan（由3到1）时，第二行content区域宽度动态修改前后一致</p>
+<h3>示例</h3>
+<div style="width: 40%">
+  <ti-formfield [title]="title" [colsNumber]="2" labelWidth="80px">
+    <ti-item [label]="item1.label" [required]="item1.required" [show]="item1.show">
+      <input type="text" tiText [(ngModel)]="item1.value" style="width: 200px" />
+    </ti-item>
+    <ti-item [label]="item2.label" [required]="item2.required">
+      <input type="text" tiText [(ngModel)]="item2.value" style="width: 200px" />
+    </ti-item>
+    <ti-item [label]="item3.label" [required]="item3.required" [colspan]="2" [verticalAlign]="item3.verticalAlign">
+      <input type="text" tiText [(ngModel)]="item3.value" style="width: 200px" />
+    </ti-item>
+    <ti-item
+      [required]="item4.required"
+      [label]="item4.label"
+      [colspan]="mySelected==='华东-上海一'? 1 : 2"
+      [verticalAlign]="item4.verticalAlign"
+    >
+      <ti-select
+        style="width: 200px"
+        id="myselect"
+        [options]="myOptions"
+        [(ngModel)]="mySelected"
+        placeholder="请选择"
+        valueKey="label"
+      ></ti-select>
+    </ti-item>
+    <ti-item [required]="item5.required" [show]="mySelected==='华东-上海一'" [label]="item5.label" [verticalAlign]="item5.verticalAlign">
+      <input type="text" tiText [(ngModel)]="item5.value" style="width: 200px" />
+    </ti-item>
+  </ti-formfield>
+</div>
