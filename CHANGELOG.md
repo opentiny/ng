@@ -4,8 +4,8 @@ title: 更新日志 | TinyNG
 
 ## 更新日志
 
-### 14.0.0
+### 1.0.0-beta.1
 
-*2022-11-15*
+*2023-04-19*
 
-1. Initial version
+1. Latest version

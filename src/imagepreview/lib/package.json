@@ -1,14 +1,14 @@
 {
   "name": "@opentiny/ng-imagepreview",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
     "@angular/platform-browser": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-modal": "~1.0.0-beta.0",
-    "@opentiny/ng-icon": "~1.0.0-beta.0",
-    "@opentiny/ng-outline": "~1.0.0-beta.0",
-    "@opentiny/ng-base": "~1.0.0-beta.0"
+    "@opentiny/ng-modal": "~1.0.0-beta.1",
+    "@opentiny/ng-icon": "~1.0.0-beta.1",
+    "@opentiny/ng-outline": "~1.0.0-beta.1",
+    "@opentiny/ng-base": "~1.0.0-beta.1"
   }
 }

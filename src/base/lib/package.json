@@ -1,9 +1,9 @@
 {
   "name": "@opentiny/ng-base",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "peerDependencies": {
-    "@opentiny/ng-utils": "~1.0.0-beta.0",
+    "@opentiny/ng-utils": "~1.0.0-beta.1",
     "@angular/core": ">=13.0.0",
     "@angular/forms": ">=13.0.0"
   }

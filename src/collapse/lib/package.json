@@ -1,11 +1,11 @@
 {
   "name": "@opentiny/ng-collapse",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "peerDependencies": {
     "@angular/animations": ">=13.0.0",
     "@angular/core": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-utils": "~1.0.0-beta.0"
+    "@opentiny/ng-utils": "~1.0.0-beta.1"
   }
 }

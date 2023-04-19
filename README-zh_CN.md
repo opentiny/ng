@@ -26,7 +26,7 @@ TinyNG
 
 ## 支持环境
 
-* Angular `^14.0.0`
+* Angular `>=13.0.0`
 * 现代浏览器
 
 | Edge | Firefox | Chrome | Safari |

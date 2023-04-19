@@ -1,14 +1,14 @@
 {
   "name": "@opentiny/ng-textarea",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-utils": "~1.0.0-beta.0",
-    "@opentiny/ng-base": "~1.0.0-beta.0",
+    "@opentiny/ng-utils": "~1.0.0-beta.1",
+    "@opentiny/ng-base": "~1.0.0-beta.1",
     "@angular/forms": ">=13.0.0",
-    "@opentiny/ng-renderer": "~1.0.0-beta.0",
-    "@opentiny/ng-locale": "~1.0.0-beta.0"
+    "@opentiny/ng-renderer": "~1.0.0-beta.1",
+    "@opentiny/ng-locale": "~1.0.0-beta.1"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@opentiny/ng-nav",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",

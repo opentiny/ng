@@ -1,14 +1,14 @@
 {
   "name": "@opentiny/ng-actionmenu",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "peerDependencies": {
-    "@opentiny/ng-base": "~1.0.0-beta.0",
-    "@opentiny/ng-menu": "~1.0.0-beta.0",
-    "@opentiny/ng-locale": "~1.0.0-beta.0",
+    "@opentiny/ng-base": "~1.0.0-beta.1",
+    "@opentiny/ng-menu": "~1.0.0-beta.1",
+    "@opentiny/ng-locale": "~1.0.0-beta.1",
     "@angular/core": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-tip": "~1.0.0-beta.0",
-    "@opentiny/ng-popconfirm": "~1.0.0-beta.0"
+    "@opentiny/ng-tip": "~1.0.0-beta.1",
+    "@opentiny/ng-popconfirm": "~1.0.0-beta.1"
   }
 }

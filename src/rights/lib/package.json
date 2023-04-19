@@ -1,12 +1,12 @@
 {
   "name": "@opentiny/ng-rights",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
-    "@opentiny/ng-base": "~1.0.0-beta.0",
+    "@opentiny/ng-base": "~1.0.0-beta.1",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-tip": "~1.0.0-beta.0",
-    "@opentiny/ng-icon": "~1.0.0-beta.0",
-    "@opentiny/ng-utils": "~1.0.0-beta.0"
+    "@opentiny/ng-tip": "~1.0.0-beta.1",
+    "@opentiny/ng-icon": "~1.0.0-beta.1",
+    "@opentiny/ng-utils": "~1.0.0-beta.1"
   }
 }
