@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="">
+  <a href="https://opentiny.design/tiny-ng/">
     <img width="230" src="logo.png" alt="logo 图片">
   </a>
 </p>
@@ -92,13 +92,26 @@ We welcome all contributions. Please feel free to contribute code or discuss you
 
 Please read our [CONTRIBUTING.md](CONTRIBUTING.md) before submitting any ideas.
 
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/HappyJun0331"><img src="https://avatars.githubusercontent.com/u/110035681?v=4?s=100" width="100px;" alt="HappyJun0331"/><br /><sub><b>HappyJun0331</b></sub></a><br /><a href="https://github.com/opentiny/ng/commits?author=HappyJun0331" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
 ## LICENSE
 
 [MIT](LICENSE)
-
-
-
-
-
-
-
