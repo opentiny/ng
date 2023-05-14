@@ -1,8 +1,5 @@
 <p align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-  <a href="">
+  <a href="https://opentiny.design/tiny-ng/">
     <img width="230" src="logo.png" alt="logo 图片">
   </a>
 </p>
@@ -95,17 +92,6 @@ We welcome all contributions. Please feel free to contribute code or discuss you
 
 Please read our [CONTRIBUTING.md](CONTRIBUTING.md) before submitting any ideas.
 
-## LICENSE
-
-[MIT](LICENSE)
-
-
-
-
-
-
-
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -126,4 +112,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+## LICENSE
+
+[MIT](LICENSE)
