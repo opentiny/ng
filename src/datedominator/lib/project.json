@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/datedominator"],
+      "outputs": ["dist/libs/ng-datedominator"],
       "options": {
         "project": "src/datedominator/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/datedominator"],
+      "outputs": ["dist/libs/ng-datedominator"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/datedominator && npm pack"
+            "command": "cd dist/libs/ng-datedominator && npm pack"
           }
         ]
       }

@@ -93,6 +93,8 @@
     "layout-demo": "src/layout/demo",
     "leftmenu": "src/leftmenu/lib",
     "leftmenu-demo": "src/leftmenu/demo",
+    "leftmenuthin": "src/leftmenuthin/lib",
+    "leftmenuthin-demo": "src/leftmenuthin/demo",
     "linkbutton": "src/linkbutton/lib",
     "linkbutton-demo": "src/linkbutton/demo",
     "list": "src/list/lib",

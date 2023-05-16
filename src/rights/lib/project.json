@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/rights"],
+      "outputs": ["dist/libs/ng-rights"],
       "options": {
         "project": "src/rights/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/rights"],
+      "outputs": ["dist/libs/ng-rights"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/rights && npm pack"
+            "command": "cd dist/libs/ng-rights && npm pack"
           }
         ]
       }

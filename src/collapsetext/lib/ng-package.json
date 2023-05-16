@@ -1,6 +1,6 @@
 {
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../../dist/libs/collapsetext",
+  "dest": "../../../dist/libs/ng-collapsetext",
   "lib": {
     "entryFile": "./index.ts"
   }

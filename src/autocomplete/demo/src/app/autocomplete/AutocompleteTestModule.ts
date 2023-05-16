@@ -26,6 +26,7 @@ import { AutocompleteTestComponent } from './AutocompleteTestComponent';
 import { AutocompleteAppendtobodyComponent } from './AutocompleteAppendtobodyComponent';
 import { AutocompleteTemplateComponent } from './AutocompleteTemplateComponent';
 import { AutocompleteGroupComponent } from './AutocompleteGroupComponent';
+import { AutocompleteSuggestComponent } from './AutocompleteSuggestComponent';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import { AutocompleteGroupComponent } from './AutocompleteGroupComponent';
     AutocompleteAppendtobodyComponent,
     AutocompleteTestComponent,
     AutocompleteTemplateComponent,
-    AutocompleteGroupComponent
+    AutocompleteGroupComponent,
+    AutocompleteSuggestComponent
   ]
 })
 export class AutocompleteTestModule {
@@ -106,6 +108,10 @@ export class AutocompleteTestModule {
     {
       path: 'autocomplete/autocomplete-test',
       component: AutocompleteTestComponent
+    },
+    {
+      path: 'autocomplete/autocomplete-suggest',
+      component: AutocompleteSuggestComponent
     }
   ];
 }

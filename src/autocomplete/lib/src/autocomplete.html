@@ -24,6 +24,7 @@
   [tipPosition]="tipPosition"
   [tipMaxWidth]="tipMaxWidth"
   [referElem]="appendToBody ? undefined : nativeElement"
+  [loading]="loading"
   (ngModelChange)="onDroplistChange($event)"
   (select)="onSelect($event)"
   [id]="appendId('droplist')"

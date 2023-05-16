@@ -1,0 +1,18 @@
+<div class="clear-transform">
+  {{reloadState}}
+  <website-leftmenuthin [items]="items" [(active)]="active" [(reloadState)]="reloadState"></website-leftmenuthin>
+  <div *ngIf="reloadState" style="margin-left: 100px">
+    <ng-container *ngIf="active === items[0]">
+      <web-home [queryParams]="toJson(items[0].routerExtras.queryParams)"></web-home>
+    </ng-container>
+    <ng-container *ngIf="active === items[1]">
+      <web-cart [queryParams]="toJson(items[1].routerExtras.queryParams)"></web-cart>
+    </ng-container>
+    <ng-container *ngIf="active === items[2]">
+      <web-star [queryParams]="toJson(items[2].routerExtras.queryParams)"></web-star>
+    </ng-container>
+    <ng-container *ngIf="active === items[3]">
+      <web-setting [queryParams]="toJson(items[3].routerExtras.queryParams)"></web-setting>
+    </ng-container>
+  </div>
+</div>

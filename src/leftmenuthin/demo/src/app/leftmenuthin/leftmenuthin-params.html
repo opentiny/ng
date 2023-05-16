@@ -1,0 +1,4 @@
+<ti-leftmenuthin [items]="items" [(active)]="active" [(reloadState)]="reloadState" (select)="onSelect($event)"></ti-leftmenuthin>
+<div *ngIf="reloadState" style="margin-left: 100px">
+  <router-outlet></router-outlet>
+</div>

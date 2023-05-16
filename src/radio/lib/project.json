@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/radio"],
+      "outputs": ["dist/libs/ng-radio"],
       "options": {
         "project": "src/radio/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/radio"],
+      "outputs": ["dist/libs/ng-radio"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/radio && npm pack"
+            "command": "cd dist/libs/ng-radio && npm pack"
           }
         ]
       }

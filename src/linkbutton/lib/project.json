@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/linkbutton"],
+      "outputs": ["dist/libs/ng-linkbutton"],
       "options": {
         "project": "src/linkbutton/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/linkbutton"],
+      "outputs": ["dist/libs/ng-linkbutton"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/linkbutton && npm pack"
+            "command": "cd dist/libs/ng-linkbutton && npm pack"
           }
         ]
       }

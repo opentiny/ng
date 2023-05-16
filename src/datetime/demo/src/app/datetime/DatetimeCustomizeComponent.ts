@@ -35,6 +35,6 @@ export class DatetimeCustomizeComponent {
   myLogs: Array<string> = [];
 
   onCustomizeOptionClick(model: Date): void {
-    this.myLogs = [...this.myLogs, `customizeOptionClick() model = ${JSON.stringify(model)}`];
+    this.myLogs = [...this.myLogs, `customizeOptionClick() model = ${model}`];
   }
 }

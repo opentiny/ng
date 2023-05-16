@@ -1,0 +1,27 @@
+<div class="clear-transform">
+  {{reloadState}}
+  <website-leftmenuthin
+    [items]="items"
+    [(active)]="active"
+    (select)="onSelect($event)"
+    [(reloadState)]="reloadState"
+    (activeChange)="onActiveChange($event)"
+    (reloadStateChange)="onReloadStateChange($event)"
+  ></website-leftmenuthin>
+  <div *ngIf="reloadState" style="margin-left: 100px">
+    <ng-container *ngIf="active === items[0]">
+      <web-home></web-home>
+    </ng-container>
+    <ng-container *ngIf="active === items[1]">
+      <web-cart></web-cart>
+    </ng-container>
+    <ng-container *ngIf="active === items[2]">
+      <web-star></web-star>
+    </ng-container>
+    <ng-container *ngIf="active === items[3]">
+      <web-setting></web-setting>
+    </ng-container>
+    <h4>事件日志：</h4>
+    <demo-log [logs]="myLogs"></demo-log>
+  </div>
+</div>

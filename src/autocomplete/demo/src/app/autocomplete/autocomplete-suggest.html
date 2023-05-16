@@ -1,0 +1,17 @@
+<h4 class="mb-3">1.加载有数据</h4>
+<ti-autocomplete
+  class="w-96"
+  id="autocomplete-basic-suggest-data"
+  [(ngModel)]="value1"
+  placeholder="请选择/输入邮箱"
+  (suggest)="onSuggest1($event)"
+></ti-autocomplete>
+
+<h4 class="my-3">2.加载无数据</h4>
+<ti-autocomplete
+  class="w-96"
+  id="autocomplete-basic-suggest-nodata"
+  [(ngModel)]="value2"
+  placeholder="请选择/输入邮箱"
+  (suggest)="onSuggest2($event)"
+></ti-autocomplete>

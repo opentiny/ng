@@ -172,7 +172,11 @@ export class TiDropComponent extends TiBaseComponent {
    * 切换面板状态：打开/关闭
    */
   public toggle(): void {
-    this.isShow ? this.hide() : this.show();
+    if (this.isShow) {
+      this.hide();
+    } else {
+      this.show();
+    }
   }
   /**
    * 打开面板
@@ -279,6 +283,7 @@ export class TiDropComponent extends TiBaseComponent {
       consoleHeaderHeight: this.consoleHeaderHeight,
       fixMaxHeight: this.fixMaxHeight,
       hOffset: this.hOffset,
+      bottomPostion: true,
       determinPositionFn
     });
     this.position = result.position;

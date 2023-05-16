@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/collapse"],
+      "outputs": ["dist/libs/ng-collapse"],
       "options": {
         "project": "src/collapse/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/collapse"],
+      "outputs": ["dist/libs/ng-collapse"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/collapse && npm pack"
+            "command": "cd dist/libs/ng-collapse && npm pack"
           }
         ]
       }

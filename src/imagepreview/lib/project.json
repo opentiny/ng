@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/imagepreview"],
+      "outputs": ["dist/libs/ng-imagepreview"],
       "options": {
         "project": "src/imagepreview/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/imagepreview"],
+      "outputs": ["dist/libs/ng-imagepreview"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/imagepreview && npm pack"
+            "command": "cd dist/libs/ng-imagepreview && npm pack"
           }
         ]
       }

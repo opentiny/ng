@@ -1,20 +1,20 @@
 {
   "name": "@opentiny/ng-tree",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.2",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
     "@angular/cdk": ">=13.0.0",
-    "@opentiny/ng-utils": "~1.0.0-beta.0",
-    "@opentiny/ng-base": "~1.0.0-beta.0",
-    "@opentiny/ng-locale": "~1.0.0-beta.0",
-    "@opentiny/ng-renderer": "~1.0.0-beta.0",
+    "@opentiny/ng-utils": "~1.0.0-beta.2",
+    "@opentiny/ng-base": "~1.0.0-beta.2",
+    "@opentiny/ng-locale": "~1.0.0-beta.2",
+    "@opentiny/ng-renderer": "~1.0.0-beta.2",
     "@angular/common": ">=13.0.0",
     "@angular/forms": ">=13.0.0",
-    "@opentiny/ng-checkbox": "~1.0.0-beta.0",
-    "@opentiny/ng-icon": "~1.0.0-beta.0",
-    "@opentiny/ng-loading": "~1.0.0-beta.0",
-    "@opentiny/ng-text": "~1.0.0-beta.0",
-    "@opentiny/ng-validation": "~1.0.0-beta.0"
+    "@opentiny/ng-checkbox": "~1.0.0-beta.2",
+    "@opentiny/ng-icon": "~1.0.0-beta.2",
+    "@opentiny/ng-loading": "~1.0.0-beta.2",
+    "@opentiny/ng-text": "~1.0.0-beta.2",
+    "@opentiny/ng-validation": "~1.0.0-beta.2"
   }
 }

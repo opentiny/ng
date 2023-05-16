@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/actionmenu"],
+      "outputs": ["dist/libs/ng-actionmenu"],
       "options": {
         "project": "src/actionmenu/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/actionmenu"],
+      "outputs": ["dist/libs/ng-actionmenu"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/actionmenu && npm pack"
+            "command": "cd dist/libs/ng-actionmenu && npm pack"
           }
         ]
       }

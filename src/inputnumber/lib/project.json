@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/inputnumber"],
+      "outputs": ["dist/libs/ng-inputnumber"],
       "options": {
         "project": "src/inputnumber/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/inputnumber"],
+      "outputs": ["dist/libs/ng-inputnumber"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/inputnumber && npm pack"
+            "command": "cd dist/libs/ng-inputnumber && npm pack"
           }
         ]
       }

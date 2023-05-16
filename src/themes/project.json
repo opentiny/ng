@@ -5,7 +5,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/themes"],
+      "outputs": ["dist/libs/ng-themes"],
       "options": {
         "commands": [
           {
@@ -19,7 +19,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/themes && npm pack"
+            "command": "cd dist/libs/ng-themes && npm pack"
           }
         ]
       }

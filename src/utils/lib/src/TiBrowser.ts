@@ -155,7 +155,7 @@ export class TiBrowser {
       TiBrowser._browser = TiBrowser.OTHER;
     }
     // 版本号取整
-    TiBrowser._version = aAgentInfo !== null ? parseInt(aAgentInfo[1].split('.')[0], 10) : 0;
+    TiBrowser._version = aAgentInfo ? parseInt(aAgentInfo[1].split('.')[0], 10) : 0;
     // 改变初始化值
     TiBrowser.isInit = true;
   }

@@ -91,6 +91,7 @@ export * from '@opentiny/ng-validation';
 export * from '@opentiny/ng-zoom';
 export * from '@opentiny/ng-guides';
 export * from '@opentiny/ng-labeleditor';
+export * from '@opentiny/ng-leftmenuthin';
 export * from '@opentiny/ng-phonenumber';
 export * from '@opentiny/ng-selectgroup';
 export * from '@opentiny/ng-productpreview';

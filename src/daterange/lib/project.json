@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/daterange"],
+      "outputs": ["dist/libs/ng-daterange"],
       "options": {
         "project": "src/daterange/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/daterange"],
+      "outputs": ["dist/libs/ng-daterange"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/daterange && npm pack"
+            "command": "cd dist/libs/ng-daterange && npm pack"
           }
         ]
       }

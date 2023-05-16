@@ -1,0 +1,15 @@
+<div class="ti-leftmenuthin-content">
+  <div
+    tiOutline
+    class="ti-leftmenuthin-level"
+    *ngFor="let item of items; index as i"
+    (click)="selectFn(item)"
+    [id]="appendId('select_' + i)"
+    [ngClass]="{'ti-leftmenuthin-level-active': active === item}"
+    [tabindex]="0"
+    (keydown.enter)="selectFn(item)"
+  >
+    <ti-svg *ngIf="item.iconName" class="ti-leftmenuthin-icon" [name]="item.iconName"></ti-svg>
+    <div class="ti-leftmenuthin-level-text" [id]="appendId('label_' + i)">{{item.label}}</div>
+  </div>
+</div>

@@ -70,10 +70,15 @@ export default {
         'en-US': 'item'
       },
       desc: {
-        'zh-CN': '<p>通过<code>suggest</code>事件配置当聚焦或值改变时触发事件，为开发者提供设置建议项的时机。</p>',
+        'zh-CN':
+          '<p>通过<code>suggest</code>事件配置当聚焦或值改变时触发事件，为开发者提供设置建议项的时机。通过<code>setLoading()</code>方法设置加载状态。</p>',
         'en-US': '<p>item</p>'
       },
-      apis: ['TiSearchboxComponent.events.suggest', 'TiSearchboxComponent.methods.setSuggestions']
+      apis: [
+        'TiSearchboxComponent.events.suggest',
+        'TiSearchboxComponent.methods.setSuggestions',
+        'TiSearchboxComponent.methods.setLoading'
+      ]
     },
     {
       demoId: 'searchbox-maxlength',

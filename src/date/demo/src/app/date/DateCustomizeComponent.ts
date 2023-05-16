@@ -14,7 +14,7 @@ export class DateCustomizeComponent {
     {
       label: '今天',
       value: {
-        begin: this.nowTime
+        begin: new Date(this.nowYear, this.nowMonth, this.nowDate)
       }
     },
     {
@@ -33,6 +33,6 @@ export class DateCustomizeComponent {
   myLogs: Array<string> = [];
 
   onCustomizeOptionClick(model: Date): void {
-    this.myLogs = [...this.myLogs, `customizeOptionClick() model = ${JSON.stringify(model)}`];
+    this.myLogs = [...this.myLogs, `customizeOptionClick() model = ${model}`];
   }
 }

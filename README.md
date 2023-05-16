@@ -26,7 +26,7 @@ English | [简体中文](README-zh_CN.md)
 
 ## Environment Support
 
-* Angular `^14.0.0`
+* Angular `>=13.0.0`
 * Modern browsers
 
 | Edge | Firefox | Chrome | Safari |

@@ -2,6 +2,7 @@
   <!-- cdk-virtual-scroll-viewport高度塌陷，必须给cdk-virtual-scroll-viewport 设置高度。这里直接根据数据量设置高度(不让高度塌陷)，
               利用css中设置的最大高度和最小高度来限制实际的容器的高度 -->
   <cdk-virtual-scroll-viewport
+    *ngIf="!loading"
     class="ti3-virtual-scroll-list-viewport"
     [itemSize]="itemSize"
     [ngStyle]="{'height': getVirtualScrollViewportHeight()}"
@@ -21,12 +22,15 @@
     </ul>
   </cdk-virtual-scroll-viewport>
   <section *ngIf="scrollLoadInfo.loading" class="ti3-list-scroll-to-bottom-loading-container"><ti-loading></ti-loading></section>
+  <ng-container *ngIf="loading">
+    <ng-container *ngTemplateOutlet="loadingtemplate"></ng-container>
+  </ng-container>
 </ng-container>
 <ng-template #default>
   <ul
     #ulRef
     tabindex="-1"
-    *ngIf="options&&options.length > 0 else nodatatemplate"
+    *ngIf="options && options.length > 0 && !loading"
     [ngClass]="{'ti3-dropdown-group':isGroup(options[0])}"
     class="ti3-drop-list-ul"
     [id]="appendId('list')"
@@ -44,11 +48,20 @@
       </ng-container>
     </ng-container>
   </ul>
+  <ng-container *ngIf="!options || options.length === 0 && !loading">
+    <ng-container *ngTemplateOutlet="nodatatemplate"></ng-container>
+  </ng-container>
+  <ng-container *ngIf="loading">
+    <ng-container *ngTemplateOutlet="loadingtemplate"></ng-container>
+  </ng-container>
 </ng-template>
 
 <!-- no data模板 -->
 <ng-template #nodatatemplate>
   <div class="ti3-dropdown-no-data" [innerHtml]="noDataText"></div>
+</ng-template>
+<ng-template #loadingtemplate>
+  <ti-loading class="ti3-list-loading"></ti-loading>
 </ng-template>
 <!-- 分组和选项的模板 -->
 <ng-template #optionTemplate let-item let-i="index" let-lid="liid" let-last="last"

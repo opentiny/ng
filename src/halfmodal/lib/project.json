@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/halfmodal"],
+      "outputs": ["dist/libs/ng-halfmodal"],
       "options": {
         "project": "src/halfmodal/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/halfmodal"],
+      "outputs": ["dist/libs/ng-halfmodal"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/halfmodal && npm pack"
+            "command": "cd dist/libs/ng-halfmodal && npm pack"
           }
         ]
       }

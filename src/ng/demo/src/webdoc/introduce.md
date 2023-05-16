@@ -29,6 +29,6 @@ title: 介绍 | TinyNG
 | last 3 versions | last 3 versions | last 3 versions | last 2 versions |
 
 ### 支持 Angular 版本
-目前支持 Angular `^14.0.0`版本。
+目前支持 Angular 版本 `>=13.0.0`。
 
 ### [最新版本](./changelog)

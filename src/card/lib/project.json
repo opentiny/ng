@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/card"],
+      "outputs": ["dist/libs/ng-card"],
       "options": {
         "project": "src/card/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/card"],
+      "outputs": ["dist/libs/ng-card"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/card && npm pack"
+            "command": "cd dist/libs/ng-card && npm pack"
           }
         ]
       }

@@ -1,15 +1,15 @@
 {
   "name": "@opentiny/ng-phonenumber",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.2",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
-    "libphonenumber-js/max": "1.10.7",
-    "@opentiny/ng-base": "~1.0.0-beta.0",
-    "@opentiny/ng-validation": "~1.0.0-beta.0",
-    "@opentiny/ng-select": "~1.0.0-beta.0",
+    "libphonenumber-js": "1.10.7",
+    "@opentiny/ng-base": "~1.0.0-beta.2",
+    "@opentiny/ng-validation": "~1.0.0-beta.2",
+    "@opentiny/ng-select": "~1.0.0-beta.2",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-locale": "~1.0.0-beta.0",
+    "@opentiny/ng-locale": "~1.0.0-beta.2",
     "@angular/forms": ">=13.0.0",
-    "@opentiny/ng-text": "~1.0.0-beta.0"
+    "@opentiny/ng-text": "~1.0.0-beta.2"
   }
 }

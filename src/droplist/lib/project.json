@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/droplist"],
+      "outputs": ["dist/libs/ng-droplist"],
       "options": {
         "project": "src/droplist/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/droplist"],
+      "outputs": ["dist/libs/ng-droplist"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/droplist && npm pack"
+            "command": "cd dist/libs/ng-droplist && npm pack"
           }
         ]
       }

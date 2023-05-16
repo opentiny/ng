@@ -18,21 +18,21 @@ export class DaterangeCustomizeComponent {
       label: '最近一周',
       value: {
         begin: new Date(this.nowYear, this.nowMonth, this.nowDate - 6),
-        end: this.nowTime
+        end: new Date(this.nowYear, this.nowMonth, this.nowDate, 23, 59, 59, 999)
       }
     },
     {
       label: '最近一个月',
       value: {
         begin: new Date(this.nowYear, this.nowMonth - 1, this.nowDate),
-        end: this.nowTime
+        end: new Date(this.nowYear, this.nowMonth, this.nowDate, 23, 59, 59, 999)
       }
     },
     {
       label: '最近三个月',
       value: {
         begin: new Date(this.nowYear, this.nowMonth - 3, this.nowDate),
-        end: this.nowTime
+        end: new Date(this.nowYear, this.nowMonth, this.nowDate, 23, 59, 59, 999)
       }
     }
   ];

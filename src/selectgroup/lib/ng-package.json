@@ -1,6 +1,6 @@
 {
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../../dist/libs/selectgroup",
+  "dest": "../../../dist/libs/ng-selectgroup",
   "lib": {
     "entryFile": "./index.ts"
   }

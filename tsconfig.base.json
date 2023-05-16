@@ -68,6 +68,7 @@
       "@opentiny/ng-labeleditor": ["src/labeleditor/lib/index.ts"],
       "@opentiny/ng-layout": ["src/layout/lib/index.ts"],
       "@opentiny/ng-leftmenu": ["src/leftmenu/lib/index.ts"],
+      "@opentiny/ng-leftmenuthin": ["src/leftmenuthin/lib/index.ts"],
       "@opentiny/ng-linkbutton": ["src/linkbutton/lib/index.ts"],
       "@opentiny/ng-list": ["src/list/lib/index.ts"],
       "@opentiny/ng-loading": ["src/loading/lib/index.ts"],

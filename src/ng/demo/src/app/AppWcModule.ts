@@ -125,6 +125,8 @@ import { AutocompleteValidComponent } from './../../../../autocomplete/demo/src/
 
 import { AutocompleteGroupComponent } from './../../../../autocomplete/demo/src/app/autocomplete/AutocompleteGroupComponent';
 
+import { AutocompleteSuggestComponent } from './../../../../autocomplete/demo/src/app/autocomplete/AutocompleteSuggestComponent';
+
 import { AvatarImageErrorTestComponent } from './../../../../avatar/demo/src/app/avatar/AvatarImageErrorTestComponent';
 
 import { AvatarImageComponent } from './../../../../avatar/demo/src/app/avatar/AvatarImageComponent';
@@ -680,6 +682,11 @@ import { LeftmenuRouterlistWebsiteViewComponent } from './../../../../leftmenu/d
 
 import { LeftmenuToggleableWebsiteViewComponent } from './../../../../leftmenu/demo/src/app/leftmenu/website-views/LeftmenuToggleableWebsiteViewComponent';
 
+import { LeftmenuthinBasicWebsiteViewsComponent } from './../../../../leftmenuthin/demo/src/app/leftmenuthin/website-views/LeftmenuthinBasicWebsiteViewsComponent';
+
+import { LeftmenuthinParamsWebsiteViewsComponent } from './../../../../leftmenuthin/demo/src/app/leftmenuthin/website-views/LeftmenuthinParamsWebsiteViewsComponent';
+
+import { LeftmenuthinRouterlistWebsiteViewsComponent } from './../../../../leftmenuthin/demo/src/app/leftmenuthin/website-views/LeftmenuthinRouterlistWebsiteViewsComponent';
 import { LoadingAreaComponent } from './../../../../loading/demo/src/app/loading/LoadingAreaComponent';
 
 import { LoadingBasicComponent } from './../../../../loading/demo/src/app/loading/LoadingBasicComponent';
@@ -1748,6 +1755,8 @@ import { LogUsageComponent } from './../../../../utils/demo/src/app/log/LogUsage
 
 import { ThemeBasicComponent } from './../../../../utils/demo/src/app/theme/ThemeBasicComponent';
 
+import { ThemePaletteComponent } from './../../../../utils/demo/src/app/theme/ThemePaletteComponent';
+
 import { ValidationAsyncCheckTestComponent } from './../../../../validation/demo/src/app/validation/ValidationAsyncCheckTestComponent';
 
 import { ValidationAsyncCheckComponent } from './../../../../validation/demo/src/app/validation/ValidationAsyncCheckComponent';
@@ -2046,6 +2055,8 @@ const WCS: any = [
   },
 
   { selector: 'website-tiny-autocomplete-group', component: AutocompleteGroupComponent },
+
+  { selector: 'website-tiny-autocomplete-suggest', component: AutocompleteSuggestComponent },
 
   {
     selector: 'website-tiny-avatar-image-error-test',
@@ -3216,6 +3227,11 @@ const WCS: any = [
     component: LeftmenuToggleableWebsiteViewComponent
   },
 
+  { selector: 'website-tiny-leftmenuthin-basic', component: LeftmenuthinBasicWebsiteViewsComponent },
+
+  { selector: 'website-tiny-leftmenuthin-params', component: LeftmenuthinParamsWebsiteViewsComponent },
+
+  { selector: 'website-tiny-leftmenuthin-routerlist', component: LeftmenuthinRouterlistWebsiteViewsComponent },
   { selector: 'website-tiny-loading-area', component: LoadingAreaComponent },
 
   { selector: 'website-tiny-loading-basic', component: LoadingBasicComponent },
@@ -5278,6 +5294,8 @@ const WCS: any = [
   { selector: 'website-tiny-log-usage', component: LogUsageComponent },
 
   { selector: 'website-tiny-theme-basic', component: ThemeBasicComponent },
+
+  { selector: 'website-tiny-theme-palette', component: ThemePaletteComponent },
 
   {
     selector: 'website-tiny-validation-async-check-test',

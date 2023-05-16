@@ -1,0 +1,43 @@
+.web-leftmenuthin-content {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  width: 80px;
+  background-color: #ffffff;
+}
+
+.web-leftmenuthin-level {
+  width: 80px;
+  height: 78px;
+  padding-top: 12px;
+  text-align: center;
+  color: #575d6c;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  .web-leftmenuthin-icon {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .web-leftmenuthin-level-text {
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  &:hover {
+    background-color: #f2f5fc;
+    color: #5e7ce0;
+  }
+}
+
+.web-leftmenuthin-level.web-leftmenuthin-level-active {
+  color: #ffffff;
+  background-color: #5e7ce0;
+  .web-leftmenuthin-icon {
+    color: #ffffff;
+  }
+}
