@@ -1,0 +1,51 @@
+{
+  "projectType": "library",
+  "root": "src/leftmenuthin/lib",
+  "sourceRoot": "src/leftmenuthin/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/leftmenuthin"],
+      "options": {
+        "project": "src/leftmenuthin/lib/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/leftmenuthin"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js leftmenuthin"
+          },
+          {
+            "command": "ng default-build leftmenuthin"
+          },
+          {
+            "command": "node build/clear-default-theme.js leftmenuthin"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/leftmenuthin && npm pack"
+          }
+        ]
+      }
+    }
+  }
+}

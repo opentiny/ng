@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/table"],
+      "outputs": ["dist/libs/ng-table"],
       "options": {
         "project": "src/table/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/table"],
+      "outputs": ["dist/libs/ng-table"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/table && npm pack"
+            "command": "cd dist/libs/ng-table && npm pack"
           }
         ]
       }

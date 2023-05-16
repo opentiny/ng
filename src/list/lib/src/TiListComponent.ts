@@ -108,6 +108,10 @@ export class TiListComponent extends TiFormComponent {
    * 该接口暂不对外开放，后续如果业务场景labelKey对应的值确实有重复时，再对外开放该接口。
    */
   @Input() idKey: string;
+  /**
+   * 控制加载状态
+   */
+  @Input() loading: boolean = false;
 
   /**
    * 选中事件，向外通知option数据

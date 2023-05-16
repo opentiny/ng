@@ -71,11 +71,13 @@ export interface TiPositionResult {
 interface TiLayoutParams {
   left: number;
   top: number;
+  bottom?: number;
   avilableHeight: number;
 }
 interface TiVerticalParams {
   avilableHeight: number;
   top: number;
+  bottom?: number;
 }
 /**
  * @ignore
@@ -132,6 +134,7 @@ export class Position {
     hOffset?: number; // 自定义水平方向的偏移（在定位基础上的水平偏移，向左偏移为负值，向右偏移为正值）
     fixMaxHeight?: boolean; // 定位元素最大高度是否固定不变(显示不下时不用压缩高度)
     hasOffsetFix?: boolean; // 是否存在定位偏差量（针对 tip 组件：当被提示元素尺寸较小时，保证 tip 的箭头在被提示元素的中间）
+    bottomPostion?: boolean; // 计算位置的结果在上方时，以bottom属性定位，不用top定位，只在定位drop时使用
     determinPositionFn?(layout: any): string;
   }): TiPositionResult {
     // 入参非有效元素情况下，不做处理
@@ -160,6 +163,7 @@ export class Position {
     const elePos: TiLayoutParams = Position.getLayoutParam(
       curLayout,
       position,
+      options.bottomPostion,
       hostSpace,
       options.browserSpace || 0,
       options.hasOffsetFix || false
@@ -472,11 +476,17 @@ export class Position {
       // fixed定位情况下，滚动条对其不受影响，因此此处需要减掉滚动条的位置影响
       // 如果是跟随宿主元素，也不能改为fixed定位，会脱离文档流，定位偏离
       ele.style.position = 'fixed';
+      const top: string = position.top !== undefined ? `${position.top - window.pageYOffset}px` : '';
+      const bottom: string = position.bottom !== undefined ? `${position.bottom + window.pageYOffset}px` : '';
       ele.style.left = `${position.left - window.pageXOffset + hOffset}px`;
-      ele.style.top = `${position.top - window.pageYOffset}px`;
+      ele.style.top = top;
+      ele.style.bottom = bottom;
     } else {
+      const top: string = position.top !== undefined ? `${position.top}px` : '';
+      const bottom: string = position.bottom !== undefined ? `${position.bottom}px` : '';
       ele.style.left = `${position.left + hOffset}px`;
-      ele.style.top = `${position.top}px`;
+      ele.style.top = top;
+      ele.style.bottom = bottom;
     }
   }
   // 设置提示弹窗的MaxHeight
@@ -597,17 +607,26 @@ export class Position {
   private static getLayoutParam(
     layout: TiPositionLayout,
     position: string,
+    bottomPostion: boolean,
     hostSpace: number,
     browserSpace: number,
     hasOffsetFix: boolean
   ): TiLayoutParams {
     const positionArr: Array<string> = position.split('-'); // 跟上面静态变量重名,最好改一下
     const left: number = Position.getHorizionParam(layout, positionArr, hostSpace, hasOffsetFix);
-    const verticalParam: TiVerticalParams = Position.getVerticalParam(layout, positionArr, hostSpace, browserSpace, hasOffsetFix);
+    const verticalParam: TiVerticalParams = Position.getVerticalParam(
+      layout,
+      positionArr,
+      bottomPostion,
+      hostSpace,
+      browserSpace,
+      hasOffsetFix
+    );
 
     return {
       left,
       top: verticalParam.top,
+      bottom: verticalParam.bottom,
       avilableHeight: verticalParam.avilableHeight
     };
   }
@@ -654,6 +673,7 @@ export class Position {
   private static getVerticalParam(
     curLayout: TiPositionLayout,
     posArr: Array<string>,
+    bottomPostion: boolean,
     hostSpace: number,
     browserSpace: number,
     hasOffsetFix: boolean
@@ -671,12 +691,20 @@ export class Position {
     // 弹出元素下边线与宿主元素上边线相接后，弹出元素向上延伸情况，对应位置包含'top', 'top-left', 'top-right'
     if (posArr[0] === 'top') {
       const avilableHeight: number = avilableLayout.top - hostSpace - browserSpace;
-      const top: number =
-        avilableHeight >= targetLayout.height ? hostTop - targetLayout.height - hostSpace : hostTop - avilableLayout.top + browserSpace;
+      let bottom: number;
+      let top: number;
+      if (bottomPostion) {
+        // 有hostOffsetLayout，target跟随宿主元素定位 否则target插入body；
+        bottom = hostOffsetLayout ? hostHeight + hostSpace : avilableLayout.bottom + hostHeight + hostSpace - window.scrollY;
+      } else {
+        top =
+          avilableHeight >= targetLayout.height ? hostTop - targetLayout.height - hostSpace : hostTop - avilableLayout.top + browserSpace;
+      }
 
       return {
         avilableHeight,
-        top
+        top,
+        bottom
       };
     }
     // 弹出元素上边线与宿主元素下边线相接后，弹出元素向下延伸情况，对应位置包含'bottom', 'bottom-left', 'bottom-right'

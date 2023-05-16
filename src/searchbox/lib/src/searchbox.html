@@ -34,6 +34,7 @@
   [panelWidth]="panelWidth"
   [referElem]="appendToBody ? undefined : nativeElement"
   [virtual]="virtual"
+  [loading]="loading"
   (ngModelChange)="onDroplistChange($event)"
   (select)="onSelect($event)"
   [id]="appendId('droplist')"

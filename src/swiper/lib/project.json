@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/swiper"],
+      "outputs": ["dist/libs/ng-swiper"],
       "options": {
         "project": "src/swiper/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/swiper"],
+      "outputs": ["dist/libs/ng-swiper"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/swiper && npm pack"
+            "command": "cd dist/libs/ng-swiper && npm pack"
           }
         ]
       }

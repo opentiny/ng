@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/score"],
+      "outputs": ["dist/libs/ng-score"],
       "options": {
         "project": "src/score/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/score"],
+      "outputs": ["dist/libs/ng-score"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/score && npm pack"
+            "command": "cd dist/libs/ng-score && npm pack"
           }
         ]
       }

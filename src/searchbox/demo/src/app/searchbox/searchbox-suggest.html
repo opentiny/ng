@@ -1,5 +1,17 @@
+<h4 class="mb-3">1.无加载状态</h4>
 <ti-searchbox id="searchbox-suggest" placeholder="请输入内容" [(ngModel)]="value" (suggest)="onSuggest($event)"></ti-searchbox>
-
 <div class="current-value-container">
   <pre>Current Value: {{ value }}</pre>
+</div>
+
+<h4 class="my-3">2.加载有数据</h4>
+<ti-searchbox id="searchbox-suggest-data" placeholder="请输入内容" [(ngModel)]="value1" (suggest)="onSuggest1($event)"></ti-searchbox>
+<div class="current-value-container">
+  <pre>Current Value: {{ value1 }}</pre>
+</div>
+
+<h4 class="my-3">3.加载无数据</h4>
+<ti-searchbox id="searchbox-suggest-nodata" placeholder="请输入内容" [(ngModel)]="value2" (suggest)="onSuggest2($event)"></ti-searchbox>
+<div class="current-value-container">
+  <pre>Current Value: {{ value2 }}</pre>
 </div>

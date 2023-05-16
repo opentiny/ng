@@ -1,6 +1,6 @@
 {
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../../dist/libs/collapsebutton",
+  "dest": "../../../dist/libs/ng-collapsebutton",
   "lib": {
     "entryFile": "index.ts"
   }

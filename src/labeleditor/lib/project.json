@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/labeleditor"],
+      "outputs": ["dist/libs/ng-labeleditor"],
       "options": {
         "project": "src/labeleditor/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/labeleditor"],
+      "outputs": ["dist/libs/ng-labeleditor"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/labeleditor && npm pack"
+            "command": "cd dist/libs/ng-labeleditor && npm pack"
           }
         ]
       }

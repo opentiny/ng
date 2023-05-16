@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/tagsinput"],
+      "outputs": ["dist/libs/ng-tagsinput"],
       "options": {
         "project": "src/tagsinput/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/tagsinput"],
+      "outputs": ["dist/libs/ng-tagsinput"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/tagsinput && npm pack"
+            "command": "cd dist/libs/ng-tagsinput && npm pack"
           }
         ]
       }

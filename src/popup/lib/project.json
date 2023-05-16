@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/popup"],
+      "outputs": ["dist/libs/ng-popup"],
       "options": {
         "project": "src/popup/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/popup"],
+      "outputs": ["dist/libs/ng-popup"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/popup && npm pack"
+            "command": "cd dist/libs/ng-popup && npm pack"
           }
         ]
       }

@@ -1,18 +1,18 @@
 {
   "name": "@opentiny/ng-labeleditor",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "peerDependencies": {
     "@angular/forms": ">=13.0.0",
-    "@opentiny/ng-base": "~1.0.0-beta.1",
-    "@opentiny/ng-validation": "~1.0.0-beta.1",
-    "@opentiny/ng-text": "~1.0.0-beta.1",
-    "@opentiny/ng-textarea": "~1.0.0-beta.1",
+    "@opentiny/ng-base": "~1.0.0-beta.2",
+    "@opentiny/ng-validation": "~1.0.0-beta.2",
+    "@opentiny/ng-text": "~1.0.0-beta.2",
+    "@opentiny/ng-textarea": "~1.0.0-beta.2",
     "@angular/core": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-tip": "~1.0.0-beta.1",
-    "@opentiny/ng-icon": "~1.0.0-beta.1",
-    "@opentiny/ng-outline": "~1.0.0-beta.1",
-    "@opentiny/ng-overflow": "~1.0.0-beta.1",
-    "@opentiny/ng-utils": "~1.0.0-beta.1"
+    "@opentiny/ng-tip": "~1.0.0-beta.2",
+    "@opentiny/ng-icon": "~1.0.0-beta.2",
+    "@opentiny/ng-outline": "~1.0.0-beta.2",
+    "@opentiny/ng-overflow": "~1.0.0-beta.2",
+    "@opentiny/ng-utils": "~1.0.0-beta.2"
   }
 }

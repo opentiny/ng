@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/dateedit"],
+      "outputs": ["dist/libs/ng-dateedit"],
       "options": {
         "project": "src/dateedit/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/dateedit"],
+      "outputs": ["dist/libs/ng-dateedit"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/dateedit && npm pack"
+            "command": "cd dist/libs/ng-dateedit && npm pack"
           }
         ]
       }

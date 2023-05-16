@@ -159,6 +159,19 @@ export default {
         'en-US': ''
       },
       apis: ['TiAutocompleteComponent.properties.options']
+    },
+    {
+      demoId: 'autocomplete-suggest',
+      name: {
+        'zh-CN': '动态加载下拉项',
+        'en-US': 'suggest'
+      },
+      desc: {
+        'zh-CN':
+          '<p>通过<code>suggest</code>事件配置当聚焦或值改变时触发事件，为开发者提供设置建议项的时机。通过<code>setLoading()</code>方法设置加载状态。</p>',
+        'en-US': ''
+      },
+      apis: ['TiAutocompleteComponent.methods.setLoading']
     }
   ]
 };

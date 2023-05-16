@@ -1,7 +1,7 @@
 {
-	"$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
-	"dest": "../../../dist/libs/overflow",
-	"lib": {
-		"entryFile": "index.ts"
-	}
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/libs/ng-overflow",
+  "lib": {
+    "entryFile": "index.ts"
+  }
 }

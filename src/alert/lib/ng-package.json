@@ -1,7 +1,7 @@
 {
-	"$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
-	"dest": "../../../dist/libs/alert",
-	"lib": {
-		"entryFile": "index.ts"
-	}
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/libs/ng-alert",
+  "lib": {
+    "entryFile": "index.ts"
+  }
 }

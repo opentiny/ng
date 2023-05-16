@@ -44,6 +44,7 @@ import { IpsectionTestModule } from '../../../../ipsection/demo/src/app/ipsectio
 import { LabeleditorTestModule } from '../../../../labeleditor/demo/src/app/labeleditor/LabeleditorTestModule';
 import { LayoutTestModule } from '../../../../layout/demo/src/app/layout/LayoutTestModule';
 import { LeftmenuTestModule } from '../../../../leftmenu/demo/src/app/leftmenu/LeftmenuTestModule';
+import { LeftmenuthinTestModule } from '../../../../leftmenuthin/demo/src/app/leftmenuthin/LeftmenuthinTestModule';
 import { ListTestModule } from '../../../../list/demo/src/app/list/ListTestModule';
 import { LoadingTestModule } from '../../../../loading/demo/src/app/loading/LoadingTestModule';
 import { LocaleTestModule } from '../../../../locale/demo/src/app/locale/LocaleTestModule';
@@ -147,6 +148,7 @@ export class DemoModules {
     LabeleditorTestModule,
     LayoutTestModule,
     LeftmenuTestModule,
+    LeftmenuthinTestModule,
     ListTestModule,
     LoadingTestModule,
     LocaleTestModule,

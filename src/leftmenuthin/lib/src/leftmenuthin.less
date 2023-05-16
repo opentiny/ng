@@ -1,0 +1,49 @@
+@import '../../../themes/basic/base-all.less';
+
+:host {
+  --ti-leftmenuthin-level-width: 80px;
+  --ti-leftmenuthin-level-height: 78px;
+}
+.ti-leftmenuthin-content {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  width: var(--ti-leftmenuthin-level-width);
+  background-color: var(--ti-common-color-bg-white-normal);
+}
+
+.ti-leftmenuthin-level {
+  width: var(--ti-leftmenuthin-level-width);
+  height: var(--ti-leftmenuthin-level-height);
+  padding-top: var(--ti-common-space-3x);
+  text-align: center;
+  color: var(--ti-common-color-text-secondary);
+  cursor: pointer;
+  box-sizing: border-box;
+
+  .ti-leftmenuthin-icon {
+    font-size: var(--ti-common-font-size-6);
+    line-height: 1;
+  }
+
+  .ti-leftmenuthin-level-text {
+    font-size: var(--ti-common-font-size-base);
+    line-height: var(--ti-common-line-height-number);
+    text-align: center;
+    margin-top: var(--ti-common-space-base);
+  }
+
+  &:hover {
+    background-color: var(--ti-common-color-bg-white-emphasize);
+    color: var(--ti-common-color-icon-hover);
+  }
+}
+
+.ti-leftmenuthin-level.ti-leftmenuthin-level-active {
+  color: var(--ti-common-color-text-white);
+  background-color: var(--ti-common-color-bg-emphasize);
+  .ti-leftmenuthin-icon {
+    color: var(--ti-common-color-icon-white);
+  }
+}

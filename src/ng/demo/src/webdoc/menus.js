@@ -118,6 +118,7 @@ export const cmpMenus = [
     key: 'cmp_nav',
     children: [
       { name: 'Leftmenu', nameCn: '左侧菜单', key: 'leftmenu' },
+      { name: 'Leftmenuthin', nameCn: '左侧图标菜单', key: 'leftmenuthin' },
       { name: 'Menu', nameCn: '下拉菜单', key: 'menu' },
       { name: 'Nav', nameCn: '顶部导航', key: 'nav' },
       { name: 'Actionmenu', nameCn: '菜单按钮', key: 'actionmenu' },

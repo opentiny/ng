@@ -12,11 +12,10 @@
 import { ChangeDetectionStrategy, Component, ContentChild, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 import { TiFormComponent } from '@opentiny/ng-base';
 import { TiDroplistComponent } from '@opentiny/ng-droplist';
-import { debounceTime, switchMap } from 'rxjs/operators';
+import { debounceTime, switchMap, tap } from 'rxjs/operators';
 import { TiTextComponent } from '@opentiny/ng-text';
 import { empty, Subject, Subscription } from 'rxjs';
-import { Util } from '@opentiny/ng-utils';
-import { TiPositionType } from '@opentiny/ng-utils';
+import { Util, TiPositionType } from '@opentiny/ng-utils';
 import packageInfo from '../package.json';
 
 /**
@@ -123,6 +122,11 @@ export class TiAutocompleteComponent extends TiFormComponent {
    */
   public isFocused: boolean = false;
   /**
+   * @ignore
+   * 控制loading状态
+   */
+  public loading: boolean;
+  /**
    * 最后一次下拉建议项
    */
   private lastSuggestions: Array<any> = [];
@@ -162,7 +166,7 @@ export class TiAutocompleteComponent extends TiFormComponent {
 
   ngOnDestroy(): void {
     // 修正SSR报错：TypeError: Cannot read property 'unsubscribe' of undefined
-    this.inputChangeSub && this.inputChangeSub.unsubscribe();
+    this.inputChangeSub?.unsubscribe();
   }
 
   // 组件交互方法集合--start
@@ -211,7 +215,7 @@ export class TiAutocompleteComponent extends TiFormComponent {
     // 问题根因：以上操作中当点击组件以外的地方，组件会有快速的聚焦再失焦的过程；聚焦时打开面板添加了延时处理，组件再失焦后时机早于聚焦，导致下拉面板无法隐藏；
     // 解决方案：失焦时也添加延时处理；
     setTimeout(() => {
-      this.dropListComp && this.dropListComp.hide();
+      this.dropListComp?.hide();
       this.isFocused = false;
     }, 0);
   }
@@ -253,7 +257,7 @@ export class TiAutocompleteComponent extends TiFormComponent {
    * 防止原生input框select（选中文本）事件触发时，冒泡到ti-autocomplete的select（选中选项）事件
    *
    */
-  inputSelect(event: Event) {
+  inputSelect(event: Event): void {
     event.stopPropagation();
   }
 
@@ -267,6 +271,15 @@ export class TiAutocompleteComponent extends TiFormComponent {
   private createInputChangeObserve(): void {
     this.inputChangeSub = this.inputChangeObserve
       .pipe(
+        // 下拉建议项固定时，第一项即时更新
+        tap((value: string) => {
+          if (this.isFocused && this.suggest.observers.length === 0 && this.options && this.options.length > 0) {
+            if (value) {
+              this.suggestions = [{ id: value, [this.labelKey]: value }];
+            }
+            this.show();
+          }
+        }),
         debounceTime(200), // 200ms延迟执行，解决请求太频繁问题
         // TODO: 在点击清除按钮或者快捷键删除时数据不准确，可能导致在这些操作时触发不了下面的逻辑
         // distinctUntilChanged(),避免前后两次相同数据重复处理，只有上次数据和200ms后的数据不相等时才触发后续动作。
@@ -277,10 +290,8 @@ export class TiAutocompleteComponent extends TiFormComponent {
               if (this.suggest.observers.length === 0) {
                 this.lastSuggestions = this.suggestions;
                 this.suggestions = this.filter(value);
-                if (this.suggestions.length > 0) {
-                  this.show();
-                } else {
-                  this.dropListComp && this.dropListComp.hide();
+                if (this.suggestions.length === 0) {
+                  this.dropListComp?.hide();
                 }
               } else {
                 this.suggest.emit(this);
@@ -295,6 +306,18 @@ export class TiAutocompleteComponent extends TiFormComponent {
       .subscribe();
   }
   /**
+   * 设置加载状态
+   *
+   * @param state true：加载中；false：加载结束
+   */
+  public setLoading(state: boolean): void {
+    this.loading = state;
+    if (state) {
+      this.suggestions = [];
+      this.show();
+    }
+  }
+  /**
    * 设置下拉建议项数据
    *
    * @param value 下拉建议项数组
@@ -302,7 +325,7 @@ export class TiAutocompleteComponent extends TiFormComponent {
   public setSuggestions(value: Array<any>): void {
     this.lastSuggestions = this.suggestions;
     this.suggestions = value;
-    if (this.suggestions.length > 0) {
+    if (this.suggestions.length > 0 || !Util.isUndefined(this.loading)) {
       this.show();
     } else {
       this.dropListComp.hide();

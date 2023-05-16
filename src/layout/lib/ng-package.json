@@ -1,7 +1,7 @@
 {
-	"$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
-	"dest": "../../../dist/libs/layout",
-	"lib": {
-		"entryFile": "index.ts"
-	}
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/libs/ng-layout",
+  "lib": {
+    "entryFile": "index.ts"
+  }
 }

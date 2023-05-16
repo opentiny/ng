@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/nav"],
+      "outputs": ["dist/libs/ng-nav"],
       "options": {
         "project": "src/nav/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/nav"],
+      "outputs": ["dist/libs/ng-nav"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/nav && npm pack"
+            "command": "cd dist/libs/ng-nav && npm pack"
           }
         ]
       }

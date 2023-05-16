@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/time"],
+      "outputs": ["dist/libs/ng-time"],
       "options": {
         "project": "src/time/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/time"],
+      "outputs": ["dist/libs/ng-time"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/time && npm pack"
+            "command": "cd dist/libs/ng-time && npm pack"
           }
         ]
       }

@@ -16,7 +16,6 @@ import {
   ContentChild,
   ElementRef,
   EventEmitter,
-  HostListener,
   Input,
   NgZone,
   Output,
@@ -28,8 +27,7 @@ import {
 import { TiFormComponent } from '@opentiny/ng-base';
 import { TiDropComponent } from '@opentiny/ng-drop';
 import { TiListComponent, TiListScrollLoad } from '@opentiny/ng-list';
-import { TiKeymap } from '@opentiny/ng-utils';
-import { TiPositionType } from '@opentiny/ng-utils';
+import { TiKeymap, TiPositionType } from '@opentiny/ng-utils';
 import { TiLocale } from '@opentiny/ng-locale';
 import packageInfo from '../package.json';
 
@@ -135,6 +133,11 @@ export class TiDroplistComponent extends TiFormComponent {
    * 用于定位的参照元素，如果该接口有值，表示drop不添加在body上，而是跟随宿主元素
    */
   @Input() referElem: Element;
+  /**
+   * @ignore
+   * 控制loading状态
+   */
+  @Input() loading: boolean = false;
 
   /**
    * 选中事件，向外通知option数据

@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/locale"],
+      "outputs": ["dist/libs/ng-locale"],
       "options": {
         "project": "src/locale/lib/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -22,7 +22,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/locale"],
+      "outputs": ["dist/libs/ng-locale"],
       "options": {
         "commands": [
           {
@@ -43,7 +43,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/locale && npm pack"
+            "command": "cd dist/libs/ng-locale && npm pack"
           }
         ]
       }
