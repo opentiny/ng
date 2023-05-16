@@ -5,7 +5,7 @@
   "targets": {
     "default-build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/leftmenuthin"],
+      "outputs": ["dist/libs/ng-leftmenuthin"],
       "options": {
         "project": "src/leftmenuthin/lib/ng-package.json"
       },
@@ -21,7 +21,7 @@
     },
     "build": {
       "executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/leftmenuthin"],
+      "outputs": ["dist/libs/ng-leftmenuthin"],
       "options": {
         "commands": [
           {
@@ -42,7 +42,7 @@
       "options": {
         "commands": [
           {
-            "command": "cd dist/libs/leftmenuthin && npm pack"
+            "command": "cd dist/libs/ng-leftmenuthin && npm pack"
           }
         ]
       }
