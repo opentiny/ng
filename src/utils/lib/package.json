@@ -1,9 +1,10 @@
 {
   "name": "@opentiny/ng-utils",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/platform-browser-dynamic": ">=13.0.0"
+    "@angular/platform-browser-dynamic": ">=13.0.0",
+    "color":"4.2.3"
   },
   "dependencies": {
     "tslib": "^2.3.0"

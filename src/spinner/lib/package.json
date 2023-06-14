@@ -1,17 +1,17 @@
 {
   "name": "@opentiny/ng-spinner",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0",
   "license": "MIT",
   "peerDependencies": {
-    "@opentiny/ng-locale": "~1.0.0-beta.2",
-    "@opentiny/ng-utils": "~1.0.0-beta.2",
-    "@opentiny/ng-base": "~1.0.0-beta.2",
-    "@opentiny/ng-inputnumber": "~1.0.0-beta.2",
+    "@opentiny/ng-locale": "~1.0.0",
+    "@opentiny/ng-utils": "~1.0.0",
+    "@opentiny/ng-base": "~1.0.0",
+    "@opentiny/ng-inputnumber": "~1.0.0",
     "@angular/forms": ">=13.0.0",
     "@angular/core": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-text": "~1.0.0-beta.2",
-    "@opentiny/ng-icon": "~1.0.0-beta.2",
-    "@opentiny/ng-tip": "~1.0.0-beta.2"
+    "@opentiny/ng-text": "~1.0.0",
+    "@opentiny/ng-icon": "~1.0.0",
+    "@opentiny/ng-tip": "~1.0.0"
   }
 }

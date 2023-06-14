@@ -1,20 +1,20 @@
 {
   "name": "@opentiny/ng-treeselect",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
-    "@opentiny/ng-base": "~1.0.0-beta.2",
-    "@opentiny/ng-tree": "~1.0.0-beta.2",
-    "@opentiny/ng-dominator": "~1.0.0-beta.2",
-    "@opentiny/ng-drop": "~1.0.0-beta.2",
-    "@opentiny/ng-searchbox": "~1.0.0-beta.2",
-    "@opentiny/ng-locale": "~1.0.0-beta.2",
-    "@opentiny/ng-utils": "~1.0.0-beta.2",
-    "@opentiny/ng-select": "~1.0.0-beta.2",
+    "@opentiny/ng-base": "~1.0.0",
+    "@opentiny/ng-tree": "~1.0.0",
+    "@opentiny/ng-dominator": "~1.0.0",
+    "@opentiny/ng-drop": "~1.0.0",
+    "@opentiny/ng-searchbox": "~1.0.0",
+    "@opentiny/ng-locale": "~1.0.0",
+    "@opentiny/ng-utils": "~1.0.0",
+    "@opentiny/ng-select": "~1.0.0",
     "@angular/forms": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-dropsearch": "~1.0.0-beta.2",
-    "@opentiny/ng-checkbox": "~1.0.0-beta.2"
+    "@opentiny/ng-dropsearch": "~1.0.0",
+    "@opentiny/ng-checkbox": "~1.0.0"
   }
 }

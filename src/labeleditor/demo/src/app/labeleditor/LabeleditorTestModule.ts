@@ -42,8 +42,7 @@ import { LabeleditorIconTipContextComponent, TemplateComponent } from './Labeled
     TemplateComponent,
     LabeleditorValidationAsyncComponent,
     LabeleditorIconTipContextComponent
-  ],
-  entryComponents: [TemplateComponent]
+  ]
 })
 export class LabeleditorTestModule {
   static readonly ROUTES: Routes = [

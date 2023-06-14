@@ -48,8 +48,7 @@ import { TipLongTextPositionComponent } from './TipLongTextPositionComponent';
     TipEmptyComponent,
     TipLongTextPositionComponent,
     TipZindexComponent
-  ],
-  entryComponents: [TipDemoComponent]
+  ]
 })
 export class TipTestModule {
   static readonly LINKS: Array<object> = [

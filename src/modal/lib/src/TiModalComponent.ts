@@ -22,7 +22,7 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import { NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
@@ -124,7 +124,7 @@ export class TiModalComponent extends TiBaseComponent implements AfterContentIni
     protected renderer: Renderer2,
     @Optional() private router: Router,
     protected changeDetectorRef: ChangeDetectorRef,
-    @Inject(DOCUMENT) private document
+    @Inject(DOCUMENT) private document: any
   ) {
     super(ele, renderer);
   }
@@ -214,15 +214,17 @@ export class TiModalComponent extends TiBaseComponent implements AfterContentIni
         return position;
       }
     };
-    // 监听路由变化，关闭弹出框：hashchange监听不到通过routerLink/navigate路由跳转的场景
-    this.modalSubscribe = this.router?.events.pipe(filter((event: RouterEvent) => event instanceof NavigationEnd)).subscribe(() => {
-      this.modalInstance._remove();
-    });
+    // 监听路由变化，关闭弹出框：hashchange监听不到通过routerLink/navigate路由跳转的场景 // 升级 ng16 去除 RouterEvent
+    this.modalSubscribe = this.router?.events
+      .pipe(filter((event: any /* : RouterEvent */) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.modalInstance._remove();
+      });
   }
 
   ngOnDestroy(): void {
     super.ngOnDestroy();
-    this.modalSubscribe && this.modalSubscribe.unsubscribe();
+    this.modalSubscribe?.unsubscribe();
   }
 
   public dismissModal(): void {

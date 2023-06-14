@@ -1,0 +1,87 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ng16-demo": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "../../demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "../../../../dist/apps/ng16",
+            "index": "../../demo/src/index.html",
+            "main": "../../demo/src/main.ts",
+            "polyfills": "../../../polyfills.ts",
+            "tsConfig": "./tsconfig.app.json",
+            "assets": [
+              "../../demo/src/favicon.ico",
+              "../../demo/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "/assets/ionicons/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@opentiny/ng-themes/",
+                "output": "/assets/themes/"
+              }
+            ],
+            "styles": ["../../../themes/basic/build.less", "../../../themes/theme-default/build.less", "../../../styles.less"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "../../../environments/environment.ts",
+                  "with": "../../../environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "sourceMap": true
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ng16-demo:build:production"
+            },
+            "development": {
+              "browserTarget": "ng16-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  },
+  "defaultProject": "ng16-demo"
+}
