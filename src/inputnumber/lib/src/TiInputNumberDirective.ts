@@ -51,7 +51,7 @@ export class TiInputNumberDirective extends DefaultValueAccessor {
   /**
    * 小数保留位数。使用 n +'数字' 形式，例如：'n4'，代表保留4位小数。spinner 保持一致。
    *
-   * 不设置时，10.0.1 版本后小数保留位数最少 0 位，最多 3 位；10.0.0 版本前小数保留位数为 3 位
+   * 不设置时，小数保留位数最少 0 位，最多 3 位
    */
   @Input() format: string;
   private numberFormat: string = '1.0-3';
@@ -132,8 +132,8 @@ export class TiInputNumberDirective extends DefaultValueAccessor {
       return;
     }
 
-    // 由于10.0.0及之前版本中开发者只能给ngModel传入空字符串时才能清空值，但是该组件ngModel应该是传入number类型，所以要清空时应该设置undefined。
-    // 10.0.1版本开始进行纠正，为了兼容旧版本，设置空字符串时也能清空。
+    // 旧版本中开发者只能给ngModel传入空字符串时才能清空值，但是该组件ngModel应该是传入number类型，所以要清空时应该设置undefined。
+    // 为了进行纠正，为了兼容旧版本，设置空字符串时也能清空。
     if (value === undefined || value === '') {
       super.writeValue('');
       this.oldInputValue = '';

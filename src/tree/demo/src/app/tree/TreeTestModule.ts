@@ -29,6 +29,7 @@ import { TreeCheckRelationComponent } from './TreeCheckRelationComponent';
 import { TreeVirtualscrollComponent } from './TreeVirtualscrollComponent';
 import { TreeVirtualscrollSmallComponent } from './TreeVirtualscrollSmallComponent';
 import { TreeVirtualscrollDragComponent } from './TreeVirtualscrollDragComponent';
+import { TreeSelectnodeComponent } from './TreeSelectnodeComponent';
 @NgModule({
   imports: [
     CommonModule,
@@ -64,7 +65,8 @@ import { TreeVirtualscrollDragComponent } from './TreeVirtualscrollDragComponent
     TreeCheckRelationComponent,
     TreeVirtualscrollComponent,
     TreeVirtualscrollSmallComponent,
-    TreeVirtualscrollDragComponent
+    TreeVirtualscrollDragComponent,
+    TreeSelectnodeComponent
   ]
 })
 export class TreeTestModule {
@@ -151,6 +153,10 @@ export class TreeTestModule {
     {
       path: 'tree/tree-virtualscroll-small',
       component: TreeVirtualscrollSmallComponent
+    },
+    {
+      path: 'tree/tree-selectnode',
+      component: TreeSelectnodeComponent
     },
     {
       path: 'tree/tree-virtualscroll-drag',

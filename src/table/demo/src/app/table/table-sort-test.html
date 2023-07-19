@@ -1,12 +1,12 @@
 <div class="containerStyle">
   <h3>描述</h3>
   <p>表格排序要结合tiCellText组件和tiHeadSort组件来实现。ti-cell-text包裹的是表头单元格 文本，ti-head-sort为点击的排序图标。</p>
-  <p>10.1.14 版本 ti-head-sort 组件初始无序时(默认为null)兼容传入 undefined。</p>
+  <p>ti-head-sort 组件初始无序时(默认为null)兼容传入 undefined。</p>
   <p class="demo-text-warn">注意：使用 tiOverflow 组件，请导入 TiOverflowModule。</p>
   <h3>示例</h3>
 
   <button type="button" (click)="clearSort()" style="margin-right: 20px">手动清除排序状态</button>
-  <!-- 10.1.13 版本支持手动改变排序状态-->
+  <!-- 支持手动改变排序状态-->
   <button type="button" (click)="changeSort()">手动改变排序状态 =》 使 firstName 那一列降序</button>
   <br /><br />
   <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">

@@ -1,14 +1,14 @@
 {
   "name": "@opentiny/ng-menu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "peerDependencies": {
-    "@opentiny/ng-base": "~1.0.0",
-    "@opentiny/ng-drop": "~1.0.0",
-    "@opentiny/ng-utils": "~1.0.0",
+    "@opentiny/ng-base": "~1.0.1",
+    "@opentiny/ng-drop": "~1.0.1",
+    "@opentiny/ng-utils": "~1.0.1",
     "@angular/core": ">=13.0.0",
-    "@opentiny/ng-list": "~1.0.0",
+    "@opentiny/ng-list": "~1.0.1",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-tip": "~1.0.0"
+    "@opentiny/ng-tip": "~1.0.1"
   }
 }

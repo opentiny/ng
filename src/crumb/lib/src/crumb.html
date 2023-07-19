@@ -1,7 +1,7 @@
 <ng-container *ngFor="let item of items; index as i let last=last;">
   <ng-container *ngIf="!last">
     <a
-      class="tp-crumb-label"
+      class="ti3-crumb-label"
       rel="noopener noreferrer"
       *ngIf="!item.routerLink"
       [href]="item.href"
@@ -12,7 +12,7 @@
       >{{item.label}}</a
     >
     <a
-      class="tp-crumb-label"
+      class="ti3-crumb-label"
       *ngIf="item.routerLink"
       [routerLink]="item.routerLink"
       [queryParams]="item.queryParams"
@@ -21,7 +21,7 @@
       [id]="appendId('label_' + i)"
       >{{item.label}}</a
     >
-    <span class="tp-crumb-divider">/</span>
+    <span class="ti3-crumb-divider">/</span>
   </ng-container>
-  <span *ngIf="last" class="tp-crumb-nohref-label" tiTipPosition="bottom-left" [id]="appendId('last_label')">{{item.label}}</span>
+  <span *ngIf="last" class="ti3-crumb-nohref-label" tiTipPosition="bottom-left" [id]="appendId('last_label')">{{item.label}}</span>
 </ng-container>

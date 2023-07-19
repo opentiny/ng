@@ -1,11 +1,11 @@
 {
   "name": "@opentiny/ng-crumb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
     "@angular/router": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-base": "~1.0.0"
+    "@opentiny/ng-base": "~1.0.1"
   }
 }

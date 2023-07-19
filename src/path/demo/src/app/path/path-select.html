@@ -45,7 +45,7 @@
           </tr>
           <tr *ngFor="let row of displayed" (dblclick)="onTrDblclick(row)">
             <!--使用复选框时，需要给复选框列加 checkbox-column 属性-->
-            <!--从10.1.2版本开始，点击radio所在的单元格可以选中或者取消选中
+            <!--点击radio所在的单元格可以选中或者取消选中
                             并且可以使用ti3-disabled-cell样式为复选框所在的单元格添加禁用样式-->
             <td
               checkbox-column
@@ -55,7 +55,7 @@
               <input type="checkbox" tiCheckitem [disabled]="row.disabled" [item]="row" />
             </td>
             <td tiOverflow>
-              <tp-icon class="ti-pathList-icon" [name]="row.type === 'file' ? 'cloud-action-folder' : 'cloud-action-report'"> </tp-icon>
+              <ti-icon class="pathList-icon" [name]="row.type === 'file' ? 'file' : 'document'"> </ti-icon>
               {{row.label}}
             </td>
             <td tiOverflow>{{row.time}}</td>

@@ -29,7 +29,7 @@ export class ImagepreviewBasicComponent {
   showImagepreview(): void {
     this.tiModal.open(TiImagepreviewComponent, {
       id: 'productPreviewModal',
-      modalClass: 'tp-product-preview-modal',
+      modalClass: 'product-preview-modal',
       context: {
         index: 0, // 当前文件索引
         fileList: this.files

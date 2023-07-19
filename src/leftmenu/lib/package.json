@@ -1,16 +1,16 @@
 {
   "name": "@opentiny/ng-leftmenu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "peerDependencies": {
     "@angular/router": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-utils": "~1.0.0",
-    "@opentiny/ng-base": "~1.0.0",
+    "@opentiny/ng-utils": "~1.0.1",
+    "@opentiny/ng-base": "~1.0.1",
     "@angular/core": ">=13.0.0",
     "@angular/platform-browser": ">=13.0.0",
-    "@opentiny/ng-icon": "~1.0.0",
-    "@opentiny/ng-renderer": "~1.0.0",
-    "@opentiny/ng-outline": "~1.0.0"
+    "@opentiny/ng-icon": "~1.0.1",
+    "@opentiny/ng-renderer": "~1.0.1",
+    "@opentiny/ng-outline": "~1.0.1"
   }
 }

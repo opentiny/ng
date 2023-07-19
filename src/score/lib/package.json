@@ -1,12 +1,12 @@
 {
   "name": "@opentiny/ng-score",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
-    "@opentiny/ng-base": "~1.0.0",
+    "@opentiny/ng-base": "~1.0.1",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-locale": "~1.0.0",
-    "@opentiny/ng-outline": "~1.0.0"
+    "@opentiny/ng-locale": "~1.0.1",
+    "@opentiny/ng-outline": "~1.0.1"
   }
 }

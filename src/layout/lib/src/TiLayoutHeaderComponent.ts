@@ -24,7 +24,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.ti3-layout-header]': 'true',
-    // 这里用 false 判断是为了兼容 10.1.10 及之前的版本，之前使用方式是业务在ti-layout-header标签上直接添加responsive属性(非input接口)来使用响应式布局。
+    // 这里用 false 判断是为了兼容业务在ti-layout-header标签上直接添加responsive属性(非input接口)来使用响应式布局。
     // 所以responsive接口的值为true或undefined(以标签属性的方式使用)时都应该是响应式布局，只有为false时才不是响应式布局。
     '[class.ti3-layout-purchase-responsive]': 'responsive !== false'
   }

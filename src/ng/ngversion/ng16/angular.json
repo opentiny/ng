@@ -54,8 +54,7 @@
                   "with": "../../../environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all",
-              "sourceMap": true
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,

@@ -49,7 +49,7 @@ export class TiModalService {
    * 生成弹框方法
    *
    * @param content 弹框内容，支持TemplateRef及组件形式，内容由ti-modal-header、ti-modal-body及ti-modal-footer组件构成弹框内容整体。
-   *                不支持字符串形式，如果误传入字符串形式，不仅会有报错，还会存在XSS攻击风险，不过XSS攻击风险已在10.1.4版本已处理。
+   *                不支持字符串形式，如果误传入字符串形式，不仅会有报错，还会存在XSS攻击风险，不过XSS攻击风险已处理。
    * @param [config] 弹框配置信息
    * @returns 弹框实例信息，使用该实例信息可调用弹框的close等方法；弹框内容为component类型时，也可通过该实例信息的content属性获取弹框内容数据
    */
