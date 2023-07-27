@@ -1,23 +1,23 @@
 {
   "name": "@opentiny/ng-upload",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.1",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
-    "@opentiny/ng-base": "~1.0.0-beta.2",
-    "@opentiny/ng-locale": "~1.0.0-beta.2",
-    "@opentiny/ng-utils": "~1.0.0-beta.2",
-    "@opentiny/ng-overflow": "~1.0.0-beta.2",
-    "@opentiny/ng-modal": "~1.0.0-beta.2",
-    "@opentiny/ng-imagepreview": "~1.0.0-beta.2",
+    "@opentiny/ng-base": "~1.0.1",
+    "@opentiny/ng-locale": "~1.0.1",
+    "@opentiny/ng-utils": "~1.0.1",
+    "@opentiny/ng-overflow": "~1.0.1",
+    "@opentiny/ng-modal": "~1.0.1",
+    "@opentiny/ng-imagepreview": "~1.0.1",
     "@angular/platform-browser": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-tip": "~1.0.0-beta.2",
-    "@opentiny/ng-progresspie": "~1.0.0-beta.2",
-    "@opentiny/ng-icon": "~1.0.0-beta.2",
-    "@opentiny/ng-validation": "~1.0.0-beta.2",
-    "@opentiny/ng-progressbar": "~1.0.0-beta.2",
-    "@opentiny/ng-button": "~1.0.0-beta.2",
-    "@opentiny/ng-outline": "~1.0.0-beta.2"
+    "@opentiny/ng-tip": "~1.0.1",
+    "@opentiny/ng-progresspie": "~1.0.1",
+    "@opentiny/ng-icon": "~1.0.1",
+    "@opentiny/ng-validation": "~1.0.1",
+    "@opentiny/ng-progressbar": "~1.0.1",
+    "@opentiny/ng-button": "~1.0.1",
+    "@opentiny/ng-outline": "~1.0.1"
   }
 }

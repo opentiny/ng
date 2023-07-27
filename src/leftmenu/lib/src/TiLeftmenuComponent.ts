@@ -125,7 +125,6 @@ export class TiLeftmenuComponent extends TiBaseComponent {
    * @ignore
    */
   @Output() readonly reloadStateChange: EventEmitter<boolean> = new EventEmitter();
-  // routable接口在3.0.3版本起对外隐藏，10.0.1重新开放
   /**
    * 是否使用路由来控制菜单对应内容显示/隐藏，默认使用路由。
    */

@@ -51,7 +51,6 @@ export class LeftmenuSecurityComponent {
 
   toggleClick(isHide: boolean): void {
     // 需要业务侧在菜单收起\展开时，控制右侧内容的位置
-    // 3.1.3版本leftMenu默认宽度修改为192px
     this.marginLeft = isHide ? '0' : '192px';
   }
 }

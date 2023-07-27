@@ -3,14 +3,12 @@ title: 更新日志 | TinyNG
 ---
 
 ## 更新日志
-### 1.0.0-beta.2
+### 1.0.1（Angular13、Angular14、Angular15、Angular16）
 
-*2023-05-16*
+*2023-07-19*
 
-1. Latest version
+1.tree：单选树子层级只有一项时，使用`selectNode`方法时无法高亮子级，会高亮父节点。
 
-### 1.0.0-beta.1
+### 1.0.0（Angular13、Angular14、Angular15）
 
-*2023-04-19*
-
-1. Latest version
+*2023-06-09*

@@ -1,21 +1,21 @@
 @import '../../../themes/basic/base-all.less';
 
 :host {
-  // --tp-anchor-link-title-padding-left: calc(var(--ti-common-space-5x) + var(--ti-common-space-3x) + var(--tp-anchor-link-badge-width)); // IE下不解析
-  --tp-anchor-link-title-padding-left: calc(
-    var(--tp-anchor-link-badge-left) + var(--ti-common-space-3x) + var(--tp-anchor-link-badge-width)
+  // --ti3-anchor-link-title-padding-left: calc(var(--ti-common-space-5x) + var(--ti-common-space-3x) + var(--ti3-anchor-link-badge-width)); // IE下不解析
+  --ti3-anchor-link-title-padding-left: calc(
+    var(--ti3-anchor-link-badge-left) + var(--ti-common-space-3x) + var(--ti3-anchor-link-badge-width)
   ); // 锚点小圆左侧间距 20px + 锚点小圆与文本间间距 12px + 锚点小圆宽度
-  --tp-anchor-link-title-line-height: calc(var(--ti-common-font-size-base) * var(--ti-common-line-height-number));
-  --tp-anchor-link-line-width: var(--ti-common-border-weight-normal);
-  --tp-anchor-link-badge-width: var(--ti-common-size-2x);
-  --tp-anchor-link-badge-height: var(--tp-anchor-link-badge-width);
-  --tp-anchor-link-badge-left: var(--ti-common-space-5x);
-  --tp-anchor-link-line-color: var(--ti-common-color-line-dividing);
-  --tp-anchor-link-title-color: var(--ti-common-color-text-primary);
-  --tp-anchor-link-title-color-hover: var(--ti-common-color-text-highlight);
-  --tp-anchor-link-title-color-selected: var(--ti-common-color-text-highlight);
+  --ti3-anchor-link-title-line-height: calc(var(--ti-common-font-size-base) * var(--ti-common-line-height-number));
+  --ti3-anchor-link-line-width: var(--ti-common-border-weight-normal);
+  --ti3-anchor-link-badge-width: var(--ti-common-size-2x);
+  --ti3-anchor-link-badge-height: var(--ti3-anchor-link-badge-width);
+  --ti3-anchor-link-badge-left: var(--ti-common-space-5x);
+  --ti3-anchor-link-line-color: var(--ti-common-color-line-dividing);
+  --ti3-anchor-link-title-color: var(--ti-common-color-text-primary);
+  --ti3-anchor-link-title-color-hover: var(--ti-common-color-text-highlight);
+  --ti3-anchor-link-title-color-selected: var(--ti-common-color-text-highlight);
 }
-:host.tp-anchor-container {
+:host.ti3-anchor-container {
   display: inline-block;
   width: var(--ti-common-size-40x);
   padding: 30px 2px; // 左右加2px的padding是为了保证聚焦的情况下边框不会被遮挡。默认聚焦样式是宽度为2的黑色边框。
@@ -23,18 +23,18 @@
   .box-sizing(border-box);
 }
 
-.tp-anchor-link {
+.ti3-anchor-link {
   padding: 0 0 var(--ti-common-space-5x) 0;
   position: relative;
   list-style: none;
   &:after {
     content: '';
     position: absolute;
-    left: calc(var(--tp-anchor-link-badge-left) + (var(--tp-anchor-link-badge-width) - var(--tp-anchor-link-line-width)) / 2);
-    top: calc((var(--tp-anchor-link-title-line-height) + var(--tp-anchor-link-badge-width)) / 2);
-    width: var(--tp-anchor-link-line-width);
-    height: ~'calc(100% - var(--tp-anchor-link-badge-width))';
-    background-color: var(--tp-anchor-link-line-color);
+    left: calc(var(--ti3-anchor-link-badge-left) + (var(--ti3-anchor-link-badge-width) - var(--ti3-anchor-link-line-width)) / 2);
+    top: calc((var(--ti3-anchor-link-title-line-height) + var(--ti3-anchor-link-badge-width)) / 2);
+    width: var(--ti3-anchor-link-line-width);
+    height: ~'calc(100% - var(--ti3-anchor-link-badge-width))';
+    background-color: var(--ti3-anchor-link-line-color);
   }
 
   &:last-child {
@@ -46,11 +46,11 @@
   }
 }
 
-.tp-anchor-link-title {
-  padding: 0 var(--ti-common-space-5x) 0 var(--tp-anchor-link-title-padding-left);
+.ti3-anchor-link-title {
+  padding: 0 var(--ti-common-space-5x) 0 var(--ti3-anchor-link-title-padding-left);
   text-decoration: none;
-  color: var(--tp-anchor-link-title-color);
-  line-height: var(--tp-anchor-link-title-line-height);
+  color: var(--ti3-anchor-link-title-color);
+  line-height: var(--ti3-anchor-link-title-line-height);
   font-size: var(--ti-common-font-size-base);
   font-weight: var(--ti-common-font-weight-4);
   position: relative;
@@ -60,21 +60,21 @@
   &:before {
     content: '';
     position: absolute;
-    left: var(--tp-anchor-link-badge-left);
-    top: calc((var(--tp-anchor-link-title-line-height) - var(--tp-anchor-link-badge-height)) / 2);
-    width: var(--tp-anchor-link-badge-width);
-    height: var(--tp-anchor-link-badge-height);
-    background-color: var(--tp-anchor-link-line-color);
+    left: var(--ti3-anchor-link-badge-left);
+    top: calc((var(--ti3-anchor-link-title-line-height) - var(--ti3-anchor-link-badge-height)) / 2);
+    width: var(--ti3-anchor-link-badge-width);
+    height: var(--ti3-anchor-link-badge-height);
+    background-color: var(--ti3-anchor-link-line-color);
     border-radius: 50%;
     box-sizing: border-box;
   }
 
   &:hover {
-    color: var(--tp-anchor-link-title-color-hover);
+    color: var(--ti3-anchor-link-title-color-hover);
   }
 
-  .tp-anchor-link-active & {
-    color: var(--tp-anchor-link-title-color-selected);
+  .ti3-anchor-link-active & {
+    color: var(--ti3-anchor-link-title-color-selected);
 
     &:before {
       background-color: var(--ti-common-color-bg-emphasize);

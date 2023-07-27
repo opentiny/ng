@@ -42,8 +42,7 @@ import { TiOutlineModule } from '@opentiny/ng-outline';
     TiModalFooterComponent,
     TiModalBodyComponent,
     TiBackdropComponent
-  ],
-  entryComponents: [TiModalComponent, TiModalNoAnimationComponent, TiBackdropNoAnimationComponent, TiBackdropComponent]
+  ]
 })
 export class TiModalModule {}
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { SuggestionItem } from './TagsInputPanelwidthComponent';
+import { SuggestionItem } from './TagsinputPanelwidthComponent';
 @Component({
   templateUrl: './tagsinput-reactive.html'
 })

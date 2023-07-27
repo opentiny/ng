@@ -73,8 +73,7 @@ import { HalfmodalServiceTestComponent } from './HalfmodalServiceTestComponent';
     ContentComponent,
     HalfmodalAsyncComponent,
     HalfmodalServiceTestComponent
-  ],
-  entryComponents: [ContentComponent]
+  ]
 })
 export class HalfmodalTestModule {
   public static readonly ROUTES: Routes = [

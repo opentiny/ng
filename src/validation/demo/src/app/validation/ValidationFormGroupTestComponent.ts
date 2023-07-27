@@ -48,7 +48,7 @@ export class ValidationFormGroupTestComponent {
   }
 
   checkGroupWithConfig(): void {
-    // 从10.0.1版本开始TiValidators.check方法支持传入第二个参数，第二个参数可选，具体参数意义可参考https://angular.io/api/forms/AbstractControl#updatevalueandvalidity
+    // check方法支持传入第二个参数，第二个参数可选，具体参数意义可参考https://angular.io/api/forms/AbstractControl#updatevalueandvalidity
     const errors: ValidationErrors | null = TiValidators.check(this.form, {
       emitEvent: false
     });

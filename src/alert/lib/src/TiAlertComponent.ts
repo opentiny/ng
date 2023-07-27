@@ -34,7 +34,7 @@ import packageInfo from '../package.json';
 /**
  * Alert组件用于消息提示，提供了四种类型
  *
- * <p><span style="color: red">10.1.13版本之后，使用此组件时需要开发者在项目模块(建议在根模块)
+ * <p><span style="color: red">使用此组件时需要开发者在项目模块(建议在根模块)
  * 中引入BrowserAnimationsModule。</span>这是因为此组件中使用了Angular动画，需要引入BrowserAnimationsModule，
  * 但是 BrowserAnimationsModule 不能在懒加载模块被重复引入，所以需要开发者来引入BrowserAnimationsModule，保证其引入一次。</p>
  *
