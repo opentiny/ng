@@ -55,7 +55,7 @@ export class TableStorageConfigComponent implements OnInit {
     sort: false,
     // pagination设置为false，表示当前页和每页个数都不记忆
     // pagination设置为true，表示当前页和每页个数都要记忆
-    // 10.1.2版本支持只记忆当前页或只记忆每页个数
+    // 支持只记忆当前页或只记忆每页个数
     pagination: {
       currentPage: false,
       itemsPerPage: true

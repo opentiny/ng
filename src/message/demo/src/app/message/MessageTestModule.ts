@@ -33,8 +33,7 @@ import { MessageSecurityComponent } from './MessageSecurityComponent';
     MessageTitleComponent,
     MessageIdComponent,
     MessageSecurityComponent
-  ],
-  entryComponents: [TestComponent]
+  ]
 })
 export class MessageTestModule {
   static readonly LINKS: Array<object> = [

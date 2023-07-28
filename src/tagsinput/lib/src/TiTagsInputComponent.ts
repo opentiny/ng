@@ -59,7 +59,7 @@ export class TiTagsInputComponent extends TiWholeComponent {
    */
   @Input() maxlength: number;
   /**
-   * 自动分词的分隔符，12.1.28 新增
+   * 自动分词的分隔符
    */
   @Input() separators: Array<string> = [];
   /**

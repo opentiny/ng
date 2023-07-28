@@ -61,7 +61,7 @@ export interface TiButtonItem {
    *
    * 对象类型，包含两个属性:1.text: 显示的文本；2.class:标志的样式；eg: {text: string; class: string}
    *
-   * 10.1.2版本之后可以通过 #sup 模板配置选块角标，因此隐藏sup键值对
+   * 可以通过 #sup 模板配置选块角标，因此隐藏sup键值对
    */
   sup?: {
     text?: string;
@@ -208,7 +208,7 @@ export class TiButtongroupComponent extends TiWholeComponent {
 
   /**
    * 兼容旧版：
-   * 10.1.2 版本之前只能内嵌一个模板，无命名。
+   * 之前只能内嵌一个模板，无命名。
    * 新版可以内嵌两个模板，示例书写要求都命名（#item，#sup）。
    * 但需要兼容旧版无命名测试用例。
    */

@@ -33,7 +33,7 @@
  */
 import { ComponentRef, Inject, Injectable, NgZone, Optional, Renderer2, RendererFactory2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -86,7 +86,7 @@ export class TiTipService {
     rendererFactory: RendererFactory2,
     private tiRenderer: TiRenderer,
     private zone: NgZone,
-    @Inject(DOCUMENT) private document,
+    @Inject(DOCUMENT) private document: any,
     @Optional() private router: Router
   ) {
     this.render = rendererFactory.createRenderer(null, null);
@@ -192,10 +192,12 @@ export class TiTipService {
         }
         // 部分服务使用了路由复用策略重写了 angular/router 的 RouteReuseStrategy 接口
         // 使用 hashchange 监听不到通过 routerLink/navigate 路由跳转的场景
-        // 此时宿主元素的 ngOnDestroy 不会触发不会销毁 tip，因此监听路由变化的方式
-        routerChangeSub = this.router?.events.pipe(filter((event: RouterEvent) => event instanceof NavigationEnd)).subscribe(() => {
-          hideFn();
-        });
+        // 此时宿主元素的 ngOnDestroy 不会触发不会销毁 tip，因此监听路由变化的方式 // 升级 ng16 去除 RouterEvent
+        routerChangeSub = this.router?.events
+          .pipe(filter((event: any /* : RouterEvent */) => event instanceof NavigationEnd))
+          .subscribe(() => {
+            hideFn();
+          });
 
         return tipComponentRef;
       },
@@ -224,6 +226,7 @@ export class TiTipService {
           return;
         }
         shareValues.mouseenterTimer = setTimeout(() => {
+          // eslint-disable-next-line max-nested-callbacks
           this.zone.run(() => {
             const showInfo: TiTipShowInfo = config.showFn();
             if (!showInfo) {

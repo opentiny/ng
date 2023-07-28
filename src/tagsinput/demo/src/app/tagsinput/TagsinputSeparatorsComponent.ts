@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SuggestionItem } from './TagsInputPanelwidthComponent';
+import { SuggestionItem } from './TagsinputPanelwidthComponent';
 
 @Component({
   templateUrl: './tagsinput-separators.html'

@@ -93,8 +93,7 @@ export class TiTipDirective implements OnInit, OnDestroy {
    *
    * 类型：string | TemplateRef<any> | any
    *
-   * 传入string类型时，在v3.0.6及之前的版本存在XSS攻击风险；v3.0.7做了安全处理后不存在XSS风险了，把传入的字符串当做纯文本解析，传入什么显示什么；
-   * v10.1.4版本支持html字符串片段，也已做安全处理。
+   * 传入string类型时支持html字符串片段，也已做安全处理。
    */
   @Input()
   // 监听tip值的变化，当tip为''或undefined情况下，直接隐藏tip组件

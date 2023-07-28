@@ -143,7 +143,7 @@ export default {
       },
       desc: {
         'zh-CN':
-          '通过<code>items.tipContent</code>配置提示信息，10.1.1 版本起，tip 接口的类型扩展为：string | TemplateRef<any> | Component<any>，旧版本为：string。通过<code>items.tipPosition</code>配置提示信息方位。超长文本以 title 显示，不建议使用 tip 提示。',
+          '通过<code>items.tipContent</code>配置提示信息，tip 接口的类型为：string | TemplateRef<any> | Component<any>。通过<code>items.tipPosition</code>配置提示信息方位。超长文本以 title 显示，不建议使用 tip 提示。',
         'en-US': '',
       },
       apis: [

@@ -1,9 +1,9 @@
 <ul [id]="appendId('list')">
-  <li class="tp-anchor-link" *ngFor="let item of items index as i" [ngClass]="{'tp-anchor-link-active': item.id === currentId}">
+  <li class="ti3-anchor-link" *ngFor="let item of items index as i" [ngClass]="{'ti3-anchor-link-active': item.id === currentId}">
     <a
       href="javascript:void(0);"
       oncontextmenu="return false"
-      class="tp-anchor-link-title"
+      class="ti3-anchor-link-title"
       (click)="onClick(item)"
       [id]="appendId('title_' + item.id)"
     >

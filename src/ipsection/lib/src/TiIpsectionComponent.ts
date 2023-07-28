@@ -41,7 +41,7 @@ export interface TiIpsectionConfig {
    */
   validation?: TiValidationConfig;
   /**
-   * 网段为 input 类型时的校验规则，10.1.15 支持 ValidatorFn 类型
+   * 网段为 input 类型时的校验规则，支持 ValidatorFn 类型
    */
   validationRules?: Array<ValidatorFn> | ValidatorFn;
   /**

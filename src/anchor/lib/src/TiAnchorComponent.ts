@@ -50,7 +50,7 @@ export interface TiAnchorItem {
   styleUrls: ['./anchor.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '[class.tp-anchor-container]': 'true'
+    '[class.ti3-anchor-container]': 'true'
   }
 })
 export class TiAnchorComponent extends TiBaseComponent {

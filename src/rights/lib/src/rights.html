@@ -1,15 +1,15 @@
-<ul class="tp-rights-container" [id]="appendId('container')">
+<ul class="ti3-rights-container" [id]="appendId('container')">
   <li
     *ngFor="let item of items; let i=index;"
-    class="tp-rights-item"
-    [ngClass]="{'tp-rights-item-support': type === 'page' && item.type !== 'noSupport',
-                  'tp-rights-item-nosupport': type === 'page' && item.type === 'noSupport',
-                  'tp-rights-item-param': type ==='param'}"
+    class="ti3-rights-item"
+    [ngClass]="{'ti3-rights-item-support': type === 'page' && item.type !== 'noSupport',
+                  'ti3-rights-item-nosupport': type === 'page' && item.type === 'noSupport',
+                  'ti3-rights-item-param': type ==='param'}"
   >
-    <span *ngIf="!item.type || item.type === 'support'" class="rights-icon tp-rights-item-icon tp-icon-cloud-action-support"></span
+    <span *ngIf="!item.type || item.type === 'support'" class="rights-icon ti3-rights-item-icon ti3-icon-cloud-action-support"></span
     ><!--
-      --><span *ngIf="item.type === 'noSupport'" class="rights-icon tp-rights-item-icon tp-icon-cloud-action-prompt"></span
+      --><span *ngIf="item.type === 'noSupport'" class="rights-icon ti3-rights-item-icon ti3-icon-cloud-action-prompt"></span
     ><!--
-      --><span class="tp-rights-label" [tiTip]="item.tip" [tiTipContext]="item" [id]="appendId('label_' + i)">{{item.label}}</span>
+      --><span class="ti3-rights-label" [tiTip]="item.tip" [tiTipContext]="item" [id]="appendId('label_' + i)">{{item.label}}</span>
   </li>
 </ul>

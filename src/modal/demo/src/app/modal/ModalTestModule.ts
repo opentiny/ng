@@ -67,8 +67,7 @@ import { ModalEscComponent } from './ModalEscComponent';
     ModalDraggableComponent,
     ModalHeaderAlignComponent,
     ModalEscComponent
-  ],
-  entryComponents: [TestComponent, ModalTestComponent]
+  ]
 })
 export class ModalTestModule {
   static readonly LINKS: Array<object> = [

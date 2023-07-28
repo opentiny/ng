@@ -95,13 +95,21 @@
     },
     "preview": {
       "executor": "@nrwl/workspace:run-commands",
-      "options": {
-        "commands": [
-          {
-            "command": "node build/preview-demo.js ng"
-          }
-        ]
-      }
+      "configurations": {
+        "ng13": {
+          "command": "node build/preview-demo.js ng"
+        },
+        "ng14": {
+          "command": "node build/preview-ngversion-demo.js ng14"
+        },
+        "ng15": {
+          "command": "node build/preview-ngversion-demo.js ng15"
+        },
+        "ng16": {
+          "command": "node build/preview-ngversion-demo.js ng16"
+        }
+      },
+      "defaultConfiguration": "ng13"
     },
     "test": {
       "builder": "@angular-devkit/build-angular:karma",

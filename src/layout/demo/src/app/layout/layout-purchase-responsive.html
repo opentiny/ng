@@ -8,12 +8,11 @@
 <!-- 只是模拟console的实际场景(console-ui左侧有48px宽的一个菜单栏)，开发者可不用关注这层div -->
 <div style="margin-left: 48px">
   <!-- 头部 -->
-  <!-- 10.1.11 版本开始可以将 responsive 当做 @Input 接口使用，可动态传入布尔值来控制是否使用响应式布局：<ti-layout-header [responsive]="变量"></ti-layout-header>  -->
   <ti-layout-header responsive>
     <ti-subtitle dark href="" target="_blank" [items]="items" style="padding: 8px 0"></ti-subtitle>
   </ti-layout-header>
   <!-- 内容容器 -->
-  <!-- 10.1.11 版本开始可以将 responsive 当做 @Input 接口使用，可动态传入布尔值来控制是否使用响应式布局：<ti-layout-content [responsive]="变量"></ti-layout-content>  -->
+  <!-- 可以将 responsive 当做 @Input 接口使用，可动态传入布尔值来控制是否使用响应式布局：<ti-layout-content [responsive]="变量"></ti-layout-content>  -->
   <ti-layout-content responsive>
     <!-- 内容主体部分 -->
     <!-- 浮层默认高度70px,当浮层内容较多时，高度会撑高，需要服务额外设置padding -->

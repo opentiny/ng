@@ -254,7 +254,7 @@ export class TiActionmenuComponent extends TiFormComponent {
   }
   /**
    * 兼容旧版：
-   * 10.0.3 版本之前只能内嵌一个模板，无命名。
+   * 之前只能内嵌一个模板，无命名。
    * 新版可以内嵌两个模板，示例书写要求都命名（#item，#tip）。
    * 但需要兼容旧版无命名测试用例。
    */
