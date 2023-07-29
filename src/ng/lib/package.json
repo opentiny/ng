@@ -22,7 +22,9 @@
   },
   "peerDependencies": {
     "@angular/common": ">=13.0.0",
-    "@angular/core": ">=13.0.0",
+    "@angular/core": ">=13.0.0"
+  },
+  "dependencies": {
     "@opentiny/ng-accordion": "1.0.1",
     "@opentiny/ng-actionmenu": "1.0.1",
     "@opentiny/ng-alert": "1.0.1",
