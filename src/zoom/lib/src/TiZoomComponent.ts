@@ -15,13 +15,11 @@ import { TiRenderer } from '@opentiny/ng-renderer';
 /**
  * @ignore
  *
- * 10.0.3版本增加，暂时不对外开放
+ * 暂时不对外开放
  *
  * 该指令可以实现图片放大镜功能，添加tiZoom后会创建放大区域选择器元素（div）和放大结果呈现元素（div）
  *
  * 通过设置放大结果的background-image、background-size和background-position来达到放大效果
- *
- * 10.1.0版本从指令调整为组件形式
  *
  */
 @Component({

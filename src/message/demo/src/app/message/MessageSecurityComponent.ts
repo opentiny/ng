@@ -9,7 +9,7 @@ export class MessageSecurityComponent {
   constructor(private tiMessage: TiMessageService, private domSanitizer: DomSanitizer) {}
   showString1(): void {
     this.tiMessage.open({
-      // 10.1.3及之前版本该接口存在XSS攻击风险；该接口在10.1.4版本已经做了安全处理，js脚本不会执行。
+      // 该接口已经做了安全处理，js脚本不会执行。
       content: `<span style="color: red">hello</span><script>alert("xss")</script><img src=# onerror=alert(/xss2/) /><a href="javascript:alert('Hi a')">链接1</a><a target="_blank" href="">链接2</a>`
     });
   }

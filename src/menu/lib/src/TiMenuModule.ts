@@ -13,11 +13,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TiDropModule } from '@opentiny/ng-drop';
 import { TiTipModule } from '@opentiny/ng-tip';
+import { TiListModule } from '@opentiny/ng-list';
 import { TiMenuComponent } from './TiMenuComponent';
 import { TiMenuListComponent } from './TiMenuListComponent';
 
 @NgModule({
-  imports: [CommonModule, TiDropModule, TiTipModule],
+  imports: [CommonModule, TiDropModule, TiTipModule, TiListModule],
   exports: [TiMenuComponent, TiMenuListComponent],
   declarations: [TiMenuComponent, TiMenuListComponent]
 })

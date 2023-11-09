@@ -71,8 +71,8 @@ export class AppModule {}
 {
   "build": {
     "styles": [
-      "node_modules/@opentiny/ng/themes/styles.css", // 基础样式
-      "node_modules/@opentiny/ng/themes/theme-default.css", // 主题样式
+      "node_modules/@opentiny/ng-themes/styles.css", // 基础样式
+      "node_modules/@opentiny/ng-themes/theme-default.css", // 主题样式
       "src/styles.css"
     ]
   }

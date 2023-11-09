@@ -12,7 +12,7 @@ export class SliderTipComponent {
   min: number = 1;
   max: number = 12;
   scales: Array<string> = ['1个月', '2个月', '3个月', '4个月', '5个月', '6个月', '7个月', '8个月', '9个月', '1年', '2年', '3年'];
-  tipMode: string = 'always';
+  tipMode: 'auto' | 'always' = 'always';
   tipFormatterFn(value: number): string {
     if (value === 10) {
       return '付10个月费用，享1年优惠';

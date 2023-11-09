@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { myOptions } from './data.js';
+import { myOptions } from './data';
 @Component({
   templateUrl: './transfer-nodatatext.html'
 })

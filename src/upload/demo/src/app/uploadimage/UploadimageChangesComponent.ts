@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TiFileItem } from '@opentiny/ng';
 
 @Component({
   templateUrl: `./uploadimage-changes.html`
@@ -15,7 +16,7 @@ export class UploadimageChangesComponent {
     this.customHeaders.tiCustomHeader = 'custom header';
     this.myLogs = [...this.myLogs, `添加头信息：${JSON.stringify(this.customHeaders)}`];
   }
-  beforeSendItems($event: Event): void {
+  beforeSendItems($event: Array<TiFileItem>): void {
     this.myLogs = [
       ...this.myLogs,
       `请求方式：${$event[0].method}; 文件名：'${$event[0].alias}'; 头信息：${JSON.stringify(

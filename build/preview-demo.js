@@ -77,8 +77,8 @@ function changePathAliasAndInstallLib() {
       delete baseTsConfigData.compilerOptions.paths[`@opentiny/ng-${dir}`];
 
       console.log('---------------- pack lib ---------------');
-      // 打包压缩 lib 库
-      execSync(`ng pack ${dir}`, { stdio: 'inherit' });
+      // 打包压缩 lib 库，路径为 ng-xx 需要去除前三位
+      execSync(`ng pack ${dir.slice(3)}`, { stdio: 'inherit' });
     }
 
     // 拼凑 npm install 时所需的 lib 库的 tgz 包路径

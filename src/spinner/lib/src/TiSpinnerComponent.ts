@@ -49,7 +49,7 @@ export class TiSpinnerComponent extends TiFormComponent {
   /**
    * 小数保留位数。使用 n + '数字' 形式，例如：'n4'，代表保留4位小数。
    *
-   * 不设置时，10.0.1 版本后小数保留位数最少 0 位，最多 3 位；10.0.0 版本前小数保留位数为 3 位
+   * 不设置时小数保留位数最少 0 位，最多 3 位
    */
   @Input() format: string;
   /**
@@ -71,7 +71,7 @@ export class TiSpinnerComponent extends TiFormComponent {
   /**
    * @ignore
    *
-   * 从 10.0.1 版本开始该接口不再开放。如果不想要组件根据最大最小值进行强制转换，那么不要设置最大最小值即可。
+   * 该接口不再开放。如果不想要组件根据最大最小值进行强制转换，那么不要设置最大最小值即可。
    *
    * 失去焦点是否支持根据最大最小值进行强制转换（默认值为 true, 支持强转; 当用户配置为 false 时，不支持强制转换）
    */
@@ -86,7 +86,6 @@ export class TiSpinnerComponent extends TiFormComponent {
   @Input() maxlength: number = 20;
   /**
    * @ignore
-   * 10.1.11版本之前服务使用tiTip指令自行实现提示
    *
    * 此处做兼容性处理，添加该接口判断服务是否使用指令实现
    *

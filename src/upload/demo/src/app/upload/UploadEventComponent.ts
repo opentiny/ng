@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TiFileItem, TiFilter } from '@opentiny/ng';
+import { TiFileItem } from '@opentiny/ng';
 
 @Component({
   templateUrl: `./upload-event.html`
@@ -9,7 +9,7 @@ export class UploadEventComponent {
   onAddItemSuccess(fileItem: TiFileItem): void {
     this.myLogs = [...this.myLogs, `onAddItemSuccess() filename:${fileItem.file.name}`];
   }
-  onAddItemFailed(fileItem: TiFileItem): void {
+  onAddItemFailed(fileItem: any): void {
     this.myLogs = [...this.myLogs, `onAddItemFailed() filename:${fileItem.file.name}`];
   }
   onBeforeSendItems(fileItems: Array<TiFileItem>): void {
@@ -35,7 +35,7 @@ export class UploadEventComponent {
   onRemoveItems($event: any): void {
     this.myLogs = [...this.myLogs, `onRemoveItems()`];
   }
-  onBeforeRemoveItems(fileItemArry: Array<TiFileItem>): void {
+  onBeforeRemoveItems(fileItemArry: any): void {
     this.myLogs = [...this.myLogs, `onBeforeRemoveItems()`];
     fileItemArry[0].remove();
   }

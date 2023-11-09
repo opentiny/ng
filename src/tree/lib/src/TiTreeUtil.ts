@@ -217,7 +217,7 @@ export class TiTreeUtil {
       TiTreeUtil.selectAllChildren(node); // 先置当前节点选中，如果当前节点是非叶子节点 递归让其子节点全部选中
     }
 
-    TiTreeUtil.selectParents(node, data, true); // 设置父节点选中情况
+    TiTreeUtil.selectParents(node, data, true, multiple); // 设置父节点选中情况
   }
   // TODO:Tiny4 deselect改为unselect
   /**
@@ -233,6 +233,7 @@ export class TiTreeUtil {
     if (!multiple) {
       TiTreeUtil.traverse(data, (travNode: TiTreeNode): void => {
         travNode.checked = false; // 清空所有的选中项
+        travNode.unHighLight = false;
       });
     } else {
       TiTreeUtil.deSelectAllChildren(node);
@@ -450,8 +451,9 @@ export class TiTreeUtil {
    * @param item 子节点的数据
    * @param allData 全部节点数据
    * @param checked 取值为：true/false/'indeterminate'
+   * @param multiple 是否是多选树
    */
-  public static selectParents(item: TiTreeNode, allData: Array<TiTreeNode>, checked: boolean | string): void {
+  public static selectParents(item: TiTreeNode, allData: Array<TiTreeNode>, checked: boolean | string, multiple?: boolean): void {
     const pNode: TiTreeNode = TiTreeUtil.getParentNode(allData, item);
     if (Util.isUndefined(pNode)) {
       return;
@@ -474,8 +476,12 @@ export class TiTreeUtil {
     }
 
     if (selectedNum === childrens.length) {
+      //单选模式，子层级只有一项时，高亮正常，且getSelectData可正常获取到值
+      if (childrens.length === 1 && multiple === false) {
+        pNode.unHighLight = true; //单选模式，子层级只有一项时，父层级不高亮；
+      }
       pNode.checked = true;
-      TiTreeUtil.selectParents(pNode, allData, true);
+      TiTreeUtil.selectParents(pNode, allData, true, multiple);
     } else {
       pNode.checked = 'indeterminate';
       TiTreeUtil.selectParents(pNode, allData, 'indeterminate');

@@ -82,6 +82,10 @@ export class UploadTestModule {
       component: UploadServiceComponent
     },
     {
+      path: 'upload/upload-custom',
+      component: UploadCustomComponent
+    },
+    {
       path: 'upload/upload-auto-upload',
       component: UploadAutoUploadComponent
     },

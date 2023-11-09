@@ -11,5 +11,5 @@ export class CheckboxIndeterminateComponent {
     { id: 4, text: 'admin' }
   ];
 
-  checked: Array<any> = [this.data[0], this.data[2]];
+  checked: any = [this.data[0], this.data[2]];
 }

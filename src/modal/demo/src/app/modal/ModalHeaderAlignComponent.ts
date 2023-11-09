@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { TiModalService } from '@opentiny/ng';
 
 @Component({
@@ -7,7 +7,7 @@ import { TiModalService } from '@opentiny/ng';
 export class ModalHeaderAlignComponent {
   constructor(private tiModal: TiModalService) {}
 
-  show(content: string): void {
+  show(content: TemplateRef<any>): void {
     this.tiModal.open(content, {
       headerAlign: 'center'
     });

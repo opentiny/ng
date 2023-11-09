@@ -1,12 +1,12 @@
 {
   "name": "@opentiny/ng-inputnumber",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "MIT",
   "peerDependencies": {
     "@angular/forms": ">=13.0.0",
     "@angular/core": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-locale": "~1.0.0",
-    "@opentiny/ng-utils": "~1.0.0"
+    "@opentiny/ng-locale": "~1.0.2",
+    "@opentiny/ng-utils": "~1.0.2"
   }
 }

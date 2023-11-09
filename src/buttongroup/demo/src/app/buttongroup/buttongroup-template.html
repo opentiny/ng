@@ -6,7 +6,7 @@
 </ti-button-group>
 <br />
 <br />
-<ti-button-group id="buttongroup-multi-temp" multiple="true" [items]="items1" [(ngModel)]="selected1">
+<ti-button-group id="buttongroup-multi-temp" [multiple]="true" [items]="items1" [(ngModel)]="selected1">
   <ng-template #item let-item let-i="index">
     <ti-icon [name]="item.iconName"></ti-icon>
     <span class="ml-3">第{{i}}项-{{item.title}}</span>

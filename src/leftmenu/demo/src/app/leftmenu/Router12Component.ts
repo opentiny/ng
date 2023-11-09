@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { TiModalService } from '@opentiny/ng';
 @Component({
   template: `
@@ -17,7 +17,7 @@ import { TiModalService } from '@opentiny/ng';
 })
 export class Router12Component {
   constructor(private tiModal: TiModalService) {}
-  show(content: string): void {
+  show(content: TemplateRef<any>): void {
     this.tiModal.open(content, {
       modalClass: 'modal-class'
     });

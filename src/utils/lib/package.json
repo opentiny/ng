@@ -1,6 +1,6 @@
 {
   "name": "@opentiny/ng-utils",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "MIT",
   "peerDependencies": {
     "@angular/platform-browser-dynamic": ">=13.0.0",

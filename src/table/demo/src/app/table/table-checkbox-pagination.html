@@ -29,7 +29,7 @@
     <tbody>
       <tr *ngFor="let row of displayed;index as i;trackBy: trackByFn" [ngClass]="{'ti3-selected-tr': checkedList.indexOf(row) !== -1}">
         <!--使用复选框时，需要给复选框列加 checkbox-column 属性-->
-        <!--从10.1.2版本开始，点击checkbox所在的单元格可以选中或者取消选中
+        <!--点击checkbox所在的单元格可以选中或者取消选中
                     并且可以使用ti3-disabled-cell样式为复选框所在的单元格添加禁用样式-->
         <td checkbox-column [ngClass]="{'ti3-disabled-cell': row.disabled}">
           <input type="checkbox" tiCheckitem [item]="row" [disabled]="row.disabled" />
@@ -71,7 +71,7 @@
       <!--为了更好的渲染性能，建议在ngFor数据时总是trackBy数据条目中的某个唯一属性值(如id)-->
       <tr *ngFor="let row of displayed1;index as i;trackBy: trackByFn" [ngClass]="{'ti3-selected-tr': checkedList1.indexOf(row) !== -1}">
         <!--使用复选框时，需要给复选框列加 checkbox-column 属性-->
-        <!--从10.1.2版本开始，点击checkbox所在的单元格可以选中或者取消选中
+        <!--点击checkbox所在的单元格可以选中或者取消选中
                     并且可以使用ti3-disabled-cell样式为复选框所在的单元格添加禁用样式-->
         <td checkbox-column [ngClass]="{'ti3-disabled-cell': row.disabled}">
           <input type="checkbox" tiCheckitem [item]="row" [disabled]="row.disabled" />

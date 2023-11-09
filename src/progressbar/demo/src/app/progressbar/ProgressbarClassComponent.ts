@@ -10,6 +10,16 @@ export class ProgressbarClassComponent {
   value: number = 80;
   value1: number = 50;
   max: number = 200;
+
+  _progressClass: string;
+  get progressClass(): string {
+    if (this.value <= 150) {
+      return 'custom-progress-warn-bg';
+    } else {
+      return 'success-bg';
+    }
+  }
+
   up(): void {
     if (this.value + STEP <= this.max) {
       this.value += STEP;

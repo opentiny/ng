@@ -31,5 +31,5 @@ export class CheckboxGroupLevelComponent {
     { items: this.females, checkeds: this.femalesSet, label: '女性' }
   ];
 
-  checkedSet1: Array<any> = [];
+  checkedSet1: any = [];
 }

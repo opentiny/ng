@@ -1,6 +1,6 @@
 {
   "name": "@opentiny/ng-collapsetext",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
     "@angular/common": ">=13.0.0"

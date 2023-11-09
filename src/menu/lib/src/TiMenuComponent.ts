@@ -132,7 +132,7 @@ export class TiMenuComponent extends TiFormComponent {
   ngOnInit(): void {
     // 基类中做了设置宿主id的操作
     super.ngOnInit();
-    // 10.1.17 版本之前在标签上写 hasborder 属性会呈现按钮下拉样式，10.1.17 版本之后修改为 buttonselect 属性，也兼容之前的写法
+    // buttonselect 属性，也兼容之前在标签上写 hasborder 属性会呈现按钮下拉样式的写法
     this.buttonSelect = this.nativeElement.hasAttribute('hasborder') || this.nativeElement.hasAttribute('buttonselect');
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -145,7 +145,7 @@ export class TiMenuComponent extends TiFormComponent {
   }
   /**
    * 兼容旧版：
-   * 10.0.3 版本之前只能内嵌一个模板，无命名。
+   * 之前只能内嵌一个模板，无命名。
    * 新版可以内嵌两个模板，示例书写要求都命名（#item，#tip）。
    * 但需要兼容旧版无命名测试用例。
    */
@@ -200,7 +200,7 @@ export class TiMenuComponent extends TiFormComponent {
    * 切换面板状态：打开/关闭
    */
   public toggle(): void {
-    this.dropComs.first.isShow ? this.close() : this.open();
+    this.dropComs?.first?.isShow ? this.close() : this.open();
   }
   /**
    * @ignore
@@ -271,7 +271,7 @@ export class TiMenuComponent extends TiFormComponent {
    * @ignore
    */
   public onMousedown(event: MouseEvent): void {
-    if (this.dropComs.first.isShow) {
+    if (this.dropComs?.first?.isShow) {
       // 已打开，则关闭
       this.close();
     } else if (this.beforeOpen.observers.length === 0) {

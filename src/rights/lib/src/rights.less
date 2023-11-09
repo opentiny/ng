@@ -1,38 +1,43 @@
-.tp-rights-container {
+:host {
+  --ti-rights-item-padding-vertical-default: 3px;
+  --ti-rights-page-padding-right-default: var(--ti-common-space-2x);
+}
+.ti3-rights-container {
   display: flex;
 }
 
-.tp-rights-item {
-  color: #575d6c;
+.ti3-rights-item {
+  color: var(--ti-common-color-text-secondary);
   margin-right: var(--ti-common-space-2x);
-  padding: 3px var(--ti-common-space-2x);
+  padding: var(--ti-rights-item-padding-vertical-default) var(--ti-rights-page-padding-right-default);
   cursor: pointer;
 
   &:last-child {
     margin-right: 0;
   }
 
-  .tp-rights-item-icon {
+  .ti3-rights-item-icon {
     font-size: 16px;
     vertical-align: -15%; //TODO:在tiny库设置'bottom'属性，图标可对齐，再该项目中无法对齐，暂使用百分比代替
   }
 }
 
-.tp-rights-item-param {
+.ti3-rights-item-param {
   margin-right: var(--ti-common-space-5x);
-  padding: 3px 0;
+  padding: var(--ti-rights-item-padding-vertical-default) 0;
 }
 
-.tp-rights-item-support {
-  background-color: #edfff9;
+.ti3-rights-item-support {
+  background-color: var(--ti-common-color-success-bg);
 }
 
-.tp-rights-item-nosupport {
-  background-color: #f5f5f6;
+.ti3-rights-item-nosupport {
+  background-color: var(--ti-common-color-bg-disabled);
 }
 
-.tp-rights-label {
+.ti3-rights-label {
   display: inline-block;
-  line-height: 18px;
+  font-size: var(--ti-common-font-size-base);
+  line-height: calc(var(--ti-common-font-size-base) + var(--ti-rights-item-padding-vertical-default) * 2);
   margin-left: var(--ti-common-space-base);
 }

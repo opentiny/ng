@@ -1,5 +1,5 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { myOptions, mySelecteds } from './data.js';
+import { myOptions, mySelecteds } from './data';
 @Component({
   templateUrl: './transfer-lazy.html'
 })

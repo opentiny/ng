@@ -34,8 +34,6 @@ import { Util } from '@opentiny/ng-utils';
  * 在编辑状态:点击右侧对号图标时，切换到非编辑状态，
  * 并且将输入框中内容显示在非编辑状态的文本中;
  * 点击右侧叉图标时，切换到非编辑状态，非编辑状态的文本保持之前的不变，用户输入不生效。
- *
- * <example-url>../tinyplus3demo/#/labeleditor/labeleditor-all</example-url>
  */
 @Component({
   selector: 'ti-labeleditor',

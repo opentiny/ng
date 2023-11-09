@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { TiMessageService } from '@opentiny/ng';
 
 @Component({
@@ -8,11 +8,10 @@ export class MessageContentComponent {
   constructor(private tiMessage: TiMessageService) {}
   showString(): void {
     this.tiMessage.open({
-      // v10.1.3及之前的版本存在XSS攻击(html类型)风险, v10.1.4 版本做了安全处理，已不存在XSS攻击风险，建议业务尽快升级版本。
       content: '<span>this is a message</span>'
     });
   }
-  showTemplate(content: string): void {
+  showTemplate(content: TemplateRef<any>): void {
     this.tiMessage.open({
       content,
       context: {

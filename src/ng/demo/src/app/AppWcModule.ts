@@ -153,6 +153,8 @@ import { ButtonHasborderComponent } from './../../../../button/demo/src/app/butt
 
 import { ButtonIconComponent } from './../../../../button/demo/src/app/button/ButtonIconComponent';
 
+import { ButtonLabelComponent } from './../../../../button/demo/src/app/button/ButtonLabelComponent';
+
 import { ButtonLoadingComponent } from './../../../../button/demo/src/app/button/ButtonLoadingComponent';
 
 import { ButtonOnlyiconComponent } from './../../../../button/demo/src/app/button/ButtonOnlyiconComponent';
@@ -1239,7 +1241,7 @@ import { TabLevel2Component } from './../../../../tab/demo/src/app/tab/TabLevel2
 
 import { TabOverflowComponent } from './../../../../tab/demo/src/app/tab/TabOverflowComponent';
 
-import { TabRouteComponent } from './../../../../tab/demo/src/app/tab/TabRouteComponent';
+import { TabRouteWebsiteViewComponent } from './../../../../tab/demo/src/app/tab/website-views/TabRouteWebsiteViewComponent';
 
 import { TabScrollComponent } from './../../../../tab/demo/src/app/tab/TabScrollComponent';
 
@@ -1440,6 +1442,8 @@ import { TagDefaultComponent } from './../../../../tag/demo/src/app/tag/TagDefau
 import { TagDisabledComponent } from './../../../../tag/demo/src/app/tag/TagDisabledComponent';
 
 import { TagEditComponent } from './../../../../tag/demo/src/app/tag/TagEditComponent';
+
+import { TagEventsComponent } from './../../../../tag/demo/src/app/tag/TagEventsComponent';
 
 import { TagsinputBasicComponent } from './../../../../tagsinput/demo/src/app/tagsinput/TagsinputBasicComponent';
 
@@ -2095,6 +2099,11 @@ const WCS: any = [
   },
 
   { selector: 'website-tiny-button-icon', component: ButtonIconComponent },
+
+  {
+    selector: 'website-tiny-button-label',
+    component: ButtonLabelComponent
+  },
 
   {
     selector: 'website-tiny-button-loading',
@@ -4236,7 +4245,7 @@ const WCS: any = [
 
   { selector: 'website-tiny-tab-overflow', component: TabOverflowComponent },
 
-  { selector: 'website-tiny-tab-route', component: TabRouteComponent },
+  { selector: 'website-tiny-tab-route', component: TabRouteWebsiteViewComponent },
 
   { selector: 'website-tiny-tab-scroll', component: TabScrollComponent },
 
@@ -4668,6 +4677,8 @@ const WCS: any = [
   { selector: 'website-tiny-tag-disabled', component: TagDisabledComponent },
 
   { selector: 'website-tiny-tag-edit', component: TagEditComponent },
+
+  { selector: 'website-tiny-tag-events', component: TagEventsComponent },
 
   {
     selector: 'website-tiny-tagsinput-basic',

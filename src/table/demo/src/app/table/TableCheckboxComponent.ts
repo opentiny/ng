@@ -5,7 +5,7 @@ import { TiTableColumns, TiTableRowData, TiTableSrcData } from '@opentiny/ng';
   templateUrl: './table-checkbox.html'
 })
 export class TableCheckboxComponent {
-  checkedList: Array<TiTableRowData> = [];
+  checkedList: any = [];
   displayedData: Array<TiTableRowData> = [];
   srcData: TiTableSrcData = {
     data: [

@@ -54,11 +54,11 @@ export interface TiTreeNode {
    */
   checked?: boolean | string;
   /**
-   * 节点展开时的字体图标，10.1.2 支持自定义模板添加图标
+   * 节点展开时的字体图标，支持自定义模板添加图标
    */
   expandIcon?: string;
   /**
-   * 节点收起时的字体图标，10.1.2 支持自定义模板添加图标
+   * 节点收起时的字体图标，支持自定义模板添加图标
    */
   collapseIcon?: string;
   /**
@@ -566,7 +566,7 @@ export class TiTreeComponent extends TiBaseComponent {
   private initActived = (data: Array<TiTreeNode>): any => {
     let result: TiTreeNode;
     for (const node of data) {
-      if (node.checked === true) {
+      if (node.checked === true && !node.unHighLight) {
         return node;
       }
 

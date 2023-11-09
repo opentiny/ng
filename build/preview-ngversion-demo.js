@@ -68,11 +68,20 @@ function installLib() {
 }
 
 function buildDemo() {
+  // 解决 ng16 时生产环境启动运行时报错问题
+  if (name === 'ng16') {
+    fs.moveSync(path.resolve(__dirname, '../src/browserslist'),path.resolve(__dirname, '../src/browserslist_bak'))
+  }
+
   console.log(`---------------- build ${name} demo ---------------`);
   execSync(`cd src/ng/ngversion/${name} && npm run build`, { stdio: 'inherit' });
+
+  if (name === 'ng16') {
+    fs.moveSync(path.resolve(__dirname, '../src/browserslist_bak'),path.resolve(__dirname, '../src/browserslist'))
+  }
 }
 
 function serverDemo() {
   console.log(`---------------- serve ${name} demo ---------------`);
-  execSync(`npx live-server dist/apps/${name} --port=8021`, { stdio: 'inherit' });
+  execSync(`npx live-server dist/apps/${name} --port=8022`, { stdio: 'inherit' });
 }

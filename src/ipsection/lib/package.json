@@ -1,14 +1,14 @@
 {
   "name": "@opentiny/ng-ipsection",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "MIT",
   "peerDependencies": {
-    "@opentiny/ng-base": "~1.0.0",
-    "@opentiny/ng-validation": "~1.0.0",
+    "@opentiny/ng-base": "~1.0.2",
+    "@opentiny/ng-validation": "~1.0.2",
     "@angular/core": ">=13.0.0",
     "@angular/common": ">=13.0.0",
     "@angular/forms": ">=13.0.0",
-    "@opentiny/ng-select": "~1.0.0",
-    "@opentiny/ng-text": "~1.0.0"
+    "@opentiny/ng-select": "~1.0.2",
+    "@opentiny/ng-text": "~1.0.2"
   }
 }

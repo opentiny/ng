@@ -261,9 +261,8 @@ export class TiModalComponent extends TiBaseComponent implements AfterContentIni
   }
   /**
    * 设置弹框高度：
-   * 根据UCD3.0规范，modal最大高度不能超过弹框宽度,所以需要获取到modal的宽度值，用其减去modal的header和footer的高度
+   * 根据规范，modal最大高度不能超过弹框宽度,所以需要获取到modal的宽度值，用其减去modal的header和footer的高度
    * 后设为body的最大高度，当高度超出时，ti-modal-body垂直方向上出现滚动条
-   * 10.1.1变更说明：
    * 根据规范变更，弹框高度可以超过弹框宽度，同时弹出框的最大高度是660px。
    */
   private setMaxHeight(): void {

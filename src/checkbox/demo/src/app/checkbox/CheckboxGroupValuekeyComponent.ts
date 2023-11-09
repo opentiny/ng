@@ -11,7 +11,7 @@ export class CheckboxGroupValuekeyComponent {
     { id: 3, text: 'customer' },
     { id: 4, text: 'admin' }
   ];
-  checked: Array<any> = [1, 2];
+  checked: any = [1, 2];
 
   items: Array<TiCheckboxItem> = [
     {

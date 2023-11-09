@@ -9,7 +9,7 @@ export class UploadimageEventComponent {
   onAddItemSuccess(fileItem: TiFileItem): void {
     this.myLogs = [...this.myLogs, `onAddItemSuccess() filename:${fileItem.file.name}`];
   }
-  onAddItemFailed(fileItem: TiFileItem): void {
+  onAddItemFailed(fileItem: any): void {
     this.myLogs = [...this.myLogs, `onAddItemFailed() filename:${fileItem.file.name}`];
   }
   onBeforeSendItems(fileItems: Array<TiFileItem>): void {
@@ -35,7 +35,7 @@ export class UploadimageEventComponent {
   onRemoveItems($event: any): void {
     this.myLogs = [...this.myLogs, `onRemoveItems()`];
   }
-  onBeforeRemoveItems(fileItemArry: Array<TiFileItem>): void {
+  onBeforeRemoveItems(): void {
     this.myLogs = [...this.myLogs, `onBeforeRemoveItems()`];
   }
   onCompleteItems($event: any): void {

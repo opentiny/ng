@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './AppComponent';
 import { IndexComponent } from './IndexComponent';
-import { TagsInputTestModule } from './tagsinput/TagsInputTestModule';
+import { TagsinputTestModule } from './tagsinput/TagsinputTestModule';
 
 @NgModule({
   imports: [
-    TagsInputTestModule,
+    TagsinputTestModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     RouterModule.forRoot(
       [

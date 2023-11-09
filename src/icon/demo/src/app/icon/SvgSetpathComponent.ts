@@ -6,7 +6,8 @@ import { TiSvgComponent } from '@opentiny/ng';
   styleUrls: ['./icon.less']
 })
 export class SvgSetpathComponent {
+  baseUrl: string = window['DEPLOY_URL'] + window['PUBLIC_URL'];
   constructor() {
-    TiSvgComponent.setPath('/assets/ionicons/');
+    TiSvgComponent.setPath(`${this.baseUrl}assets/ionicons/`);
   }
 }

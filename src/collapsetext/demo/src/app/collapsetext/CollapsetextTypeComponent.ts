@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 })
 export class CollapsetextTypeComponent {
   label: string = '标题下展';
-  type: string = 'title';
+  type: 'title' | 'content' = 'title';
   label1: string = '内容下展';
-  type1: string = 'content';
+  type1: 'title' | 'content' = 'content';
 }

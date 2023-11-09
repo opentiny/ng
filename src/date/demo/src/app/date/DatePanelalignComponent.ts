@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   templateUrl: './date-panelalign.html'
 })
 export class DatePanelalignComponent {
-  panelAlign: string = 'right';
+  panelAlign: 'left' | 'right' = 'right';
   value: Date = new Date(2015, 8, 2);
 }
