@@ -1,7 +1,11 @@
+:host {
+  --ti-labeleditor-icon-line-height: 28px;
+}
 .ti3-labeleditor-icon {
   vertical-align: top;
-  line-height: 28px;
+  line-height: var(--ti-labeleditor-icon-line-height); // 和input 高度相同
   margin-left: var(--ti-common-space-2x);
+  font-size: var(--ti-common-size-3x);
   cursor: pointer;
 }
 .ti3-icon-confirm {
@@ -30,7 +34,7 @@
 
 .ti3-editor-icon,
 ::ng-deep span[tiOverflowEndicon] {
-  font-size: var(--ti-common-font-size-2);
+  font-size: var(--ti-common-size-4x);
   margin-left: var(--ti-common-space-2x);
   color: var(--ti-common-color-icon-normal);
   cursor: pointer;

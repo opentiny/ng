@@ -1,7 +1,16 @@
+:host {
+  --ti-pathlist-item-padding-top: 5px;
+  --ti-pathlist-item-padding-bottom: 5px;
+  --ti-pathlist-close-width: 30px;
+}
+
 .ti3-pathList-item {
-  height: 28px;
-  line-height: 18px;
-  padding: 5px 36px 5px var(--ti-common-space-5x);
+  color: var(--ti-common-color-text-primary);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+  line-height: var(--ti-common-line-height-number);
+  height: var(--ti-common-size-7x);
+  padding: var(--ti-pathlist-item-padding-top) var(--ti-common-space-9x) var(--ti-pathlist-item-padding-bottom) var(--ti-common-space-5x);
   margin-bottom: var(--ti-common-space-base);
   background-color: var(--ti-common-color-bg-white-emphasize);
   box-sizing: border-box;
@@ -16,7 +25,7 @@
 }
 
 .ti3-pathList-index {
-  width: 16px;
+  width: var(--ti-common-size-4x);
   margin-right: var(--ti-common-space-3x);
   flex-shrink: 0;
 }
@@ -29,8 +38,8 @@
 
 .ti3-pathList-close {
   display: none;
-  width: 30px;
-  height: 28px;
+  width: var(--ti-pathlist-close-width);
+  height: var(--ti-common-space-7x);
   position: absolute;
   right: 0;
   justify-content: center;

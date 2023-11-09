@@ -1,13 +1,13 @@
 {
   "name": "@opentiny/ng-autocomplete",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.2",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
-    "@opentiny/ng-base": "~1.0.0-beta.2",
-    "@opentiny/ng-droplist": "~1.0.0-beta.2",
-    "@opentiny/ng-text": "~1.0.0-beta.2",
-    "@opentiny/ng-utils": "~1.0.0-beta.2",
+    "@opentiny/ng-base": "~1.0.2",
+    "@opentiny/ng-droplist": "~1.0.2",
+    "@opentiny/ng-text": "~1.0.2",
+    "@opentiny/ng-utils": "~1.0.2",
     "@angular/common": ">=13.0.0",
     "@angular/forms": ">=13.0.0"
   }

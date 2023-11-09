@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { valueOptions } from './data.js';
+import { valueOptions } from './data';
 @Component({
   templateUrl: './transfer-searchkeys.html'
 })

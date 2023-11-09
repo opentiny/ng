@@ -10,6 +10,7 @@ import { TagBasicComponent } from './TagBasicComponent';
 import { TagDisabledComponent } from './TagDisabledComponent';
 import { TagEditComponent } from './TagEditComponent';
 import { TagDefaultComponent } from './TagDefaultComponent';
+import { TagEventsComponent } from './TagEventsComponent';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { TagDefaultComponent } from './TagDefaultComponent';
     DemoLogModule,
     RouterModule.forChild(TagTestModule.ROUTES)
   ],
-  declarations: [TagBasicComponent, TagDisabledComponent, TagEditComponent, TagDefaultComponent]
+  declarations: [TagBasicComponent, TagDisabledComponent, TagEditComponent, TagDefaultComponent, TagEventsComponent]
 })
 export class TagTestModule {
   static readonly LINKS: Array<object> = [{ href: 'components/TiTagComponent.html', label: 'Tag' }];
@@ -43,6 +44,10 @@ export class TagTestModule {
     {
       path: 'tag/tag-default',
       component: TagDefaultComponent
+    },
+    {
+      path: 'tag/tag-events',
+      component: TagEventsComponent
     }
   ];
 }

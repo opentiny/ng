@@ -5,7 +5,7 @@
   <h3>示例</h3>
 
   <button type="button" (click)="clearSort()" style="margin-right: 20px">手动清除排序状态</button>
-  <!-- 10.1.13 版本支持手动改变排序状态-->
+  <!-- 支持手动改变排序状态-->
   <button type="button" (click)="changeSort()">手动改变排序状态 =》 使 firstName 那一列降序</button>
   <br /><br />
   <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">

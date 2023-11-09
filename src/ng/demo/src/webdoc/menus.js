@@ -168,7 +168,6 @@ export const cmpMenus = [
       { name: 'Rate', nameCn: '评分', key: 'rate' },
       { name: 'Rights', nameCn: '权益', key: 'rights' },
       { name: 'Skeleton', nameCn: '骨架屏', key: 'skeleton' },
-      { name: 'Rate', nameCn: '评分', key: 'rate' },
       { name: 'Guides', nameCn: '情景引导', key: 'guides' },
       { name: 'Foldtext', nameCn: '折叠文本', key: 'foldtext' },
       { name: 'Productpreview', nameCn: '商品预览', key: 'productpreview' },

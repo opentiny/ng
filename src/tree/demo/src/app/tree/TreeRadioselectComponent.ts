@@ -75,7 +75,7 @@ export class TreeRadioselectComponent {
   ];
 
   // 获取当前选中项，参数：树节点数据，选中项是否只包含叶子节点，是否多选
-  selectedData: Array<TiTreeNode> = TiTreeUtil.getSelectedData(this.innerData, false, false);
+  selectedData: Array<any> = TiTreeUtil.getSelectedData(this.innerData, false, false);
 
   onSelect(event: TiTreeNode): void {
     // 获取当前选中项，参数：树节点数据，选中项是否只包含叶子节点，是否多选

@@ -23,7 +23,14 @@
     [id]="appendId('droplist')"
   >
   </ti-droplist>
-  <div class="ti3-pathField-Editor" *ngIf="editable && isEditState">
-    <input #input tiText [(ngModel)]="pathValue" (keydown)="onEditorKeydown($event)" (blur)="onEditorBlur()" [id]="appendId('input')" />
-  </div>
+  <input
+    class="ti3-pathField-Editor"
+    #input
+    tiText
+    *ngIf="editable && isEditState"
+    [(ngModel)]="pathValue"
+    (keydown)="onEditorKeydown($event)"
+    (blur)="onEditorBlur()"
+    [id]="appendId('input')"
+  />
 </div>

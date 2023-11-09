@@ -25,8 +25,7 @@ import { locales } from './i18n';
  */
 @NgModule({
   imports: [CommonModule, TiModalModule, TiButtonModule, TiIconModule],
-  declarations: [TiMessageComponent, TiTranscludeDirective, TiContentWrapperComponent],
-  entryComponents: [TiMessageComponent, TiContentWrapperComponent]
+  declarations: [TiMessageComponent, TiTranscludeDirective, TiContentWrapperComponent]
 })
 export class TiMessageModule {
   constructor() {

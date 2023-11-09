@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { TiTreeNode, TiTreeselectComponent, TiTreeUtil } from '@opentiny/ng';
+import { TiTreeNode, TiTreeUtil } from '@opentiny/ng';
 
 @Component({
   templateUrl: './treeselect-lazyload.html'
@@ -10,7 +10,7 @@ export class TreeselectLazyloadComponent {
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
-  onBeforeOpen(treeselectComp: TiTreeselectComponent): void {
+  onBeforeOpen(treeselectComp: any): void {
     setTimeout(() => {
       this.options = [
         {

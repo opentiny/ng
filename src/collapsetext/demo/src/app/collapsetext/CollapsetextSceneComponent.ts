@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 })
 export class CollapsetextSceneComponent {
   label: string = '查看';
-  type: string = 'content';
+  type: 'title' | 'content' = 'content';
   collapsed: boolean = true;
   highlight: boolean = true;
   collapsedChange(collapsed: boolean): void {

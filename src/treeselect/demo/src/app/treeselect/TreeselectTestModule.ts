@@ -61,8 +61,7 @@ import { TreeselectLabelkeyComponent } from './TreeselectLabelkeyComponent';
     TreeselectPanelwidthComponent,
     TreeselectLabelkeyComponent,
     ModalTestComponent
-  ],
-  entryComponents: [ModalTestComponent]
+  ]
 })
 export class TreeselectTestModule {
   static readonly LINKS: Array<object> = [{ href: 'components/TiTreeselectComponent.html', label: 'Treeselect' }];

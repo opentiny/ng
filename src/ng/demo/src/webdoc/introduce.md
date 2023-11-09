@@ -24,7 +24,7 @@ title: 介绍 | TinyNG
 
 ### 支持环境
 
-| <img src="/src/ng/demo/src/assets/browser/edge.png" alt="Edge" width="24px" height="24px" /><br>Edge | <img src="/src/ng/demo/src/assets/browser/firefox.png" alt="Firefox" width="24px" height="24px" /><br>Firefox | <img src="/src/ng/demo/src/assets/browser/chrome.png" alt="Chrome" width="24px" height="24px" /><br>Chrome | <img src="/src/ng/demo/src/assets/browser/safari.png" alt="Safari" width="24px" height="24px" /><br>Safari |
+|Edge |Firefox | Chrome | Safari |
 | --------- | --------- | --------- | --------- |
 | last 3 versions | last 3 versions | last 3 versions | last 2 versions |
 

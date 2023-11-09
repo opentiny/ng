@@ -1,7 +1,7 @@
 {
   "name": "@opentiny/ng-tinydoc",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.15",
   "scripts": {
     "copy": "node ./build/copy.js",
     "pub": "npm run copy && npm publish --verbose"

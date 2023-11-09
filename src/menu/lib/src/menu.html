@@ -1,7 +1,7 @@
 <a
   #mytoggle
   class="ti3-menu-toggle-menu"
-  [ngClass]="{'ti3-menu-toggle-menu-up' : dropComs?.first.isShow}"
+  [ngClass]="{'ti3-menu-toggle-menu-up' : dropComs?.first?.isShow}"
   (mousedown)="onMousedown($event)"
   (keydown)="onKeydown($event)"
   oncontextmenu="return false"

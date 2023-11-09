@@ -14,12 +14,12 @@ export class LeftmenuDisabledComponent {
       children: [
         {
           label: '子菜单1.1',
-          router: ['./router11'],
-          disabled: true
+          router: ['./router11']
         },
         {
           label: '子菜单1.2',
-          router: ['./router12']
+          router: ['./router12'],
+          disabled: true
         }
       ]
     },

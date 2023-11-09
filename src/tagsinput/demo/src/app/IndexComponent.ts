@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TagsInputTestModule } from './tagsinput/TagsInputTestModule';
+import { TagsinputTestModule } from './tagsinput/TagsinputTestModule';
 
 @Component({
   template: `<style>
@@ -41,7 +41,7 @@ import { TagsInputTestModule } from './tagsinput/TagsInputTestModule';
     </table>`
 })
 export class IndexComponent {
-  routes: any = TagsInputTestModule.ROUTES;
+  routes: any = TagsinputTestModule.ROUTES;
 
   path2name(path: string): string {
     return path.split('/').pop();

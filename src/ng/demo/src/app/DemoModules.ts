@@ -79,7 +79,7 @@ import { SwitchTestModule } from '../../../../switch/demo/src/app/switch/SwitchT
 import { TabTestModule } from '../../../../tab/demo/src/app/tab/TabTestModule';
 import { TableTestModule } from '../../../../table/demo/src/app/table/TableTestModule';
 import { TagTestModule } from '../../../../tag/demo/src/app/tag/TagTestModule';
-import { TagsInputTestModule } from '../../../../tagsinput/demo/src/app/tagsinput/TagsInputTestModule';
+import { TagsinputTestModule } from '../../../../tagsinput/demo/src/app/tagsinput/TagsinputTestModule';
 import { TextTestModule } from '../../../../text/demo/src/app/text/TextTestModule';
 import { TextareaTestModule } from '../../../../textarea/demo/src/app/textarea/TextareaTestModule';
 import { TimeTestModule } from '../../../../time/demo/src/app/time/TimeTestModule';
@@ -183,7 +183,7 @@ export class DemoModules {
     TabTestModule,
     TableTestModule,
     TagTestModule,
-    TagsInputTestModule,
+    TagsinputTestModule,
     TextTestModule,
     TextareaTestModule,
     TimeTestModule,

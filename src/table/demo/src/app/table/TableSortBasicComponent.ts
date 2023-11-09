@@ -84,7 +84,7 @@ export class TableSortBasicComponent implements OnInit {
     dataState.sort.asc = null;
   }
 
-  // 10.1.13 版本支持手动修改表格排序状态
+  // 支持手动修改表格排序状态
   changeSort(): void {
     const dataState: TiTableDataState = this.tableCom.getDataState();
     dataState.sort.sortKey = 'firstName';

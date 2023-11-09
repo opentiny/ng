@@ -28,7 +28,7 @@ import { TagsinputSeparatorsComponent } from './TagsinputSeparatorsComponent';
     TiValidationModule,
     ReactiveFormsModule,
     DemoLogModule,
-    RouterModule.forChild(TagsInputTestModule.ROUTES)
+    RouterModule.forChild(TagsinputTestModule.ROUTES)
   ],
   declarations: [
     TagsinputDisabledComponent,
@@ -46,7 +46,7 @@ import { TagsinputSeparatorsComponent } from './TagsinputSeparatorsComponent';
     TagsinputSeparatorsComponent
   ]
 })
-export class TagsInputTestModule {
+export class TagsinputTestModule {
   static readonly LINKS: Array<object> = [{ href: 'components/TiTagsInputComponent.html', label: 'TagsInput' }];
   static readonly ROUTES: Routes = [
     {

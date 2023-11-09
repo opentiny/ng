@@ -15,14 +15,11 @@ import { Component, ViewEncapsulation } from '@angular/core';
  *  @ignore
  *
  *  栅格样式组件
- *
- *  10.0.4及之前的版本grid.less是全局的。10.1.0版本为了实现样式按需加载，将grid.less封装在一个组件模块，所以该组件实际只提供了样式。
- *
- * 使用示例在 card 组件示例中
+ *  使用示例在 card 组件示例中
  *
  */
 @Component({
-  selector: '.ti-row', // 兼容延用栅格样式选择器
+  selector: '.ti3-row', // 兼容延用栅格样式选择器
   template: '<ng-content></ng-content>',
   styleUrls: ['./grid.less'],
   encapsulation: ViewEncapsulation.None

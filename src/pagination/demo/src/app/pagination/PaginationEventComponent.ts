@@ -25,7 +25,7 @@ export class PaginationEventComponent {
     this.myLogs = [...this.myLogs, str];
   }
 
-  onTotalNumberChange(event: TiPaginationEvent): void {
+  onTotalNumberChange(event: number): void {
     const str: string = `onTotalNumberChange data=${JSON.stringify(event)}`;
     this.myLogs = [...this.myLogs, str];
   }

@@ -43,7 +43,7 @@ export class DatetimeTimezoneableComponent {
     this.timeZone = timeZone;
   }
 
-  getCurrentTimeZone2(timeZone) {
+  getCurrentTimeZone2(timeZone: string): void {
     this.timeZone2 = timeZone;
   }
 }

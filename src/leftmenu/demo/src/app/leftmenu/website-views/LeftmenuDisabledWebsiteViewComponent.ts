@@ -14,11 +14,11 @@ export class LeftmenuDisabledWebsiteViewComponent {
       label: '菜单一',
       children: [
         {
-          label: '子菜单1.1',
-          disabled: true
+          label: '子菜单1.1'
         },
         {
-          label: '子菜单1.2'
+          label: '子菜单1.2',
+          disabled: true
         }
       ]
     },

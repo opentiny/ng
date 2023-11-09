@@ -5,7 +5,6 @@ import { TiPathFieldItem } from '@opentiny/ng';
   templateUrl: './pathfield-ispanel.html'
 })
 export class PathfieldIspanelComponent {
-  isPanel: boolean = false;
   items: Array<TiPathFieldItem> = [
     {
       label: 'window'

@@ -17,7 +17,7 @@ export class TreeUtilComponent implements OnInit, AfterViewInit {
         {
           label: '大家电',
           expanded: true,
-          expandIcon: 'document', // 10.1.2版本之后可通过自定义模板设置图标及样式
+          expandIcon: 'document',
           collapseIcon: 'file',
           checked: 'indeterminate',
           children: [

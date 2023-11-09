@@ -58,8 +58,8 @@ export class AppModule {
 ```diff
 {
   "styles": [
-+    "node_modules/@opentiny/ng/themes/styles.css",
-+    "node_modules/@opentiny/ng/themes/theme-default.css",
++    "node_modules/@opentiny/ng-themes/styles.css",
++    "node_modules/@opentiny/ng-themes/theme-default.css",
   ]
 }
 ```

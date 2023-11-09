@@ -3,5 +3,6 @@
   "dest": "../../../dist/libs/ng",
   "lib": {
     "entryFile": "index.ts"
-  }
+  },
+  "assets": ["README.md"]
 }

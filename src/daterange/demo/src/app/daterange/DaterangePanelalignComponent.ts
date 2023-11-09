@@ -5,7 +5,7 @@ import { TiDateValue } from '@opentiny/ng';
   templateUrl: './daterange-panelalign.html'
 })
 export class DaterangePanelalignComponent {
-  panelAlign: string = 'right';
+  panelAlign: 'left' | 'right' = 'right';
   value: TiDateValue = {
     begin: new Date(2015, 3, 12),
     end: new Date(2056, 2, 1)

@@ -1,13 +1,10 @@
-::ng-deep :root {
-  --ti3-score-item-height: 28px;
+:host {
+  --ti-score-item-height: 28px;
+  --ti-score-item-margin-right: 2px;
 }
 
 :host {
   display: inline-block;
-  font-weight: normal;
-  font-size: var(--ti-common-font-size-base);
-  line-height: var(--ti-common-line-height-number);
-  color: var(--ti-common-color-text-primary);
 }
 
 // 每项评分样式
@@ -15,9 +12,12 @@
   display: inline-block;
   text-align: center;
   cursor: pointer;
-  height: var(--ti3-score-item-height);
-  line-height: var(--ti3-score-item-height);
-  margin-right: 2px;
+  color: var(--ti-common-color-text-primary);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+  height: var(--ti-score-item-height);
+  line-height: var(--ti-score-item-height);
+  margin-right: var(--ti-score-item-margin-right);
   background-color: var(--ti-common-color-bg-light-normal);
 
   &:hover {
@@ -44,5 +44,8 @@
   display: flex;
   justify-content: space-between;
   color: var(--ti-common-color-text-weaken);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+  line-height: var(--ti-common-line-height-number);
   margin-bottom: var(--ti-common-space-2x);
 }

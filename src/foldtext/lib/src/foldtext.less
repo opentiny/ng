@@ -1,13 +1,27 @@
-@import '../../../themes/basic/link-no-decoration.less';
-
 .ti-foldtext-wraper {
   overflow-y: hidden;
+  color: var(--ti-common-color-text-primary);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
   ::ng-deep a {
-    .ti-link-no-decoration();
+    color: var(--ti-common-color-text-link);
+    font-size: var(--ti-common-font-size-base);
+    font-weight: var(--ti-common-font-weight-4);
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--ti-common-color-text-link-hover);
+      font-size: var(--ti-common-font-size-base);
+      font-weight: var(--ti-common-font-weight-4);
+      text-decoration: underline;
+    }
   }
 }
 .ti-foldtext-toggle {
   color: var(--ti-common-color-text-highlight);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
   &:hover {
     cursor: pointer;
   }
