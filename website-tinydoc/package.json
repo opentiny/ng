@@ -1,7 +1,7 @@
 {
   "name": "@huawei/ng-tinydoc",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "copy": "node ./build/copy.js",
     "pub": "npm run copy && npm publish --verbose"

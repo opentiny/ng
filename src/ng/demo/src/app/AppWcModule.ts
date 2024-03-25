@@ -139,6 +139,12 @@ import { AvatarStyleComponent } from './../../../../avatar/demo/src/app/avatar/A
 
 import { AvatarTextComponent } from './../../../../avatar/demo/src/app/avatar/AvatarTextComponent';
 
+import { BadgeBasicComponent } from './../../../../badge/demo/src/app/badge/BadgeBasicComponent';
+
+import { BadgeDotComponent } from './../../../../badge/demo/src/app/badge/BadgeDotComponent';
+
+import { BadgeShowComponent } from './../../../../badge/demo/src/app/badge/BadgeShowComponent';
+
 import { ButtonColorComponent } from './../../../../button/demo/src/app/button/ButtonColorComponent';
 
 import { ButtonDisabledComponent } from './../../../../button/demo/src/app/button/ButtonDisabledComponent';
@@ -2078,6 +2084,12 @@ const WCS: any = [
   { selector: 'website-tiny-avatar-style', component: AvatarStyleComponent },
 
   { selector: 'website-tiny-avatar-text', component: AvatarTextComponent },
+
+  { selector: 'website-tiny-badge-basic', component: BadgeBasicComponent },
+
+  { selector: 'website-tiny-badge-dot', component: BadgeDotComponent },
+
+  { selector: 'website-tiny-badge-show', component: BadgeShowComponent },
 
   { selector: 'website-tiny-button-color', component: ButtonColorComponent },
 
