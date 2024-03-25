@@ -1,22 +1,22 @@
 {
   "name": "@opentiny/ng-datetimerange",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.3",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
-    "@opentiny/ng-utils": "~1.0.0-beta.2",
-    "@opentiny/ng-locale": "~1.0.0-beta.2",
-    "@opentiny/ng-base": "~1.0.0-beta.2",
-    "@opentiny/ng-datebase": "~1.0.0-beta.2",
+    "@opentiny/ng-utils": "~1.0.3",
+    "@opentiny/ng-locale": "~1.0.3",
+    "@opentiny/ng-base": "~1.0.3",
+    "@opentiny/ng-datebase": "~1.0.3",
     "@angular/common": ">=13.0.0",
     "@angular/forms": ">=13.0.0",
-    "@opentiny/ng-drop": "~1.0.0-beta.2",
-    "@opentiny/ng-button": "~1.0.0-beta.2",
-    "@opentiny/ng-datepanel": "~1.0.0-beta.2",
-    "@opentiny/ng-dateedit": "~1.0.0-beta.2",
-    "@opentiny/ng-time": "~1.0.0-beta.2",
-    "@opentiny/ng-text": "~1.0.0-beta.2",
-    "@opentiny/ng-datedominator": "~1.0.0-beta.2",
-    "@opentiny/ng-select": "~1.0.0-beta.2"
+    "@opentiny/ng-drop": "~1.0.3",
+    "@opentiny/ng-button": "~1.0.3",
+    "@opentiny/ng-datepanel": "~1.0.3",
+    "@opentiny/ng-dateedit": "~1.0.3",
+    "@opentiny/ng-time": "~1.0.3",
+    "@opentiny/ng-text": "~1.0.3",
+    "@opentiny/ng-datedominator": "~1.0.3",
+    "@opentiny/ng-select": "~1.0.3"
   }
 }

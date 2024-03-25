@@ -1,18 +1,18 @@
 {
   "name": "@opentiny/ng-time",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.3",
   "license": "MIT",
   "peerDependencies": {
-    "@opentiny/ng-utils": "~1.0.0-beta.2",
-    "@opentiny/ng-locale": "~1.0.0-beta.2",
-    "@opentiny/ng-base": "~1.0.0-beta.2",
-    "@opentiny/ng-drop": "~1.0.0-beta.2",
+    "@opentiny/ng-utils": "~1.0.3",
+    "@opentiny/ng-locale": "~1.0.3",
+    "@opentiny/ng-base": "~1.0.3",
+    "@opentiny/ng-drop": "~1.0.3",
     "@angular/common": ">=13.0.0",
     "@angular/forms": ">=13.0.0",
     "@angular/core": ">=13.0.0",
-    "@opentiny/ng-datedominator": "~1.0.0-beta.2",
-    "@opentiny/ng-list": "~1.0.0-beta.2",
-    "@opentiny/ng-text": "~1.0.0-beta.2",
-    "@opentiny/ng-button": "~1.0.0-beta.2"
+    "@opentiny/ng-datedominator": "~1.0.3",
+    "@opentiny/ng-list": "~1.0.3",
+    "@opentiny/ng-text": "~1.0.3",
+    "@opentiny/ng-button": "~1.0.3"
   }
 }

@@ -67,7 +67,7 @@ export interface TiCascaderItem {
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(blur)': 'onBlur()',
-    '[class.tp-cascader-dominator]': 'true'
+    '[class.ti3-cascader-dominator]': 'true'
   }
 })
 export class TiCascaderComponent extends TiFormComponent {

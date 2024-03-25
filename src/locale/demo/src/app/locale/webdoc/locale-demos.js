@@ -13,6 +13,17 @@ export default {
       },
     },
     {
+      demoId: 'locale-language',
+      name: {
+        'zh-CN': '扩展其他语言',
+        'en-US': 'locale Language',
+      },
+      desc: {
+        'zh-CN': '支持设置并扩展使用其他语言。',
+        'en-US': '<p>locale Language</p>',
+      },
+    },
+    {
       demoId: 'locale-reload',
       name: {
         'zh-CN': '过滤器',

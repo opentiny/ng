@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="125px" height="125px" viewBox="0 0 125 125" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Interfaces 接口</title>
+    <defs>
+        <linearGradient x1="50%" y1="45.9685271%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#ECF3FB" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50.3956523%" y1="35.9331967%" x2="50%" y2="64.0668033%" id="linearGradient-2">
+            <stop stop-color="#E3EFFD" stop-opacity="0.00575352382" offset="0%"></stop>
+            <stop stop-color="#E5F0FD" offset="34.0601199%"></stop>
+            <stop stop-color="#F0F6FE" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="33.3333333%" y1="34.495573%" x2="96.9740837%" y2="65.4421891%" id="linearGradient-3">
+            <stop stop-color="#D5E6F9" offset="0%"></stop>
+            <stop stop-color="#F7FBFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="90.9912104%" y1="29.4309598%" x2="33.3333333%" y2="67.7472684%" id="linearGradient-4">
+            <stop stop-color="#D5E6F9" offset="0%"></stop>
+            <stop stop-color="#E7F0F9" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-5.8027489%" y1="27.0499439%" x2="103.630422%" y2="71.1332543%" id="linearGradient-5">
+            <stop stop-color="#CEE6FE" offset="0%"></stop>
+            <stop stop-color="#8AB5F2" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-5.8027489%" y1="27.0499439%" x2="103.630422%" y2="71.1332543%" id="linearGradient-6">
+            <stop stop-color="#BFD6F9" offset="0%"></stop>
+            <stop stop-color="#F3F6FE" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="89.8473889%" y1="61.7348066%" x2="0%" y2="61.7348066%" id="linearGradient-7">
+            <stop stop-color="#CAD9F3" offset="0%"></stop>
+            <stop stop-color="#D5E3F7" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-18.5%" y="-60.0%" width="136.9%" height="220.0%" filterUnits="objectBoundingBox" id="filter-8">
+            <feGaussianBlur stdDeviation="4" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-12.9%" y="-12.9%" width="125.8%" height="125.8%" filterUnits="objectBoundingBox" id="filter-9">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.368627451   0 0 0 0 0.48627451   0 0 0 0 0.878431373  0 0 0 0.349865467 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="页面一" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="-TinyUI-ICON-2-【9-2】-无阴影" transform="translate(-697.000000, -2477.000000)">
+            <g id="Interfaces-接口" transform="translate(697.000000, 2477.000000)">
+                <g id="编组">
+                    <g transform="translate(9.000000, 1.000000)" id="多边形">
+                        <polygon fill="url(#linearGradient-1)" opacity="0.54620216" points="53.2605623 0 106.521125 30.75 53.2605623 62 0 30.75"></polygon>
+                        <polygon fill="url(#linearGradient-2)" points="53.2605623 61.5 106.521125 86.75 53.2605623 118 0 86.75"></polygon>
+                        <polygon fill="url(#linearGradient-3)" opacity="0.600606283" points="53.2605623 62 53.2605623 123 7.39138783e-15 92.25 0 30.75"></polygon>
+                        <polygon fill="url(#linearGradient-4)" opacity="0.791265578" points="53.2605623 62 106.521125 30.75 106.521125 92.25 53.2605623 123"></polygon>
+                        <polygon fill="url(#linearGradient-5)" points="53.2605623 118.007802 53.2605623 123 7.39138783e-15 92.25 0 86.9161706"></polygon>
+                        <polygon fill="url(#linearGradient-6)" transform="translate(79.630281, 104.958085) scale(-1, 1) translate(-79.630281, -104.958085) " points="106.260562 118.007802 106.260562 123 53 92.25 53 86.9161706"></polygon>
+                    </g>
+                    <ellipse id="椭圆形" fill="url(#linearGradient-7)" filter="url(#filter-8)" cx="62.5" cy="90" rx="32.5" ry="10"></ellipse>
+                </g>
+                <g id="接口" filter="url(#filter-9)" transform="translate(32.000000, 32.000000)" fill="#5073E5" fill-rule="nonzero">
+                    <path d="M61.8233348,3.39757264 L58.6015687,0.174819174 C58.4799926,0.0532058355 58.3280226,0 58.1684539,0 C58.0088853,0 57.8569153,0.0608066691 57.7353392,0.174819174 L51.952877,5.95905357 C49.3921809,4.21846267 46.413567,3.35196764 43.4349531,3.35196764 C39.5445187,3.35196764 35.6540842,4.83413019 32.6830688,7.80605615 L24.9401924,15.5513056 C24.7046388,15.7869315 24.7046388,16.174574 24.9401924,16.4101998 L45.58533,37.0616648 C45.7069061,37.1832782 45.8588762,37.236484 46.0184448,37.236484 C46.1704149,37.236484 46.3299835,37.1756773 46.4515595,37.0616648 L54.1944359,29.3164153 C59.4298057,24.0718401 60.0452846,15.9617506 56.0408726,10.0483021 L61.8233348,4.26406767 C62.0588884,4.020841 62.0588884,3.63319848 61.8233348,3.39757264 Z M36.0796005,33.6412897 C35.8440468,33.4056638 35.4565231,33.4056638 35.2209694,33.6412897 L30.1603652,38.7034449 L23.2989154,31.8398921 L28.3671181,26.7701361 C28.6026717,26.5345102 28.6026717,26.1468677 28.3671181,25.9112419 L25.6012623,23.1445384 C25.3657087,22.9089126 24.9781849,22.9089126 24.7426313,23.1445384 L19.6744286,28.2142945 L16.4070715,24.945936 C16.2854954,24.8243227 16.1335253,24.7711168 15.9739567,24.7711168 C15.8219866,24.7711168 15.662418,24.8319235 15.540842,24.945936 L7.80556407,32.6911855 C2.57019425,37.9357607 1.95471536,46.0458502 5.9591274,51.9592988 L0.176665237,57.7435332 C-0.0588884123,57.979159 -0.0588884123,58.3668015 0.176665237,58.6024274 L3.39843128,61.8251808 C3.52000735,61.9467942 3.67197745,62 3.83154605,62 C3.99111465,62 4.14308475,61.9391933 4.26466082,61.8251808 L10.047123,56.0409464 C12.6078191,57.7815373 15.586433,58.6480324 18.5650469,58.6480324 C22.4554813,58.6480324 26.3459158,57.1658698 29.3169312,54.1939439 L37.0598076,46.4486944 C37.2953612,46.2130685 37.2953612,45.825426 37.0598076,45.5898002 L33.7924505,42.3214417 L38.8606532,37.2516857 C39.0962069,37.0160598 39.0962069,36.6284173 38.8606532,36.3927915 L36.0796005,33.6412897 L36.0796005,33.6412897 Z M25.6544519,50.5455437 C23.7624242,52.4381513 21.2397206,53.4870663 18.5574484,53.4870663 C15.8751762,53.4870663 13.3600711,52.4457521 11.4604449,50.5455437 C9.56841718,48.6529361 8.51982352,46.1294594 8.51982352,43.4463651 C8.51982352,40.7632708 9.56081868,38.2473949 11.4604449,36.3471865 L15.9739567,31.8322913 L30.1679637,46.0306485 L25.6544519,50.5455437 L25.6544519,50.5455437 Z" id="形状"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

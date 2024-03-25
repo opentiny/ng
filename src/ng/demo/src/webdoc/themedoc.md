@@ -12,7 +12,7 @@ TinyNG 支持一定程度的样式定制，以满足业务和品牌上多样化�
 
 ### 默认主题
 
-修改`angular.json`的`styles`字段，全量引入`"node_modules/@opentiny/ng/themes/styles.css"`和`"node_modules/@opentiny/ng/themes/theme-default.css"`。
+修改`angular.json`的`styles`字段，全量引入`"node_modules/@opentiny/ng-themes/styles.css"`和`"node_modules/@opentiny/ng-themes/theme-default.css"`。
 
 ```json
 {
@@ -21,8 +21,8 @@ TinyNG 支持一定程度的样式定制，以满足业务和品牌上多样化�
     "build": {
       ...
       "styles": [
-        "node_modules/@opentiny/ng/themes/styles.css",
-        "node_modules/@opentiny/ng/themes/theme-default.css",
+        "node_modules/@opentiny/ng-themes/styles.css",
+        "node_modules/@opentiny/ng-themes/theme-default.css",
         "src/styles.css",
       ],
       ...
@@ -41,7 +41,7 @@ TinyNG 支持一定程度的样式定制，以满足业务和品牌上多样化�
 - theme-purple.css
 - theme-red.css
 
-修改`angular.json`的`styles`字段，全量引入`"node_modules/@opentiny/ng/themes/styles.css"`和`"node_modules/@opentiny/ng/themes/theme-xxx.css"`。
+修改`angular.json`的`styles`字段，全量引入`"node_modules/@opentiny/ng-themes/styles.css"`和`"node_modules/@opentiny/ng-themes/theme-xxx.css"`。
 
 ```json
 {
@@ -50,8 +50,8 @@ TinyNG 支持一定程度的样式定制，以满足业务和品牌上多样化�
     "build": {
       ...
       "styles": [
-        "node_modules/@opentiny/ng/themes/styles.css",
-        "node_modules/@opentiny/ng/themes/theme-xxx.css",
+        "node_modules/@opentiny/ng-themes/styles.css",
+        "node_modules/@opentiny/ng-themes/theme-xxx.css",
         "src/styles.css",
       ],
       ...
@@ -106,7 +106,7 @@ TinyNG 支持一定程度的样式定制，以满足业务和品牌上多样化�
 
 ### 步骤一：将`TinyNG`主题 CSS 文件，复制到`assets`下
 
-修改`angular.json`的`assets`字段，参考如下修改，下面`input`，`output`意思是打包时，`"node_modules/@opentiny/ng/themes/"`复制到`"/assets/tiny3/themes/"`。
+修改`angular.json`的`assets`字段，参考如下修改，下面`input`，`output`意思是打包时，`"node_modules/@opentiny/ng-themes/"`复制到`"/assets/tiny3/themes/"`。
 
 ```json
 {
@@ -119,7 +119,7 @@ TinyNG 支持一定程度的样式定制，以满足业务和品牌上多样化�
         "src/assets",
         {
           "glob": "**/*",
-          "input": "node_modules/@opentiny/ng/themes/",
+          "input": "node_modules/@opentiny/ng-themes/",
           "output": "/assets/tiny3/themes/"
         }
       ],
@@ -130,9 +130,9 @@ TinyNG 支持一定程度的样式定制，以满足业务和品牌上多样化�
 }
 ```
 
-### 步骤二：添加基础样式`"node_modules/@opentiny/ng/themes/styles.css"`
+### 步骤二：添加基础样式`"node_modules/@opentiny/ng-themes/styles.css"`
 
-修改`angular.json`的`styles`字段，引入`"node_modules/@opentiny/ng/themes/styles.css"`。
+修改`angular.json`的`styles`字段，引入`"node_modules/@opentiny/ng-themes/styles.css"`。
 
 ```json
 {
@@ -141,7 +141,7 @@ TinyNG 支持一定程度的样式定制，以满足业务和品牌上多样化�
     "build": {
       ...
       "styles": [
-        "node_modules/@opentiny/ng/themes/styles.css",
+        "node_modules/@opentiny/ng-themes/styles.css",
         "src/styles.css",
       ],
       ...

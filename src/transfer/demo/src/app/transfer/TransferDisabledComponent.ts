@@ -1,5 +1,5 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { mySelecteds } from './data.js';
+import { mySelecteds } from './data';
 @Component({
   templateUrl: './transfer-disabled.html'
 })

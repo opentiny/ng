@@ -1,16 +1,16 @@
 {
   "name": "@opentiny/ng-dominator",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.3",
   "license": "MIT",
   "peerDependencies": {
-    "@opentiny/ng-base": "~1.0.0-beta.2",
-    "@opentiny/ng-utils": "~1.0.0-beta.2",
+    "@opentiny/ng-base": "~1.0.3",
+    "@opentiny/ng-utils": "~1.0.3",
     "@angular/core": ">=13.0.0",
     "@angular/common": ">=13.0.0",
     "@angular/forms": ">=13.0.0",
-    "@opentiny/ng-tip": "~1.0.0-beta.2",
-    "@opentiny/ng-tag": "~1.0.0-beta.2",
-    "@opentiny/ng-icon": "~1.0.0-beta.2",
-    "@opentiny/ng-locale": "~1.0.0-beta.2"
+    "@opentiny/ng-tip": "~1.0.3",
+    "@opentiny/ng-tag": "~1.0.3",
+    "@opentiny/ng-icon": "~1.0.3",
+    "@opentiny/ng-locale": "~1.0.3"
   }
 }

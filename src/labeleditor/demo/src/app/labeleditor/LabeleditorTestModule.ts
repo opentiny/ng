@@ -15,7 +15,7 @@ import { LabeleditorDisabledComponent } from './LabeleditorDisabledComponent';
 import { LabeleditorMultilineSizeComponent } from './LabeleditorMultilineSizeComponent';
 import { LabeleditorMaxlineComponent } from './LabeleditorMaxlineComponent';
 import { LabeleditorValidationAsyncComponent } from './LabeleditorValidationAsyncComponent';
-import { LabeleditorIconTipContextComponent, TemplateComponent } from './LabeleditorIcontipcontextComponent';
+import { LabeleditorIconTipContextComponent, TemplateComponent } from './LabeleditorIconTipContextComponent';
 
 @NgModule({
   imports: [
@@ -42,8 +42,7 @@ import { LabeleditorIconTipContextComponent, TemplateComponent } from './Labeled
     TemplateComponent,
     LabeleditorValidationAsyncComponent,
     LabeleditorIconTipContextComponent
-  ],
-  entryComponents: [TemplateComponent]
+  ]
 })
 export class LabeleditorTestModule {
   static readonly ROUTES: Routes = [

@@ -5,7 +5,7 @@ import { TiSelectgroupItem } from '@opentiny/ng';
   templateUrl: './selectgroup-multiple.html'
 })
 export class SelectgroupMultipleComponent {
-  checkPosition: string = 'right-bottom';
+  checkPosition: 'right-top' | 'right-bottom' = 'right-bottom';
   items: Array<TiSelectgroupItem> = [
     {
       title: 'Angular',

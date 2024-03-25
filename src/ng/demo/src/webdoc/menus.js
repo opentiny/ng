@@ -54,19 +54,20 @@ export const cmpMenus = [
     key: 'cmp_formselect',
     children: [
       { name: 'Button', nameCn: '按钮', key: 'button' },
-      { name: 'Select', nameCn: '选择器', key: 'select' },
-      { name: 'Radio', nameCn: '单选框', key: 'radio' },
-      { name: 'Checkbox', nameCn: '复选框', key: 'checkbox' },
-      { name: 'Slider', nameCn: '滑块', key: 'slider' },
-      { name: 'Switch', nameCn: '开关', key: 'switch' },
       { name: 'Buttongroup', nameCn: '选块组', key: 'buttongroup' },
-      { name: 'Spinner', nameCn: '数字微调', key: 'spinner' },
-      { name: 'Treeselect', nameCn: '树选择', key: 'treeselect' },
+      { name: 'Buttonselect', nameCn: '选块下拉', key: 'buttonselect' },
       { name: 'Cascader', nameCn: '级联选择', key: 'cascader' },
-      { name: 'Transfer', nameCn: '穿梭框', key: 'transfer' },
-      { name: 'Score', nameCn: '评分', key: 'score' },
+      { name: 'Checkbox', nameCn: '复选框', key: 'checkbox' },
       { name: 'Linkbutton', nameCn: '按钮链接', key: 'linkbutton' },
-      { name: 'Selectgroup', nameCn: '选择组', key: 'selectgroup' }
+      { name: 'Radio', nameCn: '单选框', key: 'radio' },
+      { name: 'Score', nameCn: '评分', key: 'score' },
+      { name: 'Select', nameCn: '选择器', key: 'select' },
+      { name: 'Selectgroup', nameCn: '选择组', key: 'selectgroup' },
+      { name: 'Slider', nameCn: '滑块', key: 'slider' },
+      { name: 'Spinner', nameCn: '数字微调', key: 'spinner' },
+      { name: 'Switch', nameCn: '开关', key: 'switch' },
+      { name: 'Transfer', nameCn: '穿梭框', key: 'transfer' },
+      { name: 'Treeselect', nameCn: '树选择', key: 'treeselect' }
     ]
   },
   {
@@ -74,18 +75,18 @@ export const cmpMenus = [
     labelEn: 'Form Text',
     key: 'cmp_formtext',
     children: [
-      { name: 'Text', nameCn: '文本框', key: 'text' },
-      { name: 'Textarea', nameCn: '多行文本框', key: 'textarea' },
       { name: 'Autocomplete', nameCn: '自动补全', key: 'autocomplete' },
-      { name: 'Searchbox', nameCn: '搜索框', key: 'searchbox' },
+      { name: 'InputNumber', nameCn: '数字输入框', key: 'inputnumber' },
       { name: 'IP', nameCn: '输入IP', key: 'ip' },
       { name: 'IPsection', nameCn: 'IP分段', key: 'ipsection' },
+      { name: 'Labeleditor', nameCn: '可编辑文本', key: 'labeleditor' },
+      { name: 'Path', nameCn: '路径', key: 'path' },
+      { name: 'PhoneNumber', nameCn: '电话号码', key: 'phonenumber' },
+      { name: 'Searchbox', nameCn: '搜索框', key: 'searchbox' },
       { name: 'Tag', nameCn: '标签', key: 'tag' },
       { name: 'TagsInput', nameCn: '标签输入', key: 'tagsinput' },
-      { name: 'InputNumber', nameCn: '数字输入框', key: 'inputnumber' },
-      { name: 'Labeleditor', nameCn: '可编辑文本', key: 'labeleditor' },
-      { name: 'PhoneNumber', nameCn: '电话号码', key: 'phonenumber' },
-      { name: 'Path', nameCn: '路径', key: 'path' }
+      { name: 'Text', nameCn: '文本框', key: 'text' },
+      { name: 'Textarea', nameCn: '多行文本框', key: 'textarea' }
     ]
   },
   {
@@ -105,11 +106,10 @@ export const cmpMenus = [
     labelEn: 'Form Assist',
     key: 'cmp_formassist',
     children: [
-      { name: 'Validation', nameCn: '表单校验', key: 'validation' },
       { name: 'Formfield', nameCn: '表单布局', key: 'formfield' },
       { name: 'Upload', nameCn: '文件上传', key: 'upload' },
       { name: 'Uploadimage', nameCn: '图片上传', key: 'uploadimage' },
-      { name: 'Buttonselect', nameCn: '选块下拉', key: 'buttonselect' }
+      { name: 'Validation', nameCn: '表单校验', key: 'validation' }
     ]
   },
   {
@@ -117,18 +117,18 @@ export const cmpMenus = [
     labelEn: 'Menu navigation',
     key: 'cmp_nav',
     children: [
-      { name: 'Leftmenu', nameCn: '左侧菜单', key: 'leftmenu' },
-      { name: 'Leftmenuthin', nameCn: '左侧图标菜单', key: 'leftmenuthin' },
       { name: 'Menu', nameCn: '下拉菜单', key: 'menu' },
       { name: 'Nav', nameCn: '顶部导航', key: 'nav' },
-      { name: 'Actionmenu', nameCn: '菜单按钮', key: 'actionmenu' },
       { name: 'Accordion', nameCn: '手风琴', key: 'accordion' },
-      { name: 'Tabs', nameCn: '页签', key: 'tab' },
-      { name: 'Steps', nameCn: '步骤导航', key: 'steps' },
+      { name: 'Actionmenu', nameCn: '菜单按钮', key: 'actionmenu' },
+      { name: 'Anchor', nameCn: '锚点', key: 'anchor' },
       { name: 'Crumb', nameCn: '面包屑', key: 'crumb' },
-      { name: 'Timeline', nameCn: '时间线', key: 'timeline' },
+      { name: 'Leftmenu', nameCn: '左侧菜单', key: 'leftmenu' },
+      { name: 'Leftmenuthin', nameCn: '左侧图标菜单', key: 'leftmenuthin' },
+      { name: 'Steps', nameCn: '步骤导航', key: 'steps' },
       { name: 'Subtitle', nameCn: '返回标题', key: 'subtitle' },
-      { name: 'Anchor', nameCn: '锚点', key: 'anchor' }
+      { name: 'Tabs', nameCn: '页签', key: 'tab' },
+      { name: 'Timeline', nameCn: '时间线', key: 'timeline' }
     ]
   },
   {
@@ -136,16 +136,16 @@ export const cmpMenus = [
     labelEn: 'Popup Prompt',
     key: 'cmp_popup',
     children: [
-      { name: 'Tip', nameCn: '气泡提示', key: 'tip' },
-      { name: 'Overflow', nameCn: '溢出提示', key: 'overflow' },
+      { name: 'Alert', nameCn: '警告', key: 'alert' },
       { name: 'Collapse', nameCn: '折叠面板', key: 'collapse' },
       { name: 'Collapsebox', nameCn: '折叠框', key: 'collapsebox' },
-      { name: 'Alert', nameCn: '警告', key: 'alert' },
+      { name: 'Halfmodal', nameCn: '半屏弹窗', key: 'halfmodal' },
       { name: 'Modal', nameCn: '弹出框', key: 'modal' },
       { name: 'Message', nameCn: '消息弹框', key: 'message' },
       { name: 'Notification', nameCn: '通知弹框', key: 'notification' },
+      { name: 'Overflow', nameCn: '溢出提示', key: 'overflow' },
       { name: 'Popconfirm', nameCn: '气泡确认框', key: 'popconfirm' },
-      { name: 'Halfmodal', nameCn: '半屏弹窗', key: 'halfmodal' }
+      { name: 'Tip', nameCn: '气泡提示', key: 'tip' }
     ]
   },
   {
@@ -154,28 +154,27 @@ export const cmpMenus = [
     key: 'cmp_others',
     children: [
       { name: 'Avatar', nameCn: '头像', key: 'avatar' },
-      { name: 'Table', nameCn: '表格', key: 'table' },
-      { name: 'Progressbar', nameCn: '进度条', key: 'progressbar' },
-      { name: 'Loading', nameCn: '加载', key: 'loading' },
-      { name: 'Pagination', nameCn: '分页', key: 'pagination' },
-      { name: 'Tree', nameCn: '树', key: 'tree' },
+      { name: 'Badge', nameCn: '标识', key: 'badge' },
+      { name: 'Card', nameCn: '卡片', key: 'card' },
+      { name: 'Collapsebutton', nameCn: '折叠按钮', key: 'collapsebutton' },
+      { name: 'Collapsetext', nameCn: '下展文本', key: 'collapsetext' },
+      { name: 'Copy', nameCn: '复制', key: 'copy' },
+      { name: 'Foldtext', nameCn: '折叠文本', key: 'foldtext' },
+      { name: 'Guides', nameCn: '情景引导', key: 'guides' },
+      { name: 'Guidesteps', nameCn: '小步骤引导', key: 'guidesteps' },
       { name: 'Icon', nameCn: '图标', key: 'icon' },
       { name: 'Iconaction', nameCn: '图标文本链接', key: 'iconaction' },
       { name: 'Intro', nameCn: '新手引导', key: 'intro' },
-      { name: 'Swiper', nameCn: '轮播', key: 'swiper' },
-      { name: 'Card', nameCn: '卡片', key: 'card' },
-      { name: 'Layout', nameCn: '布局', key: 'layout' },
+      { name: 'Loading', nameCn: '加载', key: 'loading' },
+      { name: 'Pagination', nameCn: '分页', key: 'pagination' },
+      { name: 'Productpreview', nameCn: '商品预览', key: 'productpreview' },
+      { name: 'Progressbar', nameCn: '进度条', key: 'progressbar' },
       { name: 'Rate', nameCn: '评分', key: 'rate' },
       { name: 'Rights', nameCn: '权益', key: 'rights' },
       { name: 'Skeleton', nameCn: '骨架屏', key: 'skeleton' },
-      { name: 'Rate', nameCn: '评分', key: 'rate' },
-      { name: 'Guides', nameCn: '情景引导', key: 'guides' },
-      { name: 'Foldtext', nameCn: '折叠文本', key: 'foldtext' },
-      { name: 'Productpreview', nameCn: '商品预览', key: 'productpreview' },
-      { name: 'Collapsetext', nameCn: '下展文本', key: 'collapsetext' },
-      { name: 'Guidesteps', nameCn: '小步骤引导', key: 'guidesteps' },
-      { name: 'Collapsebutton', nameCn: '折叠按钮', key: 'collapsebutton' },
-      { name: 'Copy', nameCn: '复制', key: 'copy' }
+      { name: 'Swiper', nameCn: '轮播', key: 'swiper' },
+      { name: 'Table', nameCn: '表格', key: 'table' },
+      { name: 'Tree', nameCn: '树', key: 'tree' }
     ]
   },
   {

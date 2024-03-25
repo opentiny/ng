@@ -2,7 +2,7 @@
 :host {
   display: block;
   position: relative;
-  background: var(--ti-common-color-bg-white-normal, #ffffff);
+  background: var(--ti-common-color-bg-white-normal);
   &:before {
     content: '';
     position: absolute;
@@ -16,7 +16,7 @@
         (var(--guidestep-header-line-height) - (var(--guidestep-dot-outer-size))) / 2
     );
     left: calc((var(--guidestep-dot-outer-size) - var(--guidestep-line-width)) / 2);
-    background: var(--ti-common-color-line-dividing, #dfe1e6);
+    background: var(--ti-common-color-line-dividing);
   }
   &:last-child {
     &:before {

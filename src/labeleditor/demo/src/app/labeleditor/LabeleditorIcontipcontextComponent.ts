@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  templateUrl: './labeleditor-iconTipContext.html',
+  templateUrl: './labeleditor-icontipcontext.html',
   styles: [
     `
       .demo-labeleditor-container {

@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './AppComponent';
 import { IndexComponent } from './IndexComponent';
-import { ButtonGroupTestModule } from './buttongroup/ButtonGroupTestModule';
+import { ButtongroupTestModule } from './buttongroup/ButtongroupTestModule';
 
 @NgModule({
   imports: [
-    ButtonGroupTestModule,
+    ButtongroupTestModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     RouterModule.forRoot(
       [

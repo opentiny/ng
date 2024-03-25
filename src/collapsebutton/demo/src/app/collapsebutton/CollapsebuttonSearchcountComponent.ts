@@ -8,7 +8,7 @@ export class CollapsebuttonSearchcountComponent {
   text1: string = '服务名称:';
   text2: string = '状态:';
   colsNumber: number = 5;
-  fieldVerticalAlign: string = 'middle';
+  fieldVerticalAlign: 'top' | 'middle' | 'bottom' = 'middle';
   collapseButtonSearch: string = '搜索';
   collapseButtonReset: string = '重置';
   advancedSearch: any = {

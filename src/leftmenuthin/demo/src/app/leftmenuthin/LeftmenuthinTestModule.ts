@@ -55,8 +55,9 @@ import { RouterFWebsiteViewsComponent } from './website-views/RouterFComponent';
   ]
 })
 export class LeftmenuthinTestModule {
+  baseUrl: string = window['DEPLOY_URL'] + window['PUBLIC_URL'];
   constructor() {
-    TiSvgComponent.setPath('/assets/ionicons/');
+    TiSvgComponent.setPath(`${this.baseUrl}assets/ionicons/`);
   }
   static childrenRouter: Routes = [
     { path: 'home', component: Router1Component },

@@ -6,7 +6,7 @@
 		"default-build": {
 			"executor": "@nrwl/angular:package",
 			"outputs": [
-				"dist/libs/<%= name %>"
+				"dist/libs/ng-<%= name %>"
 			],
 			"options": {
 				"project": "src/<%= name %>/lib/ng-package.json"
@@ -23,7 +23,7 @@
 		},
     "build": {
 			"executor": "@nrwl/workspace:run-commands",
-      "outputs": ["dist/libs/<%= name %>"],
+      "outputs": ["dist/libs/ng-<%= name %>"],
 			"options": {
 				"commands": [
 					{
@@ -44,7 +44,7 @@
 			"options": {
 				"commands": [
 					{
-						"command": "cd dist/libs/<%= name %> && npm pack"
+						"command": "cd dist/libs/ng-<%= name %> && npm pack"
 					}
 				]
 			}

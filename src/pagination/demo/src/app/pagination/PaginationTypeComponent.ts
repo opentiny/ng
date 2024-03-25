@@ -7,11 +7,11 @@ export class PaginationTypeComponent {
   currentPage: number = 10;
   totalNumber: number = 400;
 
-  typeSimple: string = 'simple';
+  typeSimple: 'default' | 'simple' | 'mini' = 'simple';
   currentPageSimple: number = 2;
   totalNumberSimple: number = 1600;
 
-  typeMini: string = 'mini';
+  typeMini: 'default' | 'simple' | 'mini' = 'mini';
   currentPageMini: number = 2;
   totalNumberMini: number = 300;
 }

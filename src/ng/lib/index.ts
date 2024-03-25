@@ -101,3 +101,5 @@ export * from '@opentiny/ng-collapsetext';
 export * from '@opentiny/ng-guidesteps';
 
 export * from '@opentiny/ng-path';
+
+export * from '@opentiny/ng-badge';

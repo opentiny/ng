@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="125px" height="125px" viewBox="0 0 125 125" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Swiper 轮播</title>
+    <defs>
+        <linearGradient x1="50%" y1="45.9685271%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#ECF3FB" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50.3956523%" y1="35.9331967%" x2="50%" y2="64.0668033%" id="linearGradient-2">
+            <stop stop-color="#E3EFFD" stop-opacity="0.00575352382" offset="0%"></stop>
+            <stop stop-color="#E5F0FD" offset="34.0601199%"></stop>
+            <stop stop-color="#F0F6FE" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="33.3333333%" y1="34.495573%" x2="96.9740837%" y2="65.4421891%" id="linearGradient-3">
+            <stop stop-color="#D5E6F9" offset="0%"></stop>
+            <stop stop-color="#F7FBFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="90.9912104%" y1="29.4309598%" x2="33.3333333%" y2="67.7472684%" id="linearGradient-4">
+            <stop stop-color="#D5E6F9" offset="0%"></stop>
+            <stop stop-color="#E7F0F9" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-5.8027489%" y1="27.0499439%" x2="103.630422%" y2="71.1332543%" id="linearGradient-5">
+            <stop stop-color="#CEE6FE" offset="0%"></stop>
+            <stop stop-color="#8AB5F2" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-5.8027489%" y1="27.0499439%" x2="103.630422%" y2="71.1332543%" id="linearGradient-6">
+            <stop stop-color="#BFD6F9" offset="0%"></stop>
+            <stop stop-color="#F3F6FE" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="89.8473889%" y1="61.7348066%" x2="0%" y2="61.7348066%" id="linearGradient-7">
+            <stop stop-color="#CAD9F3" offset="0%"></stop>
+            <stop stop-color="#D5E3F7" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-18.5%" y="-60.0%" width="136.9%" height="220.0%" filterUnits="objectBoundingBox" id="filter-8">
+            <feGaussianBlur stdDeviation="4" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <linearGradient x1="44.0988019%" y1="50.7518093%" x2="128.792906%" y2="48.08521%" id="linearGradient-9">
+            <stop stop-color="#5073E5" offset="0%"></stop>
+            <stop stop-color="#5E7CE0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="49.170144%" y1="86.8386573%" x2="61.0802525%" y2="-43.8247114%" id="linearGradient-10">
+            <stop stop-color="#5073E5" offset="0%"></stop>
+            <stop stop-color="#5E7CE0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="44.0988019%" y1="78.8278842%" x2="128.792906%" y2="-23.4220005%" id="linearGradient-11">
+            <stop stop-color="#5073E5" offset="0%"></stop>
+            <stop stop-color="#5E7CE0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="44.0988019%" y1="78.8278842%" x2="128.792906%" y2="-23.4220005%" id="linearGradient-12">
+            <stop stop-color="#5073E5" offset="0%"></stop>
+            <stop stop-color="#5E7CE0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="44.0988019%" y1="86.8386573%" x2="128.792906%" y2="-43.8247114%" id="linearGradient-13">
+            <stop stop-color="#5073E5" offset="0%"></stop>
+            <stop stop-color="#5E7CE0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-14">
+            <stop stop-color="#FFCC00" offset="0%"></stop>
+            <stop stop-color="#FF9D00" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面一" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="-TinyUI-ICON-2-【9-2】-无阴影" transform="translate(-697.000000, -1350.000000)">
+            <g id="Swiper-轮播" transform="translate(697.000000, 1350.000000)">
+                <g id="编组">
+                    <g transform="translate(9.000000, 1.000000)" id="多边形">
+                        <polygon fill="url(#linearGradient-1)" opacity="0.54620216" points="53.2605623 0 106.521125 30.75 53.2605623 62 0 30.75"></polygon>
+                        <polygon fill="url(#linearGradient-2)" points="53.2605623 61.5 106.521125 86.75 53.2605623 118 0 86.75"></polygon>
+                        <polygon fill="url(#linearGradient-3)" opacity="0.600606283" points="53.2605623 62 53.2605623 123 7.39138783e-15 92.25 0 30.75"></polygon>
+                        <polygon fill="url(#linearGradient-4)" opacity="0.791265578" points="53.2605623 62 106.521125 30.75 106.521125 92.25 53.2605623 123"></polygon>
+                        <polygon fill="url(#linearGradient-5)" points="53.2605623 118.007802 53.2605623 123 7.39138783e-15 92.25 0 86.9161706"></polygon>
+                        <polygon fill="url(#linearGradient-6)" transform="translate(79.630281, 104.958085) scale(-1, 1) translate(-79.630281, -104.958085) " points="106.260562 118.007802 106.260562 123 53 92.25 53 86.9161706"></polygon>
+                    </g>
+                    <ellipse id="椭圆形" fill="url(#linearGradient-7)" filter="url(#filter-8)" cx="62.5" cy="90" rx="32.5" ry="10"></ellipse>
+                </g>
+                <g id="编组-33" transform="translate(22.000000, 32.000000)">
+                    <rect id="矩形" fill="url(#linearGradient-9)" opacity="0.303770519" x="11" y="54" width="56" height="8" rx="4"></rect>
+                    <g id="轮播图管理" transform="translate(0.000000, 7.000000)" fill="url(#linearGradient-10)" opacity="0.303770519">
+                        <path d="M70,0 L78.1995135,0 C80.3051885,0 82,1.81401843 82,3.98547892 L82,28.0145211 C82,30.2217258 80.2538305,32 78.1995135,32 L70,32 L70,0 Z" id="路径"></path>
+                        <path d="M12,0 L3.98238437,0 C1.82974417,0 0,1.78721028 0,3.98547892 L0,28.0145211 C0,30.1949176 1.7848975,32 3.98238437,32 L12,32 L12,0 Z" id="路径"></path>
+                    </g>
+                    <g id="编组-32" transform="translate(15.000000, 0.000000)">
+                        <path d="M48.2744535,0 L3.71724908,0 C1.66778363,0 0,1.47487638 0,3.28728665 L0,42.7127134 C0,44.5324613 1.66778363,46 3.71724908,46 L48.2827509,46 C50.3322164,46 52,44.5324613 52,42.7127134 L52,3.28728665 C51.9917026,1.47487638 50.3322164,0 48.2744535,0 Z" id="路径" stroke="url(#linearGradient-12)" fill="url(#linearGradient-11)"></path>
+                        <path d="M16.6613516,22.9738364 C20.9588348,22.9738364 20.4473696,26.6352288 23.6748911,26.6352288 C26.9082916,26.6352288 28.2428041,15.3513229 32.5814396,15.3513229 C36.9200752,15.3513229 41.7878126,36.0855001 41.7878126,36.0855001 L10.2121874,36.0855001 C10.2121874,36.079623 12.3697474,22.9738364 16.6613516,22.9738364 Z" id="路径" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"></path>
+                        <path d="M16.7906876,10.0855001 C18.9717632,10.0855001 20.7354362,11.8486104 20.7354362,14.0348672 C20.7354362,16.2211239 18.9717632,17.9842343 16.7906876,17.9842343 C14.6096121,17.9842343 12.8459391,16.2211239 12.8459391,14.0348672 C12.8459391,11.8486104 14.6096121,10.0855001 16.7906876,10.0855001 Z" id="路径" stroke="#FFFFFF" stroke-width="0.920660241" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </g>
+                    <g id="编组-31" transform="translate(25.000000, 56.000000)">
+                        <circle id="椭圆形" fill="url(#linearGradient-13)" opacity="0.604724702" cx="2" cy="2" r="2"></circle>
+                        <circle id="椭圆形备份-3" fill="url(#linearGradient-14)" cx="10" cy="2" r="2"></circle>
+                        <circle id="椭圆形备份-4" fill="url(#linearGradient-13)" opacity="0.604724702" cx="18" cy="2" r="2"></circle>
+                        <circle id="椭圆形备份-5" fill="url(#linearGradient-13)" opacity="0.604724702" cx="26" cy="2" r="2"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

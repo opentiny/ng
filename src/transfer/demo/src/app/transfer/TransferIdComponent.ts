@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { myOptions, mySelecteds } from './data.js';
+import { myOptions, mySelecteds } from './data';
 @Component({
   templateUrl: './transfer-id.html'
 })

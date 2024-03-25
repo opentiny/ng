@@ -5,6 +5,8 @@ import { AppModule } from './app/AppModule';
 import { AppModule as WcAppModule } from './app/AppWcModule';
 import { environment } from '../../../environments/environment';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { TiLocale } from '@opentiny/ng-locale';
+import { LocaleLanguageComponent } from '../../../locale/demo/src/app/locale/LocaleLanguageComponent';
 
 if (environment.production) {
   enableProdMode();
@@ -43,6 +45,14 @@ if (environment.production) {
 // } else {
 //   TiTheme.bootstrapModule(AppModule);
 // }
+
+// 测试初始化追加其他语言词条是否可以正常显示
+// 步骤：放开以下注释，并注释 locale-language 内该部分，页面能否正常显示
+// const words = (window as any).tiWords;
+// TiLocale.setWords({
+//   ...words,
+//   'de-DE': LocaleLanguageComponent.myde_DE
+// });
 
 platformBrowserDynamic()
   .bootstrapModule(environment.isWc ? WcAppModule : AppModule)

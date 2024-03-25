@@ -82,7 +82,7 @@ export class TiStepsComponent extends TiBaseComponent {
    */
   @Input() labelKey: string = 'label';
   /**
-   * 必选，当前激活步骤项，10.1.19 版本支持传入激活项的下标
+   * 必选，当前激活步骤项，支持传入激活项的下标
    */
   @Input() activeStep: any;
   /**
@@ -173,8 +173,8 @@ export class TiStepsComponent extends TiBaseComponent {
     super.ngAfterContentInit();
     /**
      * 兼容旧版无命名模板：
-     * 10.1.16 版本到 10.1.22 之前只能内嵌一个模板，无命名。
-     * 10.1.22 版本之后可以内嵌两个模板，#step #icon
+     * 兼容之前只能内嵌一个模板，无命名。
+     * 可以内嵌两个模板，#step #icon
      */
     if (
       !this.stepTemplate &&

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ButtonGroupTestModule } from './buttongroup/ButtonGroupTestModule';
+import { ButtongroupTestModule } from './buttongroup/ButtongroupTestModule';
 
 @Component({
   template: `<style>

@@ -6,11 +6,11 @@
     name="formradio"
     [(ngModel)]="selected"
     [tiValidation]="validationConfig"
-    tiRequired
+    [tiRequired]="true"
   >
   </ti-radio-group>
   <br />
-  <button class="mb-3 mr-3" (click)="checkgroup(myForm)" tiButton>请直接点击此处查看校验结果</button>
+  <button class="mb-3 mr-3" (click)="checkgroup(myForm.form)" tiButton>请直接点击此处查看校验结果</button>
 </form>
 <h4 class="mb-3">2.响应式表单</h4>
 <form [formGroup]="myFormGroup">

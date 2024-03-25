@@ -7,8 +7,9 @@ import { AlertTestModule } from '../../../../alert/demo/src/app/alert/AlertTestM
 import { AnchorTestModule } from '../../../../anchor/demo/src/app/anchor/AnchorTestModule';
 import { AutocompleteTestModule } from '../../../../autocomplete/demo/src/app/autocomplete/AutocompleteTestModule';
 import { AvatarTestModule } from '../../../../avatar/demo/src/app/avatar/AvatarTestModule';
+import { BadgeTestModule } from '../../../../badge/demo/src/app/badge/BadgeTestModule';
 import { ButtonTestModule } from '../../../../button/demo/src/app/button/ButtonTestModule';
-import { ButtonGroupTestModule } from '../../../../buttongroup/demo/src/app/buttongroup/ButtonGroupTestModule';
+import { ButtongroupTestModule } from '../../../../buttongroup/demo/src/app/buttongroup/ButtongroupTestModule';
 import { ButtonselectTestModule } from '../../../../buttonselect/demo/src/app/buttonselect/ButtonselectTestModule';
 import { CardTestModule } from '../../../../card/demo/src/app/card/CardTestModule';
 import { CascaderTestModule } from '../../../../cascader/demo/src/app/cascader/CascaderTestModule';
@@ -20,11 +21,11 @@ import { CollapsetextTestModule } from '../../../../collapsetext/demo/src/app/co
 import { CopyTestModule } from '../../../../copy/demo/src/app/copy/CopyTestModule';
 import { CrumbTestModule } from '../../../../crumb/demo/src/app/crumb/CrumbTestModule';
 import { DateTestModule } from '../../../../date/demo/src/app/date/DateTestModule';
-import { DateDominatorTestModule } from '../../../../datedominator/demo/src/app/datedominator/DateDominatorTestModule';
-import { DateEditTestModule } from '../../../../dateedit/demo/src/app/dateedit/DateEditTestModule';
-import { DateRangeTestModule } from '../../../../daterange/demo/src/app/daterange/DateRangeTestModule';
+import { DatedominatorTestModule } from '../../../../datedominator/demo/src/app/datedominator/DatedominatorTestModule';
+import { DateeditTestModule } from '../../../../dateedit/demo/src/app/dateedit/DateeditTestModule';
+import { DaterangeTestModule } from '../../../../daterange/demo/src/app/daterange/DaterangeTestModule';
 import { DatetimeTestModule } from '../../../../datetime/demo/src/app/datetime/DatetimeTestModule';
-import { DatetimeRangeTestModule } from '../../../../datetimerange/demo/src/app/datetimerange/DatetimeRangeTestModule';
+import { DatetimerangeTestModule } from '../../../../datetimerange/demo/src/app/datetimerange/DatetimerangeTestModule';
 import { DominatorTestModule } from '../../../../dominator/demo/src/app/dominator/DominatorTestModule';
 import { DragTestModule } from '../../../../drag/demo/src/app/drag/DragTestModule';
 import { DropTestModule } from '../../../../drop/demo/src/app/drop/DropTestModule';
@@ -79,7 +80,7 @@ import { SwitchTestModule } from '../../../../switch/demo/src/app/switch/SwitchT
 import { TabTestModule } from '../../../../tab/demo/src/app/tab/TabTestModule';
 import { TableTestModule } from '../../../../table/demo/src/app/table/TableTestModule';
 import { TagTestModule } from '../../../../tag/demo/src/app/tag/TagTestModule';
-import { TagsInputTestModule } from '../../../../tagsinput/demo/src/app/tagsinput/TagsInputTestModule';
+import { TagsinputTestModule } from '../../../../tagsinput/demo/src/app/tagsinput/TagsinputTestModule';
 import { TextTestModule } from '../../../../text/demo/src/app/text/TextTestModule';
 import { TextareaTestModule } from '../../../../textarea/demo/src/app/textarea/TextareaTestModule';
 import { TimeTestModule } from '../../../../time/demo/src/app/time/TimeTestModule';
@@ -111,8 +112,9 @@ export class DemoModules {
     AnchorTestModule,
     AutocompleteTestModule,
     AvatarTestModule,
+    BadgeTestModule,
     ButtonTestModule,
-    ButtonGroupTestModule,
+    ButtongroupTestModule,
     ButtonselectTestModule,
     CardTestModule,
     CascaderTestModule,
@@ -124,11 +126,11 @@ export class DemoModules {
     CopyTestModule,
     CrumbTestModule,
     DateTestModule,
-    DateDominatorTestModule,
-    DateEditTestModule,
-    DateRangeTestModule,
+    DatedominatorTestModule,
+    DateeditTestModule,
+    DaterangeTestModule,
     DatetimeTestModule,
-    DatetimeRangeTestModule,
+    DatetimerangeTestModule,
     DominatorTestModule,
     DragTestModule,
     DropTestModule,
@@ -183,7 +185,7 @@ export class DemoModules {
     TabTestModule,
     TableTestModule,
     TagTestModule,
-    TagsInputTestModule,
+    TagsinputTestModule,
     TextTestModule,
     TextareaTestModule,
     TimeTestModule,

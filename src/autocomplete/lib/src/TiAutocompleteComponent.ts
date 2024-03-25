@@ -41,8 +41,6 @@ export class TiAutocompleteComponent extends TiFormComponent {
   @Input() placeholder: string = '';
   /**
    * 是否开启清除功能，
-   *
-   * 10.1.0/9.1.0版本之后默认不开启，在此之前版本默认开启
    */
   @Input() clearable: boolean = false;
   /**

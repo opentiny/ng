@@ -2,7 +2,7 @@
   href=""
   [items]="items"
   [(selected)]="selected"
-  searchable="true"
+  [searchable]="true"
   (beforeSearch)="beforeSearch($event)"
   (scrollToBottom)="loadMore($event)"
 ></ti-subtitle>

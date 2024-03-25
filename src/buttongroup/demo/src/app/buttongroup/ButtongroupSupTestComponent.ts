@@ -10,7 +10,7 @@ export class ButtongroupSupTestComponent {
     {
       text: '9个月',
       sup: {
-        class: 'ti3-icon ti3-icon-sold-out buttongroup-sold-out' // 10.1.2版本之后可通过自定义模板设置图标及样式
+        class: 'ti3-icon ti3-icon-sold-out buttongroup-sold-out'
       }
     },
     {

@@ -1,24 +1,42 @@
-@import '../../../themes/basic/base-all.less';
-
-::ng-deep :root {
-  --ti-product-preview-modal-width: 640px;
+:host {
+  display: block;
   --ti-product-preview-main-small-size: 300px;
   --ti-product-preview-main-middle-size: 380px;
   --ti-product-preview-main-large-size: 450px;
-  --ti-product-preview-thumb-small-size: 49px;
-  --ti-product-preview-thumb-middle-size: 69px;
-  --ti-product-preview-thumb-large-size: 86.5px;
-  --ti-product-preview-thumb-page-size: 24px;
-  --ti-product-preview-thumb-page-font-size: 24px;
-  --ti-product-preview-thumb-page-border-radius: 2px;
-  --ti-product-preview-thumb-page-margin: 16px;
+  --ti-product-preview-thumb-small-size: calc(
+    (
+        var(--ti-product-preview-main-small-size) - var(--ti-product-preview-thumb-margin) * 3 -
+          var(--ti-product-preview-thumb-page-button-size) * 2
+      ) / 4;
+  );
+  --ti-product-preview-thumb-middle-size: calc(
+    (
+        var(--ti-product-preview-main-middle-size) - var(--ti-product-preview-thumb-margin) * 3 -
+          var(--ti-product-preview-thumb-page-button-size) * 2
+      ) / 4;
+  );
+  --ti-product-preview-thumb-large-size: calc(
+    (
+        var(--ti-product-preview-main-large-size) - var(--ti-product-preview-thumb-margin) * 3 -
+          var(--ti-product-preview-thumb-page-button-size) * 2
+      ) / 4;
+  );
+  --ti-product-preview-thumb-margin: var(--ti-common-space-2x);
+  --ti-product-preview-thumb-page-size: var(--ti-common-size-6x);
+  --ti-product-preview-thumb-page-margin: var(--ti-common-space-4x);
   --ti-product-preview-thumb-page-button-size: calc(
     var(--ti-product-preview-thumb-page-size) + var(--ti-product-preview-thumb-page-margin)
   );
 }
 
-:host {
-  display: block;
+::ng-deep .ti3-img-zoom-viewer {
+  --ti-product-preview-main-small-size: 300px;
+  --ti-product-preview-main-middle-size: 380px;
+  --ti-product-preview-main-large-size: 450px;
+}
+
+::ng-deep .ti-product-preview-modal {
+  --ti-product-preview-modal-width: 640px;
 }
 .ti-product-preview-container {
   width: 100%;
@@ -26,7 +44,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--ti-common-color-line-dividing);
+    border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-line-dividing);
     box-sizing: border-box;
   }
   .ti-product-preview-thumb-container {
@@ -46,14 +64,14 @@
           justify-content: center;
           align-items: center;
           flex-shrink: 0;
-          border: 1px solid transparent;
+          border: var(--ti-common-border-weight-normal) var(--ti-common-border-style-solid) var(--ti-common-color-transparent);
           box-sizing: border-box;
           img {
             width: auto;
             height: auto;
           }
           &:not(:last-child) {
-            margin-right: var(--ti-common-space-2x);
+            margin-right: var(--ti-product-preview-thumb-margin);
           }
         }
         .ti-product-preview-thumb-item-active {
@@ -65,7 +83,7 @@
     .ti-product-preview-thumb-page {
       width: var(--ti-product-preview-thumb-page-size);
       height: var(--ti-product-preview-thumb-page-size);
-      border-radius: var(--ti-product-preview-thumb-page-border-radius);
+      border-radius: var(--ti-common-border-radius-normal);
       position: relative;
       &:hover:not(.ti-product-preview-thumb-page-disabled) {
         cursor: pointer;
@@ -78,7 +96,7 @@
       }
       .ti-product-preview-icon {
         line-height: var(--ti-product-preview-thumb-page-size);
-        font-size: var(--ti-product-preview-thumb-page-font-size);
+        font-size: var(--ti-common-font-size-5);
       }
     }
     .ti-product-preview-thumb-page-disabled {
@@ -132,7 +150,6 @@
   }
 }
 
-// 10.0.4版本新增
 // 分辨率<1440px
 @media screen and (max-width: 1440px) {
   .media(var(--ti-product-preview-main-small-size), var(--ti-product-preview-thumb-small-size));
@@ -152,6 +169,6 @@
     top: 0;
   }
   .ti3-image-preview-container {
-    margin-top: var(--ti-common-space-2x);
+    margin-top: var(--ti-common-space-2x) !important;
   }
 }

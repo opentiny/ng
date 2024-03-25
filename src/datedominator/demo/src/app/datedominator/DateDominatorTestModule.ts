@@ -8,10 +8,10 @@ import { TiDateDominatorModule } from '@opentiny/ng';
 import { DateDominatorComponent } from './DateDominatorComponent';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, TiDateDominatorModule, RouterModule.forChild(DateDominatorTestModule.ROUTES)],
+  imports: [CommonModule, FormsModule, TiDateDominatorModule, RouterModule.forChild(DatedominatorTestModule.ROUTES)],
   declarations: [DateDominatorComponent]
 })
-export class DateDominatorTestModule {
+export class DatedominatorTestModule {
   static readonly LINKS: Array<object> = [
     {
       href: 'components/TiDateDominatorComponent.html',

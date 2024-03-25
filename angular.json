@@ -13,6 +13,8 @@
     "autocomplete-demo": "src/autocomplete/demo",
     "avatar": "src/avatar/lib",
     "avatar-demo": "src/avatar/demo",
+    "badge": "src/badge/lib",
+    "badge-demo": "src/badge/demo",
     "base": "src/base/lib",
     "button": "src/button/lib",
     "button-demo": "src/button/demo",

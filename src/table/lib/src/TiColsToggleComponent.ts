@@ -67,7 +67,7 @@ export class TiColsToggleComponent extends TiSelectComponent {
   private static readonly MIN_PANEL_WIDTH: number = 200;
   /**
    * @ignore
-   * 10.0.3 版本之前服务使用 tiTip 指令自行实现提示，为做兼容性处理，添加该接口判断服务是否使用指令实现
+   * 之前服务使用 tiTip 指令自行实现提示，为做兼容性处理，添加该接口判断服务是否使用指令实现
    */
   @Input() tiTip: string;
   /**

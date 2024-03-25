@@ -20,7 +20,7 @@
 <form #templateFormControl="ngForm">
   <p>表单项一：<input tiValidation tiEqual="hello tiny" name="templateEqual" [(ngModel)]="templateEqualValue" tiText /></p>
   <br />
-  <p>表单项二：<input tiValidation tiRequired name="templateRequired" [(ngModel)]="templateRequiredValue" tiText /></p>
+  <p>表单项二：<input tiValidation [tiRequired]="true" name="templateRequired" [(ngModel)]="templateRequiredValue" tiText /></p>
   <button class="mt-3" (click)="checkTemplateForm(templateFormControl.form)" tiButton color="primary">表单整体校验</button>
 </form>
 <br /><br />

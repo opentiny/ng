@@ -40,14 +40,15 @@ serverDemo();
 
 
 function ready(){
-  execSync('npm run prepreview');
+  execSync('npm run prepreview', { stdio: 'inherit' });
 }
 
 function buildLib() {
-  execSync(`ng build ${name}`);
+  console.log('---------------- build lib ---------------');
+  execSync(`ng build ${name}`, { stdio: 'inherit' });
 
   if (isNeedThemesBuild() && !isNgDemoPreview) {
-    execSync('ng build themes');
+    execSync('ng build themes', { stdio: 'inherit' });
   }
 }
 
@@ -65,15 +66,19 @@ function changePathAliasAndInstallLib() {
 
   if (isNgDemoPreview) {
     delete baseTsConfigData.compilerOptions.paths;
-    execSync(`ng pack ${ngDemoDir}`);
+
+    console.log('---------------- pack lib ---------------');
+    execSync(`ng pack ${ngDemoDir}`, { stdio: 'inherit' });
   }
 
   dirs.forEach((dir) => {
     // 去除掉 compilerOptions.paths 中当前组件 demo 中使用的当前组件 lib 库的路径，以便在后续构建当前组件demo 时使用 node_modules 中的当前组件 lib 库
     if (!isNgDemoPreview) {
       delete baseTsConfigData.compilerOptions.paths[`@opentiny/ng-${dir}`];
-      // 打包压缩 lib 库
-      execSync(`ng pack ${dir}`);
+
+      console.log('---------------- pack lib ---------------');
+      // 打包压缩 lib 库，路径为 ng-xx 需要去除前三位
+      execSync(`ng pack ${dir.slice(3)}`, { stdio: 'inherit' });
     }
 
     // 拼凑 npm install 时所需的 lib 库的 tgz 包路径
@@ -86,8 +91,10 @@ function changePathAliasAndInstallLib() {
       installs += `dist/libs/${dir}/${fileName} `;
     }
   });
+
+  console.log('---------------- install lib ---------------');
   // 安装当前组件 lib 库
-  execSync(`npm install ${installs} --legacy-peer-deps`);
+  execSync(`npm install ${installs} --legacy-peer-deps`, { stdio: 'inherit' });
 
   // 将经上面处理过的 tsconfig.base.json 文件内容再写入
   fs.writeFileSync(baseTsConfigPath, JSON.stringify(baseTsConfigData, "", "\t"));
@@ -111,16 +118,18 @@ function configDemoThemes() {
 }
 
 function buildDemo() {
-  execSync(`ng build ${name}-demo`);
+  console.log('---------------- build demo ---------------');
+  execSync(`ng build ${name}-demo`, { stdio: 'inherit' });
 }
 
 function reset() {
   const param = isNeedThemesBuild() ? ` ${name}` : '';
-  execSync(`npm run resetpreview${param}`);
+  execSync(`npm run resetpreview${param}`, { stdio: 'inherit' });
 }
 
 function serverDemo() {
-  execSync(`npx live-server dist/apps/${name} --port=8020`);
+  console.log('---------------- serve demo ---------------');
+  execSync(`npx live-server dist/apps/${name} --port=8020`, { stdio: 'inherit' });
 }
 
 function isNeedThemesBuild() {

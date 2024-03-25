@@ -1,6 +1,6 @@
 {
   "name": "@opentiny/ng-outline",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.3",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",

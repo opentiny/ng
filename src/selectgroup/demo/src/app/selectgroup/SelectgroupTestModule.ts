@@ -27,8 +27,9 @@ import { TiSelectgroupModule, TiSelectModule, TiIconModule, TiSvgComponent } fro
   ]
 })
 export class SelectgroupTestModule {
+  baseUrl: string = window['DEPLOY_URL'] + window['PUBLIC_URL'];
   constructor() {
-    TiSvgComponent.setPath('/assets/ionicons/');
+    TiSvgComponent.setPath(`${this.baseUrl}assets/ionicons/`);
   }
   static readonly ROUTES: Routes = [
     { path: 'selectgroup/selectgroup-basic', component: SelectgroupBasicComponent, data: { label: '基础' } },

@@ -1,8 +1,9 @@
-::ng-deep :root {
+:host {
   --ti-buttonselect-maxwidth: 300px;
-  --ti-buttonselect-padding: 20px;
-  --ti-buttonselect-triangle-width: 16px;
-  --ti-button-group-height: 28px;
+  --ti-buttonselect-padding: var(--ti-common-space-5x);
+  --ti-buttonselect-triangle-width: var(--ti-common-size-4x);
+  --ti-buttonselect-height: var(--ti-common-size-7x);
+  --ti-buttonselect-checkmark-size: var(--ti-common-size-3x);
 }
 
 :host {
@@ -10,14 +11,14 @@
 }
 .ti-btnselect-triangle {
   display: inline-block;
-  width: 16px;
+  width: var(--ti-buttonselect-triangle-width);
   &:after {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 5px solid var(--ti-common-color-icon-normal);
     content: '';
     position: absolute;
-    top: 10.5px;
+    top: calc((var(--ti-buttonselect-height) - 2px - 5px) / 2); // (组件高度 - 边框高度 - 三角标高度) / 2
   }
 }
 .ti-btnselect-triangle-up:after {
@@ -30,14 +31,16 @@
   padding: 0 var(--ti-buttonselect-padding);
   position: relative;
   display: inline-block;
-  height: var(--ti-button-group-height);
+  height: var(--ti-buttonselect-height);
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
-  color: #252b3a;
-  background-color: #e9edfa;
-  line-height: calc(var(--ti-button-group-height) - 2px);
+  color: var(--ti-common-color-text-primary);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
+  background-color: var(--ti-common-color-bg-light-normal);
+  line-height: calc(var(--ti-buttonselect-height) - 2px);
   max-width: var(--ti-buttonselect-maxwidth);
   &.ti-buttonselect-dominator-border {
     border: 1px solid var(--ti-common-color-bg-emphasize);
@@ -60,16 +63,16 @@
   color: #fff;
   width: 0;
   height: 0;
-  border-right: 16px solid #5e7ce0;
+  border-right: 16px solid var(--ti-common-color-bg-emphasize);
   border-bottom: 16px solid transparent;
   position: absolute;
   right: 0px;
   top: 0px;
-  font-size: 12px;
   & .ti3-icon-checkmark-small {
+    font-size: var(--ti-buttonselect-checkmark-size);
     position: relative;
-    right: -5px;
-    top: -8px;
+    right: -5px; // - (16 - 12 + 1)
+    bottom: calc((var(--ti-buttonselect-height) - var(--ti-buttonselect-checkmark-size)) / 2);
   }
 }
 .ti-buttonselect-list {

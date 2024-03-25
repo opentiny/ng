@@ -12,10 +12,10 @@ import { DateEditValueComponent } from './DateEditValueComponent';
 import { DateEditMinComponent } from './DateEditMinComponent';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, TiDateEditModule, RouterModule.forChild(DateEditTestModule.ROUTES)],
+  imports: [CommonModule, FormsModule, TiDateEditModule, RouterModule.forChild(DateeditTestModule.ROUTES)],
   declarations: [DateEditComponent, DateEditFormatComponent, DateEditMaxComponent, DateEditValueComponent, DateEditMinComponent]
 })
-export class DateEditTestModule {
+export class DateeditTestModule {
   static readonly LINKS: Array<object> = [{ href: 'components/TiDateEditComponent.html', label: 'DateEdit' }];
   static readonly ROUTES: Routes = [
     { path: 'dateedit/dateedit-basic', component: DateEditComponent },

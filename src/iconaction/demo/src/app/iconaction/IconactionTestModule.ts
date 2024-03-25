@@ -13,8 +13,9 @@ import { IconactionHrefComponent } from './IconactionHrefComponent';
   declarations: [IconactionBasicComponent, IconactionDarkComponent, IconactionDisabledComponent, IconactionHrefComponent]
 })
 export class IconactionTestModule {
+  baseUrl: string = window['DEPLOY_URL'] + window['PUBLIC_URL'];
   constructor() {
-    TiSvgComponent.setPath('/assets/ionicons/');
+    TiSvgComponent.setPath(`${this.baseUrl}assets/ionicons/`);
   }
   static readonly ROUTES: Routes = [
     {

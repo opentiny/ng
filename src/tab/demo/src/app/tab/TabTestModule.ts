@@ -18,6 +18,7 @@ import { TabBeforeactivechangeComponent } from './TabBeforeactivechangeComponent
 import { TabDarkComponent } from './TabDarkComponent';
 import { CompanyComponent, Concert1Component, ConcertComponent, LibaryComponent, TabContentCompComponent } from './TabContentCompComponent';
 import { TabScrollComponent } from './TabScrollComponent';
+import { TabRouteWebsiteViewComponent } from './website-views/TabRouteWebsiteViewComponent';
 
 @NgModule({
   imports: [CommonModule, RouterModule, TiTabModule, TiFormfieldModule, DemoLogModule, RouterModule.forChild(TabTestModule.ROUTES)],
@@ -40,7 +41,8 @@ import { TabScrollComponent } from './TabScrollComponent';
     Concert1Component,
     LibaryComponent,
     TabScrollComponent,
-    TabDarkComponent
+    TabDarkComponent,
+    TabRouteWebsiteViewComponent
   ]
 })
 export class TabTestModule {
@@ -97,6 +99,7 @@ export class TabTestModule {
     },
     { path: 'tab/tab-default-test', component: TabDefaultTestComponent },
     { path: 'tab/tab-level2-test', component: TabLevel2TestComponent },
-    { path: 'tab/tab-scroll', component: TabScrollComponent }
+    { path: 'tab/tab-scroll', component: TabScrollComponent },
+    { path: 'tab/tab-route-website-view', component: TabRouteWebsiteViewComponent }
   ];
 }

@@ -7,7 +7,7 @@
 <br /><br />
 <ti-button-group
   id="buttongroup-beforeclick-multi"
-  multiple="true"
+  [multiple]="true"
   [items]="items1"
   [(ngModel)]="selected1"
   (beforeClick)="beforeClickFn2($event)"

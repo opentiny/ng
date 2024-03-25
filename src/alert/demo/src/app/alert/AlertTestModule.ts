@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TiAlertModule, TiButtonModule, TiSelectModule } from '@opentiny/ng';
-// import { TiAlertModule } from '@opentiny/ng-alert';
-// import { TiButtonModule } from '@opentiny/ng-button';
-// import { TiSelectModule } from '@opentiny/ng-select';
 
 import { DemoLogModule } from '../../../../../ng/demolog/DemoLogModule';
 import { AlertTypeComponent } from './AlertTypeComponent';

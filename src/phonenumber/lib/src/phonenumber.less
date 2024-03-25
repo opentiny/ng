@@ -1,9 +1,9 @@
 @import '../../../themes/basic/base-all.less';
-::ng-deep :root {
+:host {
   --ti-phonenumber-width: 300px; // 组件整体宽度
   --ti-phonenumber-input-width: 220px; // 输入框宽度
   --ti-phonenumber-line-height: 14px; // 短竖线高度
-  --ti-phonenumber-select-border-right-height: 26px; // select组件右边框竖线高度
+  --ti-phonenumber-select-border-right-height: calc(var(--ti-common-size-7x) - 2px); // select组件右边框竖线高度
 }
 
 .ti3-phonenumber-input(@border-color) {
@@ -15,7 +15,7 @@
 :host {
   display: inline-block;
   width: var(--ti-phonenumber-width);
-  height: var(--ti-input-height);
+  height: var(--ti-common-size-7x);
 }
 
 .ti3-phonenumber-container {
@@ -63,6 +63,9 @@
   input[tiText].ti3-phonenumber-input {
       width: var(--ti-phonenumber-input-width);
       z-index: 1; // 左边框被select遮挡，故需要提高权重
+      color: var(--ti-common-color-text-primary);
+      font-size: var(--ti-common-font-size-base);
+      font-weight: var(--ti-common-font-weight-4);
       border-left: 0;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;

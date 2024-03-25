@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { TiModalService } from '@opentiny/ng';
 
 @Component({
@@ -9,7 +9,7 @@ import { TiModalService } from '@opentiny/ng';
 export class ModalClassComponent {
   constructor(private tiModal: TiModalService) {}
 
-  show(content: string): void {
+  show(content: TemplateRef<any>): void {
     this.tiModal.open(content, {
       modalClass: 'modal-class'
     });

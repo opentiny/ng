@@ -12,7 +12,7 @@
         <td>{{row.operator}}</td>
         <td>{{row.state}}</td>
         <td>
-          <ti-actionmenu [data]="row" [dataToItemsFn]="dataToItemsFn" maxShowNum="3" (select)="onSelect($event, row)"></ti-actionmenu>
+          <ti-actionmenu [data]="row" [dataToItemsFn]="dataToItemsFn" [maxShowNum]="3" (select)="onSelect($event, row)"></ti-actionmenu>
         </td>
       </tr>
     </tbody>

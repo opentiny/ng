@@ -1,13 +1,13 @@
 {
   "name": "@opentiny/ng-formfield",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.3",
   "license": "MIT",
   "peerDependencies": {
-    "@opentiny/ng-utils": "~1.0.0-beta.2",
-    "@opentiny/ng-base": "~1.0.0-beta.2",
+    "@opentiny/ng-utils": "~1.0.3",
+    "@opentiny/ng-base": "~1.0.3",
     "@angular/core": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-include": "~1.0.0-beta.2",
-    "@opentiny/ng-icon": "~1.0.0-beta.2"
+    "@opentiny/ng-include": "~1.0.3",
+    "@opentiny/ng-icon": "~1.0.3"
   }
 }

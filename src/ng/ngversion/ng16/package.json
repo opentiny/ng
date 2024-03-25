@@ -1,0 +1,38 @@
+{
+  "name": "ng16-demo",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^16.0.0",
+    "@angular/cdk": "^15.0.1",
+    "@angular/common": "^16.0.0",
+    "@angular/compiler": "^16.0.0",
+    "@angular/core": "^16.0.0",
+    "@angular/elements": "^16.0.0",
+    "@angular/forms": "^16.0.0",
+    "@angular/platform-browser": "^16.0.0",
+    "@angular/platform-browser-dynamic": "^16.0.0",
+    "@angular/router": "^16.0.0",
+    "color": "4.2.3",
+    "libphonenumber-js": "^1.10.7",
+    "rxjs": "~7.4.0",
+    "tslib": "^2.3.0",
+    "web-animations-js": "^2.3.2",
+    "zone.js": "~0.13.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.0.0",
+    "@angular/cli": "^16.0.0",
+    "@angular/compiler-cli": "^16.0.0",
+    "@angular/language-service": "^16.0.0",
+    "@types/node": "^12.11.1",
+    "ionicons": "^6.0.4",
+    "rimraf": "^3.0.2",
+    "typescript": "~5.0.4"
+  }
+}
