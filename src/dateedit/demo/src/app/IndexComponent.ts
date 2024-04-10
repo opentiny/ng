@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DateEditTestModule } from './dateedit/DateEditTestModule';
+import { DateeditTestModule } from './dateedit/DateeditTestModule';
 
 @Component({
   template: `<style>
@@ -41,7 +41,7 @@ import { DateEditTestModule } from './dateedit/DateEditTestModule';
     </table>`
 })
 export class IndexComponent {
-  routes: any = DateEditTestModule.ROUTES;
+  routes: any = DateeditTestModule.ROUTES;
 
   path2name(path: string): string {
     return path.split('/').pop();

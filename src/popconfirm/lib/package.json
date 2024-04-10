@@ -1,15 +1,15 @@
 {
   "name": "@opentiny/ng-popconfirm",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
-    "@opentiny/ng-locale": "~1.0.2",
+    "@opentiny/ng-locale": "~1.0.3",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-utils": "~1.0.2",
-    "@opentiny/ng-tip": "~1.0.2",
-    "@opentiny/ng-icon": "~1.0.2",
-    "@opentiny/ng-button": "~1.0.2",
-    "@opentiny/ng-base": "~1.0.2"
+    "@opentiny/ng-utils": "~1.0.3",
+    "@opentiny/ng-tip": "~1.0.3",
+    "@opentiny/ng-icon": "~1.0.3",
+    "@opentiny/ng-button": "~1.0.3",
+    "@opentiny/ng-base": "~1.0.3"
   }
 }

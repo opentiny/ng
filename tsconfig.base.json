@@ -25,6 +25,7 @@
       "@opentiny/ng-anchor": ["src/anchor/lib/index.ts"],
       "@opentiny/ng-autocomplete": ["src/autocomplete/lib/index.ts"],
       "@opentiny/ng-avatar": ["src/avatar/lib/index.ts"],
+      "@opentiny/ng-badge": ["src/badge/lib/index.ts"],
       "@opentiny/ng-base": ["src/base/lib/index.ts"],
       "@opentiny/ng-button": ["src/button/lib/index.ts"],
       "@opentiny/ng-buttongroup": ["src/buttongroup/lib/index.ts"],

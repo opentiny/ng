@@ -131,6 +131,7 @@ export class TiLocale {
     const { en_US, es_US, fr_FR, pt_BR, zh_CN } = locales;
     const words = (window as any).tiWords;
     TiLocale.setWords({
+      ...words,
       'zh-CN': { ...words['zh-CN'], ...zh_CN },
       'en-US': { ...words['en-US'], ...en_US },
       'es-US': { ...words['es-US'], ...es_US },

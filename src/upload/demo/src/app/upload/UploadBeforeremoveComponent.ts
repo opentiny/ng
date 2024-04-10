@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TiFileItem } from '@opentiny/ng';
 
 @Component({
-  templateUrl: `./upload-beforeRemove.html`
+  templateUrl: `./upload-beforeremove.html`
 })
 export class UploadBeforeremoveComponent {
   url: string = '/upload';

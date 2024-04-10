@@ -139,6 +139,12 @@ import { AvatarStyleComponent } from './../../../../avatar/demo/src/app/avatar/A
 
 import { AvatarTextComponent } from './../../../../avatar/demo/src/app/avatar/AvatarTextComponent';
 
+import { BadgeBasicComponent } from './../../../../badge/demo/src/app/badge/BadgeBasicComponent';
+
+import { BadgeDotComponent } from './../../../../badge/demo/src/app/badge/BadgeDotComponent';
+
+import { BadgeShowComponent } from './../../../../badge/demo/src/app/badge/BadgeShowComponent';
+
 import { ButtonColorComponent } from './../../../../button/demo/src/app/button/ButtonColorComponent';
 
 import { ButtonDisabledComponent } from './../../../../button/demo/src/app/button/ButtonDisabledComponent';
@@ -608,7 +614,7 @@ import { LabeleditorBasicComponent } from './../../../../labeleditor/demo/src/ap
 
 import { LabeleditorAutotipComponent } from './../../../../labeleditor/demo/src/app/labeleditor/LabeleditorAutotipComponent';
 
-import { LabeleditorIconTipContextComponent } from './../../../../labeleditor/demo/src/app/labeleditor/LabeleditorIcontipcontextComponent';
+import { LabeleditorIconTipContextComponent } from './../../../../labeleditor/demo/src/app/labeleditor/LabeleditorIconTipContextComponent';
 
 import { LabeleditorResizeComponent } from './../../../../labeleditor/demo/src/app/labeleditor/LabeleditorResizeComponent';
 
@@ -698,6 +704,8 @@ import { LoadingSizeComponent } from './../../../../loading/demo/src/app/loading
 import { LoadingTypeComponent } from './../../../../loading/demo/src/app/loading/LoadingTypeComponent';
 
 import { LocaleBasicComponent } from './../../../../locale/demo/src/app/locale/LocaleBasicComponent';
+
+import { LocaleLanguageComponent } from './../../../../locale/demo/src/app/locale/LocaleLanguageComponent';
 
 import { LocaleFormatComponent } from './../../../../locale/demo/src/app/locale/LocaleFormatComponent';
 
@@ -2077,6 +2085,12 @@ const WCS: any = [
 
   { selector: 'website-tiny-avatar-text', component: AvatarTextComponent },
 
+  { selector: 'website-tiny-badge-basic', component: BadgeBasicComponent },
+
+  { selector: 'website-tiny-badge-dot', component: BadgeDotComponent },
+
+  { selector: 'website-tiny-badge-show', component: BadgeShowComponent },
+
   { selector: 'website-tiny-button-color', component: ButtonColorComponent },
 
   {
@@ -3250,6 +3264,8 @@ const WCS: any = [
   { selector: 'website-tiny-loading-type', component: LoadingTypeComponent },
 
   { selector: 'website-tiny-locale-basic', component: LocaleBasicComponent },
+
+  { selector: 'website-tiny-locale-language', component: LocaleLanguageComponent },
 
   { selector: 'website-tiny-locale-format', component: LocaleFormatComponent },
 

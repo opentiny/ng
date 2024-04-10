@@ -1,19 +1,19 @@
 {
   "name": "@opentiny/ng-daterange",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
-    "@opentiny/ng-utils": "~1.0.2",
-    "@opentiny/ng-base": "~1.0.2",
-    "@opentiny/ng-datebase": "~1.0.2",
+    "@opentiny/ng-utils": "~1.0.3",
+    "@opentiny/ng-base": "~1.0.3",
+    "@opentiny/ng-datebase": "~1.0.3",
     "@angular/common": ">=13.0.0",
     "@angular/forms": ">=13.0.0",
-    "@opentiny/ng-drop": "~1.0.2",
-    "@opentiny/ng-locale": "~1.0.2",
-    "@opentiny/ng-button": "~1.0.2",
-    "@opentiny/ng-datepanel": "~1.0.2",
-    "@opentiny/ng-dateedit": "~1.0.2",
-    "@opentiny/ng-datedominator": "~1.0.2"
+    "@opentiny/ng-drop": "~1.0.3",
+    "@opentiny/ng-locale": "~1.0.3",
+    "@opentiny/ng-button": "~1.0.3",
+    "@opentiny/ng-datepanel": "~1.0.3",
+    "@opentiny/ng-dateedit": "~1.0.3",
+    "@opentiny/ng-datedominator": "~1.0.3"
   }
 }

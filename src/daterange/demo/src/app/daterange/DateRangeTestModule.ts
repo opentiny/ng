@@ -32,7 +32,7 @@ import { DaterangeMaxminTestComponent } from './DaterangeMaxminTestComponent';
     TiValidationModule,
     TiDateRangeModule,
     DemoLogModule,
-    RouterModule.forChild(DateRangeTestModule.ROUTES)
+    RouterModule.forChild(DaterangeTestModule.ROUTES)
   ],
   declarations: [
     DaterangePanelalignComponent,
@@ -55,7 +55,7 @@ import { DaterangeMaxminTestComponent } from './DaterangeMaxminTestComponent';
     DaterangeMaxminTestComponent
   ]
 })
-export class DateRangeTestModule {
+export class DaterangeTestModule {
   static readonly LINKS: Array<object> = [{ href: 'components/TiDateRangeComponent.html', label: 'DateRange' }];
   static readonly ROUTES: Routes = [
     {

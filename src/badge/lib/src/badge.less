@@ -1,0 +1,29 @@
+::ng-deep :root {
+  --ti-badge-dot-width: 4px;
+}
+
+:host.ti3-badge-container {
+  display: inline-block;
+  position: relative;
+  .ti3-badge-tag {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: var(--ti-common-font-size-base);
+    text-align: center;
+    background: var(--ti-common-color-error);
+    color: var(--ti-common-color-text-white);
+    line-height: calc(var(--ti-common-line-height-number) * var(--ti-common-font-size-base) - 2px);
+    padding: 0 var(--ti-common-space-base);
+    border-radius: calc(var(--ti-common-border-radius-1) * 2);
+    transform: translate(50%, -50%);
+  }
+  .ti3-badge-dot {
+    width: var(--ti-badge-dot-width);
+    height: var(--ti-badge-dot-width);
+    padding: 0;
+    border-radius: 50%;
+    transform: translateX(var(--ti-badge-dot-width));
+  }
+}

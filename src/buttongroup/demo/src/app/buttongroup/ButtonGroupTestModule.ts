@@ -39,7 +39,7 @@ import { ButtongroupBeforeclickComponent } from './ButtongroupBeforeclickCompone
     FormsModule,
     ReactiveFormsModule,
     DemoLogModule,
-    RouterModule.forChild(ButtonGroupTestModule.ROUTES)
+    RouterModule.forChild(ButtongroupTestModule.ROUTES)
   ],
   declarations: [
     ButtongroupItemsComponent,
@@ -68,7 +68,7 @@ import { ButtongroupBeforeclickComponent } from './ButtongroupBeforeclickCompone
     ButtongroupBeforeclickComponent
   ]
 })
-export class ButtonGroupTestModule {
+export class ButtongroupTestModule {
   static readonly LINKS: Array<object> = [{ href: 'components/TiButtongroupComponent.html', label: 'Buttongroup' }];
   static readonly ROUTES: Routes = [
     {

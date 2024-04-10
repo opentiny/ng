@@ -1,11 +1,11 @@
 {
   "name": "@opentiny/ng-drag",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-renderer": "~1.0.2",
-    "@opentiny/ng-utils": "~1.0.2"
+    "@opentiny/ng-renderer": "~1.0.3",
+    "@opentiny/ng-utils": "~1.0.3"
   }
 }

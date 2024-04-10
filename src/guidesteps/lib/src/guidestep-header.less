@@ -3,16 +3,18 @@
   position: relative;
   display: inline-block;
   padding-left: calc(var(--guidestep-dot-size) + var(--guidestep-icon-space));
-  padding-bottom: 8px;
-  font-size: var(--ti-common-font-size-base, 12px);
-  line-height: var(--ti-common-line-height-number, 1.5);
+  padding-bottom: var(--ti-common-space-2x);
+  color: var(--ti-common-color-text-primary);
+  font-weight: var(--ti-common-font-weight-4);
+  font-size: var(--ti-common-font-size-base);
+  line-height: var(--ti-common-line-height-number);
   &:before {
     content: '';
     position: absolute;
     width: var(--guidestep-dot-size);
     height: var(--guidestep-dot-size);
-    background-color: #8a8e99; // 无对应场景变量
-    border: var(--guidestep-dot-border) solid #eef0f5; // 无对应场景变量
+    background-color: var(--ti-common-color-text-weaken);
+    border: var(--guidestep-dot-border) solid var(--ti-common-color-bg-normal);
     border-radius: 50%;
     left: 0;
     top: calc((var(--guidestep-header-line-height) - (var(--guidestep-dot-outer-size))) / 2);
@@ -20,14 +22,14 @@
 
   // 用户设置large属性时样式
   [large] & {
-    font-size: var(--ti-common-font-size-2, 16px);
+    font-size: var(--ti-common-font-size-2);
     &:before {
-      background: var(--ti-common-color-icon-normal, #575d6c);
+      background: var(--ti-common-color-icon-normal);
       top: calc((var(--guidestep-header-large-line-height) - (var(--guidestep-dot-outer-size))) / 2);
     }
   }
 }
 // 步骤完成后，标志点为成功状态颜色
 :host.ti-guidestep-dot-complete:before {
-  background: var(--ti-common-color-success, #50d4ab);
+  background: var(--ti-common-color-success);
 }

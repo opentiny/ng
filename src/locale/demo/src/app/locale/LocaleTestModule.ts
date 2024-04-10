@@ -8,10 +8,16 @@ import { LocaleBasicComponent } from './LocaleBasicComponent';
 import { LocaleFormatComponent } from './LocaleFormatComponent';
 import { LocaleReloadComponent } from './LocaleReloadComponent';
 import localeZh from '@angular/common/locales/zh';
+import { LocaleLanguageComponent } from './LocaleLanguageComponent';
 
 @NgModule({
   imports: [CommonModule, TiLocaleModule, TiButtonModule, RouterModule.forChild(LocaleTestModule.ROUTES)],
-  declarations: [LocaleBasicComponent, LocaleFormatComponent, LocaleReloadComponent],
+  declarations: [
+      LocaleBasicComponent,
+      LocaleFormatComponent,
+      LocaleReloadComponent,
+      LocaleLanguageComponent
+    ],
   providers: [{ provide: LOCALE_ID, useValue: 'zh' }]
 })
 export class LocaleTestModule {
@@ -30,6 +36,11 @@ export class LocaleTestModule {
     {
       path: 'locale/locale-format',
       component: LocaleFormatComponent
+    },
+    { // 该测试需要初始化追加其他语言词条是否可以正常显示，依赖注入词条时机顺序
+      // 步骤：放开 src\ng\demo\src\main.ts setwords 注释，并注释 locale-language 内该部分，页面能否正常显示
+      path: 'locale/locale-language',
+      component: LocaleLanguageComponent
     }
   ];
 }

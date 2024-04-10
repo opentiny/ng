@@ -1,0 +1,61 @@
+{
+  "projectType": "library",
+  "root": "src/badge/lib",
+  "sourceRoot": "src/badge/lib/src",
+  "targets": {
+    "default-build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/ng-badge"],
+      "options": {
+        "project": "src/badge/lib/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "src/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "src/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["dist/libs/ng-badge"],
+      "options": {
+        "commands": [
+          {
+            "command": "node build/add-default-theme.js badge"
+          },
+          {
+            "command": "ng default-build badge"
+          },
+          {
+            "command": "node build/clear-default-theme.js badge"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "pack": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd dist/libs/ng-badge && npm pack"
+          }
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ng build badge && ng pack badge && node build/publish.js badge --tag={args.tag}"
+          }
+        ]
+      }
+    }
+  }
+}

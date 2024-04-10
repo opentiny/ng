@@ -33,7 +33,7 @@ import { DatetimerangeMaxminTestComponent } from './DatetimerangeMaxminTestCompo
     TiValidationModule,
     TiDatetimeRangeModule,
     DemoLogModule,
-    RouterModule.forChild(DatetimeRangeTestModule.ROUTES)
+    RouterModule.forChild(DatetimerangeTestModule.ROUTES)
   ],
   declarations: [
     DatetimerangeFormatComponent,
@@ -56,7 +56,7 @@ import { DatetimerangeMaxminTestComponent } from './DatetimerangeMaxminTestCompo
     DatetimerangeMaxminTestComponent
   ]
 })
-export class DatetimeRangeTestModule {
+export class DatetimerangeTestModule {
   static readonly LINKS: Array<object> = [
     {
       href: 'components/TiDatetimeRangeComponent.html',

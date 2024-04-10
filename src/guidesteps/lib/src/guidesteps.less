@@ -1,11 +1,11 @@
-::ng-deep :root {
-  --guidestep-header-line-height: var(--ti-common-font-size-base, 12px) * var(--ti-common-line-height-number, 1.5);
-  --guidestep-header-large-line-height: var(--ti-common-font-size-2, 16px) * var(--ti-common-line-height-number, 1.5);
-  --guidestep-dot-size: 8px;
-  --guidestep-icon-space: var(--ti-common-space-2x, 8px); // 图标和标题文字之间的距离
-  --guidestep-line-dot-space: var(--ti-common-space-base, 4px);
-  --guidestep-dot-border: 2px;
-  --guidestep-line-width: 1px;
+:host {
+  --guidestep-header-line-height: var(--ti-common-font-size-base) * var(--ti-common-line-height-number);
+  --guidestep-header-large-line-height: var(--ti-common-font-size-2) * var(--ti-common-line-height-number);
+  --guidestep-dot-size: var(--ti-common-size-2x);
+  --guidestep-icon-space: var(--ti-common-space-2x); // 图标和标题文字之间的距离
+  --guidestep-line-dot-space: var(--ti-common-space-base);
+  --guidestep-dot-border: var(--ti-common-border-weight-1);
+  --guidestep-line-width: var(--ti-common-border-weight-normal);
   --guidestep-dot-outer-size: var(--guidestep-dot-size) + 2 * var(--guidestep-dot-border); // 使用calc计算，IE下对应分割线无法显示
 }
 

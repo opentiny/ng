@@ -1,7 +1,7 @@
 @import '../../../themes/basic/base-all.less';
 
-::ng-deep :root {
-  --ti-link-btn-height: 24px;
+:host {
+  --ti-link-btn-height: var(--ti-common-size-6x);
 }
 
 :host {
@@ -10,6 +10,7 @@
   height: var(--ti-link-btn-height);
   line-height: calc(var(--ti-link-btn-height) - 2px); // border上下2px
   font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
   color: var(--ti-common-color-text-secondary);
   .box-sizing(border-box);
   border: 1px solid var(--ti-common-color-line-normal);

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DatetimeRangeTestModule } from './datetimerange/DatetimeRangeTestModule';
+import { DatetimerangeTestModule } from './datetimerange/DatetimerangeTestModule';
 
 @Component({
   template: `<style>
@@ -41,7 +41,7 @@ import { DatetimeRangeTestModule } from './datetimerange/DatetimeRangeTestModule
     </table>`
 })
 export class IndexComponent {
-  routes: any = DatetimeRangeTestModule.ROUTES;
+  routes: any = DatetimerangeTestModule.ROUTES;
 
   path2name(path: string): string {
     return path.split('/').pop();

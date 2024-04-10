@@ -1,13 +1,13 @@
 {
   "name": "@opentiny/ng-accordion",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=13.0.0",
-    "@opentiny/ng-base": "~1.0.2",
+    "@opentiny/ng-base": "~1.0.3",
     "@angular/animations": ">=13.0.0",
     "@angular/common": ">=13.0.0",
-    "@opentiny/ng-outline": "~1.0.2",
-    "@opentiny/ng-icon": "~1.0.2"
+    "@opentiny/ng-outline": "~1.0.3",
+    "@opentiny/ng-icon": "~1.0.3"
   }
 }

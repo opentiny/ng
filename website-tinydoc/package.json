@@ -1,7 +1,7 @@
 {
-  "name": "@opentiny/ng-tinydoc",
+  "name": "@huawei/ng-tinydoc",
   "private": false,
-  "version": "1.0.15",
+  "version": "1.0.2",
   "scripts": {
     "copy": "node ./build/copy.js",
     "pub": "npm run copy && npm publish --verbose"
@@ -10,7 +10,8 @@
     "app",
     "webdoc",
     "scripts",
-    "config.js"
+    "config.js",
+    "overviewimage"
   ],
   "devDependencies": {
     "fs-extra": "^10.1.0",

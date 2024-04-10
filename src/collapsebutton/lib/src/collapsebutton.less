@@ -1,12 +1,8 @@
 @import '../../../themes/basic/base-all.less';
 
-::ng-deep :root {
-  --ti3-collapsebutton-height: 36px;
-}
-
 :host {
   display: inline-block;
-  height: var(--ti3-collapsebutton-height);
+  height: var(--ti-common-size-9x);
   .transition(background-color; 0.15s);
 }
 
@@ -61,6 +57,8 @@
   margin-left: var(--ti-common-space-10);
   color: var(--ti-common-color-icon-normal);
   .transition(color; 0.15s);
+  font-size: var(--ti-common-font-size-base);
+  font-weight: var(--ti-common-font-weight-4);
 }
 
 /********************************动效************************************/

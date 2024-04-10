@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './AppComponent';
 import { IndexComponent } from './IndexComponent';
-import { DatetimeRangeTestModule } from './datetimerange/DatetimeRangeTestModule';
+import { DatetimerangeTestModule } from './datetimerange/DatetimerangeTestModule';
 
 @NgModule({
   imports: [
-    DatetimeRangeTestModule,
+    DatetimerangeTestModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     RouterModule.forRoot(
       [
