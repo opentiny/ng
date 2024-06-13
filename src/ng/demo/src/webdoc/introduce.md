@@ -20,8 +20,6 @@ title: 介绍 | TinyNG
 
 - 通过CSS variables 提供超细粒度的主题定制能力。
 
-
-
 ### 支持环境
 
 |Edge |Firefox | Chrome | Safari |
